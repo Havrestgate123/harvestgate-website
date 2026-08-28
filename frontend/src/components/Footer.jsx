@@ -17,8 +17,8 @@ export const Footer = () => (
     <div className="hg-container py-16 sm:py-20">
       <div className="grid grid-cols-1 gap-14 md:grid-cols-12 md:gap-10">
         <div className="md:col-span-5">
-          <div className="flex items-center gap-3 text-hg-gold">
-            <LogoMark className="h-11 w-11" />
+          <div className="flex items-center gap-4">
+            <LogoMark className="h-14 sm:h-16" />
             <div className="leading-none">
               <p className="hg-display text-2xl text-hg-fg">
                 Harvest<span className="text-hg-gold">Gate</span>
