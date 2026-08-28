@@ -1,0 +1,325 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============ HarvestGate theme tokens ============ */
+:root {
+    /* LIGHT (editorial paper) */
+    --hg-bg: 250 248 245;
+    --hg-bg2: 243 239 234;
+    --hg-card: 255 255 255;
+    --hg-line: 224 217 205;
+    --hg-line2: 203 193 176;
+    --hg-fg: 26 25 24;
+    --hg-fg2: 87 83 78;
+    --hg-fg3: 140 133 123;
+    --hg-gold: 156 118 38;
+    --hg-gold2: 124 92 22;
+    --hg-grain: 0.035;
+
+    --background: 40 20% 97%;
+    --foreground: 30 5% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 30 5% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 5% 10%;
+    --primary: 38 61% 38%;
+    --primary-foreground: 40 30% 98%;
+    --secondary: 38 20% 92%;
+    --secondary-foreground: 30 5% 10%;
+    --muted: 38 20% 92%;
+    --muted-foreground: 30 6% 45%;
+    --accent: 38 20% 92%;
+    --accent-foreground: 30 5% 10%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 36 20% 84%;
+    --input: 36 20% 84%;
+    --ring: 38 61% 38%;
+    --radius: 0.125rem;
+}
+
+.dark {
+    /* DARK (near-black luxury) */
+    --hg-bg: 10 10 10;
+    --hg-bg2: 18 18 18;
+    --hg-card: 22 22 22;
+    --hg-line: 38 38 38;
+    --hg-line2: 58 58 58;
+    --hg-fg: 245 240 232;
+    --hg-fg2: 163 163 163;
+    --hg-fg3: 115 115 115;
+    --hg-gold: 200 162 78;
+    --hg-gold2: 212 175 55;
+    --hg-grain: 0.06;
+
+    --background: 0 0% 4%;
+    --foreground: 40 30% 94%;
+    --card: 0 0% 8.5%;
+    --card-foreground: 40 30% 94%;
+    --popover: 0 0% 8.5%;
+    --popover-foreground: 40 30% 94%;
+    --primary: 42 53% 55%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 40 30% 94%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 40 30% 94%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 42 53% 55%;
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+        margin: 0;
+        font-family: Manrope, ui-sans-serif, system-ui, sans-serif;
+        background-color: rgb(var(--hg-bg));
+        color: rgb(var(--hg-fg));
+        transition:
+            background-color 0.5s ease,
+            color 0.5s ease;
+        overflow-x: hidden;
+    }
+    ::selection {
+        background: rgb(var(--hg-gold));
+        color: rgb(var(--hg-bg));
+    }
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: Anton, Oswald, sans-serif;
+        font-weight: 400;
+    }
+}
+
+/* ============ Grain / noise overlay ============ */
+.grain-overlay::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: var(--hg-grain);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ============ Utilities ============ */
+.hg-container {
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+}
+@media (min-width: 640px) {
+    .hg-container {
+        padding-inline: 2.5rem;
+    }
+}
+@media (min-width: 1024px) {
+    .hg-container {
+        padding-inline: 4.5rem;
+    }
+}
+
+.hg-eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    color: rgb(var(--hg-gold));
+}
+
+.hg-display {
+    font-family: Anton, Oswald, sans-serif;
+    text-transform: uppercase;
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+}
+
+.hg-italic {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: -0.01em;
+}
+
+.hg-rule {
+    height: 1px;
+    background: rgb(var(--hg-line));
+}
+
+/* outlined display text */
+.hg-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(var(--hg-gold) / 0.55);
+}
+
+/* link underline sweep */
+.hg-link {
+    position: relative;
+    display: inline-block;
+}
+.hg-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hg-link:hover::after,
+.hg-link[data-active="true"]::after {
+    transform: scaleX(1);
+}
+
+/* image spotlight vignette */
+.hg-spotlight {
+    position: relative;
+}
+.hg-spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(
+        120% 90% at 50% 15%,
+        transparent 20%,
+        rgb(var(--hg-bg) / 0.35) 70%,
+        rgb(var(--hg-bg) / 0.85) 100%
+    );
+}
+
+.hg-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--hg-gold));
+    color: rgb(var(--hg-gold));
+    padding: 0.85rem 1.6rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    background: transparent;
+    transition:
+        color 0.4s ease,
+        border-color 0.4s ease;
+    cursor: pointer;
+}
+.hg-btn > span {
+    position: relative;
+    z-index: 2;
+}
+.hg-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgb(var(--hg-gold));
+    transform: translateY(101%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+}
+.hg-btn:hover {
+    color: rgb(var(--hg-bg));
+}
+.hg-btn:hover::before {
+    transform: translateY(0);
+}
+.hg-btn--solid {
+    background: rgb(var(--hg-gold));
+    color: rgb(var(--hg-bg));
+}
+.hg-btn--solid::before {
+    background: rgb(var(--hg-fg));
+}
+.hg-btn--solid:hover {
+    color: rgb(var(--hg-bg));
+    border-color: rgb(var(--hg-fg));
+}
+
+.hg-input {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgb(var(--hg-line2));
+    padding: 0.75rem 0;
+    color: rgb(var(--hg-fg));
+    font-size: 0.95rem;
+    outline: none;
+    transition:
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+}
+.hg-input::placeholder {
+    color: rgb(var(--hg-fg3));
+}
+.hg-input:focus {
+    border-color: rgb(var(--hg-gold));
+}
+.hg-input option {
+    background: rgb(var(--hg-card));
+    color: rgb(var(--hg-fg));
+}
+
+.hg-marquee-track {
+    display: flex;
+    width: max-content;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-marquee,
+    .animate-marqueeRev {
+        animation: none !important;
+    }
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}

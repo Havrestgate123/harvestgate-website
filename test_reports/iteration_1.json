@@ -1,0 +1,54 @@
+{
+  "summary": "Frontend-only QA pass on HarvestGate Overseas SPA (backend skipped per request). Verified: direct load + refresh of all 9 routes (/, /about, /products, 4 product details, /contact, /terms) render the correct page-* testids; SPA client-side navigation for all navbar links, nav CTA, brand logo, hero/home/about CTAs, home + listing product cards, related product tiles, product back/enquire links and all footer links (no full page reloads — verified via a window flag surviving navigation); footer back-to-top scroll; unknown slug redirect to /products; theme toggle + localStorage 'hg-theme' persistence across reload and route change; contact form empty-submit validation (6 inline errors + error toast, no success panel), invalid-email block, happy path success panel with HG-xxxxxx reference + success toast, and reset via enquiry-new-button; mobile 390px + tablet 768px menu overlay navigation for all 7 mobile links; no horizontal overflow at 390/768 on home, products, product detail, contact, terms, about; zero browser console errors on every page. Two real defects found: mobile overlay does not close when tapping a link for the current route (body scroll stays locked), and light-theme illegibility of product accent-coloured text (products listing card eyebrow + product-detail hero eyebrow/tagline).",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "Navbar mobile overlay",
+        "issue": "Tapping a mobile nav link that points to the CURRENT route (repro: open / , open menu, tap 'Home') does not close the overlay because it is only closed by the pathname-change effect (useEffect(() => setOpen(false), [pathname])). document.body.style.overflow stays 'hidden' so the page behind remains scroll-locked until the user manually taps the hamburger/X again. Same applies to tapping 'Products' while on /products, a product tile while on that product page, or 'Enquire' while on /contact.",
+        "selector": "[data-testid=\"mobile-nav-link-home\"] / [data-testid=\"mobile-nav-overlay\"]",
+        "priority": "MEDIUM"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "Products listing (/products) — LIGHT theme",
+        "issues": [
+          "Card eyebrow/subtitle is rendered with an inline theme-agnostic colour (Products.jsx line 82: style={{ color: p.accent }}). For foxnuts the accent is #F7F4EB (cream), so '01 / Foxnuts / Lotus Seeds' is effectively invisible (cream on the cream bg-hg-card, measured contrast ratio ~1.0) in light mode. Verified computed color rgb(247,244,235) on a light card background."
+        ]
+      },
+      {
+        "screen": "Product detail hero (/products/<slug>) — LIGHT theme",
+        "issues": [
+          "ProductDetail.jsx lines 43-56 colour the eyebrow ('01 — FOXNUTS / LOTUS SEEDS') and the italic tagline with the same theme-agnostic product.accent over a light overlay (bg-hg-bg/58). On /products/foxnuts (cream accent) and /products/jaggery (gold accent on a bright image) both lines are barely readable in light mode. Requirement 'text remains readable in BOTH themes' is not met on this section."
+        ]
+      },
+      {
+        "screen": "Unknown route (/no-such-page)",
+        "issues": [
+          "Catch-all route renders the Home page while leaving the bogus URL in the address bar — no 404 view and no redirect to '/'. Cosmetic/SEO nit only."
+        ]
+      }
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Close the mobile nav overlay on link click (onClick={() => setOpen(false)} on the mobile Link elements) so same-route taps also close it and release document.body.style.overflow.",
+    "Make product accent text theme-aware: in Products.jsx (card subtitle) and ProductDetail.jsx (hero eyebrow + tagline), fall back to a token colour (e.g. text-hg-gold / text-hg-fg2) in light theme instead of the raw product.accent hex, or darken light accents per theme.",
+    "Optional: render a real 404 page (or <Navigate to='/' replace />) for unmatched routes."
+  ],
+  "critical_code_review_comments": [
+    "Navbar.jsx: overlay open state is only reset by a pathname effect — same-route clicks leave the overlay open and the body scroll-locked; close it in the link handler.",
+    "Products.jsx:82 and ProductDetail.jsx:43,54 hardcode inline colours from the product data, bypassing the CSS theme variables — this is the single source of the light-theme contrast failures.",
+    "Contact.jsx: enquiry-new-button resets values and done but not errors state (errors happens to be empty on success, so harmless today — still worth resetting for correctness)."
+  ],
+  "updated_files": [],
+  "success_rate": { "backend": "not tested (per request)", "frontend": "~96% (all functional flows pass; 1 mobile-menu bug + light-theme contrast issues)" },
+  "seed_data_creation": "None — no backend/DB. Contact form submitted with mock data (Ana Ferreira / ana@importco.com / ImportCo BV), client-side only.",
+  "should_call_test_agent_after_fix": false,
+  "should_main_agent_self_test": true,
+  "test_credentials": "N/A — app has no authentication; /app/memory/test_credentials.md not required",
+  "context_for_next_testing_agent": "All routing, theme persistence, contact-form validation/success and mobile/tablet responsiveness flows were verified end-to-end and pass; no console errors, all CDN images return 200 (a single requestfailed entry for the 'hands' image was a navigation-abort artefact, URL verified 200 via curl). Only re-verify: (1) mobile overlay closes on same-route link taps and body overflow is cleared, (2) light-theme legibility of product accent text on /products cards and product-detail hero.",
+  "rca_of_the_issue": "Mobile menu: Navbar keeps `open` state closed only via useEffect on pathname; react-router does not change pathname for same-route Link clicks, so the effect never fires and the fixed overlay + body overflow:hidden persist. Light-theme contrast: product accent hex values from data/products.js (e.g. foxnuts #F7F4EB) are applied as inline styles, so they do not switch with the dark/light CSS variables and collapse against the light cream background/overlay."
+}
