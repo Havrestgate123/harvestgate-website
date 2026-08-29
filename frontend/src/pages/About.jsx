@@ -1,54 +1,46 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { MaskLines, MaskLinesInView, Reveal, Marquee } from "../components/motion/Reveal";
 import { IMG, STATS, CERTS } from "../data/products";
 
 const TIMELINE = [
-  ["2019", "Incorporated in Patna", "HarvestGate Overseas Private Limited is registered with a single mandate: export-grade Phool Makhana with verifiable provenance."],
-  ["2021", "Cluster contracts signed", "Direct agreements with 180 makhana households across Darbhanga and Madhubani replace open-market procurement."],
-  ["2023", "Millet & jaggery programmes", "Rajasthan and Kolhapur sourcing lines open; NABL laboratory partnership formalised for every outbound batch."],
-  ["2025", "Kashmir walnut line", "Cold-chain kernel programme launched from Anantnag and Shopian, extending the catalogue to four crops."],
+  ["2019", "Company Incorporation", "HarvestGate Overseas Private Limited is established with a single core mandate: export-grade Indian agricultural produce with verifiable provenance."],
+  ["2021", "Cluster Direct Contracts", "Direct agreements with 300+ grower households across Bihar and Uttar Pradesh replace unverified open-market aggregated procurement."],
+  ["2023", "Millets, Oats & Pulses Expansion", "Rajasthan, Madhya Pradesh and Maharashtra sourcing lines open; NABL laboratory partnerships formalised for every outbound lot."],
+  ["2026", "Global Consolidated Exports", "Operating seven dedicated commodity programmes covering Foxnuts, Millets, Oats, Sugar, Pulses, Grains and Daliya to 18+ countries."],
 ];
 
 const VALUES = [
-  ["Traceability", "Cluster, farmer group and crop window recorded against every lot number."],
-  ["Consistency", "Published grade tolerances that do not move between shipments."],
-  ["Documentation", "Full export document set issued before vessel departure, every time."],
-  ["Responsiveness", "Quotation and spec sheet within one business day of enquiry."],
+  ["Traceability", "Named farm clusters, primary mandis and crop harvest windows recorded against every outbound container."],
+  ["Standardization", "Strict grade tolerances, sortex purity guarantees and zero moisture compromises across every shipment."],
+  ["Full Documentation", "Complete export set: Certificate of Origin, APEDA, FSSAI, GSTIN, IEC and SGS inspection certificates."],
+  ["Rapid Response", "Detailed specification sheet, indicative FOB/CIF quote and free courier samples arranged within 1 business day."],
 ];
 
 const About = () => (
-  <div data-testid="page-about" className="pt-[68px] sm:pt-[84px]">
-    <section className="hg-container pt-20 pb-16 sm:pt-28 sm:pb-24">
-      <p className="hg-eyebrow">About — HarvestGate Overseas Pvt. Ltd.</p>
+  <div data-testid="page-about" className="pt-[110px] sm:pt-[130px]">
+    <section className="hg-container pt-14 pb-16 sm:pt-20 sm:pb-24">
+      <p className="hg-eyebrow text-[12px] font-bold">About — HarvestGate Overseas Pvt. Ltd.</p>
       <MaskLines
         data-testid="about-heading"
         delay={0.12}
-        className="hg-display mt-6 text-[14vw] leading-[0.86] text-hg-fg sm:text-[9.5vw] lg:text-[7vw]"
+        className="hg-display mt-6 text-[14vw] leading-[0.88] text-hg-fg sm:text-[9.5vw] lg:text-[7vw] font-extrabold"
         lines={["Between the", "field and", "the port."]}
       />
-      <div className="mt-14 grid grid-cols-1 gap-12 border-t border-hg-line pt-10 lg:grid-cols-12 lg:gap-16">
+      <div className="mt-14 grid grid-cols-1 gap-12 border-t-2 border-hg-line pt-10 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-7">
-          <p className="hg-italic text-2xl leading-snug text-hg-gold sm:text-3xl">
-            An Indian export house built for buyers who read the spec sheet.
+          <p className="hg-italic text-2xl leading-snug text-hg-gold sm:text-3xl font-semibold">
+            An Indian agricultural export house built for international buyers who demand verifiable quality.
           </p>
-          <p className="mt-8 text-base leading-[1.9] text-hg-fg2">
-            HarvestGate Overseas was founded in Patna in 2019 by a team with two decades of
-            combined experience in agri-procurement and ocean freight documentation. We began
-            with a single crop — Phool Makhana — and one uncomfortable observation: buyers in
-            Dubai, Rotterdam and New Jersey were paying premium prices for lots they could not
-            trace back further than a mandi receipt.
+          <p className="mt-8 text-lg leading-[1.85] text-hg-fg font-medium">
+            HarvestGate Overseas Private Limited was founded by professionals with extensive experience in direct agricultural procurement, laboratory testing, and ocean freight logistics. We began with one clear vision: international buyers in Dubai, Rotterdam, New Jersey, and London deserve completely transparent, laboratory-tested produce with zero batch-to-batch variation.
           </p>
-          <p className="mt-6 text-base leading-[1.9] text-hg-fg2">
-            Today we operate four crop programmes across five Indian states, each structured
-            the same way: contracted farm clusters, our own grading and packing discipline,
-            accredited third-party laboratory panels, and an export document set that clears
-            customs without follow-up. We are deliberately narrow. Four crops, done
-            exceptionally, beats forty done adequately.
+          <p className="mt-6 text-[16.5px] leading-[1.85] text-hg-fg2 font-medium">
+            Today we operate seven specialized crop programmes across India's premier growing regions: contracted farm clusters, standardized sortex cleaning and grading, accredited third-party laboratory testing, and an airtight export document set (APEDA, FSSAI, GSTIN, IEC) that clears destination customs seamlessly.
           </p>
         </div>
         <div className="lg:col-span-5">
-          <div className="hg-spotlight overflow-hidden border border-hg-line">
+          <div className="overflow-hidden border-2 border-hg-line shadow-lg">
             <img
               src={IMG.hands}
               alt="Farmer holding raw grain"
@@ -56,8 +48,8 @@ const About = () => (
               className="aspect-[4/5] w-full object-cover"
             />
           </div>
-          <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.18em] text-hg-fg3">
-            Contracted cluster — Darbhanga, Bihar
+          <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-hg-fg3 font-semibold">
+            Registered Head Office: Moradabad, Uttar Pradesh, India
           </p>
         </div>
       </div>
@@ -70,8 +62,8 @@ const About = () => (
       <div className="grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-4">
         {STATS.map(([v, l], i) => (
           <Reveal key={l} delay={i * 0.07}>
-            <p className="hg-display text-4xl text-hg-gold sm:text-5xl lg:text-6xl">{v}</p>
-            <p className="mt-3 font-mono text-[9px] uppercase leading-relaxed tracking-[0.18em] text-hg-fg3">
+            <p className="hg-display text-4xl text-hg-gold sm:text-5xl lg:text-6xl font-extrabold">{v}</p>
+            <p className="mt-3 font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-hg-fg font-bold">
               {l}
             </p>
           </Reveal>
@@ -80,25 +72,25 @@ const About = () => (
     </section>
 
     {/* MISSION */}
-    <section className="border-y border-hg-line bg-hg-bg2">
+    <section className="border-y-2 border-hg-line bg-hg-bg2">
       <div className="hg-container py-20 sm:py-28 lg:py-36">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <p className="hg-eyebrow">Mission</p>
+            <p className="hg-eyebrow text-[12px] font-bold">Our Pillars</p>
             <MaskLinesInView
-              className="hg-display mt-6 text-4xl leading-[0.92] text-hg-fg sm:text-5xl"
-              lines={["Make Indian", "provenance", "legible."]}
+              className="hg-display mt-6 text-4xl leading-[0.95] text-hg-fg sm:text-5xl font-extrabold"
+              lines={["Direct Indian", "Provenance.", "Certified."]}
             />
           </div>
           <div className="lg:col-span-7">
             <div className="grid grid-cols-1 gap-y-0 sm:grid-cols-2 sm:gap-x-10">
               {VALUES.map(([t, d], i) => (
-                <Reveal key={t} delay={i * 0.06} className="border-t border-hg-line py-7">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-hg-gold">
+                <Reveal key={t} delay={i * 0.06} className="border-t-2 border-hg-line py-8">
+                  <p className="font-mono text-[12px] uppercase tracking-[0.24em] text-hg-gold font-bold">
                     0{i + 1}
                   </p>
-                  <h3 className="mt-4 text-xl text-hg-fg">{t}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-hg-fg2">{d}</p>
+                  <h3 className="mt-3 text-2xl text-hg-fg font-bold">{t}</h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-hg-fg2 font-medium">{d}</p>
                 </Reveal>
               ))}
             </div>
@@ -109,61 +101,59 @@ const About = () => (
 
     {/* TIMELINE */}
     <section className="hg-container py-20 sm:py-28 lg:py-36">
-      <p className="hg-eyebrow">Trajectory</p>
+      <p className="hg-eyebrow text-[12px] font-bold">Our Growth Trajectory</p>
       <MaskLinesInView
-        className="hg-display mt-6 text-4xl leading-[0.92] text-hg-fg sm:text-5xl lg:text-6xl"
-        lines={["Seven years,", "four programmes."]}
+        className="hg-display mt-6 text-4xl leading-[0.95] text-hg-fg sm:text-5xl lg:text-6xl font-extrabold"
+        lines={["Proven track record,", "seven programmes."]}
       />
       <div className="mt-14">
         {TIMELINE.map(([year, title, body], i) => (
           <Reveal
             key={year}
             delay={i * 0.05}
-            className="group grid grid-cols-1 gap-4 border-t border-hg-line py-8 last:border-b sm:grid-cols-12 sm:gap-8 sm:py-10"
+            className="group grid grid-cols-1 gap-4 border-t-2 border-hg-line py-8 last:border-b-2 sm:grid-cols-12 sm:gap-8 sm:py-10 transition-colors hover:bg-hg-bg2/40 px-2"
           >
-            <p className="hg-display text-3xl text-hg-gold/70 transition-colors duration-500 group-hover:text-hg-gold sm:col-span-2 sm:text-4xl">
+            <p className="hg-display text-3xl text-hg-gold transition-colors duration-300 sm:col-span-2 sm:text-4xl font-extrabold">
               {year}
             </p>
-            <h3 className="text-xl text-hg-fg sm:col-span-4">{title}</h3>
-            <p className="text-sm leading-[1.85] text-hg-fg2 sm:col-span-6">{body}</p>
+            <h3 className="text-2xl text-hg-fg font-bold sm:col-span-4">{title}</h3>
+            <p className="text-[15.5px] leading-[1.85] text-hg-fg2 font-medium sm:col-span-6">{body}</p>
           </Reveal>
         ))}
       </div>
     </section>
 
     {/* CREDENTIALS + CTA */}
-    <section className="relative overflow-hidden border-t border-hg-line">
-      <div className="absolute inset-0 z-0">
-        <img src={IMG.port} alt="Export terminal" loading="lazy" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-hg-bg/80" />
-      </div>
+    <section className="relative overflow-hidden border-t-2 border-hg-line bg-hg-bg2">
       <div className="hg-container relative z-10 py-24 sm:py-32">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-12">
           <div className="lg:col-span-6">
-            <p className="hg-eyebrow">Credentials</p>
+            <p className="hg-eyebrow text-[12px] font-bold">Government & Trade Credentials</p>
             <MaskLinesInView
-              className="hg-display mt-6 text-4xl leading-[0.92] text-hg-fg sm:text-5xl"
-              lines={["Registered.", "Audited.", "Documented."]}
+              className="hg-display mt-6 text-4xl leading-[0.95] text-hg-fg sm:text-5xl font-extrabold"
+              lines={["Registered.", "Audited.", "Certified."]}
             />
-            <p className="mt-7 max-w-lg text-base leading-[1.85] text-hg-fg2">
-              Copies of all registrations, audit reports and laboratory panels are shared with
-              serious enquiries under NDA on request.
+            <p className="mt-7 max-w-lg text-[16.5px] leading-[1.85] text-hg-fg font-medium">
+              HarvestGate Overseas operates with full statutory compliance under Indian export regulations. Certified documentation sets and lab reports are provided with all commercial quotes.
             </p>
-            <Link to="/contact" data-testid="about-cta-enquire" className="hg-btn hg-btn--solid mt-10">
+            <Link to="/contact" data-testid="about-cta-enquire" className="hg-btn hg-btn--solid mt-10 text-[13px] font-bold py-4 px-8">
               <span>Talk to our export desk</span>
-              <ArrowUpRight size={13} className="relative z-[2]" />
+              <ArrowUpRight size={15} className="relative z-[2]" />
             </Link>
           </div>
           <div className="lg:col-span-5 lg:col-start-8">
-            <ul className="border-t border-hg-line">
+            <ul className="border-t-2 border-hg-line">
               {CERTS.map((c, i) => (
                 <Reveal
                   key={c}
                   delay={i * 0.05}
-                  className="flex items-center justify-between border-b border-hg-line py-5"
+                  className="flex items-center justify-between border-b-2 border-hg-line py-5 font-mono text-[13px] font-bold text-hg-fg"
                 >
-                  <span className="text-sm text-hg-fg">{c}</span>
-                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-hg-gold">
+                  <span className="flex items-center gap-2">
+                    <CheckCircle2 size={16} className="text-hg-gold shrink-0" />
+                    <span>{c}</span>
+                  </span>
+                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-hg-gold bg-hg-gold/10 px-2.5 py-1 rounded">
                     Active
                   </span>
                 </Reveal>

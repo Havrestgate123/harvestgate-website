@@ -2,76 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ============ HarvestGate theme tokens ============ */
+/* ============ HarvestGate Theme Tokens ============ */
 :root {
-    /* LIGHT (editorial paper) */
-    --hg-bg: 250 248 245;
-    --hg-bg2: 243 239 234;
+    /* BRIGHT & CRISP LIGHT THEME */
+    --hg-bg: 255 255 255;
+    --hg-bg2: 249 247 243;
     --hg-card: 255 255 255;
-    --hg-line: 224 217 205;
-    --hg-line2: 203 193 176;
-    --hg-fg: 26 25 24;
-    --hg-fg2: 87 83 78;
-    --hg-fg3: 140 133 123;
-    --hg-gold: 156 118 38;
-    --hg-gold2: 124 92 22;
-    --hg-grain: 0.035;
+    --hg-line: 220 214 202;
+    --hg-line2: 188 178 162;
+    --hg-fg: 18 18 18;
+    --hg-fg2: 52 48 44;
+    --hg-fg3: 95 90 82;
+    --hg-gold: 172 122 28;
+    --hg-gold2: 140 96 18;
+    --hg-grain: 0.012;
 
-    --background: 40 20% 97%;
-    --foreground: 30 5% 10%;
+    --background: 40 20% 99%;
+    --foreground: 30 10% 8%;
     --card: 0 0% 100%;
-    --card-foreground: 30 5% 10%;
+    --card-foreground: 30 10% 8%;
     --popover: 0 0% 100%;
-    --popover-foreground: 30 5% 10%;
-    --primary: 38 61% 38%;
+    --popover-foreground: 30 10% 8%;
+    --primary: 38 65% 36%;
     --primary-foreground: 40 30% 98%;
-    --secondary: 38 20% 92%;
-    --secondary-foreground: 30 5% 10%;
-    --muted: 38 20% 92%;
-    --muted-foreground: 30 6% 45%;
-    --accent: 38 20% 92%;
-    --accent-foreground: 30 5% 10%;
+    --secondary: 38 20% 94%;
+    --secondary-foreground: 30 10% 8%;
+    --muted: 38 20% 94%;
+    --muted-foreground: 30 8% 38%;
+    --accent: 38 20% 94%;
+    --accent-foreground: 30 10% 8%;
     --destructive: 0 72% 45%;
     --destructive-foreground: 0 0% 98%;
-    --border: 36 20% 84%;
-    --input: 36 20% 84%;
-    --ring: 38 61% 38%;
+    --border: 36 20% 82%;
+    --input: 36 20% 82%;
+    --ring: 38 65% 36%;
     --radius: 0.125rem;
 }
 
 .dark {
-    /* DARK (near-black luxury) */
-    --hg-bg: 10 10 10;
-    --hg-bg2: 18 18 18;
-    --hg-card: 22 22 22;
-    --hg-line: 38 38 38;
-    --hg-line2: 58 58 58;
-    --hg-fg: 245 240 232;
-    --hg-fg2: 163 163 163;
-    --hg-fg3: 115 115 115;
-    --hg-gold: 200 162 78;
-    --hg-gold2: 212 175 55;
-    --hg-grain: 0.06;
+    /* PRESTIGE DARK THEME */
+    --hg-bg: 12 12 12;
+    --hg-bg2: 20 20 20;
+    --hg-card: 26 26 26;
+    --hg-line: 44 44 44;
+    --hg-line2: 68 68 68;
+    --hg-fg: 252 250 245;
+    --hg-fg2: 188 188 188;
+    --hg-fg3: 138 138 138;
+    --hg-gold: 215 175 75;
+    --hg-gold2: 228 188 88;
+    --hg-grain: 0.035;
 
-    --background: 0 0% 4%;
-    --foreground: 40 30% 94%;
-    --card: 0 0% 8.5%;
-    --card-foreground: 40 30% 94%;
-    --popover: 0 0% 8.5%;
-    --popover-foreground: 40 30% 94%;
-    --primary: 42 53% 55%;
+    --background: 0 0% 5%;
+    --foreground: 40 30% 96%;
+    --card: 0 0% 10%;
+    --card-foreground: 40 30% 96%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 40 30% 96%;
+    --primary: 42 60% 58%;
     --primary-foreground: 0 0% 4%;
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 40 30% 94%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 64%;
-    --accent: 0 0% 15%;
-    --accent-foreground: 40 30% 94%;
+    --secondary: 0 0% 16%;
+    --secondary-foreground: 40 30% 96%;
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 68%;
+    --accent: 0 0% 16%;
+    --accent-foreground: 40 30% 96%;
     --destructive: 0 62% 45%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 42 53% 55%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 42 60% 58%;
 }
 
 @layer base {
@@ -81,27 +81,35 @@
     html {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        font-size: 16px;
     }
     body {
         margin: 0;
-        font-family: Manrope, ui-sans-serif, system-ui, sans-serif;
+        font-family: "Plus Jakarta Sans", Manrope, ui-sans-serif, system-ui, sans-serif;
+        font-weight: 450;
+        font-size: 1.05rem;
+        line-height: 1.65;
         background-color: rgb(var(--hg-bg));
         color: rgb(var(--hg-fg));
         transition:
-            background-color 0.5s ease,
-            color 0.5s ease;
+            background-color 0.4s ease,
+            color 0.4s ease;
         overflow-x: hidden;
     }
     ::selection {
         background: rgb(var(--hg-gold));
-        color: rgb(var(--hg-bg));
+        color: #ffffff;
     }
     h1,
     h2,
     h3,
-    h4 {
-        font-family: Anton, Oswald, sans-serif;
-        font-weight: 400;
+    h4,
+    h5,
+    h6 {
+        font-family: Outfit, "Plus Jakarta Sans", sans-serif;
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        color: rgb(var(--hg-fg));
     }
 }
 
@@ -119,52 +127,55 @@
 /* ============ Utilities ============ */
 .hg-container {
     width: 100%;
-    max-width: 1440px;
+    max-width: 1460px;
     margin-inline: auto;
-    padding-inline: 1.25rem;
+    padding-inline: 1.5rem;
 }
 @media (min-width: 640px) {
     .hg-container {
-        padding-inline: 2.5rem;
+        padding-inline: 3rem;
     }
 }
 @media (min-width: 1024px) {
     .hg-container {
-        padding-inline: 4.5rem;
+        padding-inline: 5rem;
     }
 }
 
 .hg-eyebrow {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.32em;
+    letter-spacing: 0.28em;
     color: rgb(var(--hg-gold));
 }
 
 .hg-display {
-    font-family: Anton, Oswald, sans-serif;
+    font-family: Outfit, "Plus Jakarta Sans", sans-serif;
+    font-weight: 800;
     text-transform: uppercase;
-    line-height: 0.88;
-    letter-spacing: -0.01em;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
 }
 
 .hg-italic {
     font-family: "Instrument Serif", Georgia, serif;
     font-style: italic;
+    font-weight: 400;
     text-transform: none;
     letter-spacing: -0.01em;
 }
 
 .hg-rule {
-    height: 1px;
+    height: 1.5px;
     background: rgb(var(--hg-line));
 }
 
 /* outlined display text */
 .hg-outline {
     color: transparent;
-    -webkit-text-stroke: 1px rgb(var(--hg-gold) / 0.55);
+    -webkit-text-stroke: 1.5px rgb(var(--hg-gold) / 0.7);
 }
 
 /* link underline sweep */
@@ -177,12 +188,12 @@
     position: absolute;
     left: 0;
     bottom: -3px;
-    height: 1px;
+    height: 2px;
     width: 100%;
     background: currentColor;
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .hg-link:hover::after,
 .hg-link[data-active="true"]::after {
@@ -201,9 +212,9 @@
     pointer-events: none;
     background: radial-gradient(
         120% 90% at 50% 15%,
-        transparent 20%,
-        rgb(var(--hg-bg) / 0.35) 70%,
-        rgb(var(--hg-bg) / 0.85) 100%
+        transparent 25%,
+        rgb(var(--hg-bg) / 0.25) 75%,
+        rgb(var(--hg-bg) / 0.75) 100%
     );
 }
 
@@ -211,19 +222,20 @@
     position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.65rem;
     overflow: hidden;
-    border: 1px solid rgb(var(--hg-gold));
+    border: 1.5px solid rgb(var(--hg-gold));
     color: rgb(var(--hg-gold));
-    padding: 0.85rem 1.6rem;
+    padding: 0.95rem 1.85rem;
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.6875rem;
+    font-size: 0.78rem;
+    font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     background: transparent;
     transition:
-        color 0.4s ease,
-        border-color 0.4s ease;
+        color 0.3s ease,
+        border-color 0.3s ease;
     cursor: pointer;
 }
 .hg-btn > span {
@@ -236,24 +248,25 @@
     inset: 0;
     background: rgb(var(--hg-gold));
     transform: translateY(101%);
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 1;
 }
 .hg-btn:hover {
-    color: rgb(var(--hg-bg));
+    color: #ffffff;
 }
 .hg-btn:hover::before {
     transform: translateY(0);
 }
 .hg-btn--solid {
     background: rgb(var(--hg-gold));
-    color: rgb(var(--hg-bg));
+    color: #ffffff;
+    border-color: rgb(var(--hg-gold));
 }
 .hg-btn--solid::before {
     background: rgb(var(--hg-fg));
 }
 .hg-btn--solid:hover {
-    color: rgb(var(--hg-bg));
+    color: #ffffff;
     border-color: rgb(var(--hg-fg));
 }
 
@@ -261,10 +274,11 @@
     width: 100%;
     background: transparent;
     border: 0;
-    border-bottom: 1px solid rgb(var(--hg-line2));
-    padding: 0.75rem 0;
+    border-bottom: 1.5px solid rgb(var(--hg-line2));
+    padding: 0.85rem 0;
     color: rgb(var(--hg-fg));
-    font-size: 0.95rem;
+    font-size: 1.05rem;
+    font-weight: 500;
     outline: none;
     transition:
         border-color 0.3s ease,
@@ -272,6 +286,7 @@
 }
 .hg-input::placeholder {
     color: rgb(var(--hg-fg3));
+    font-weight: 400;
 }
 .hg-input:focus {
     border-color: rgb(var(--hg-gold));
@@ -290,36 +305,5 @@
     .animate-marquee,
     .animate-marqueeRev {
         animation: none !important;
-    }
-}
-
-@layer base {
-    [data-debug-wrapper="true"] {
-        display: contents !important;
-    }
-    [data-debug-wrapper="true"] > * {
-        margin-left: inherit;
-        margin-right: inherit;
-        margin-top: inherit;
-        margin-bottom: inherit;
-        padding-left: inherit;
-        padding-right: inherit;
-        padding-top: inherit;
-        padding-bottom: inherit;
-        column-gap: inherit;
-        row-gap: inherit;
-        gap: inherit;
-        border-left-width: inherit;
-        border-right-width: inherit;
-        border-top-width: inherit;
-        border-bottom-width: inherit;
-        border-left-style: inherit;
-        border-right-style: inherit;
-        border-top-style: inherit;
-        border-bottom-style: inherit;
-        border-left-color: inherit;
-        border-right-color: inherit;
-        border-top-color: inherit;
-        border-bottom-color: inherit;
     }
 }

@@ -9,12 +9,16 @@ const EASE = [0.16, 1, 0.3, 1];
 
 const MARQUEE = [
   "Phool Makhana",
-  "Organic Millets",
-  "Kashmiri Walnuts",
-  "Artisanal Jaggery",
-  "APEDA Registered",
-  "ISO 22000",
-  "Worldwide Logistics",
+  "Ancient Millets",
+  "Premium Oats",
+  "Artisanal Sugar & Gur",
+  "Export Pulses & Dal",
+  "Basmati & Grain Exports",
+  "Roasted Wheat Daliya",
+  "GSTIN: 09AAICH2946R1ZR",
+  "IEC: AAICH2946R",
+  "APEDA & FSSAI Certified",
+  "Worldwide Ocean Freight",
 ];
 
 const Hero = () => {
@@ -74,8 +78,7 @@ const Hero = () => {
             transition={{ duration: 1, delay: 1.05, ease: EASE }}
             className="max-w-xl text-base leading-relaxed text-hg-fg2 lg:col-span-6"
           >
-            HarvestGate Overseas sources foxnuts, ancient millets, Kashmiri walnuts and
-            artisanal jaggery directly from Indian growers —
+            HarvestGate Overseas sources foxnuts, ancient millets, premium oats, pure sugar & jaggery, export pulses, long-grain rice and roasted wheat daliya directly from Indian growers —
             <span className="hg-italic text-hg-fg text-lg"> lab-verified, moisture-locked and container ready.</span>
           </motion.p>
 
@@ -120,10 +123,10 @@ const ProductCard = ({ p, className = "", tall = false }) => (
     <Link
       to={`/products/${p.slug}`}
       data-testid={`product-card-${p.slug}`}
-      className="group relative block h-full overflow-hidden border border-hg-line bg-hg-card transition-colors duration-500"
+      className="group relative block h-full overflow-hidden border border-hg-line bg-hg-card transition-colors duration-500 hover:border-hg-gold"
       style={{ ["--accent"]: p.accent }}
     >
-      <div className={`relative overflow-hidden ${tall ? "aspect-[4/5] lg:aspect-[16/13]" : "aspect-[4/3]"}`}>
+      <div className={`relative overflow-hidden ${tall ? "aspect-[4/5] lg:aspect-[16/11]" : "aspect-[4/3]"}`}>
         <img
           src={p.image}
           alt={p.name}
@@ -145,8 +148,7 @@ const ProductCard = ({ p, className = "", tall = false }) => (
             </h3>
           </div>
           <span
-            className="grid h-10 w-10 shrink-0 place-items-center border border-white/25 text-white transition-all duration-500 group-hover:border-transparent"
-            style={{ ["--tw-bg-opacity"]: 1 }}
+            className="grid h-10 w-10 shrink-0 place-items-center border border-white/25 text-white transition-all duration-500 group-hover:border-transparent group-hover:bg-hg-gold"
           >
             <ArrowUpRight size={15} className="transition-transform duration-500 group-hover:rotate-45" />
           </span>
@@ -223,15 +225,15 @@ const Home = () => {
             <p className="hg-eyebrow">02 — Catalogue</p>
             <MaskLinesInView
               className="hg-display mt-5 text-5xl leading-[0.9] text-hg-fg sm:text-6xl lg:text-7xl"
-              lines={["Four crops.", "One standard."]}
+              lines={["Seven commodities.", "One standard."]}
             />
           </div>
           <Link
             to="/products"
             data-testid="home-view-all-products"
-            className="hg-link shrink-0 font-mono text-[11px] uppercase tracking-[0.24em] text-hg-gold"
+            className="hg-link shrink-0 font-mono text-[12px] uppercase tracking-[0.24em] text-hg-gold"
           >
-            View all products →
+            View all 7 products →
           </Link>
         </div>
 
@@ -241,7 +243,12 @@ const Home = () => {
             <ProductCard p={PRODUCTS[1]} />
             <ProductCard p={PRODUCTS[2]} />
           </div>
-          <ProductCard p={PRODUCTS[3]} className="lg:col-span-12" />
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-12 lg:grid-cols-4 lg:gap-6">
+            <ProductCard p={PRODUCTS[3]} />
+            <ProductCard p={PRODUCTS[4]} />
+            <ProductCard p={PRODUCTS[5]} />
+            <ProductCard p={PRODUCTS[6]} />
+          </div>
         </div>
       </section>
 

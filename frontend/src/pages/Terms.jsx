@@ -82,7 +82,7 @@ const SECTIONS = [
 ];
 
 const Terms = () => (
-  <div data-testid="page-terms" className="pt-[68px] sm:pt-[84px]">
+  <div data-testid="page-terms" className="pt-[110px] sm:pt-[130px]">
     <section className="hg-container pt-20 pb-14 sm:pt-28 sm:pb-20">
       <p className="hg-eyebrow">Legal — Last updated June 2026</p>
       <MaskLines

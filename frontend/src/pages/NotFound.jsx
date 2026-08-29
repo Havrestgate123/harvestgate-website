@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { MaskLines, Reveal } from "../components/motion/Reveal";
 
 const NotFound = () => (
-  <div data-testid="page-not-found" className="pt-[68px] sm:pt-[84px]">
+  <div data-testid="page-not-found" className="pt-[110px] sm:pt-[130px]">
     <section className="hg-container flex min-h-[70vh] flex-col justify-center py-24">
       <p className="hg-eyebrow">Error 404 — Off the manifest</p>
       <MaskLines
