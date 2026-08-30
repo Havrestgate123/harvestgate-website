@@ -24,6 +24,8 @@ export default {
           fg3: 'rgb(var(--hg-fg3) / <alpha-value>)',
           gold: 'rgb(var(--hg-gold) / <alpha-value>)',
           gold2: 'rgb(var(--hg-gold2) / <alpha-value>)',
+          green: 'rgb(var(--hg-green) / <alpha-value>)',
+          green2: 'rgb(var(--hg-green2) / <alpha-value>)',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

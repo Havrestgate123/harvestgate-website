@@ -191,9 +191,7 @@ const Home = () => {
               className="hg-display text-[9vw] leading-[0.92] text-hg-fg sm:text-5xl lg:text-6xl"
               lines={["We Bring India’s", "Natural Goodness", "To The World."]}
             />
-            <p className="hg-italic mt-5 text-2xl text-hg-gold sm:text-3xl">
-              We ship provenance.
-            </p>
+            
             <Reveal delay={0.15}>
               <p className="mt-9 max-w-2xl text-base leading-[1.85] text-hg-fg2">
                 Every consignment that leaves our facilities carries a name, a district and a
