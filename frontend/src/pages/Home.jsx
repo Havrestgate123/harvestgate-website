@@ -255,8 +255,8 @@ const Home = () => {
                 className="hg-display mt-6 text-5xl leading-[0.9] text-hg-fg sm:text-6xl"
                 lines={["The", "HarvestGate", "method."]}
               />
-              <p className="hg-italic mt-6 text-xl text-hg-fg2">
-                Six commitments, applied to every shipment.
+              <p className="mt-6 text-lg sm:text-xl font-medium text-hg-fg2 leading-relaxed">
+                Our commitments, applied to every shipment.
               </p>
               <motion.div
                 style={{ y: labY }}
