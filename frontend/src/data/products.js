@@ -468,17 +468,17 @@ export const MANIFESTO = [
   },
   {
     number: "02",
-    title: "Superior Product Quality",
-    icon: "shield",
-    theme: "green",
-    body: "We deliver handpicked Foxnuts, wide range of Millets, Walnuts, and Chemical-Free Jaggery, with rigorous quality control. We also offer 3rd party or lab testing as per buyer requirements.",
-  },
-  {
-    number: "03",
     title: "Custom Packaging Solutions",
     icon: "package",
     theme: "gold",
     body: "We provide flexible, hygienic, and customized packaging options suited to your brand and market needs, including private labelling services.",
+  },
+  {
+    number: "03",
+    title: "Superior Product Quality",
+    icon: "shield",
+    theme: "green",
+    body: "We deliver handpicked Foxnuts, wide range of Millets, Walnuts, and Chemical-Free Jaggery, with rigorous quality control. We also offer 3rd party or lab testing as per buyer requirements.",
   },
   {
     number: "04",
