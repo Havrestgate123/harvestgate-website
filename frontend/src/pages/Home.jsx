@@ -2,24 +2,11 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
-import { MaskLines, MaskLinesInView, Reveal, Marquee } from "../components/motion/Reveal";
+import { MaskLines, MaskLinesInView, Reveal } from "../components/motion/Reveal";
+import { AccreditationsMarquee } from "../components/AccreditationsMarquee";
 import { PRODUCTS, MANIFESTO, STATS, IMG } from "../data/products";
 
 const EASE = [0.16, 1, 0.3, 1];
-
-const MARQUEE = [
-  "Phool Makhana",
-  "Ancient Millets",
-  "Premium Oats",
-  "Artisanal Sugar & Gur",
-  "Export Pulses & Dal",
-  "Basmati & Grain Exports",
-  "Roasted Wheat Daliya",
-  "GSTIN: 09AAICH2946R1ZR",
-  "IEC: AAICH2946R",
-  "APEDA & FSSAI Certified",
-  "Worldwide Ocean Freight",
-];
 
 const Hero = () => {
   const ref = useRef(null);
@@ -45,9 +32,9 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-hg-bg via-hg-bg/55 to-hg-bg/40" />
       </motion.div>
 
-      {/* Marquee placed above quote */}
-      <div className="relative z-10 w-full mb-8 border-y border-hg-line/40 bg-hg-bg/50 backdrop-blur-md">
-        <Marquee items={MARQUEE} testId="home-marquee" />
+      {/* ACCREDITATIONS MARQUEE WITH FIXED CENTER TITLE */}
+      <div className="relative z-10 w-full mb-8">
+        <AccreditationsMarquee />
       </div>
 
       <motion.div style={{ y: textY, opacity: fade }} className="hg-container relative z-10 pb-16 sm:pb-20">
