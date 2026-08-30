@@ -32,6 +32,11 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-hg-bg via-hg-bg/55 to-hg-bg/40" />
       </motion.div>
 
+      {/* ACCREDITATIONS MARQUEE WITH FIXED CENTER TITLE */}
+      <div className="relative z-10 w-full mb-8">
+        <AccreditationsMarquee />
+      </div>
+
       <motion.div style={{ y: textY, opacity: fade }} className="hg-container relative z-10 pb-16 sm:pb-20">
         <motion.p
           initial={{ opacity: 0, y: 14 }}
@@ -188,14 +193,19 @@ const Home = () => {
               </p>
             </Reveal>
 
+            <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-hg-line pt-10 sm:grid-cols-4">
+              {STATS.map(([value, label], i) => (
+                <Reveal key={label} delay={i * 0.08}>
+                  <p className="hg-display text-3xl text-hg-gold sm:text-4xl">{value}</p>
+                  <p className="mt-2 font-mono text-[9px] uppercase leading-relaxed tracking-[0.18em] text-hg-fg3">
+                    {label}
+                  </p>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
-
-      {/* ============ ACCREDITATIONS WITH LOGOS ============ */}
-      <div className="w-full mb-20 sm:mb-28">
-        <AccreditationsMarquee />
-      </div>
 
       {/* ============ PRODUCTS ============ */}
       <section className="hg-container pb-24 sm:pb-32 lg:pb-40" data-testid="home-products">
