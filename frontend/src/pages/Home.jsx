@@ -53,7 +53,7 @@ const Hero = () => {
           className="hg-eyebrow flex flex-wrap items-center gap-3"
         >
           <span className="inline-block h-px w-10 bg-hg-gold align-middle" />
-          Est. India — Exporting to 18 countries
+          "Delivering India’s finest harvests—ethically sourced, expertly handled, and shipped worldwide with speed."
         </motion.p>
 
         <MaskLines
@@ -78,12 +78,13 @@ const Hero = () => {
             transition={{ duration: 1, delay: 1.05, ease: EASE }}
             className="max-w-xl text-base leading-relaxed text-hg-fg2 lg:col-span-6"
           >
-            HarvestGate Overseas sources foxnuts, ancient millets, premium oats, pure sugar & jaggery, export pulses, long-grain rice and roasted wheat daliya directly from Indian growers —
-            <span className="hg-italic text-hg-fg text-lg"> lab-verified, moisture-locked and container ready.</span>
+            We Export Premium Indian Foxnuts, Millets, Pulses, Grains, Flours, Jaggery & More. <br></br>
+              Harvestgate Overseas brings the finest agricultural treasures of India to global markets — from naturally cultivated, traditionally processed staples under Harvestgate Naturals to carefully selected premium produce under Harvestgate Select. Our range includes wholesome unpolished millets, pulses, grains, traditional flours, naturally prepared jaggery, and premium Indian foxnuts, sourced with care from trusted farming communities. Rooted in India’s agricultural heritage and prepared with attention to purity, authenticity, and quality, every product reflects our commitment to bringing the true goodness of Indian produce to the world.
+
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 2, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.2, ease: EASE }}
             className="flex flex-wrap items-center gap-4 lg:col-span-4 lg:col-start-9 lg:justify-end"
@@ -188,7 +189,7 @@ const Home = () => {
           <div className="lg:col-span-8">
             <MaskLinesInView
               className="hg-display text-[9vw] leading-[0.92] text-hg-fg sm:text-5xl lg:text-6xl"
-              lines={["We do not trade", "commodities."]}
+              lines={["We Bring India’s", "Natural Goodness", "To The World."]}
             />
             <p className="hg-italic mt-5 text-2xl text-hg-gold sm:text-3xl">
               We ship provenance.
