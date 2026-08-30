@@ -188,7 +188,7 @@ const Home = () => {
                 <b> Harvestgate Naturals </b> brings together a diverse selection of millets, pulses, grains, flours, daliya (porridge), jaggery and sugars — cultivated without chemical fertilizers or pesticides and prepared through careful, natural processes that preserve the inherent character and goodness of the produce. <br></br>
                 <b> Harvestgate Select </b> represents our premium selection of export-grade Indian foxnuts, available in assorted grades and carefully selected to meet the quality and presentation requirements of international markets.
                 <p> From naturally cultivated staples to premium foxnuts, every Harvestgate product is sourced with care and selected for quality, authenticity, consistency and global suitability — connecting the richness of Indian agriculture with buyers around the world.
-                  </p>
+                </p>
 
               </p>
             </Reveal>
@@ -256,7 +256,7 @@ const Home = () => {
                 lines={["The", "HarvestGate", "method."]}
               />
               <p className="hg-italic mt-6 text-xl text-hg-fg2">
-                Four commitments, applied to every container.
+                Six commitments, applied to every shipment.
               </p>
               <motion.div
                 style={{ y: labY }}
@@ -285,7 +285,7 @@ const Home = () => {
                       {m.number}
                     </p>
                     <div>
-                      <h3 className="text-xl leading-tight text-hg-fg sm:text-2xl">{m.title}</h3>
+                      <h3 className="text-xl leading-tight text-hg-fg sm:text-2xl font-display font-bold">{m.title}</h3>
                       <p className="mt-4 max-w-xl text-sm leading-[1.85] text-hg-fg2">{m.body}</p>
                     </div>
                   </div>

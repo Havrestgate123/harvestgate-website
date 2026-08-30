@@ -461,23 +461,45 @@ export const surfaceAccent = (product, theme) =>
 export const MANIFESTO = [
   {
     number: "01",
-    title: "Single-origin direct sourcing",
-    body: "We contract directly with agrarian cooperatives across Uttar Pradesh, Bihar, Rajasthan, Maharashtra, Karnataka and Punjab. No intermediaries, no blended lots — every container is traceable to a named cluster and crop harvest window.",
+    title: "Sustainably Sourced",
+    icon: "sprout",
+    theme: "gold",
+    body: "We work with a reliable network of suppliers across India to source products that meet ethical standards, sustainability benchmarks, and international quality requirements.",
   },
   {
     number: "02",
-    title: "Phytosanitary & laboratory rigour",
-    body: "Each batch passes triple-stage analysis for moisture, aflatoxins, heavy metals and pesticide residue in NABL-accredited and FSSAI-approved labs before a single bag is stuffed at port.",
+    title: "Superior Product Quality",
+    icon: "shield",
+    theme: "green",
+    body: "We deliver handpicked Foxnuts, wide range of Millets, Walnuts, and Chemical-Free Jaggery, with rigorous quality control. We also offer 3rd party or lab testing as per buyer requirements.",
   },
   {
     number: "03",
-    title: "Moisture-locked export packaging",
-    body: "Vacuum sealing (250g to 5kg) and heavy-duty 25kg/50kg HDPE woven bags with moisture barrier liners protect crunch, color, and aroma across sixty days of ocean transit.",
+    title: "Custom Packaging Solutions",
+    icon: "package",
+    theme: "gold",
+    body: "We provide flexible, hygienic, and customized packaging options suited to your brand and market needs, including private labelling services.",
   },
   {
     number: "04",
-    title: "Documented, guaranteed shipping",
-    body: "FOB, CIF, CFR and EXW terms with a complete document set: Certificate of Origin, APEDA registration, FSSAI, GSTIN, IEC, phytosanitary certificate and third-party SGS inspection on request.",
+    title: "Certified & Compliant",
+    icon: "award",
+    theme: "green",
+    body: "We are duly registered under GST, IEC, FSSAI, APEDA, and MSME, ensuring full compliance with statutory, food safety, and export regulations in line with Indian and international trade standards.",
+  },
+  {
+    number: "05",
+    title: "Reliable Customer Support",
+    icon: "phone",
+    theme: "gold",
+    body: "From inquiry to shipment, we provide end-to-end service with responsive and personalized support.",
+  },
+  {
+    number: "06",
+    title: "Global Logistics & CHA Expertise",
+    icon: "ship",
+    theme: "green",
+    body: "We ensure reliable, on-time worldwide shipping through efficient logistics and strong partnerships with experienced CHAs for smooth customs clearance and effective trade solutions.",
   },
 ];
 
