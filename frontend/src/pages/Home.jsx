@@ -45,6 +45,11 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-hg-bg via-hg-bg/55 to-hg-bg/40" />
       </motion.div>
 
+      {/* Marquee placed above quote */}
+      <div className="relative z-10 w-full mb-8 border-y border-hg-line/40 bg-hg-bg/50 backdrop-blur-md">
+        <Marquee items={MARQUEE} testId="home-marquee" />
+      </div>
+
       <motion.div style={{ y: textY, opacity: fade }} className="hg-container relative z-10 pb-16 sm:pb-20">
         <motion.p
           initial={{ opacity: 0, y: 14 }}
@@ -79,7 +84,7 @@ const Hero = () => {
             className="max-w-xl text-base leading-relaxed text-hg-fg2 lg:col-span-6"
           >
             We Export Premium Indian Foxnuts, Millets, Pulses, Grains, Flours, Jaggery & More. <br></br>
-              Harvestgate Overseas brings the finest agricultural treasures of India to global markets — from naturally cultivated, traditionally processed staples under Harvestgate Naturals to carefully selected premium produce under Harvestgate Select. Our range includes wholesome unpolished millets, pulses, grains, traditional flours, naturally prepared jaggery, and premium Indian foxnuts, sourced with care from trusted farming communities. Rooted in India’s agricultural heritage and prepared with attention to purity, authenticity, and quality, every product reflects our commitment to bringing the true goodness of Indian produce to the world.
+            Harvestgate Overseas brings the finest agricultural treasures of India to global markets — from naturally cultivated, traditionally processed staples under Harvestgate Naturals to carefully selected premium produce under Harvestgate Select. Our range includes wholesome unpolished millets, pulses, grains, traditional flours, naturally prepared jaggery, and premium Indian foxnuts, sourced with care from trusted farming communities. Rooted in India’s agricultural heritage and prepared with attention to purity, authenticity, and quality, every product reflects our commitment to bringing the true goodness of Indian produce to the world.
 
           </motion.p>
 
@@ -177,8 +182,6 @@ const Home = () => {
     <div data-testid="page-home">
       <Hero />
 
-      <Marquee items={MARQUEE} testId="home-marquee" />
-
       {/* ============ STATEMENT ============ */}
       <section className="hg-container py-24 sm:py-32 lg:py-40">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
@@ -191,15 +194,15 @@ const Home = () => {
               className="hg-display text-[9vw] leading-[0.92] text-hg-fg sm:text-5xl lg:text-6xl"
               lines={["We Bring India’s", "Natural Goodness", "To The World."]}
             />
-            
+
             <Reveal delay={0.15}>
               <p className="mt-9 max-w-2xl text-base leading-[1.85] text-hg-fg2">
-                Every consignment that leaves our facilities carries a name, a district and a
-                crop window. We built HarvestGate because international buyers of Indian
-                agricultural produce were being asked to accept opacity — blended lots,
-                unnamed aggregators, inconsistent grading. We replaced all of it with
-                contracted farm clusters, accredited laboratory panels and packaging
-                engineered for sixty days at sea.
+                At Harvestgate Overseas, we bring the richness of India’s agricultural heritage to international markets through two distinct product ranges. <br></br>
+                <b> Harvestgate Naturals </b> brings together a diverse selection of millets, pulses, grains, flours, daliya (porridge), jaggery and sugars — cultivated without chemical fertilizers or pesticides and prepared through careful, natural processes that preserve the inherent character and goodness of the produce. <br></br>
+                <b> Harvestgate Select </b> represents our premium selection of export-grade Indian foxnuts, available in assorted grades and carefully selected to meet the quality and presentation requirements of international markets.
+                <p> From naturally cultivated staples to premium foxnuts, every Harvestgate product is sourced with care and selected for quality, authenticity, consistency and global suitability — connecting the richness of Indian agriculture with buyers around the world.
+                  </p>
+
               </p>
             </Reveal>
 
