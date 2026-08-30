@@ -253,7 +253,11 @@ const Home = () => {
               <p className="hg-eyebrow">03 — Manifesto</p>
               <MaskLinesInView
                 className="hg-display mt-6 text-5xl leading-[0.9] text-hg-fg sm:text-6xl"
-                lines={["The", "HarvestGate", "method."]}
+                lines={[
+                  "The",
+                  <span key="hg">Harvest<span className="text-hg-gold">Gate</span></span>,
+                  "method.",
+                ]}
               />
               <p className="mt-6 text-lg sm:text-xl font-medium text-hg-fg2 leading-relaxed">
                 Our commitments, applied to every shipment.
