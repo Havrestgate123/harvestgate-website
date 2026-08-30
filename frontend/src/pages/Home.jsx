@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
 import { MaskLines, MaskLinesInView, Reveal } from "../components/motion/Reveal";
 import { AccreditationsMarquee } from "../components/AccreditationsMarquee";
-import { PRODUCTS, MANIFESTO, STATS, IMG } from "../data/products";
+import { PRODUCTS, MANIFESTO, IMG } from "../data/products";
 
 const EASE = [0.16, 1, 0.3, 1];
 
@@ -193,16 +193,6 @@ const Home = () => {
               </p>
             </Reveal>
 
-            <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-hg-line pt-10 sm:grid-cols-4">
-              {STATS.map(([value, label], i) => (
-                <Reveal key={label} delay={i * 0.08}>
-                  <p className="hg-display text-3xl text-hg-gold sm:text-4xl">{value}</p>
-                  <p className="mt-2 font-mono text-[9px] uppercase leading-relaxed tracking-[0.18em] text-hg-fg3">
-                    {label}
-                  </p>
-                </Reveal>
-              ))}
-            </div>
           </div>
         </div>
       </section>
