@@ -260,15 +260,14 @@ const Home = () => {
               </p>
               <motion.div
                 style={{ y: labY }}
-                className="relative mt-12 hidden overflow-hidden border border-hg-line lg:block"
+                className="relative mt-12 hidden overflow-hidden rounded-2xl border border-hg-line shadow-xl bg-white/60 dark:bg-[#151b15]/60 p-2 lg:block"
               >
                 <img
                   src={IMG.lab}
-                  alt="Grain sample laboratory bench"
+                  alt="HarvestGate Overseas Export Pillars"
                   loading="lazy"
-                  className="aspect-[4/3] w-full object-cover"
+                  className="aspect-square w-full rounded-xl object-contain"
                 />
-                <div className="absolute inset-0 bg-hg-bg/25" />
               </motion.div>
             </div>
 
