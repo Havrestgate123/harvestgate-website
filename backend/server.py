@@ -59,6 +59,134 @@ class Enquiry(EnquiryCreate):
     ref: str = Field(default_factory=lambda: f"HG-{str(uuid.uuid4())[:6].upper()}")
     timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
+import smtplib
+import ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+def send_enquiry_email(enquiry: Enquiry):
+    smtp_host = os.environ.get("SMTP_HOST", "")
+    smtp_port = int(os.environ.get("SMTP_PORT", "465"))
+    smtp_user = os.environ.get("SMTP_USER", "")
+    smtp_pass = os.environ.get("SMTP_PASSWORD", "")
+    admin_email = os.environ.get("ADMIN_EMAIL", "admin@harvestgateoverseas.com")
+    
+    if not (smtp_host and smtp_user and smtp_pass):
+        logging.warning("SMTP configuration missing or incomplete in backend/.env. Email not sent via SMTP.")
+        return False
+        
+    try:
+        msg = MIMEMultipart("alternative")
+        msg["Subject"] = f"[HarvestGate Export Enquiry] {enquiry.ref} · {enquiry.orgName} — {enquiry.product}"
+        msg["From"] = f"HarvestGate Overseas <{smtp_user}>"
+        msg["To"] = admin_email
+        msg["Reply-To"] = f"{enquiry.name} <{enquiry.email}>"
+        
+        html_content = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          <style>
+            body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f6f4; margin: 0; padding: 24px; color: #1f2937; }}
+            .container {{ max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }}
+            .header {{ background: linear-gradient(135deg, #112417 0%, #1c3d28 100%); padding: 28px 24px; color: #ffffff; text-align: center; border-bottom: 3px solid #d4af37; }}
+            .header h1 {{ margin: 0; font-size: 22px; font-weight: 800; letter-spacing: 0.05em; color: #ffffff; }}
+            .header p {{ margin: 6px 0 0 0; font-size: 12px; font-family: monospace; color: #d4af37; text-transform: uppercase; letter-spacing: 0.15em; }}
+            .badge {{ display: inline-block; background: rgba(212, 175, 55, 0.2); border: 1px solid #d4af37; color: #d4af37; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; margin-top: 10px; }}
+            .body {{ padding: 28px 24px; }}
+            .table-wrap {{ width: 100%; border-collapse: collapse; margin-top: 16px; }}
+            .table-wrap th, .table-wrap td {{ padding: 12px 14px; text-align: left; border-bottom: 1px solid #f3f4f6; font-size: 14px; }}
+            .table-wrap th {{ background-color: #f9fafb; color: #4b5563; font-weight: 600; width: 35%; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }}
+            .table-wrap td {{ color: #111827; font-weight: 500; }}
+            .highlight {{ color: #047857; font-weight: 700; }}
+            .notes-box {{ background: #fdfbf7; border-left: 4px solid #d4af37; padding: 14px 16px; border-radius: 4px; margin-top: 20px; font-size: 13.5px; line-height: 1.6; }}
+            .footer {{ background-color: #f9fafb; padding: 18px 24px; text-align: center; font-size: 12px; color: #6b7280; border-top: 1px solid #e5e7eb; }}
+            .cta-btn {{ display: inline-block; background: #d4af37; color: #000000 !important; text-decoration: none; padding: 10px 24px; border-radius: 6px; font-weight: bold; font-size: 13px; margin-top: 20px; }}
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <h1>HARVESTGATE OVERSEAS</h1>
+              <p>Direct International Trade Desk Enquiry</p>
+              <div class="badge">Reference ID: {enquiry.ref}</div>
+            </div>
+            
+            <div class="body">
+              <h2 style="font-size: 17px; margin-top: 0; color: #111827;">New Commercial Export Enquiry Received</h2>
+              <p style="font-size: 13.5px; color: #4b5563; line-height: 1.5;">
+                A prospective global buyer has submitted a formal trade enquiry via the official website.
+              </p>
+
+              <table class="table-wrap">
+                <tr>
+                  <th>Contact Person</th>
+                  <td><strong>{enquiry.name}</strong></td>
+                </tr>
+                <tr>
+                  <th>Company / Buyer</th>
+                  <td>{enquiry.orgName}</td>
+                </tr>
+                <tr>
+                  <th>Business Email</th>
+                  <td><a href="mailto:{enquiry.email}" style="color: #047857;">{enquiry.email}</a></td>
+                </tr>
+                <tr>
+                  <th>Phone / WhatsApp</th>
+                  <td><a href="tel:{enquiry.contactNumber}" style="color: #047857;">{enquiry.contactNumber}</a></td>
+                </tr>
+                <tr>
+                  <th>Commodity Required</th>
+                  <td class="highlight">{enquiry.product}</td>
+                </tr>
+                <tr>
+                  <th>Target Volume / Container</th>
+                  <td><strong>{enquiry.quantity}</strong></td>
+                </tr>
+                <tr>
+                  <th>Delivery Address / Port</th>
+                  <td>{enquiry.orgAddress}</td>
+                </tr>
+              </table>
+
+              {f'<div class="notes-box"><strong>Additional Buyer Specifications / Notes:</strong><br>{enquiry.message}</div>' if enquiry.message else ''}
+
+              <div style="text-align: center;">
+                <a href="mailto:{enquiry.email}?subject=Quotation%20for%20{enquiry.product}%20-%20Ref%20{enquiry.ref}" class="cta-btn">
+                  Reply Directly to Buyer &rarr;
+                </a>
+              </div>
+            </div>
+
+            <div class="footer">
+              <p style="margin: 0;">HarvestGate Overseas • Mig-14, Kanth Rd, Ashiyana Colony, Moradabad, UP, India - 244001</p>
+              <p style="margin: 4px 0 0 0; font-family: monospace;">FSSAI & APEDA Certified Global Agro Export House</p>
+            </div>
+          </div>
+        </body>
+        </html>
+        """
+        
+        msg.attach(MIMEText(html_content, "html"))
+        
+        if smtp_port == 465:
+            context = ssl.create_default_context()
+            with smtplib.SMTP_SSL(smtp_host, smtp_port, context=context, timeout=10) as server:
+                server.login(smtp_user, smtp_pass)
+                server.sendmail(smtp_user, [admin_email], msg.as_string())
+        else:
+            with smtplib.SMTP(smtp_host, smtp_port, timeout=10) as server:
+                server.starttls()
+                server.login(smtp_user, smtp_pass)
+                server.sendmail(smtp_user, [admin_email], msg.as_string())
+                
+        logging.info(f"Successfully sent enquiry email via SMTP to {admin_email} for ref {enquiry.ref}")
+        return True
+    except Exception as e:
+        logging.error(f"SMTP email sending failed: {e}")
+        return False
+
 # API routes
 @api_router.get("/")
 async def root():
@@ -66,7 +194,8 @@ async def root():
         "status": "online",
         "service": "HarvestGate Backend API",
         "version": "1.0.0",
-        "admin_email": "admin@harvestgateoverseas.com"
+        "admin_email": "admin@harvestgateoverseas.com",
+        "smtp_configured": bool(os.environ.get("SMTP_HOST") and os.environ.get("SMTP_PASSWORD"))
     }
 
 @api_router.get("/health")
@@ -88,6 +217,9 @@ async def create_enquiry(input: EnquiryCreate):
         except Exception as e:
             logging.error(f"Failed to persist enquiry to MongoDB: {e}")
             
+    # Send email via SMTP
+    send_enquiry_email(enquiry_obj)
+    
     logging.info(f"New export enquiry dispatched for admin@harvestgateoverseas.com: {enquiry_obj.ref} from {enquiry_obj.name} ({enquiry_obj.email}) for {enquiry_obj.product}")
     return enquiry_obj
 
