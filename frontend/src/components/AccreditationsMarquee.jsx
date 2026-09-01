@@ -57,16 +57,6 @@ export const AccreditationsMarquee = () => {
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-28 sm:w-48 bg-gradient-to-r from-hg-bg via-hg-bg/80 to-transparent dark:from-[#0d100d] dark:via-[#0d100d]/80 dark:to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-28 sm:w-48 bg-gradient-to-l from-hg-bg via-hg-bg/80 to-transparent dark:from-[#0d100d] dark:via-[#0d100d]/80 dark:to-transparent" />
 
-      {/* FIXED CENTER HEADING (Logos glide seamlessly behind this) */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-        <div className="flex items-center gap-3 rounded-full border-2 border-hg-line bg-white/95 dark:bg-[#141a14]/95 px-7 sm:px-11 py-3 sm:py-4 shadow-2xl backdrop-blur-xl">
-          <span className="h-2.5 w-2.5 rounded-full bg-hg-gold animate-pulse shrink-0" />
-          <h2 className="font-display text-base sm:text-lg md:text-xl font-extrabold uppercase tracking-[0.16em] text-hg-fg whitespace-nowrap">
-            Our Accreditations
-          </h2>
-        </div>
-      </div>
-
       {/* CONTINUOUS TRANSPARENT LOGO STREAM (Moving Right to Left) */}
       <div className="flex w-max items-center animate-marquee hover:[animation-play-state:paused]">
         {duplicatedLogos.map((item, idx) => (
