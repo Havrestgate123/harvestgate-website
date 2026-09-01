@@ -13,6 +13,7 @@ export const IMG = {
   pulses: "https://images.unsplash.com/photo-1585994192700-112349e5d4cb?q=80&w=1200&auto=format&fit=crop",
   grains: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?q=80&w=1200&auto=format&fit=crop",
   daliya: "https://images.unsplash.com/photo-1607672632458-9eb56696346b?q=80&w=1200&auto=format&fit=crop",
+  flours: "https://images.unsplash.com/photo-1556909114-44e8e9c3a26e?q=80&w=1200&auto=format&fit=crop",
 };
 
 export const MILLET_VARIETIES = [
@@ -449,6 +450,41 @@ export const PRODUCTS = [
     moq: "1 x 20ft FCL — 20 MT",
     incoterms: ["FOB Nhava Sheva", "FOB Mundra", "CIF", "CFR"],
     markets: ["United States", "United Kingdom", "Canada", "Australia", "UAE"],
+  },
+  {
+    slug: "flours",
+    index: "08",
+    name: "Wholesome Flours & Atta",
+    subtitle: "Multigrain · Sharbati Atta · Millet Flours · Besan",
+    tagline: "Stone-ground and roller-milled export-grade flours with guaranteed protein and shelf life.",
+    accent: "#D4A96A",
+    accentLight: "#8C6030",
+    accentName: "Warm Wheat / Biscuit",
+    origin: "Uttar Pradesh, Rajasthan & Karnataka, India",
+    hsCode: "1101.00.00 / 1102.90.00 / 1106.10.00",
+    season: "Year-round availability",
+    image: IMG.flours,
+    intro:
+      "From premium Sharbati whole wheat atta to multigrain blends and specialty millet flours, our flour range serves retail brands, food manufacturers, and bulk institutional buyers globally.",
+    description:
+      "Milled in HACCP-certified flour mills with strict extraction rate control, moisture monitoring, and zero bleaching agents. Each batch is tested for protein content, falling number, water absorption, and gluten strength.",
+    grades: [
+      { name: "Multigrain Atta (7 Grains)", spec: "Protein > 12.0%", note: "Health retail & private label" },
+      { name: "Sharbati Whole Wheat Atta", spec: "100% extraction, Protein > 12.5%", note: "Premium flat-bread & roti flour" },
+      { name: "Ragi (Finger Millet) Flour", spec: "Calcium > 344mg/100g", note: "Baby food, malts & health bakery" },
+      { name: "Pure Chana Besan (Chickpea Flour)", spec: "Protein > 20%", note: "Snack extrusion & ethnic cuisine" },
+    ],
+    specs: [
+      ["Moisture", "< 12.0 %"],
+      ["Protein (Whole Wheat)", "> 12.5 %"],
+      ["Ash Content", "< 1.0 %"],
+      ["Foreign Matter", "< 0.1 %"],
+      ["Shelf Life", "12 months sealed"],
+      ["Packaging", "1 kg / 5 kg / 10 kg / 50 kg multi-layer bags"],
+    ],
+    moq: "1 x 20ft FCL — 20 MT",
+    incoterms: ["FOB Nhava Sheva", "FOB Mundra", "CIF", "CFR"],
+    markets: ["United Kingdom", "United States", "UAE", "Canada", "Australia", "Germany"],
   },
 ];
 

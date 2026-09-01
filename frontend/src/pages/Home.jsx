@@ -68,10 +68,10 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.05, ease: EASE }}
-            className="max-w-xl text-base leading-relaxed text-hg-fg2 lg:col-span-6"
+            className="max-w-xl text-[16px] font-black leading-relaxed text-black drop-shadow lg:col-span-6"
           >
             We Export Premium Indian Foxnuts, Millets, Pulses, Grains, Flours, Jaggery & More. <br></br>
-            Harvestgate Overseas brings the finest agricultural treasures of India to global markets — from naturally cultivated, traditionally processed staples under Harvestgate Naturals to carefully selected premium produce under Harvestgate Select. Our range includes wholesome unpolished millets, pulses, grains, traditional flours, naturally prepared jaggery, and premium Indian foxnuts, sourced with care from trusted farming communities. Rooted in India’s agricultural heritage and prepared with attention to purity, authenticity, and quality, every product reflects our commitment to bringing the true goodness of Indian produce to the world.
+            Harvestgate Overseas brings the finest agricultural treasures of India to global markets — from naturally cultivated, traditionally processed staples under Harvestgate Naturals to carefully selected premium produce under Harvestgate Select. Our range includes wholesome unpolished millets, pulses, grains, traditional flours, naturally prepared jaggery, and premium Indian foxnuts, sourced with care from trusted farming communities. Rooted in India's agricultural heritage and prepared with attention to purity, authenticity, and quality, every product reflects our commitment to bringing the true goodness of Indian produce to the world.
 
           </motion.p>
 
@@ -204,7 +204,7 @@ const Home = () => {
             <p className="hg-eyebrow">02 — Catalogue</p>
             <MaskLinesInView
               className="hg-display mt-5 text-5xl leading-[0.9] text-hg-fg sm:text-6xl lg:text-7xl"
-              lines={["Seven commodities.", "One standard."]}
+              lines={["Eight commodities.", "One standard."]}
             />
           </div>
           <Link
@@ -212,7 +212,7 @@ const Home = () => {
             data-testid="home-view-all-products"
             className="hg-link shrink-0 font-mono text-[12px] uppercase tracking-[0.24em] text-hg-gold"
           >
-            View all 7 products →
+            View full 2026 catalogue ({PRODUCTS.length} commodities) →
           </Link>
         </div>
 
@@ -222,14 +222,14 @@ const Home = () => {
             <ProductCard p={PRODUCTS[1]} />
             <ProductCard p={PRODUCTS[2]} />
           </div>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-12 lg:grid-cols-4 lg:gap-6">
-            <ProductCard p={PRODUCTS[3]} />
-            <ProductCard p={PRODUCTS[4]} />
-            <ProductCard p={PRODUCTS[5]} />
-            <ProductCard p={PRODUCTS[6]} />
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-12 lg:grid-cols-5 lg:gap-5">
+            {PRODUCTS.slice(3).map((prod) => (
+              <ProductCard key={prod.slug} p={prod} />
+            ))}
           </div>
         </div>
       </section>
+
 
       {/* ============ MANIFESTO ============ */}
       <section
