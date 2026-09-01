@@ -68,25 +68,32 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.05, ease: EASE }}
-            className="max-w-xl text-[16px] font-black leading-relaxed text-black drop-shadow lg:col-span-6"
+            className="max-w-xl text-[15.5px] font-bold leading-relaxed text-gray-900 dark:text-hg-gold drop-shadow-sm lg:col-span-6 transition-colors duration-300"
           >
-            We Export Premium Indian Foxnuts, Millets, Pulses, Grains, Flours, Jaggery & More. <br></br>
+            We Export Premium Indian Foxnuts, Millets, Pulses, Grains, Flours, Jaggery &amp; More. <br />
             Harvestgate Overseas brings the finest agricultural treasures of India to global markets — from naturally cultivated, traditionally processed staples under Harvestgate Naturals to carefully selected premium produce under Harvestgate Select. Our range includes wholesome unpolished millets, pulses, grains, traditional flours, naturally prepared jaggery, and premium Indian foxnuts, sourced with care from trusted farming communities. Rooted in India's agricultural heritage and prepared with attention to purity, authenticity, and quality, every product reflects our commitment to bringing the true goodness of Indian produce to the world.
-
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 2, y: 20 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.2, ease: EASE }}
             className="flex flex-wrap items-center gap-4 lg:col-span-4 lg:col-start-9 lg:justify-end"
           >
-            <Link to="/products" data-testid="hero-explore-products" className="hg-btn">
+            <Link
+              to="/products"
+              data-testid="hero-explore-products"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-gray-900 bg-white/95 px-6 py-3.5 font-mono text-[12.5px] font-extrabold uppercase tracking-[0.2em] text-gray-950 shadow-md transition-all hover:bg-gray-950 hover:text-white dark:border-hg-gold dark:bg-[#121612]/90 dark:text-hg-gold dark:hover:bg-hg-gold dark:hover:text-black"
+            >
               <span>Explore catalogue</span>
             </Link>
-            <Link to="/contact" data-testid="hero-enquiry-cta" className="hg-btn hg-btn--solid">
+            <Link
+              to="/contact"
+              data-testid="hero-enquiry-cta"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 px-6 py-3.5 font-mono text-[12.5px] font-extrabold uppercase tracking-[0.2em] text-[#0f140f] shadow-lg transition-all hover:brightness-110 hover:shadow-xl active:scale-[0.98]"
+            >
               <span>Enquire now</span>
-              <ArrowUpRight size={13} className="relative z-[2]" />
+              <ArrowUpRight size={15} strokeWidth={2.5} />
             </Link>
           </motion.div>
         </div>
