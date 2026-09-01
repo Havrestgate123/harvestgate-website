@@ -2,13 +2,13 @@ import { motion } from "framer-motion";
 
 const EASE = [0.16, 1, 0.3, 1];
 
-export const Reveal = ({ children, delay = 0, y = 28, className = "", ...rest }) => (
+export const Reveal = ({ children, delay = 0, y = 20, className = "", ...rest }) => (
   <motion.div
     className={className}
     initial={{ opacity: 0, y }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-80px" }}
-    transition={{ duration: 0.9, delay, ease: EASE }}
+    viewport={{ once: true, amount: 0.05 }}
+    transition={{ duration: 0.7, delay, ease: EASE }}
     {...rest}
   >
     {children}
@@ -21,8 +21,8 @@ export const MaskLines = ({
   className = "",
   lineClassName = "",
   delay = 0,
-  stagger = 0.12,
-  duration = 1.05,
+  stagger = 0.08,
+  duration = 0.8,
   as: Tag = "h1",
   ...rest
 }) => (
@@ -31,7 +31,7 @@ export const MaskLines = ({
       <span key={i} className="block overflow-hidden">
         <motion.span
           className={`block ${lineClassName}`}
-          initial={{ y: "110%", opacity: 0 }}
+          initial={{ y: "100%", opacity: 0 }}
           animate={{ y: "0%", opacity: 1 }}
           transition={{ duration, delay: delay + i * stagger, ease: EASE }}
         >
@@ -47,7 +47,8 @@ export const MaskLinesInView = ({
   className = "",
   lineClassName = "",
   delay = 0,
-  stagger = 0.1,
+  stagger = 0.08,
+  duration = 0.8,
   as: Tag = "h2",
   ...rest
 }) => (
@@ -56,10 +57,10 @@ export const MaskLinesInView = ({
       <span key={i} className="block overflow-hidden">
         <motion.span
           className={`block ${lineClassName}`}
-          initial={{ y: "110%" }}
-          whileInView={{ y: "0%" }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 1, delay: delay + i * stagger, ease: EASE }}
+          initial={{ y: "100%", opacity: 0 }}
+          whileInView={{ y: "0%", opacity: 1 }}
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration, delay: delay + i * stagger, ease: EASE }}
         >
           {line}
         </motion.span>
