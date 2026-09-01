@@ -62,7 +62,7 @@ const ProductCard = ({ p, i, wide = false }) => {
         data-testid={`product-card-${p.slug}`}
         className="group relative flex h-full flex-col overflow-hidden border border-hg-line bg-hg-card transition-all duration-300 hover:border-hg-gold hover:shadow-lg"
       >
-        {/* CLEAN IMAGE — NO TEXT OVERLAY */}
+        {/* CLEAN IMAGE WITH GLOWING BRAND RANGE PILL */}
         <div className={`relative overflow-hidden bg-black/5 ${wide ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
           <img
             src={p.image}
@@ -74,6 +74,24 @@ const ProductCard = ({ p, i, wide = false }) => {
             className="absolute left-0 top-0 h-[3.5px] w-0 transition-all duration-700 ease-out group-hover:w-full z-10"
             style={{ backgroundColor: p.accent }}
           />
+
+          {/* GLOWING BRAND RANGE BUTTON (TOP RIGHT CORNER) */}
+          <div
+            className={`absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[9.5px] sm:text-[10px] font-bold uppercase tracking-[0.16em] backdrop-blur-md transition-all duration-300 shadow-xl ${
+              isSelect
+                ? "bg-black/80 border-hg-gold/70 text-hg-gold shadow-[0_0_14px_rgba(212,175,55,0.4)]"
+                : "bg-black/80 border-hg-green/70 text-emerald-400 shadow-[0_0_14px_rgba(46,139,87,0.4)]"
+            }`}
+          >
+            <span
+              className={`h-2 w-2 rounded-full animate-pulse shrink-0 ${
+                isSelect
+                  ? "bg-hg-gold shadow-[0_0_8px_#d4af37]"
+                  : "bg-emerald-400 shadow-[0_0_8px_#34d399]"
+              }`}
+            />
+            <span>{isSelect ? "Harvestgate Select" : "Harvestgate Naturals"}</span>
+          </div>
         </div>
 
         {/* DETAILS SECTION (BELOW IMAGE) */}
