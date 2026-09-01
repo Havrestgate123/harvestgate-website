@@ -1,18 +1,23 @@
 import { useEffect, useState, useRef } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, ArrowUpRight, ChevronDown, CheckCircle2 } from "lucide-react";
+import { Sun, Moon, ArrowUpRight, ChevronDown, CheckCircle2, Leaf, Star } from "lucide-react";
 import { useTheme } from "../theme/ThemeProvider";
 import { BrandLock } from "./Logo";
-import { PRODUCTS, surfaceAccent } from "../data/products";
+import { PRODUCTS, NATURALS_CATEGORIES, SELECT_CATEGORIES, surfaceAccent } from "../data/products";
 
 const EASE = [0.16, 1, 0.3, 1];
+
+const NATURALS_PRODUCTS = PRODUCTS.filter((p) => p.range === "NATURALS");
+const SELECT_PRODUCTS = PRODUCTS.filter((p) => p.range === "SELECT");
 
 export const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(true);
+  const [mobileNaturalsOpen, setMobileNaturalsOpen] = useState(true);
+  const [mobileSelectOpen, setMobileSelectOpen] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
   const dropdownTimeoutRef = useRef(null);
@@ -130,7 +135,7 @@ export const Navbar = () => {
               )}
             </NavLink>
 
-            {/* PRODUCTS WITH SOLID (OPAQUE) DROPDOWN */}
+            {/* PRODUCTS WITH TWO-RANGE MEGA DROPDOWN */}
             <div
               className="relative"
               onMouseEnter={handleMouseEnter}
@@ -154,7 +159,7 @@ export const Navbar = () => {
                 />
               </button>
 
-              {/* SOLID, OPAQUE DROPDOWN MENU */}
+              {/* TWO-RANGE MEGA DROPDOWN */}
               <AnimatePresence>
                 {productsOpen && (
                   <motion.div
@@ -162,51 +167,126 @@ export const Navbar = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 6 }}
                     transition={{ duration: 0.18, ease: EASE }}
-                    className="absolute left-1/2 top-full -translate-x-1/2 mt-3 w-[390px] sm:w-[440px] rounded border-2 border-hg-line bg-white dark:bg-[#161616] p-3 shadow-[0_25px_60px_rgba(0,0,0,0.35)] z-[9999]"
+                    className="absolute left-1/2 top-full -translate-x-1/2 mt-3 w-[660px] rounded border-2 border-hg-line bg-white dark:bg-[#161616] shadow-[0_25px_60px_rgba(0,0,0,0.35)] z-[9999] overflow-hidden"
                     style={{ opacity: 1 }}
                   >
-                    <div className="border-b border-hg-line px-3.5 pb-2.5 pt-1">
-                      <p className="font-mono text-[10.5px] uppercase tracking-[0.3em] text-hg-gold font-bold">
-                        Select an Export Commodity
-                      </p>
-                    </div>
+                    <div className="grid grid-cols-2 divide-x-2 divide-hg-line">
 
-                    <div className="grid grid-cols-1 gap-1 pt-2 max-h-[400px] overflow-y-auto">
-                      {PRODUCTS.map((p) => (
-                        <Link
-                          key={p.slug}
-                          to={`/products/${p.slug}`}
-                          onClick={() => setProductsOpen(false)}
-                          data-testid={`dropdown-product-${p.slug}`}
-                          className="group flex items-center justify-between rounded px-3.5 py-2.5 transition-colors duration-150 hover:bg-[#f3f0e8] dark:hover:bg-[#222222]"
-                        >
-                          <div className="flex items-center gap-3">
-                            <span
-                              className="h-3 w-3 rounded-full transition-transform duration-200 group-hover:scale-125 shrink-0 border border-black/10 dark:border-white/10"
-                              style={{ backgroundColor: surfaceAccent(p, theme) }}
-                            />
-                            <div>
-                              <p className="text-[15px] font-bold text-hg-fg transition-colors group-hover:text-hg-gold">
-                                {p.name}
-                              </p>
-                              <p className="text-[11.5px] font-mono font-medium text-hg-fg3 tracking-wider">
-                                {p.subtitle}
-                              </p>
-                            </div>
+                      {/* LEFT: HARVESTGATE NATURALS */}
+                      <div className="flex flex-col">
+                        <div className="flex items-center gap-2 px-4 py-3 border-b border-hg-line bg-hg-bg2/60">
+                          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-hg-green/15 border border-hg-green/30">
+                            <Leaf size={11} className="text-hg-green" />
+                          </span>
+                          <div>
+                            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-hg-green font-bold">
+                              Harvestgate Naturals
+                            </p>
                           </div>
-                          <ArrowUpRight
-                            size={15}
-                            className="shrink-0 text-hg-fg3 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-hg-gold"
-                          />
-                        </Link>
-                      ))}
+                        </div>
+                        <div className="p-2">
+                          {NATURALS_CATEGORIES.map((cat) => {
+                            const product = NATURALS_PRODUCTS.find((p) => p.category === cat.id);
+                            return (
+                              <Link
+                                key={cat.id}
+                                to={`/products/${cat.slug}`}
+                                onClick={() => setProductsOpen(false)}
+                                data-testid={`dropdown-product-${cat.slug}`}
+                                className="group flex items-center justify-between rounded px-3 py-2 transition-colors duration-150 hover:bg-[#f3f0e8] dark:hover:bg-[#222222]"
+                              >
+                                <div className="flex items-center gap-2.5">
+                                  {product && (
+                                    <span
+                                      className="h-2.5 w-2.5 rounded-full shrink-0 border border-black/10 dark:border-white/10"
+                                      style={{ backgroundColor: product ? surfaceAccent(product, theme) : "#8A9A86" }}
+                                    />
+                                  )}
+                                  <div>
+                                    <p className="text-[13.5px] font-bold text-hg-fg transition-colors group-hover:text-hg-green">
+                                      {cat.label}
+                                    </p>
+                                    <p className="text-[10.5px] font-mono text-hg-fg3 tracking-wide leading-tight">
+                                      {cat.description}
+                                    </p>
+                                  </div>
+                                </div>
+                                <ArrowUpRight
+                                  size={13}
+                                  className="shrink-0 text-hg-fg3 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-hg-green"
+                                />
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      {/* RIGHT: HARVESTGATE SELECT */}
+                      <div className="flex flex-col">
+                        <div className="flex items-center gap-2 px-4 py-3 border-b border-hg-line bg-hg-bg2/60">
+                          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-hg-gold/15 border border-hg-gold/30">
+                            <Star size={11} className="text-hg-gold" />
+                          </span>
+                          <div>
+                            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-hg-gold font-bold">
+                              Harvestgate Select
+                            </p>
+                          </div>
+                        </div>
+                        <div className="p-2">
+                          {SELECT_CATEGORIES.map((cat) => {
+                            const product = SELECT_PRODUCTS.find((p) => p.category === cat.id);
+                            return (
+                              <Link
+                                key={cat.id}
+                                to={`/products/${cat.slug}`}
+                                onClick={() => setProductsOpen(false)}
+                                data-testid={`dropdown-product-${cat.slug}`}
+                                className="group flex items-center justify-between rounded px-3 py-2 transition-colors duration-150 hover:bg-[#f3f0e8] dark:hover:bg-[#222222]"
+                              >
+                                <div className="flex items-center gap-2.5">
+                                  {product && (
+                                    <span
+                                      className="h-2.5 w-2.5 rounded-full shrink-0 border border-black/10 dark:border-white/10"
+                                      style={{ backgroundColor: product ? surfaceAccent(product, theme) : "#F7F4EB" }}
+                                    />
+                                  )}
+                                  <div>
+                                    <p className="text-[13.5px] font-bold text-hg-fg transition-colors group-hover:text-hg-gold">
+                                      {cat.label}
+                                    </p>
+                                    <p className="text-[10.5px] font-mono text-hg-fg3 tracking-wide leading-tight">
+                                      {cat.description}
+                                    </p>
+                                  </div>
+                                </div>
+                                <ArrowUpRight
+                                  size={13}
+                                  className="shrink-0 text-hg-fg3 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-hg-gold"
+                                />
+                              </Link>
+                            );
+                          })}
+                        </div>
+
+                        {/* Spacer + full catalogue link */}
+                        <div className="mt-auto px-2 pb-2">
+                          <div className="rounded border border-hg-gold/30 bg-hg-gold/5 p-3">
+                            <p className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-hg-fg3 mb-1.5">Premium single-origin</p>
+                            <p className="text-[12px] font-bold text-hg-fg leading-snug">
+                              Grade-A Phool Makhana,<br />hand-popped in Bihar wetlands.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
-                    <div className="mt-2 border-t border-hg-line pt-2.5 px-3">
+                    {/* FOOTER: View Full Catalogue */}
+                    <div className="border-t-2 border-hg-line px-4 py-3 bg-hg-bg2/40">
                       <Link
                         to="/products"
                         onClick={() => setProductsOpen(false)}
-                        className="flex items-center justify-between text-[12px] font-mono uppercase tracking-[0.2em] font-bold text-hg-gold hover:underline"
+                        className="flex items-center justify-between text-[11.5px] font-mono uppercase tracking-[0.2em] font-bold text-hg-gold hover:underline"
                       >
                         <span>View Full 2026 Catalogue ({PRODUCTS.length} Commodities)</span>
                         <ArrowUpRight size={14} />
@@ -354,28 +434,88 @@ export const Navbar = () => {
                   </button>
 
                   {mobileProductsOpen && (
-                    <div className="mt-4 grid grid-cols-1 gap-2 pl-3">
-                      {PRODUCTS.map((p) => (
-                        <Link
-                          key={p.slug}
-                          to={`/products/${p.slug}`}
-                          onClick={() => setOpen(false)}
-                          className="flex items-center justify-between py-2.5 text-[15px] font-semibold text-hg-fg hover:text-hg-gold"
+                    <div className="mt-4 pl-2 space-y-4">
+
+                      {/* NATURALS sub-accordion */}
+                      <div>
+                        <button
+                          type="button"
+                          onClick={() => setMobileNaturalsOpen((v) => !v)}
+                          className="flex w-full items-center justify-between py-2"
                         >
-                          <span className="flex items-center gap-3">
-                            <span
-                              className="h-2.5 w-2.5 rounded-full shrink-0"
-                              style={{ backgroundColor: surfaceAccent(p, theme) }}
-                            />
-                            <span>{p.name}</span>
+                          <span className="flex items-center gap-2">
+                            <Leaf size={13} className="text-hg-green" />
+                            <span className="font-mono text-[11.5px] uppercase tracking-[0.22em] font-bold text-hg-green">
+                              Harvestgate Naturals
+                            </span>
                           </span>
-                          <span className="text-[11px] font-mono text-hg-fg3">{p.subtitle.split("·")[0]}</span>
-                        </Link>
-                      ))}
+                          <ChevronDown
+                            size={15}
+                            className={`text-hg-green transition-transform duration-200 ${mobileNaturalsOpen ? "rotate-180" : ""}`}
+                          />
+                        </button>
+                        {mobileNaturalsOpen && (
+                          <div className="mt-2 grid grid-cols-1 gap-1 pl-4 border-l-2 border-hg-green/20">
+                            {NATURALS_CATEGORIES.map((cat) => (
+                              <Link
+                                key={cat.id}
+                                to={`/products/${cat.slug}`}
+                                onClick={() => setOpen(false)}
+                                className="flex items-center justify-between py-2 text-[14.5px] font-semibold text-hg-fg hover:text-hg-green transition-colors"
+                              >
+                                <span className="flex items-center gap-2.5">
+                                  <span className="h-2 w-2 rounded-full bg-hg-green/50 shrink-0" />
+                                  <span>{cat.label}</span>
+                                </span>
+                                <span className="text-[10.5px] font-mono text-hg-fg3">{cat.description.split(",")[0]}</span>
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* SELECT sub-accordion */}
+                      <div>
+                        <button
+                          type="button"
+                          onClick={() => setMobileSelectOpen((v) => !v)}
+                          className="flex w-full items-center justify-between py-2"
+                        >
+                          <span className="flex items-center gap-2">
+                            <Star size={13} className="text-hg-gold" />
+                            <span className="font-mono text-[11.5px] uppercase tracking-[0.22em] font-bold text-hg-gold">
+                              Harvestgate Select
+                            </span>
+                          </span>
+                          <ChevronDown
+                            size={15}
+                            className={`text-hg-gold transition-transform duration-200 ${mobileSelectOpen ? "rotate-180" : ""}`}
+                          />
+                        </button>
+                        {mobileSelectOpen && (
+                          <div className="mt-2 grid grid-cols-1 gap-1 pl-4 border-l-2 border-hg-gold/20">
+                            {SELECT_CATEGORIES.map((cat) => (
+                              <Link
+                                key={cat.id}
+                                to={`/products/${cat.slug}`}
+                                onClick={() => setOpen(false)}
+                                className="flex items-center justify-between py-2 text-[14.5px] font-semibold text-hg-fg hover:text-hg-gold transition-colors"
+                              >
+                                <span className="flex items-center gap-2.5">
+                                  <span className="h-2 w-2 rounded-full bg-hg-gold/50 shrink-0" />
+                                  <span>{cat.label}</span>
+                                </span>
+                                <span className="text-[10.5px] font-mono text-hg-fg3">{cat.description.split(",")[0]}</span>
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+
                       <Link
                         to="/products"
                         onClick={() => setOpen(false)}
-                        className="mt-2 text-[13px] font-mono uppercase tracking-[0.2em] font-bold text-hg-gold"
+                        className="block mt-2 text-[12px] font-mono uppercase tracking-[0.2em] font-bold text-hg-gold"
                       >
                         → View All {PRODUCTS.length} Products
                       </Link>

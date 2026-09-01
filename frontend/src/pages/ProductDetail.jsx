@@ -1,7 +1,7 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowLeft, CheckCircle2, ShieldCheck, Package, Sparkles, ChevronDown } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowUpRight, ArrowLeft, CheckCircle2, ShieldCheck, Package, Sparkles } from "lucide-react";
 import { MaskLines, Reveal } from "../components/motion/Reveal";
 import { getProduct, PRODUCTS, surfaceAccent } from "../data/products";
 import { useTheme } from "../theme/ThemeProvider";
@@ -10,7 +10,6 @@ const ProductDetail = () => {
   const { slug } = useParams();
   const { theme } = useTheme();
   const product = getProduct(slug);
-  const [activeMilletTab, setActiveMilletTab] = useState(null);
   const imgRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: imgRef,
@@ -43,9 +42,19 @@ const ProductDetail = () => {
             All Export Products
           </Link>
 
-          <p className="hg-eyebrow mt-8 text-[12px] font-bold" style={{ color: accent }}>
-            {product.index} — {product.subtitle}
-          </p>
+          <div className="mt-8 flex items-center gap-3">
+            <span
+              className={`inline-flex items-center gap-1.5 font-mono text-[10.5px] font-bold tracking-[0.28em] uppercase px-3 py-1 rounded-sm border ${product.range === "SELECT"
+                ? "border-hg-gold/50 bg-hg-gold/15 text-hg-gold"
+                : "border-hg-green/50 bg-hg-green/15 text-hg-green"
+              }`}
+            >
+              {product.range === "SELECT" ? "Harvestgate Select" : "Harvestgate Naturals"}
+            </span>
+            <span className="font-mono text-[12px] font-bold text-hg-fg3">
+              {product.index} — {product.subtitle}
+            </span>
+          </div>
           <MaskLines
             data-testid="product-heading"
             delay={0.1}
@@ -74,19 +83,19 @@ const ProductDetail = () => {
         </div>
       </section>
 
-      {/* DEDICATED 10-VARIETY MILLETS SHOWCASE SECTION */}
-      {isMillets && product.varieties && (
+      {/* DEDICATED VARIETIES SHOWCASE SECTION (Millets, Pulses, etc.) */}
+      {product.varieties && product.varieties.length > 0 && (
         <section className="border-b-2 border-hg-line bg-hg-bg2/80 py-20 sm:py-28">
           <div className="hg-container">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between border-b-2 border-hg-line pb-8">
               <div>
                 <p className="hg-eyebrow text-[12px] font-bold">Comprehensive Catalogue</p>
                 <h2 className="hg-display mt-4 text-4xl sm:text-5xl lg:text-6xl text-hg-fg font-extrabold">
-                  10 Certified Indian Millet Varieties
+                  {product.varieties.length} Certified Indian {product.name.split("&")[0].trim()} Varieties
                 </h2>
               </div>
               <p className="max-w-md text-sm font-medium text-hg-fg2 leading-relaxed">
-                Single-origin, unpolished, sortex-cleaned ancient grains processed for global food manufacturers, retail packagers, and institutional importers.
+                Single-origin, sortex-cleaned export-grade {product.name.toLowerCase()} processed for global food manufacturers, ethnic distributors, and institutional importers.
               </p>
             </div>
 
@@ -95,7 +104,7 @@ const ProductDetail = () => {
               {product.varieties.map((v, i) => (
                 <Reveal key={v.id} delay={i * 0.05}>
                   <div className="group flex h-full flex-col justify-between overflow-hidden border-2 border-hg-line bg-hg-card transition-all duration-300 hover:border-hg-gold hover:shadow-xl rounded-sm">
-                    {/* GRAIN IMAGE */}
+                    {/* CLEAN GRAIN / PULSE IMAGE */}
                     <div className="relative aspect-[4/3] overflow-hidden bg-black/5">
                       <img
                         src={v.image}
@@ -103,27 +112,23 @@ const ProductDetail = () => {
                         loading="lazy"
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-108"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                      <div className="absolute top-3.5 left-3.5 flex items-center gap-2">
-                        <span className="bg-black/75 backdrop-blur-md text-white font-mono text-[11px] font-bold px-2.5 py-1 rounded border border-white/20">
-                          0{i + 1}
-                        </span>
-                        <span className="bg-hg-gold text-black font-mono text-[10.5px] font-bold px-2 py-1 rounded uppercase tracking-wider">
-                          HS {v.hsCode}
-                        </span>
-                      </div>
-                      <div className="absolute bottom-3 left-4 right-4 text-white">
-                        <p className="font-mono text-[11px] uppercase tracking-widest text-hg-gold font-bold">
-                          {v.localName} · <span className="italic normal-case text-white/90">{v.botanical}</span>
-                        </p>
-                        <h3 className="text-2xl font-extrabold drop-shadow mt-0.5">{v.name}</h3>
-                      </div>
                     </div>
 
                     {/* CONTENT & SPECS */}
                     <div className="flex flex-1 flex-col justify-between p-6">
                       <div>
-                        <p className="text-sm leading-relaxed text-hg-fg font-medium">{v.description}</p>
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <span className="font-mono text-[11px] font-bold text-hg-gold uppercase tracking-wider">
+                            Variety 0{i + 1}
+                          </span>
+                        </div>
+                        <h3 className="text-2xl font-extrabold text-hg-fg mt-1 group-hover:text-hg-gold transition-colors">
+                          {v.name}
+                        </h3>
+                        <p className="font-mono text-[11px] uppercase tracking-wider text-hg-gold font-semibold mt-0.5">
+                          {v.localName} · <span className="italic normal-case text-hg-fg3">{v.botanical}</span>
+                        </p>
+                        <p className="mt-3 text-sm leading-relaxed text-hg-fg font-medium">{v.description}</p>
 
                         {/* HIGHLIGHT PILLS */}
                         <div className="mt-4 flex flex-wrap gap-1.5">
@@ -138,43 +143,6 @@ const ProductDetail = () => {
                           ))}
                         </div>
                       </div>
-
-                      {/* SPEC SHEET ACCORDION / TOGGLE */}
-                      <div className="mt-6 border-t border-hg-line pt-4">
-                        <button
-                          type="button"
-                          onClick={() => setActiveMilletTab(activeMilletTab === v.id ? null : v.id)}
-                          className="flex w-full items-center justify-between font-mono text-[11.5px] uppercase tracking-[0.16em] font-bold text-hg-gold hover:underline py-1"
-                        >
-                          <span>{activeMilletTab === v.id ? "Hide Spec Details" : "View Physical Parameters"}</span>
-                          <ChevronDown
-                            size={14}
-                            className={`transition-transform duration-300 ${activeMilletTab === v.id ? "rotate-180" : ""}`}
-                          />
-                        </button>
-
-                        <AnimatePresence>
-                          {activeMilletTab === v.id && (
-                            <motion.dl
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              className="mt-3 space-y-2 border-t border-hg-line/60 pt-3 text-[12px] font-mono"
-                            >
-                              {v.specs.map(([k, val]) => (
-                                <div key={k} className="flex items-center justify-between py-1 border-b border-hg-line/30 last:border-0">
-                                  <dt className="text-hg-fg3 font-semibold uppercase">{k}</dt>
-                                  <dd className="font-bold text-hg-fg">{val}</dd>
-                                </div>
-                              ))}
-                              <div className="flex items-center justify-between py-1 pt-2">
-                                <dt className="text-hg-fg3 font-semibold uppercase">Major Producing States</dt>
-                                <dd className="font-bold text-hg-gold">{v.origin}</dd>
-                              </div>
-                            </motion.dl>
-                          )}
-                        </AnimatePresence>
-                      </div>
                     </div>
                   </div>
                 </Reveal>
@@ -185,20 +153,20 @@ const ProductDetail = () => {
             <div className="mt-16 rounded-sm border-2 border-hg-gold/60 bg-hg-card p-8 sm:p-12 shadow-lg">
               <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
                 <div className="lg:col-span-5">
-                  <p className="hg-eyebrow text-[12px] font-bold">Why Source Millets From HarvestGate?</p>
+                  <p className="hg-eyebrow text-[12px] font-bold">Why Source From HarvestGate?</p>
                   <h3 className="hg-display mt-4 text-3xl sm:text-4xl text-hg-fg font-extrabold">
-                    Unpolished Purity, Traceable Provenance.
+                    Unmatched Purity, Traceable Provenance.
                   </h3>
                   <p className="mt-4 text-base leading-relaxed text-hg-fg2 font-medium">
-                    At HarvestGate Overseas, our unpolished millets retain the nutrient-rich bran layer, delivering superior dietary fiber, bioavailable minerals, and authentic aroma.
+                    At HarvestGate Overseas, our export crops undergo twin-pass optical sortex cleaning, gravity separation, and rigorous NABL-accredited laboratory testing before vessel dispatch.
                   </p>
                 </div>
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-7">
                   {[
-                    ["100% Organic & Natural", "Unpolished grains, handpicked, wholesome, chemical-free and nutrient-dense."],
-                    ["Direct Farm Procurement", "Procured ethically and directly from trusted Indian farmer producer cooperatives."],
-                    ["Accredited Lab Testing", "Testing on request at NABL-accredited & FSSAI-approved labs covering 210+ pesticide residues."],
-                    ["Export-Ready Packaging", "Vacuum pouches (250g - 1kg) in sturdy cartons; bulk exports in 5kg, 10kg, 25kg & 50kg HDPE bags."],
+                    ["100% Sortex Cleaned", "Machine-cleaned and double-pass sortex sorted for uniform size, color and zero foreign matter."],
+                    ["Direct Mandi Aggregation", "Procured directly from primary farming mandis across Madhya Pradesh, Rajasthan, Maharashtra & UP."],
+                    ["Accredited Lab Testing", "Consignments backed by FSSAI-approved and NABL laboratory analysis for moisture, purity & pesticide residue."],
+                    ["Export-Grade Packaging", "Vacuum retail packs (500g - 1kg) or bulk export shipments in 25kg / 50kg PP, HDPE and Jute bags."],
                   ].map(([t, d]) => (
                     <div key={t} className="border border-hg-line bg-hg-bg2/60 p-5 rounded">
                       <div className="flex items-center gap-2.5 text-hg-gold font-bold text-[15px]">

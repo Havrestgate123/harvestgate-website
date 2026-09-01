@@ -118,51 +118,68 @@ const Hero = () => {
   );
 };
 
-const ProductCard = ({ p, className = "", tall = false }) => (
-  <Reveal className={className}>
-    <Link
-      to={`/products/${p.slug}`}
-      data-testid={`product-card-${p.slug}`}
-      className="group relative block h-full overflow-hidden border border-hg-line bg-hg-card transition-colors duration-500 hover:border-hg-gold"
-      style={{ ["--accent"]: p.accent }}
-    >
-      <div className={`relative overflow-hidden ${tall ? "aspect-[4/5] lg:aspect-[16/11]" : "aspect-[4/3]"}`}>
-        <img
-          src={p.image}
-          alt={p.name}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.07]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent" />
-        <span
-          className="absolute left-0 top-0 h-[3px] w-0 transition-all duration-700 ease-out group-hover:w-full"
-          style={{ backgroundColor: p.accent }}
-        />
-        <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 sm:p-7">
+const ProductCard = ({ p, className = "", tall = false }) => {
+  const isSelect = p.range === "SELECT";
+  return (
+    <Reveal className={className}>
+      <Link
+        to={`/products/${p.slug}`}
+        data-testid={`product-card-${p.slug}`}
+        className="group relative flex flex-col h-full overflow-hidden border border-hg-line bg-hg-card transition-all duration-500 hover:border-hg-gold hover:shadow-lg"
+        style={{ ["--accent"]: p.accent }}
+      >
+        {/* CLEAN IMAGE — NO TEXT OVERLAY */}
+        <div className={`relative overflow-hidden bg-black/5 ${tall ? "aspect-[4/3] lg:aspect-[16/10]" : "aspect-[4/3]"}`}>
+          <img
+            src={p.image}
+            alt={p.name}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.07]"
+          />
+          <span
+            className="absolute left-0 top-0 h-[3px] w-0 transition-all duration-700 ease-out group-hover:w-full z-10"
+            style={{ backgroundColor: p.accent }}
+          />
+        </div>
+
+        {/* DETAILS SECTION BELOW IMAGE */}
+        <div className="flex flex-1 flex-col p-5 sm:p-6 justify-between">
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.3em]" style={{ color: p.accent }}>
-              {p.index} / {p.subtitle}
-            </p>
-            <h3 className={`hg-display mt-2 text-white ${tall ? "text-4xl sm:text-5xl" : "text-3xl"}`}>
+            <div className="flex items-center justify-between gap-2 mb-2.5">
+              <span
+                className={`inline-flex items-center gap-1 font-mono text-[9px] font-bold tracking-[0.24em] uppercase px-2 py-0.5 rounded-sm border ${isSelect
+                  ? "border-hg-gold/60 bg-hg-gold/15 text-hg-gold"
+                  : "border-hg-green/60 bg-hg-green/15 text-hg-green"
+                }`}
+              >
+                {isSelect ? "Select" : "Naturals"}
+              </span>
+              <span className="font-mono text-[11px] font-bold text-hg-fg3 tracking-wider">
+                {p.index}
+              </span>
+            </div>
+            <h3 className="hg-display text-2xl sm:text-3xl text-hg-fg transition-colors group-hover:text-hg-gold">
               {p.name}
             </h3>
+            <p className="font-mono text-[10.5px] uppercase tracking-[0.2em] font-semibold text-hg-gold mt-1">
+              {p.subtitle}
+            </p>
+            <p className="mt-2.5 text-sm leading-relaxed text-hg-fg2">{p.tagline}</p>
           </div>
-          <span
-            className="grid h-10 w-10 shrink-0 place-items-center border border-white/25 text-white transition-all duration-500 group-hover:border-transparent group-hover:bg-hg-gold"
-          >
-            <ArrowUpRight size={15} className="transition-transform duration-500 group-hover:rotate-45" />
-          </span>
+
+          <div className="mt-5 pt-4 border-t border-hg-line/60 flex items-center justify-between">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-hg-gold font-bold">
+              View Spec Sheet
+            </span>
+            <span className="grid h-8 w-8 place-items-center border border-hg-line text-hg-fg2 transition-colors duration-300 group-hover:border-hg-gold group-hover:text-hg-gold">
+              <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:rotate-45" />
+            </span>
+          </div>
         </div>
-      </div>
-      <div className="flex items-center justify-between gap-4 px-5 py-5 sm:px-7">
-        <p className="max-w-md text-sm leading-relaxed text-hg-fg2">{p.tagline}</p>
-        <p className="hidden shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-hg-fg3 sm:block">
-          HS {p.hsCode}
-        </p>
-      </div>
-    </Link>
-  </Reveal>
-);
+      </Link>
+    </Reveal>
+  );
+};
 
 const Home = () => {
   const manifestoRef = useRef(null);
@@ -211,7 +228,7 @@ const Home = () => {
             <p className="hg-eyebrow">02 — Catalogue</p>
             <MaskLinesInView
               className="hg-display mt-5 text-5xl leading-[0.9] text-hg-fg sm:text-6xl lg:text-7xl"
-              lines={["Eight commodities.", "One standard."]}
+              lines={["Two ranges.", "Seven commodities."]}
             />
           </div>
           <Link
@@ -229,7 +246,7 @@ const Home = () => {
             <ProductCard p={PRODUCTS[1]} />
             <ProductCard p={PRODUCTS[2]} />
           </div>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-12 lg:grid-cols-5 lg:gap-5">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-12 lg:grid-cols-4 lg:gap-5">
             {PRODUCTS.slice(3).map((prod) => (
               <ProductCard key={prod.slug} p={prod} />
             ))}
