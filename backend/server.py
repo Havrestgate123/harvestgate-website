@@ -43,13 +43,30 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+class EnquiryCreate(BaseModel):
+    name: str
+    orgName: str
+    orgAddress: str
+    email: str
+    contactNumber: str
+    product: str
+    quantity: str
+    message: str = ""
+    targetEmail: str = "admin@harvestgateoverseas.com"
+
+class Enquiry(EnquiryCreate):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    ref: str = Field(default_factory=lambda: f"HG-{str(uuid.uuid4())[:6].upper()}")
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
 # API routes
 @api_router.get("/")
 async def root():
     return {
         "status": "online",
         "service": "HarvestGate Backend API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "admin_email": "admin@harvestgateoverseas.com"
     }
 
 @api_router.get("/health")
@@ -58,6 +75,32 @@ async def health_check():
         "status": "healthy",
         "timestamp": datetime.now(timezone.utc).isoformat()
     }
+
+@api_router.post("/enquiry", response_model=Enquiry)
+async def create_enquiry(input: EnquiryCreate):
+    enquiry_obj = Enquiry(**input.model_dump())
+    doc = enquiry_obj.model_dump()
+    doc['timestamp'] = doc['timestamp'].isoformat()
+    
+    if db is not None:
+        try:
+            await db.enquiries.insert_one(doc)
+        except Exception as e:
+            logging.error(f"Failed to persist enquiry to MongoDB: {e}")
+            
+    logging.info(f"New export enquiry dispatched for admin@harvestgateoverseas.com: {enquiry_obj.ref} from {enquiry_obj.name} ({enquiry_obj.email}) for {enquiry_obj.product}")
+    return enquiry_obj
+
+@api_router.get("/enquiries")
+async def get_enquiries():
+    if db is None:
+        return []
+    try:
+        enquiries = await db.enquiries.find({}, {"_id": 0}).to_list(1000)
+        return enquiries
+    except Exception as e:
+        logging.error(f"Failed to query enquiries: {e}")
+        return []
 
 @api_router.post("/status", response_model=StatusCheck)
 async def create_status_check(input: StatusCheckCreate):

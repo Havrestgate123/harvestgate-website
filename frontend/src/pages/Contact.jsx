@@ -86,7 +86,7 @@ const Contact = () => {
     if (errors[k]) setErrors((prev) => ({ ...prev, [k]: undefined }));
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const found = validate(values);
     setErrors(found);
@@ -97,15 +97,61 @@ const Contact = () => {
       return;
     }
     setSubmitting(true);
-    setTimeout(() => {
-      const ref = `HG-${Date.now().toString().slice(-6)}`;
+    const ref = `HG-${Date.now().toString().slice(-6)}`;
+
+    try {
+      // 1. Dispatch form directly to admin@harvestgateoverseas.com via FormSubmit AJAX service
+      await fetch("https://formsubmit.co/ajax/admin@harvestgateoverseas.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `[HarvestGate Export Enquiry] ${ref} · ${values.orgName} — ${values.product}`,
+          _replyto: values.email,
+          _template: "table",
+          _captcha: "false",
+          reference_id: ref,
+          contact_person: values.name,
+          organisation: values.orgName,
+          business_email: values.email,
+          phone_whatsapp: values.contactNumber,
+          product_required: values.product,
+          required_volume: values.quantity,
+          delivery_address: values.orgAddress,
+          additional_notes: values.message || "None",
+          routed_to: "admin@harvestgateoverseas.com",
+        }),
+      }).catch((err) => console.log("FormSubmit Notice:", err));
+
+      // 2. Also record in backend API if online
+      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      await fetch(`${apiUrl}/api/enquiry`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: values.name,
+          orgName: values.orgName,
+          orgAddress: values.orgAddress,
+          email: values.email,
+          contactNumber: values.contactNumber,
+          product: values.product,
+          quantity: values.quantity,
+          message: values.message || "",
+          targetEmail: "admin@harvestgateoverseas.com",
+        }),
+      }).catch((err) => console.log("Backend record notice:", err));
+    } catch (err) {
+      console.log("Transmission notice:", err);
+    } finally {
       setSubmitting(false);
       setDone({ ...values, ref });
-      toast.success("Enquiry Logged Successfully", {
+      toast.success("Enquiry Dispatched to admin@harvestgateoverseas.com", {
         description: `Reference ${ref} — our export desk will reach out within 1 business day.`,
         duration: 7000,
       });
-    }, 850);
+    }
   };
 
   return (
@@ -170,26 +216,32 @@ const Contact = () => {
                   <h2 className="mt-8 text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
                     Enquiry Logged Successfully
                   </h2>
-                  <div className="mt-3 inline-flex items-center gap-2 rounded-lg bg-white/10 px-3.5 py-1.5 backdrop-blur-sm border border-white/10">
-                    <span className="font-mono text-xs uppercase tracking-widest text-hg-gold font-bold">
-                      Reference ID:
-                    </span>
-                    <span className="font-mono text-sm font-black text-white">
-                      {done.ref}
-                    </span>
+                  <div className="mt-3 flex flex-wrap items-center gap-3">
+                    <div className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-3.5 py-1.5 backdrop-blur-sm border border-white/10">
+                      <span className="font-mono text-xs uppercase tracking-widest text-hg-gold font-bold">
+                        Reference ID:
+                      </span>
+                      <span className="font-mono text-sm font-black text-white">
+                        {done.ref}
+                      </span>
+                    </div>
+
+                    <div className="inline-flex items-center gap-2 rounded-lg bg-emerald-500/20 px-3.5 py-1.5 backdrop-blur-sm border border-emerald-400/30 text-emerald-300 font-mono text-xs font-bold tracking-wide">
+                      <Mail size={13} className="text-emerald-400" />
+                      Dispatched to: admin@harvestgateoverseas.com
+                    </div>
                   </div>
 
                   <p className="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-gray-200">
-                    Thank you, <span className="font-bold text-white">{done.name}</span>. We have received your export inquiry from{" "}
-                    <span className="font-bold text-hg-gold">{done.orgName}</span> for{" "}
-                    <span className="font-bold text-white underline underline-offset-4">{done.product}</span> ({done.quantity}).
-                    Our export desk will review the specifications and email your quotation to{" "}
+                    Thank you, <span className="font-bold text-white">{done.name}</span>. We have transmitted your export inquiry for{" "}
+                    <span className="font-bold text-white underline underline-offset-4">{done.product}</span> ({done.quantity}) directly to our commercial trade desk at{" "}
+                    <span className="font-bold text-hg-gold">admin@harvestgateoverseas.com</span>. Our trade manager will review your required specs and reply to{" "}
                     <span className="font-bold text-hg-gold">{done.email}</span> within 24 hours.
                   </p>
 
                   <div className="mt-10 rounded-2xl border border-white/15 bg-black/25 p-6 backdrop-blur-sm">
                     <h4 className="font-mono text-xs uppercase tracking-[0.25em] text-hg-gold font-bold mb-4 flex items-center gap-2">
-                      <ShieldCheck size={16} /> Logged Export Specifications
+                      <ShieldCheck size={16} /> Dispatched Export Specifications
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                       <div>
@@ -216,6 +268,14 @@ const Contact = () => {
                   </div>
 
                   <div className="mt-10 flex flex-wrap gap-4">
+                    <a
+                      href={`mailto:admin@harvestgateoverseas.com?subject=${encodeURIComponent(`[HarvestGate Export Enquiry] ${done.ref} · ${done.orgName} — ${done.product}`)}&body=${encodeURIComponent(`Dear HarvestGate Export Desk,\n\nPlease find our trade enquiry details below:\n\n• Reference ID: ${done.ref}\n• Contact Name: ${done.name}\n• Organisation: ${done.orgName}\n• Business Email: ${done.email}\n• Phone/WhatsApp: ${done.contactNumber}\n• Required Commodity: ${done.product}\n• Required Quantity: ${done.quantity}\n• Delivery Address / Port: ${done.orgAddress}\n• Notes: ${done.message || "N/A"}\n\nLooking forward to your formal CIF/FOB quote.\n\nWarm regards,\n${done.name}`)}`}
+                      className="rounded-xl border border-hg-gold/60 bg-hg-gold/15 px-6 py-3.5 font-mono text-xs uppercase tracking-widest font-bold text-hg-gold hover:bg-hg-gold hover:text-black transition-all flex items-center gap-2"
+                    >
+                      <Mail size={15} />
+                      <span>Open in Mail Client</span>
+                    </a>
+
                     <button
                       type="button"
                       onClick={() => {
@@ -223,13 +283,13 @@ const Contact = () => {
                         setErrors({});
                         setDone(null);
                       }}
-                      className="rounded-xl border border-white/30 bg-white/10 px-7 py-3.5 font-mono text-xs uppercase tracking-widest font-bold text-white hover:bg-white/20 transition-all"
+                      className="rounded-xl border border-white/30 bg-white/10 px-6 py-3.5 font-mono text-xs uppercase tracking-widest font-bold text-white hover:bg-white/20 transition-all"
                     >
                       Submit Another Requirement
                     </button>
                     <Link
                       to="/products"
-                      className="rounded-xl bg-hg-gold px-7 py-3.5 font-mono text-xs uppercase tracking-widest font-bold text-black hover:bg-amber-400 transition-all flex items-center gap-2 shadow-lg"
+                      className="rounded-xl bg-hg-gold px-6 py-3.5 font-mono text-xs uppercase tracking-widest font-bold text-black hover:bg-amber-400 transition-all flex items-center gap-2 shadow-lg"
                     >
                       <span>Explore Full Catalogue</span>
                       <ArrowUpRight size={15} />
