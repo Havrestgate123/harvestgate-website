@@ -70,11 +70,10 @@ export const Navbar = () => {
     <>
       <header
         data-testid="site-navbar"
-        className={`fixed inset-x-0 top-0 z-[60] transition-all duration-300 ${
-          scrolled
+        className={`fixed inset-x-0 top-0 z-[60] transition-all duration-300 ${scrolled
             ? "border-b border-hg-line bg-white/98 dark:bg-[#0e0e0e]/98 shadow-md"
             : "border-b border-hg-line/60 bg-white/95 dark:bg-[#0e0e0e]/95"
-        }`}
+          }`}
       >
         {/* ============ TOP COMPLIANCE & CREDENTIALS BAR ============ */}
         <div className="border-b border-hg-line/80 bg-hg-bg2 py-2 text-[11.5px] font-mono tracking-wider transition-colors duration-300">
@@ -120,8 +119,7 @@ export const Navbar = () => {
               end
               data-testid="nav-link-home"
               className={({ isActive }) =>
-                `hg-link font-mono text-[14.5px] uppercase tracking-[0.22em] font-semibold transition-colors duration-300 ${
-                  isActive ? "text-hg-gold font-bold" : "text-hg-fg hover:text-hg-gold"
+                `hg-link font-mono text-[14.5px] uppercase tracking-[0.22em] font-semibold transition-colors duration-300 ${isActive ? "text-hg-gold font-bold" : "text-hg-fg hover:text-hg-gold"
                 }`
               }
             >
@@ -141,20 +139,18 @@ export const Navbar = () => {
               <button
                 type="button"
                 onClick={() => setProductsOpen((prev) => !prev)}
-                className={`hg-link flex items-center gap-1.5 font-mono text-[14.5px] uppercase tracking-[0.22em] font-semibold transition-colors duration-300 ${
-                  pathname.startsWith("/products")
+                className={`hg-link flex items-center gap-1.5 font-mono text-[14.5px] uppercase tracking-[0.22em] font-semibold transition-colors duration-300 ${pathname.startsWith("/products")
                     ? "text-hg-gold font-bold"
                     : "text-hg-fg hover:text-hg-gold"
-                }`}
+                  }`}
                 aria-expanded={productsOpen}
                 data-testid="nav-products-dropdown-toggle"
               >
                 <span>Products</span>
                 <ChevronDown
                   size={15}
-                  className={`transition-transform duration-300 ${
-                    productsOpen ? "rotate-180 text-hg-gold" : "text-hg-fg3"
-                  }`}
+                  className={`transition-transform duration-300 ${productsOpen ? "rotate-180 text-hg-gold" : "text-hg-fg3"
+                    }`}
                 />
               </button>
 
@@ -225,8 +221,7 @@ export const Navbar = () => {
               to="/about"
               data-testid="nav-link-about"
               className={({ isActive }) =>
-                `hg-link font-mono text-[14.5px] uppercase tracking-[0.22em] font-semibold transition-colors duration-300 ${
-                  isActive ? "text-hg-gold font-bold" : "text-hg-fg hover:text-hg-gold"
+                `hg-link font-mono text-[14.5px] uppercase tracking-[0.22em] font-semibold transition-colors duration-300 ${isActive ? "text-hg-gold font-bold" : "text-hg-fg hover:text-hg-gold"
                 }`
               }
             >
@@ -241,8 +236,7 @@ export const Navbar = () => {
               to="/terms"
               data-testid="nav-link-terms"
               className={({ isActive }) =>
-                `hg-link font-mono text-[14.5px] uppercase tracking-[0.22em] font-semibold transition-colors duration-300 ${
-                  isActive ? "text-hg-gold font-bold" : "text-hg-fg hover:text-hg-gold"
+                `hg-link font-mono text-[14.5px] uppercase tracking-[0.22em] font-semibold transition-colors duration-300 ${isActive ? "text-hg-gold font-bold" : "text-hg-fg hover:text-hg-gold"
                 }`
               }
             >
@@ -354,9 +348,8 @@ export const Navbar = () => {
                     <span className="hg-display text-3xl text-hg-fg font-bold">Products</span>
                     <ChevronDown
                       size={22}
-                      className={`text-hg-gold transition-transform duration-300 ${
-                        mobileProductsOpen ? "rotate-180" : ""
-                      }`}
+                      className={`text-hg-gold transition-transform duration-300 ${mobileProductsOpen ? "rotate-180" : ""
+                        }`}
                     />
                   </button>
 
