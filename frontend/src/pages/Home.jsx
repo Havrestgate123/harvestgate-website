@@ -129,7 +129,7 @@ const ProductCard = ({ p, className = "", tall = false }) => {
         style={{ ["--accent"]: p.accent }}
       >
         {/* CLEAN IMAGE — NO TEXT OVERLAY */}
-        <div className={`relative overflow-hidden bg-black/5 ${tall ? "aspect-[4/3] lg:aspect-[16/10]" : "aspect-[4/3]"}`}>
+        <div className={`relative overflow-hidden bg-black/5 ${tall ? "h-64 sm:h-80 lg:h-[450px]" : "aspect-[4/3]"}`}>
           <img
             src={p.image}
             alt={p.name}
@@ -165,6 +165,20 @@ const ProductCard = ({ p, className = "", tall = false }) => {
               {p.subtitle}
             </p>
             <p className="mt-2.5 text-sm leading-relaxed text-hg-fg2">{p.tagline}</p>
+
+            {tall && (
+              <div className="mt-4 flex flex-wrap gap-2 pt-3 border-t border-hg-line/40">
+                <span className="px-2.5 py-1 rounded bg-hg-bg2 text-hg-fg font-mono text-[11px] font-medium border border-hg-line">
+                  5+ Suta (18–20mm)
+                </span>
+                <span className="px-2.5 py-1 rounded bg-hg-bg2 text-hg-fg font-mono text-[11px] font-medium border border-hg-line">
+                  6+ Suta (20–22mm)
+                </span>
+                <span className="px-2.5 py-1 rounded bg-hg-bg2 text-hg-fg font-mono text-[11px] font-medium border border-hg-line">
+                  Handpicked Premium (22mm+)
+                </span>
+              </div>
+            )}
           </div>
 
           <div className="mt-5 pt-4 border-t border-hg-line/60 flex items-center justify-between">
