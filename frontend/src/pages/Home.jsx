@@ -118,7 +118,7 @@ const Hero = () => {
   );
 };
 
-const ProductCard = ({ p, className = "", tall = false }) => {
+const ProductCard = ({ p, className = "" }) => {
   const isSelect = p.range === "SELECT";
   return (
     <Reveal className={className}>
@@ -129,7 +129,7 @@ const ProductCard = ({ p, className = "", tall = false }) => {
         style={{ ["--accent"]: p.accent }}
       >
         {/* CLEAN IMAGE — NO TEXT OVERLAY */}
-        <div className={`relative overflow-hidden bg-black/5 ${tall ? "h-64 sm:h-80 lg:h-[450px]" : "aspect-[4/3]"}`}>
+        <div className="relative aspect-[4/3] overflow-hidden bg-black/5">
           <img
             src={p.image}
             alt={p.name}
@@ -165,20 +165,6 @@ const ProductCard = ({ p, className = "", tall = false }) => {
               {p.subtitle}
             </p>
             <p className="mt-2.5 text-sm leading-relaxed text-hg-fg2">{p.tagline}</p>
-
-            {tall && (
-              <div className="mt-4 flex flex-wrap gap-2 pt-3 border-t border-hg-line/40">
-                <span className="px-2.5 py-1 rounded bg-hg-bg2 text-hg-fg font-mono text-[11px] font-medium border border-hg-line">
-                  5+ Suta (18–20mm)
-                </span>
-                <span className="px-2.5 py-1 rounded bg-hg-bg2 text-hg-fg font-mono text-[11px] font-medium border border-hg-line">
-                  6+ Suta (20–22mm)
-                </span>
-                <span className="px-2.5 py-1 rounded bg-hg-bg2 text-hg-fg font-mono text-[11px] font-medium border border-hg-line">
-                  Handpicked Premium (22mm+)
-                </span>
-              </div>
-            )}
           </div>
 
           <div className="mt-5 pt-4 border-t border-hg-line/60 flex items-center justify-between">
@@ -254,13 +240,16 @@ const Home = () => {
           </Link>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-12 lg:gap-6">
-          <ProductCard p={PRODUCTS[0]} tall className="lg:col-span-7" />
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1 lg:gap-6">
-            <ProductCard p={PRODUCTS[1]} />
-            <ProductCard p={PRODUCTS[2]} />
+        <div className="mt-14 space-y-6">
+          {/* Top 3 Featured Commodities */}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {PRODUCTS.slice(0, 3).map((prod) => (
+              <ProductCard key={prod.slug} p={prod} />
+            ))}
           </div>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-12 lg:grid-cols-4 lg:gap-5">
+
+          {/* Remaining 4 Commodities */}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {PRODUCTS.slice(3).map((prod) => (
               <ProductCard key={prod.slug} p={prod} />
             ))}
