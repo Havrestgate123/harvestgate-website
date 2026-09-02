@@ -989,9 +989,9 @@ export const PRODUCTS = [
     index: "01",
     range: "SELECT",
     category: "foxnuts",
-    categoryLabel: "Lotus Seeds / Makhana",
-    name: "Popped Lotus Seeds / Phool Makhana",
-    subtitle: "Grade-A Foxnuts / Gorgon Nut",
+    categoryLabel: "Premium Foxnuts / Makhana",
+    name: "Premium Foxnuts",
+    subtitle: "Popped Lotus Seeds / Phool Makhana",
     tagline: "Grade-A jumbo lotus seeds, hand-popped in the Mithila wetlands.",
     accent: "#F7F4EB",
     accentLight: "#8A7343",
@@ -1266,7 +1266,7 @@ export const NATURALS_CATEGORIES = [
 ];
 
 export const SELECT_CATEGORIES = [
-  { id: "foxnuts", label: "Popped Lotus Seeds / Makhana", slug: "foxnuts", description: "Grade-A Phool Makhana — Mithila origin" },
+  { id: "foxnuts", label: "Premium Foxnuts", slug: "foxnuts", description: "Popped Lotus Seeds / Phool Makhana — Mithila origin" },
 ];
 
 // ============================================================
