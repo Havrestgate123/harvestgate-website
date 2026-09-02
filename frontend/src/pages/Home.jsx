@@ -280,14 +280,24 @@ const Home = () => {
       <section
         ref={manifestoRef}
         data-testid="home-manifesto"
-        className="relative border-y border-hg-line bg-hg-bg2 py-24 sm:py-32 lg:py-40"
+        className="relative overflow-hidden border-y border-hg-line bg-hg-bg2/75 dark:bg-[#121813]/70 backdrop-blur-xl py-24 sm:py-32 lg:py-40"
       >
-        <div className="hg-container">
+        {/* DYNAMIC AMBIENT NEON GLOW ORBS & GRID */}
+        <div className="pointer-events-none absolute inset-0 select-none">
+          <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-emerald-500/20 dark:bg-emerald-400/20 blur-[130px]" />
+          <div className="absolute top-1/2 -right-24 h-96 w-96 rounded-full bg-teal-400/15 dark:bg-cyan-500/15 blur-[140px]" />
+          <div className="absolute -bottom-20 left-1/3 h-80 w-80 rounded-full bg-amber-400/15 dark:bg-amber-400/15 blur-[120px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(#10b981_1px,transparent_1px)] dark:bg-[radial-gradient(#34d399_1px,transparent_1px)] [background-size:28px_28px] opacity-[0.08] dark:opacity-[0.1]" />
+        </div>
+
+        <div className="hg-container relative z-10">
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-14">
             <div className="lg:col-span-5">
-              <p className="hg-eyebrow">03 — Manifesto</p>
+              <Reveal>
+                <p className="hg-eyebrow">03 — Manifesto</p>
+              </Reveal>
               <MaskLinesInView
-                className="hg-display mt-6 text-5xl leading-[0.9] text-hg-fg sm:text-6xl"
+                className="hg-display mt-6 text-5xl leading-[0.9] text-hg-fg sm:text-6xl font-extrabold"
                 lines={[
                   "The",
                   <span key="hg">Harvest<span className="text-hg-gold">Gate</span></span>,
@@ -299,32 +309,36 @@ const Home = () => {
               </p>
               <motion.div
                 style={{ y: labY }}
-                className="relative mt-12 hidden overflow-hidden rounded-2xl border border-hg-line shadow-xl bg-white/60 dark:bg-[#151b15]/60 p-2 lg:block"
+                className="relative mt-12 hidden overflow-hidden rounded-2xl border border-hg-line dark:border-white/15 shadow-2xl bg-white/70 dark:bg-[#151b15]/70 backdrop-blur-md p-3 lg:block"
               >
                 <img
                   src={IMG.lab}
                   alt="HarvestGate Overseas Export Pillars"
                   loading="lazy"
-                  className="aspect-square w-full rounded-xl object-contain"
+                  className="aspect-square w-full rounded-xl object-contain shadow-inner"
                 />
               </motion.div>
             </div>
 
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 space-y-4 sm:space-y-5">
               {MANIFESTO.map((m, i) => (
                 <Reveal
                   key={m.number}
                   delay={i * 0.06}
                   data-testid={`manifesto-chapter-${i + 1}`}
-                  className="group border-t border-hg-line last:border-b"
+                  className="group rounded-2xl border border-hg-line dark:border-white/10 bg-white/75 dark:bg-white/[0.03] backdrop-blur-md p-6 sm:p-8 hover:border-emerald-500/50 dark:hover:border-emerald-400/50 hover:bg-white/95 dark:hover:bg-white/[0.06] hover:shadow-[0_12px_35px_rgba(16,185,129,0.12)] hover:-translate-y-1 transition-all duration-300"
                 >
-                  <div className="flex gap-6 py-8 transition-colors duration-500 sm:gap-10 sm:py-10">
-                    <p className="hg-display shrink-0 text-2xl text-hg-gold/60 transition-colors duration-500 group-hover:text-hg-gold sm:text-3xl">
+                  <div className="flex items-start gap-6 sm:gap-8">
+                    <span className="hg-display shrink-0 text-3xl font-extrabold text-hg-gold/60 transition-colors duration-300 group-hover:text-hg-gold group-hover:scale-110 sm:text-4xl">
                       {m.number}
-                    </p>
+                    </span>
                     <div>
-                      <h3 className="text-xl leading-tight text-hg-fg sm:text-2xl font-display font-bold">{m.title}</h3>
-                      <p className="mt-4 max-w-xl text-sm leading-[1.85] text-hg-fg2">{m.body}</p>
+                      <h3 className="text-xl sm:text-2xl font-bold leading-tight text-hg-fg group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors">
+                        {m.title}
+                      </h3>
+                      <p className="mt-3 max-w-xl text-sm sm:text-[15px] leading-[1.85] text-hg-fg2 font-medium">
+                        {m.body}
+                      </p>
                     </div>
                   </div>
                 </Reveal>
