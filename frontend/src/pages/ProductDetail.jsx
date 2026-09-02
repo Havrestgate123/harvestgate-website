@@ -29,31 +29,41 @@ const ProductDetail = () => {
       <section ref={imgRef} className="relative overflow-hidden">
         <motion.div style={{ y }} className="absolute inset-0 z-0">
           <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-hg-bg via-hg-bg/35 to-black/25 dark:via-hg-bg/60 dark:to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-hg-bg via-hg-bg/60 to-black/35 dark:via-hg-bg/75 dark:to-black/65" />
         </motion.div>
 
         <div className="hg-container relative z-10 pb-16 pt-14 sm:pb-24 sm:pt-20">
           <Link
             to="/products"
             data-testid="product-back-link"
-            className="group inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.24em] font-semibold text-hg-fg transition-colors hover:text-hg-gold"
+            className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/60 px-4 py-1.5 font-mono text-[11.5px] uppercase tracking-[0.24em] font-bold text-white backdrop-blur-md transition-all hover:bg-black/80 hover:text-hg-gold shadow-lg"
           >
             <ArrowLeft size={14} className="transition-transform duration-300 group-hover:-translate-x-1 text-hg-gold" />
             All Export Products
           </Link>
 
-          <div className="mt-8 flex items-center gap-3">
-            <span
-              className={`inline-flex items-center gap-1.5 font-mono text-[10.5px] font-bold tracking-[0.28em] uppercase px-3 py-1 rounded-sm border ${product.range === "SELECT"
-                ? "border-hg-gold/50 bg-hg-gold/15 text-hg-gold"
-                : "border-hg-green/50 bg-hg-green/15 text-hg-green"
-              }`}
-            >
-              {product.range === "SELECT" ? "Harvestgate Select" : "Harvestgate Naturals"}
-            </span>
-            <span className="font-mono text-[12px] font-bold text-hg-fg3">
-              {product.index} — {product.subtitle}
-            </span>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="inline-flex flex-wrap items-center gap-2.5 rounded-full border border-white/20 bg-black/65 px-4 py-1.5 backdrop-blur-md shadow-xl">
+              <span
+                className={`inline-flex items-center gap-1.5 font-mono text-[10.5px] font-bold tracking-[0.24em] uppercase px-3 py-1 rounded-full border ${
+                  product.range === "SELECT"
+                    ? "border-hg-gold/80 bg-black/50 text-hg-gold shadow-[0_0_10px_rgba(212,175,55,0.4)]"
+                    : "border-emerald-400/80 bg-black/50 text-emerald-300 shadow-[0_0_10px_rgba(52,211,153,0.4)]"
+                }`}
+              >
+                <span
+                  className={`h-2 w-2 rounded-full animate-pulse shrink-0 ${
+                    product.range === "SELECT"
+                      ? "bg-hg-gold shadow-[0_0_8px_#d4af37]"
+                      : "bg-emerald-400 shadow-[0_0_8px_#34d399]"
+                  }`}
+                />
+                {product.range === "SELECT" ? "Harvestgate Select" : "Harvestgate Naturals"}
+              </span>
+              <span className="font-mono text-[12px] font-extrabold text-white tracking-wide">
+                {product.index} — {product.subtitle}
+              </span>
+            </div>
           </div>
           <MaskLines
             data-testid="product-heading"
@@ -62,7 +72,7 @@ const ProductDetail = () => {
             lines={product.name.split(" ")}
           />
           <Reveal delay={0.25}>
-            <p className="hg-italic mt-6 max-w-3xl text-2xl leading-snug sm:text-3xl font-medium" style={{ color: accent }}>
+            <p className="mt-6 max-w-3xl text-2xl leading-snug sm:text-3xl font-bold" style={{ color: accent }}>
               {product.tagline}
             </p>
           </Reveal>
