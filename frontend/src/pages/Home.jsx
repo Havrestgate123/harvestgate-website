@@ -349,15 +349,19 @@ const Home = () => {
             lines={["Ready to source", "your first container?"]}
           />
           <Reveal delay={0.2}>
-            <p className="hg-italic mx-auto mt-6 max-w-xl text-xl text-hg-gold">
+            <p className="mx-auto mt-6 max-w-2xl text-lg sm:text-2xl font-bold tracking-normal text-hg-fg dark:text-white leading-relaxed">
               Specifications, samples and FOB pricing within one business day.
             </p>
-            <div className="mt-11 flex flex-wrap items-center justify-center gap-4">
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <Link to="/contact" data-testid="cta-enquire-button" className="hg-btn hg-btn--solid">
                 <span>Request export quotation</span>
                 <ArrowUpRight size={13} className="relative z-[2]" />
               </Link>
-              <Link to="/about" data-testid="cta-about-button" className="hg-btn">
+              <Link
+                to="/about"
+                data-testid="cta-about-button"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-hg-fg dark:border-white/60 bg-white/80 dark:bg-black/60 px-8 py-4 font-mono text-xs font-extrabold uppercase tracking-widest text-hg-fg dark:text-white backdrop-blur-md shadow-md hover:bg-hg-fg hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
+              >
                 <span>About the company</span>
               </Link>
             </div>
