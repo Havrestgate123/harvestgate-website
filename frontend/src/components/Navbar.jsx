@@ -101,7 +101,7 @@ export const Navbar = () => {
             </div>
 
             <div className="hidden lg:flex items-center gap-4 text-hg-fg font-medium text-[11px]">
-              <span className="text-hg-fg2 font-mono">Moradabad, UP · India</span>
+              <span className="text-hg-fg2 font-mono">Moradabad, Uttar Pradesh - 244001</span>
               <span className="text-hg-line2">|</span>
               <a
                 href="tel:+918077078313"

@@ -694,7 +694,7 @@ const Contact = () => {
                 />
               </div>
               <p className="mt-3 text-[11.5px] font-mono text-hg-fg3 text-center">
-                Mig-14, Kanth Rd, Ashiyana Colony, Moradabad, UP - 244001
+                Mig-14, Kanth Rd, Ashiyana Colony, Moradabad, Uttar Pradesh - 244001
               </p>
             </div>
 
