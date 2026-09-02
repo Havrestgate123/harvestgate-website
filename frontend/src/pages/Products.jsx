@@ -55,6 +55,7 @@ const RangeBadge = ({ range, size = "sm" }) => {
 
 const ProductCard = ({ p, i, wide = false }) => {
   const { theme } = useTheme();
+  const isSelect = p.range === "SELECT";
   return (
     <Reveal delay={(i % 3) * 0.07} className={wide ? "md:col-span-2" : "col-span-1"}>
       <Link
