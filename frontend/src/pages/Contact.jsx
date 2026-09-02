@@ -668,7 +668,7 @@ const Contact = () => {
                   <MapPin size={15} /> Facility Location Map
                 </p>
                 <a
-                  href="https://maps.google.com/maps?q=Mig-14%2C%20Kanth%20Rd%2C%20near%20Muskan%20Nursing%20Home%2C%20Ashiyana%20Colony%2C%20Harthala%2C%20Moradabad%2C%20Uttar%20Pradesh%20244001"
+                  href="https://www.google.com/maps/search/?api=1&query=Muskan+Nursing+Home,+Ashiyana+Phase+1,+Kanth+Road,+Moradabad,+Uttar+Pradesh+244001"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-mono text-[11px] uppercase tracking-wider text-hg-gold hover:underline font-bold flex items-center gap-1"
@@ -681,7 +681,7 @@ const Contact = () => {
               <div className="relative overflow-hidden rounded-xl border border-hg-line shadow-inner h-56 sm:h-64 w-full bg-hg-bg">
                 <iframe
                   title="HarvestGate Overseas Registered Office Location Map"
-                  src="https://maps.google.com/maps?q=Mig-14%2C%20Kanth%20Rd%2C%20near%20Muskan%20Nursing%20Home%2C%20Ashiyana%20Colony%2C%20Harthala%2C%20Moradabad%2C%20Uttar%20Pradesh%20244001&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  src="https://maps.google.com/maps?q=Muskan+Nursing+Home,+Ashiyana+Phase+1,+Kanth+Road,+Moradabad,+Uttar+Pradesh+244001&t=&z=16&ie=UTF8&iwloc=B&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
