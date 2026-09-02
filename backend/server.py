@@ -181,10 +181,175 @@ def send_enquiry_email(enquiry: Enquiry):
                 server.login(smtp_user, smtp_pass)
                 server.sendmail(smtp_user, [admin_email], msg.as_string())
                 
-        logging.info(f"Successfully sent enquiry email via SMTP to {admin_email} for ref {enquiry.ref}")
+        logging.info(f"Successfully sent admin enquiry email via SMTP to {admin_email} for ref {enquiry.ref}")
         return True
     except Exception as e:
-        logging.error(f"SMTP email sending failed: {e}")
+        logging.error(f"SMTP admin email sending failed: {e}")
+        return False
+
+def send_buyer_acknowledgement_email(enquiry: Enquiry):
+    smtp_host = os.environ.get("SMTP_HOST", "")
+    smtp_port = int(os.environ.get("SMTP_PORT", "465"))
+    smtp_user = os.environ.get("SMTP_USER", "")
+    smtp_pass = os.environ.get("SMTP_PASSWORD", "")
+    admin_email = os.environ.get("ADMIN_EMAIL", "admin@harvestgateoverseas.com")
+    
+    if not (smtp_host and smtp_user and smtp_pass and enquiry.email):
+        logging.warning("SMTP configuration missing or buyer email empty. Buyer acknowledgement email skipped.")
+        return False
+        
+    try:
+        msg = MIMEMultipart("alternative")
+        msg["Subject"] = f"Export Inquiry Received · {enquiry.product} [Ref: {enquiry.ref}] — HarvestGate Overseas"
+        msg["From"] = f"HarvestGate Overseas <{smtp_user}>"
+        msg["To"] = f"{enquiry.name} <{enquiry.email}>"
+        msg["Reply-To"] = f"HarvestGate Export Desk <{admin_email}>"
+        
+        html_content = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Export Inquiry Acknowledgment</title>
+          <style>
+            body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f6f8f6; margin: 0; padding: 24px; color: #1f2937; -webkit-font-smoothing: antialiased; }}
+            .container {{ max-width: 620px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.06); }}
+            .header {{ background: linear-gradient(135deg, #0e1e13 0%, #173622 100%); padding: 36px 28px; text-align: center; border-bottom: 3px solid #d4af37; color: #ffffff; }}
+            .logo-emblem {{ display: inline-block; background: rgba(212, 175, 55, 0.15); border: 1.5px solid #d4af37; border-radius: 12px; padding: 10px 20px; margin-bottom: 14px; }}
+            .logo-text {{ font-size: 20px; font-weight: 900; letter-spacing: 0.12em; color: #ffffff; margin: 0; text-transform: uppercase; }}
+            .logo-gold {{ color: #d4af37; }}
+            .tagline {{ font-size: 11px; font-family: monospace; color: #d4af37; text-transform: uppercase; letter-spacing: 0.22em; margin: 6px 0 0 0; }}
+            .ref-badge {{ display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(212,175,55,0.6); color: #d4af37; padding: 5px 14px; border-radius: 20px; font-size: 11.5px; font-weight: bold; margin-top: 14px; font-family: monospace; letter-spacing: 0.05em; }}
+            .body {{ padding: 32px 28px; }}
+            .greeting {{ font-size: 18px; font-weight: 800; color: #111827; margin: 0 0 14px 0; }}
+            .lead-text {{ font-size: 14.5px; line-height: 1.65; color: #374151; margin-bottom: 24px; }}
+            .card-box {{ background: #fbfdfb; border: 1px solid #d1fae5; border-radius: 12px; padding: 20px; margin: 24px 0; }}
+            .card-title {{ font-size: 12px; font-family: monospace; text-transform: uppercase; letter-spacing: 0.15em; color: #047857; font-weight: bold; margin: 0 0 14px 0; display: flex; align-items: center; }}
+            .table-wrap {{ width: 100%; border-collapse: collapse; }}
+            .table-wrap th, .table-wrap td {{ padding: 10px 12px; text-align: left; font-size: 13.5px; border-bottom: 1px solid #e5e7eb; }}
+            .table-wrap th {{ width: 38%; color: #6b7280; font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; }}
+            .table-wrap td {{ color: #111827; font-weight: 600; }}
+            .highlight-cell {{ color: #047857 !important; font-weight: 800 !important; font-size: 14px !important; }}
+            .assurance-box {{ background: #fdfbf7; border-left: 4px solid #d4af37; padding: 16px 18px; border-radius: 6px; margin: 24px 0; font-size: 13px; line-height: 1.6; color: #4b5563; }}
+            .contact-cta {{ text-align: center; margin: 30px 0 10px 0; }}
+            .wa-btn {{ display: inline-block; background: #25D366; color: #ffffff !important; text-decoration: none; padding: 12px 26px; border-radius: 8px; font-weight: bold; font-size: 13px; letter-spacing: 0.02em; margin-right: 8px; }}
+            .email-btn {{ display: inline-block; background: #112417; color: #d4af37 !important; text-decoration: none; padding: 12px 26px; border-radius: 8px; font-weight: bold; font-size: 13px; border: 1px solid #d4af37; }}
+            .certs-bar {{ background: #f9fafb; border-top: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb; padding: 14px 20px; text-align: center; font-size: 11px; font-mono; color: #4b5563; font-weight: bold; letter-spacing: 0.08em; }}
+            .footer {{ background: #111827; padding: 24px; text-align: center; font-size: 11.5px; color: #9ca3af; line-height: 1.7; }}
+            .footer a {{ color: #d4af37; text-decoration: none; }}
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            
+            <!-- BRAND HEADER -->
+            <div class="header">
+              <div class="logo-emblem">
+                <p class="logo-text">HARVEST<span class="logo-gold">GATE</span></p>
+                <p class="tagline">OVERSEAS PVT. LTD.</p>
+              </div>
+              <div style="font-size: 14px; color: #e5e7eb; font-weight: 500;">
+                Global Agro Export Trade Desk
+              </div>
+              <div class="ref-badge">
+                ENQUIRY REF: {enquiry.ref}
+              </div>
+            </div>
+
+            <!-- EMAIL BODY -->
+            <div class="body">
+              <p class="greeting">Dear {enquiry.name},</p>
+              
+              <p class="lead-text">
+                Thank you for your business interest in <strong>HarvestGate Overseas</strong>. We have formally registered your commercial export enquiry on behalf of <strong>{enquiry.orgName}</strong>.
+              </p>
+
+              <!-- SPECIFICATION SUMMARY CARD -->
+              <div class="card-box">
+                <div class="card-title">
+                  &#10003; Logged Export Requirement Specifications
+                </div>
+                <table class="table-wrap">
+                  <tr>
+                    <th>Reference ID</th>
+                    <td><strong style="color: #d4af37; font-family: monospace;">{enquiry.ref}</strong></td>
+                  </tr>
+                  <tr>
+                    <th>Requested Commodity</th>
+                    <td class="highlight-cell">{enquiry.product}</td>
+                  </tr>
+                  <tr>
+                    <th>Target Volume</th>
+                    <td>{enquiry.quantity}</td>
+                  </tr>
+                  <tr>
+                    <th>Destination / Address</th>
+                    <td>{enquiry.orgAddress}</td>
+                  </tr>
+                  <tr>
+                    <th>Contact Phone / WhatsApp</th>
+                    <td>{enquiry.contactNumber}</td>
+                  </tr>
+                  {f'<tr><th>Special Instructions</th><td>{enquiry.message}</td></tr>' if enquiry.message else ''}
+                </table>
+              </div>
+
+              <!-- ASSURANCE & NEXT STEPS -->
+              <div class="assurance-box">
+                <strong style="color: #111827;">What happens next?</strong><br>
+                Our international merchandising team is reviewing your container load requirements and preparing the formal <strong>CIF/FOB quotation</strong>, packaging options, and certified quality parameters. A dedicated trade manager will connect with you within <strong>24 business hours</strong>.
+              </div>
+
+              <!-- INSTANT CONTACT ACTIONS -->
+              <div class="contact-cta">
+                <p style="font-size: 12px; color: #6b7280; margin-bottom: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">
+                  Need Immediate Dispatch / Direct Trade Desk Support?
+                </p>
+                <a href="https://wa.me/918077078313?text=Hi%20HarvestGate,%20following%20up%20on%20Export%20Enquiry%20Ref%20{enquiry.ref}" class="wa-btn" target="_blank">
+                  Chat on WhatsApp &rarr;
+                </a>
+                <a href="mailto:{admin_email}?subject=Follow-up%20on%20Enquiry%20{enquiry.ref}" class="email-btn">
+                  Direct Trade Desk &rarr;
+                </a>
+              </div>
+            </div>
+
+            <!-- CERTIFICATIONS BAR -->
+            <div class="certs-bar">
+              FSSAI CERTIFIED &bull; APEDA REGISTERED (AAICH2946R) &bull; 100% SORTEX CLEANED
+            </div>
+
+            <!-- OFFICIAL FOOTER -->
+            <div class="footer">
+              <strong style="color: #ffffff; font-size: 12px;">HarvestGate Overseas Pvt. Ltd.</strong><br>
+              Registered Trade Facility: Mig-14, Kanth Rd, near Muskan Nursing Home, Ashiyana Colony, Harthala, Moradabad, Uttar Pradesh, India - 244001<br>
+              Phone/WhatsApp: +91 8077078313 &bull; Email: <a href="mailto:{admin_email}">{admin_email}</a><br>
+              <span style="font-size: 10.5px; color: #6b7280;">Cultivated with Intent &bull; Shipped with Proof &bull; Global Agricultural Exports</span>
+            </div>
+
+          </div>
+        </body>
+        </html>
+        """
+        
+        msg.attach(MIMEText(html_content, "html"))
+        
+        if smtp_port == 465:
+            context = ssl.create_default_context()
+            with smtplib.SMTP_SSL(smtp_host, smtp_port, context=context, timeout=10) as server:
+                server.login(smtp_user, smtp_pass)
+                server.sendmail(smtp_user, [enquiry.email], msg.as_string())
+        else:
+            with smtplib.SMTP(smtp_host, smtp_port, timeout=10) as server:
+                server.starttls()
+                server.login(smtp_user, smtp_pass)
+                server.sendmail(smtp_user, [enquiry.email], msg.as_string())
+                
+        logging.info(f"Successfully sent buyer acknowledgement email to {enquiry.email} for ref {enquiry.ref}")
+        return True
+    except Exception as e:
+        logging.error(f"SMTP buyer acknowledgement email failed: {e}")
         return False
 
 # API routes
@@ -217,8 +382,11 @@ async def create_enquiry(input: EnquiryCreate):
         except Exception as e:
             logging.error(f"Failed to persist enquiry to MongoDB: {e}")
             
-    # Send email via SMTP
+    # 1. Send Admin Notification Email
     send_enquiry_email(enquiry_obj)
+    
+    # 2. Send Buyer Acknowledgment Email
+    send_buyer_acknowledgement_email(enquiry_obj)
     
     logging.info(f"New export enquiry dispatched for admin@harvestgateoverseas.com: {enquiry_obj.ref} from {enquiry_obj.name} ({enquiry_obj.email}) for {enquiry_obj.product}")
     return enquiry_obj
@@ -229,17 +397,18 @@ async def test_smtp():
         name="Test Trade Buyer",
         orgName="HarvestGate Test Desk",
         orgAddress="Business Bay, Dubai, UAE",
-        email="test@harvestgateoverseas.com",
+        email=os.environ.get("ADMIN_EMAIL", "admin@harvestgateoverseas.com"),
         contactNumber="+91 8077078313",
         product="Popped Lotus Seeds / Phool Makhana 6+ Suta",
         quantity="1 x 20ft FCL (24 MT)",
-        message="This is a test email confirming that your SMTP protocol is active and delivering emails directly to admin@harvestgateoverseas.com.",
+        message="This is a test email confirming that both Admin and Buyer Auto-Responder SMTP emails are working seamlessly.",
     )
-    success = send_enquiry_email(test_enquiry)
-    if success:
+    admin_success = send_enquiry_email(test_enquiry)
+    buyer_success = send_buyer_acknowledgement_email(test_enquiry)
+    if admin_success or buyer_success:
         return {
             "status": "success",
-            "message": "Test email sent successfully via SMTP to admin@harvestgateoverseas.com!",
+            "message": f"Test emails dispatched successfully! Admin Notification: {'Sent' if admin_success else 'Failed'}, Buyer Auto-Responder: {'Sent' if buyer_success else 'Failed'}",
             "ref": test_enquiry.ref
         }
     else:
