@@ -77,93 +77,116 @@ def send_enquiry_email(enquiry: Enquiry):
         
     try:
         msg = MIMEMultipart("alternative")
-        msg["Subject"] = f"[HarvestGate Export Enquiry] {enquiry.ref} · {enquiry.orgName} — {enquiry.product}"
+        msg["Subject"] = f"[HarvestGate Trade Desk] New Export Enquiry: {enquiry.ref} · {enquiry.orgName} — {enquiry.product}"
         msg["From"] = f"HarvestGate Overseas <{smtp_user}>"
         msg["To"] = admin_email
         msg["Reply-To"] = f"{enquiry.name} <{enquiry.email}>"
         
         html_content = f"""
-        <!DOCTYPE html>
-        <html>
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <html xmlns="http://www.w3.org/1999/xhtml">
         <head>
-          <meta charset="utf-8">
-          <style>
-            body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f6f4; margin: 0; padding: 24px; color: #1f2937; }}
-            .container {{ max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }}
-            .header {{ background: linear-gradient(135deg, #112417 0%, #1c3d28 100%); padding: 28px 24px; color: #ffffff; text-align: center; border-bottom: 3px solid #d4af37; }}
-            .header h1 {{ margin: 0; font-size: 22px; font-weight: 800; letter-spacing: 0.05em; color: #ffffff; }}
-            .header p {{ margin: 6px 0 0 0; font-size: 12px; font-family: monospace; color: #d4af37; text-transform: uppercase; letter-spacing: 0.15em; }}
-            .badge {{ display: inline-block; background: rgba(212, 175, 55, 0.2); border: 1px solid #d4af37; color: #d4af37; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; margin-top: 10px; }}
-            .body {{ padding: 28px 24px; }}
-            .table-wrap {{ width: 100%; border-collapse: collapse; margin-top: 16px; }}
-            .table-wrap th, .table-wrap td {{ padding: 12px 14px; text-align: left; border-bottom: 1px solid #f3f4f6; font-size: 14px; }}
-            .table-wrap th {{ background-color: #f9fafb; color: #4b5563; font-weight: 600; width: 35%; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }}
-            .table-wrap td {{ color: #111827; font-weight: 500; }}
-            .highlight {{ color: #047857; font-weight: 700; }}
-            .notes-box {{ background: #fdfbf7; border-left: 4px solid #d4af37; padding: 14px 16px; border-radius: 4px; margin-top: 20px; font-size: 13.5px; line-height: 1.6; }}
-            .footer {{ background-color: #f9fafb; padding: 18px 24px; text-align: center; font-size: 12px; color: #6b7280; border-top: 1px solid #e5e7eb; }}
-            .cta-btn {{ display: inline-block; background: #d4af37; color: #000000 !important; text-decoration: none; padding: 10px 24px; border-radius: 6px; font-weight: bold; font-size: 13px; margin-top: 20px; }}
-          </style>
+          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+          <title>Export Trade Enquiry</title>
         </head>
-        <body>
-          <div class="container">
-            <div class="header">
-              <h1>HARVESTGATE OVERSEAS</h1>
-              <p>Direct International Trade Desk Enquiry</p>
-              <div class="badge">Reference ID: {enquiry.ref}</div>
-            </div>
-            
-            <div class="body">
-              <h2 style="font-size: 17px; margin-top: 0; color: #111827;">New Commercial Export Enquiry Received</h2>
-              <p style="font-size: 13.5px; color: #4b5563; line-height: 1.5;">
-                A prospective global buyer has submitted a formal trade enquiry via the official website.
-              </p>
+        <body style="margin: 0; padding: 0; background-color: #f0f4f0; font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f0f4f0; padding: 25px 10px;">
+            <tr>
+              <td align="center">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 620px; background-color: #ffffff; border: 1px solid #d1dbd1; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+                  
+                  <!-- HEADER -->
+                  <tr>
+                    <td align="center" style="background-color: #112417; padding: 30px 20px; border-bottom: 4px solid #d4af37;">
+                      <table border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td align="center" style="border: 1.5px solid #d4af37; background-color: #173622; padding: 8px 18px; border-radius: 8px;">
+                            <span style="font-size: 20px; font-weight: 900; letter-spacing: 0.12em; color: #ffffff; text-transform: uppercase;">HARVEST<span style="color: #d4af37;">GATE</span></span>
+                            <div style="font-size: 10.5px; font-family: Courier, monospace; color: #d4af37; letter-spacing: 0.22em; text-transform: uppercase; margin-top: 3px;">OVERSEAS PVT. LTD.</div>
+                          </td>
+                        </tr>
+                      </table>
+                      <div style="font-size: 13px; color: #e2e8f0; font-weight: bold; margin-top: 12px; text-transform: uppercase; letter-spacing: 0.08em;">
+                        New Commercial Export Enquiry Received
+                      </div>
+                      <div style="margin-top: 10px;">
+                        <span style="display: inline-block; background-color: #1d3d27; border: 1px solid #d4af37; color: #d4af37; padding: 4px 14px; border-radius: 20px; font-size: 11.5px; font-weight: bold; font-family: Courier, monospace;">
+                          REF: {enquiry.ref}
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
 
-              <table class="table-wrap">
-                <tr>
-                  <th>Contact Person</th>
-                  <td><strong>{enquiry.name}</strong></td>
-                </tr>
-                <tr>
-                  <th>Company / Buyer</th>
-                  <td>{enquiry.orgName}</td>
-                </tr>
-                <tr>
-                  <th>Business Email</th>
-                  <td><a href="mailto:{enquiry.email}" style="color: #047857;">{enquiry.email}</a></td>
-                </tr>
-                <tr>
-                  <th>Phone / WhatsApp</th>
-                  <td><a href="tel:{enquiry.contactNumber}" style="color: #047857;">{enquiry.contactNumber}</a></td>
-                </tr>
-                <tr>
-                  <th>Commodity Required</th>
-                  <td class="highlight">{enquiry.product}</td>
-                </tr>
-                <tr>
-                  <th>Target Volume / Container</th>
-                  <td><strong>{enquiry.quantity}</strong></td>
-                </tr>
-                <tr>
-                  <th>Delivery Address / Port</th>
-                  <td>{enquiry.orgAddress}</td>
-                </tr>
-              </table>
+                  <!-- BODY -->
+                  <tr>
+                    <td style="padding: 28px 24px;">
+                      <p style="font-size: 15px; color: #1f2937; margin: 0 0 16px 0; line-height: 1.5;">
+                        A prospective global buyer has submitted an export requirement via the website trade portal:
+                      </p>
 
-              {f'<div class="notes-box"><strong>Additional Buyer Specifications / Notes:</strong><br>{enquiry.message}</div>' if enquiry.message else ''}
+                      <!-- SPECIFICATION TABLE -->
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; border: 1px solid #d1fae5; border-radius: 8px; overflow: hidden; margin: 18px 0; background-color: #ffffff;">
+                        <tr style="background-color: #166534;">
+                          <td colspan="2" style="padding: 10px 14px; color: #ffffff; font-size: 12px; font-weight: bold; font-family: Courier, monospace; text-transform: uppercase; letter-spacing: 0.1em;">
+                            &#10003; Trade Enquiry Details
+                          </td>
+                        </tr>
+                        <tr>
+                          <td width="38%" style="padding: 10px 14px; background-color: #f0fdf4; border-bottom: 1px solid #e5e7eb; font-size: 12px; font-weight: bold; color: #166534; text-transform: uppercase; font-family: Courier, monospace;">Contact Person</td>
+                          <td style="padding: 10px 14px; border-bottom: 1px solid #e5e7eb; font-size: 13.5px; font-weight: bold; color: #111827;">{enquiry.name}</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 10px 14px; background-color: #f0fdf4; border-bottom: 1px solid #e5e7eb; font-size: 12px; font-weight: bold; color: #166534; text-transform: uppercase; font-family: Courier, monospace;">Organisation / Buyer</td>
+                          <td style="padding: 10px 14px; border-bottom: 1px solid #e5e7eb; font-size: 13.5px; font-weight: bold; color: #111827;">{enquiry.orgName}</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 10px 14px; background-color: #f0fdf4; border-bottom: 1px solid #e5e7eb; font-size: 12px; font-weight: bold; color: #166534; text-transform: uppercase; font-family: Courier, monospace;">Business Email</td>
+                          <td style="padding: 10px 14px; border-bottom: 1px solid #e5e7eb; font-size: 13.5px; font-weight: bold; color: #047857;"><a href="mailto:{enquiry.email}" style="color: #047857; text-decoration: none;">{enquiry.email}</a></td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 10px 14px; background-color: #f0fdf4; border-bottom: 1px solid #e5e7eb; font-size: 12px; font-weight: bold; color: #166534; text-transform: uppercase; font-family: Courier, monospace;">Phone / WhatsApp</td>
+                          <td style="padding: 10px 14px; border-bottom: 1px solid #e5e7eb; font-size: 13.5px; font-weight: bold; color: #047857;"><a href="tel:{enquiry.contactNumber}" style="color: #047857; text-decoration: none;">{enquiry.contactNumber}</a></td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 10px 14px; background-color: #f0fdf4; border-bottom: 1px solid #e5e7eb; font-size: 12px; font-weight: bold; color: #166534; text-transform: uppercase; font-family: Courier, monospace;">Commodity Required</td>
+                          <td style="padding: 10px 14px; border-bottom: 1px solid #e5e7eb; font-size: 14px; font-weight: 800; color: #047857;">{enquiry.product}</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 10px 14px; background-color: #f0fdf4; border-bottom: 1px solid #e5e7eb; font-size: 12px; font-weight: bold; color: #166534; text-transform: uppercase; font-family: Courier, monospace;">Target Volume</td>
+                          <td style="padding: 10px 14px; border-bottom: 1px solid #e5e7eb; font-size: 13.5px; font-weight: bold; color: #111827;">{enquiry.quantity}</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 10px 14px; background-color: #f0fdf4; font-size: 12px; font-weight: bold; color: #166534; text-transform: uppercase; font-family: Courier, monospace;">Delivery Address / Port</td>
+                          <td style="padding: 10px 14px; font-size: 13.5px; font-weight: bold; color: #111827;">{enquiry.orgAddress}</td>
+                        </tr>
+                        {f'<tr><td style="padding: 10px 14px; background-color: #fef3c7; border-top: 1px solid #e5e7eb; font-size: 12px; font-weight: bold; color: #92400e; text-transform: uppercase; font-family: Courier, monospace;">Buyer Notes</td><td style="padding: 10px 14px; border-top: 1px solid #e5e7eb; font-size: 13px; color: #374151;">{enquiry.message}</td></tr>' if enquiry.message else ''}
+                      </table>
 
-              <div style="text-align: center;">
-                <a href="mailto:{enquiry.email}?subject=Quotation%20for%20{enquiry.product}%20-%20Ref%20{enquiry.ref}" class="cta-btn">
-                  Reply Directly to Buyer &rarr;
-                </a>
-              </div>
-            </div>
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 24px;">
+                        <tr>
+                          <td align="center">
+                            <a href="mailto:{enquiry.email}?subject=Quotation%20for%20{enquiry.product}%20-%20Ref%20{enquiry.ref}" style="display: inline-block; background-color: #d4af37; color: #000000; text-decoration: none; padding: 12px 28px; border-radius: 6px; font-weight: bold; font-size: 13.5px;">
+                              Reply Directly to Buyer &rarr;
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
 
-            <div class="footer">
-              <p style="margin: 0;">HarvestGate Overseas • Mig-14, Kanth Rd, Ashiyana Colony, Moradabad, UP, India - 244001</p>
-              <p style="margin: 4px 0 0 0; font-family: monospace;">FSSAI & APEDA Certified Global Agro Export House</p>
-            </div>
-          </div>
+                  <!-- FOOTER -->
+                  <tr>
+                    <td align="center" style="background-color: #111827; padding: 20px; color: #9ca3af; font-size: 11px; line-height: 1.6;">
+                      HarvestGate Overseas Pvt. Ltd. &bull; Mig-14, Kanth Rd, Ashiyana Colony, Moradabad, UP - 244001<br>
+                      FSSAI &amp; APEDA Certified Global Agro Export House
+                    </td>
+                  </tr>
+
+                </table>
+              </td>
+            </tr>
+          </table>
         </body>
         </html>
         """
@@ -206,129 +229,141 @@ def send_buyer_acknowledgement_email(enquiry: Enquiry):
         msg["Reply-To"] = f"HarvestGate Export Desk <{admin_email}>"
         
         html_content = f"""
-        <!DOCTYPE html>
-        <html>
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <html xmlns="http://www.w3.org/1999/xhtml">
         <head>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
           <title>Export Inquiry Acknowledgment</title>
-          <style>
-            body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f6f8f6; margin: 0; padding: 24px; color: #1f2937; -webkit-font-smoothing: antialiased; }}
-            .container {{ max-width: 620px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.06); }}
-            .header {{ background: linear-gradient(135deg, #0e1e13 0%, #173622 100%); padding: 36px 28px; text-align: center; border-bottom: 3px solid #d4af37; color: #ffffff; }}
-            .logo-emblem {{ display: inline-block; background: rgba(212, 175, 55, 0.15); border: 1.5px solid #d4af37; border-radius: 12px; padding: 10px 20px; margin-bottom: 14px; }}
-            .logo-text {{ font-size: 20px; font-weight: 900; letter-spacing: 0.12em; color: #ffffff; margin: 0; text-transform: uppercase; }}
-            .logo-gold {{ color: #d4af37; }}
-            .tagline {{ font-size: 11px; font-family: monospace; color: #d4af37; text-transform: uppercase; letter-spacing: 0.22em; margin: 6px 0 0 0; }}
-            .ref-badge {{ display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(212,175,55,0.6); color: #d4af37; padding: 5px 14px; border-radius: 20px; font-size: 11.5px; font-weight: bold; margin-top: 14px; font-family: monospace; letter-spacing: 0.05em; }}
-            .body {{ padding: 32px 28px; }}
-            .greeting {{ font-size: 18px; font-weight: 800; color: #111827; margin: 0 0 14px 0; }}
-            .lead-text {{ font-size: 14.5px; line-height: 1.65; color: #374151; margin-bottom: 24px; }}
-            .card-box {{ background: #fbfdfb; border: 1px solid #d1fae5; border-radius: 12px; padding: 20px; margin: 24px 0; }}
-            .card-title {{ font-size: 12px; font-family: monospace; text-transform: uppercase; letter-spacing: 0.15em; color: #047857; font-weight: bold; margin: 0 0 14px 0; display: flex; align-items: center; }}
-            .table-wrap {{ width: 100%; border-collapse: collapse; }}
-            .table-wrap th, .table-wrap td {{ padding: 10px 12px; text-align: left; font-size: 13.5px; border-bottom: 1px solid #e5e7eb; }}
-            .table-wrap th {{ width: 38%; color: #6b7280; font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; }}
-            .table-wrap td {{ color: #111827; font-weight: 600; }}
-            .highlight-cell {{ color: #047857 !important; font-weight: 800 !important; font-size: 14px !important; }}
-            .assurance-box {{ background: #fdfbf7; border-left: 4px solid #d4af37; padding: 16px 18px; border-radius: 6px; margin: 24px 0; font-size: 13px; line-height: 1.6; color: #4b5563; }}
-            .contact-cta {{ text-align: center; margin: 30px 0 10px 0; }}
-            .wa-btn {{ display: inline-block; background: #25D366; color: #ffffff !important; text-decoration: none; padding: 12px 26px; border-radius: 8px; font-weight: bold; font-size: 13px; letter-spacing: 0.02em; margin-right: 8px; }}
-            .email-btn {{ display: inline-block; background: #112417; color: #d4af37 !important; text-decoration: none; padding: 12px 26px; border-radius: 8px; font-weight: bold; font-size: 13px; border: 1px solid #d4af37; }}
-            .certs-bar {{ background: #f9fafb; border-top: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb; padding: 14px 20px; text-align: center; font-size: 11px; font-mono; color: #4b5563; font-weight: bold; letter-spacing: 0.08em; }}
-            .footer {{ background: #111827; padding: 24px; text-align: center; font-size: 11.5px; color: #9ca3af; line-height: 1.7; }}
-            .footer a {{ color: #d4af37; text-decoration: none; }}
-          </style>
         </head>
-        <body>
-          <div class="container">
-            
-            <!-- BRAND HEADER -->
-            <div class="header">
-              <div class="logo-emblem">
-                <p class="logo-text">HARVEST<span class="logo-gold">GATE</span></p>
-                <p class="tagline">OVERSEAS PVT. LTD.</p>
-              </div>
-              <div style="font-size: 14px; color: #e5e7eb; font-weight: 500;">
-                Global Agro Export Trade Desk
-              </div>
-              <div class="ref-badge">
-                ENQUIRY REF: {enquiry.ref}
-              </div>
-            </div>
+        <body style="margin: 0; padding: 0; background-color: #f2f5f2; font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f2f5f2; padding: 25px 10px;">
+            <tr>
+              <td align="center">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 620px; background-color: #ffffff; border: 1px solid #c8d8c8; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.07);">
+                  
+                  <!-- BRAND HEADER -->
+                  <tr>
+                    <td align="center" style="background-color: #112417; padding: 32px 20px; border-bottom: 4px solid #d4af37;">
+                      <table border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td align="center" style="border: 1.5px solid #d4af37; background-color: #173622; padding: 8px 20px; border-radius: 8px;">
+                            <span style="font-size: 22px; font-weight: 900; letter-spacing: 0.12em; color: #ffffff; text-transform: uppercase;">HARVEST<span style="color: #d4af37;">GATE</span></span>
+                            <div style="font-size: 10.5px; font-family: Courier, monospace; color: #d4af37; letter-spacing: 0.22em; text-transform: uppercase; margin-top: 3px;">OVERSEAS PVT. LTD.</div>
+                          </td>
+                        </tr>
+                      </table>
+                      <div style="font-size: 13px; color: #e2e8f0; font-weight: bold; margin-top: 12px; text-transform: uppercase; letter-spacing: 0.08em;">
+                        Global Agro Export Trade Desk
+                      </div>
+                      <div style="margin-top: 10px;">
+                        <span style="display: inline-block; background-color: #1d3d27; border: 1px solid #d4af37; color: #d4af37; padding: 4px 14px; border-radius: 20px; font-size: 11.5px; font-weight: bold; font-family: Courier, monospace;">
+                          ENQUIRY REF: {enquiry.ref}
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
 
-            <!-- EMAIL BODY -->
-            <div class="body">
-              <p class="greeting">Dear {enquiry.name},</p>
-              
-              <p class="lead-text">
-                Thank you for your business interest in <strong>HarvestGate Overseas</strong>. We have formally registered your commercial export enquiry on behalf of <strong>{enquiry.orgName}</strong>.
-              </p>
+                  <!-- BODY CONTENT -->
+                  <tr>
+                    <td style="padding: 30px 24px;">
+                      <p style="font-size: 17px; font-weight: bold; color: #111827; margin: 0 0 12px 0;">
+                        Dear {enquiry.name},
+                      </p>
+                      
+                      <p style="font-size: 14.5px; line-height: 1.65; color: #374151; margin: 0 0 20px 0;">
+                        Thank you for reaching out to <strong>HarvestGate Overseas</strong>. We have formally registered your commercial export enquiry on behalf of <strong>{enquiry.orgName}</strong>.
+                      </p>
 
-              <!-- SPECIFICATION SUMMARY CARD -->
-              <div class="card-box">
-                <div class="card-title">
-                  &#10003; Logged Export Requirement Specifications
-                </div>
-                <table class="table-wrap">
-                  <tr>
-                    <th>Reference ID</th>
-                    <td><strong style="color: #d4af37; font-family: monospace;">{enquiry.ref}</strong></td>
+                      <!-- SPECIFICATION CARD -->
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; border: 1px solid #c7e6c7; border-radius: 8px; overflow: hidden; margin: 20px 0; background-color: #ffffff;">
+                        <tr style="background-color: #166534;">
+                          <td colspan="2" style="padding: 10px 14px; color: #ffffff; font-size: 12px; font-weight: bold; font-family: Courier, monospace; text-transform: uppercase; letter-spacing: 0.1em;">
+                            &#10003; Logged Export Requirement Specifications
+                          </td>
+                        </tr>
+                        <tr>
+                          <td width="38%" style="padding: 10px 14px; background-color: #f0fdf4; border-bottom: 1px solid #e0eae0; font-size: 12px; font-weight: bold; color: #166534; text-transform: uppercase; font-family: Courier, monospace;">Reference ID</td>
+                          <td style="padding: 10px 14px; border-bottom: 1px solid #e0eae0; font-size: 13.5px; font-weight: bold; color: #b45309; font-family: Courier, monospace;">{enquiry.ref}</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 10px 14px; background-color: #f0fdf4; border-bottom: 1px solid #e0eae0; font-size: 12px; font-weight: bold; color: #166534; text-transform: uppercase; font-family: Courier, monospace;">Requested Commodity</td>
+                          <td style="padding: 10px 14px; border-bottom: 1px solid #e0eae0; font-size: 14.5px; font-weight: 800; color: #047857;">{enquiry.product}</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 10px 14px; background-color: #f0fdf4; border-bottom: 1px solid #e0eae0; font-size: 12px; font-weight: bold; color: #166534; text-transform: uppercase; font-family: Courier, monospace;">Target Volume</td>
+                          <td style="padding: 10px 14px; border-bottom: 1px solid #e0eae0; font-size: 13.5px; font-weight: bold; color: #111827;">{enquiry.quantity}</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 10px 14px; background-color: #f0fdf4; border-bottom: 1px solid #e0eae0; font-size: 12px; font-weight: bold; color: #166534; text-transform: uppercase; font-family: Courier, monospace;">Destination / Address</td>
+                          <td style="padding: 10px 14px; border-bottom: 1px solid #e0eae0; font-size: 13.5px; font-weight: bold; color: #111827;">{enquiry.orgAddress}</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 10px 14px; background-color: #f0fdf4; font-size: 12px; font-weight: bold; color: #166534; text-transform: uppercase; font-family: Courier, monospace;">Phone / WhatsApp</td>
+                          <td style="padding: 10px 14px; font-size: 13.5px; font-weight: bold; color: #111827;">{enquiry.contactNumber}</td>
+                        </tr>
+                        {f'<tr><td style="padding: 10px 14px; background-color: #fef3c7; border-top: 1px solid #e0eae0; font-size: 12px; font-weight: bold; color: #92400e; text-transform: uppercase; font-family: Courier, monospace;">Special Notes</td><td style="padding: 10px 14px; border-top: 1px solid #e0eae0; font-size: 13px; color: #374151;">{enquiry.message}</td></tr>' if enquiry.message else ''}
+                      </table>
+
+                      <!-- ASSURANCE CALLOUT -->
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 22px 0; background-color: #fdfbf7; border-left: 4px solid #d4af37; border-top: 1px solid #f2ede4; border-right: 1px solid #f2ede4; border-bottom: 1px solid #f2ede4; border-radius: 4px;">
+                        <tr>
+                          <td style="padding: 14px 18px; font-size: 13.5px; line-height: 1.6; color: #4b5563;">
+                            <strong style="color: #111827; font-size: 14px;">What happens next?</strong><br>
+                            Our international merchandising desk is reviewing your container specifications and preparing the formal <strong>CIF/FOB quotation</strong>, packaging options, and certified quality parameters. A dedicated trade manager will connect with you within <strong>24 business hours</strong>.
+                          </td>
+                        </tr>
+                      </table>
+
+                      <!-- ACTION BUTTONS -->
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 25px;">
+                        <tr>
+                          <td align="center">
+                            <p style="font-size: 11.5px; color: #6b7280; margin: 0 0 12px 0; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; font-family: Courier, monospace;">
+                              Need Immediate Dispatch / Direct Trade Desk Support?
+                            </p>
+                            <table border="0" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td align="center" style="padding: 0 6px;">
+                                  <a href="https://wa.me/918077078313?text=Hi%20HarvestGate,%20following%20up%20on%20Export%20Enquiry%20Ref%20{enquiry.ref}" target="_blank" style="display: inline-block; background-color: #25D366; color: #ffffff; text-decoration: none; padding: 11px 22px; border-radius: 6px; font-weight: bold; font-size: 13px;">
+                                    Chat on WhatsApp &rarr;
+                                  </a>
+                                </td>
+                                <td align="center" style="padding: 0 6px;">
+                                  <a href="mailto:{admin_email}?subject=Follow-up%20on%20Enquiry%20{enquiry.ref}" style="display: inline-block; background-color: #112417; color: #d4af37; text-decoration: none; padding: 11px 22px; border-radius: 6px; font-weight: bold; font-size: 13px; border: 1px solid #d4af37;">
+                                    Direct Trade Desk &rarr;
+                                  </a>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+
+                    </td>
                   </tr>
+
+                  <!-- CERTIFICATIONS BANNER -->
                   <tr>
-                    <th>Requested Commodity</th>
-                    <td class="highlight-cell">{enquiry.product}</td>
+                    <td align="center" style="background-color: #edf5ed; border-top: 1px solid #d4e2d4; border-bottom: 1px solid #d4e2d4; padding: 12px 16px; font-size: 11px; font-family: Courier, monospace; color: #166534; font-weight: bold; letter-spacing: 0.08em;">
+                      FSSAI CERTIFIED &bull; APEDA REGISTERED (AAICH2946R) &bull; 100% SORTEX CLEANED
+                    </td>
                   </tr>
+
+                  <!-- FOOTER -->
                   <tr>
-                    <th>Target Volume</th>
-                    <td>{enquiry.quantity}</td>
+                    <td align="center" style="background-color: #111827; padding: 24px 20px; color: #9ca3af; font-size: 11.5px; line-height: 1.7;">
+                      <strong style="color: #ffffff; font-size: 12px;">HarvestGate Overseas Pvt. Ltd.</strong><br>
+                      Registered Trade Facility: Mig-14, Kanth Rd, near Muskan Nursing Home, Ashiyana Colony, Harthala, Moradabad, Uttar Pradesh, India - 244001<br>
+                      Phone/WhatsApp: +91 8077078313 &bull; Email: <a href="mailto:{admin_email}" style="color: #d4af37; text-decoration: none;">{admin_email}</a><br>
+                      <span style="font-size: 10.5px; color: #6b7280;">Cultivated with Intent &bull; Shipped with Proof &bull; Global Agricultural Exports</span>
+                    </td>
                   </tr>
-                  <tr>
-                    <th>Destination / Address</th>
-                    <td>{enquiry.orgAddress}</td>
-                  </tr>
-                  <tr>
-                    <th>Contact Phone / WhatsApp</th>
-                    <td>{enquiry.contactNumber}</td>
-                  </tr>
-                  {f'<tr><th>Special Instructions</th><td>{enquiry.message}</td></tr>' if enquiry.message else ''}
+
                 </table>
-              </div>
-
-              <!-- ASSURANCE & NEXT STEPS -->
-              <div class="assurance-box">
-                <strong style="color: #111827;">What happens next?</strong><br>
-                Our international merchandising team is reviewing your container load requirements and preparing the formal <strong>CIF/FOB quotation</strong>, packaging options, and certified quality parameters. A dedicated trade manager will connect with you within <strong>24 business hours</strong>.
-              </div>
-
-              <!-- INSTANT CONTACT ACTIONS -->
-              <div class="contact-cta">
-                <p style="font-size: 12px; color: #6b7280; margin-bottom: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">
-                  Need Immediate Dispatch / Direct Trade Desk Support?
-                </p>
-                <a href="https://wa.me/918077078313?text=Hi%20HarvestGate,%20following%20up%20on%20Export%20Enquiry%20Ref%20{enquiry.ref}" class="wa-btn" target="_blank">
-                  Chat on WhatsApp &rarr;
-                </a>
-                <a href="mailto:{admin_email}?subject=Follow-up%20on%20Enquiry%20{enquiry.ref}" class="email-btn">
-                  Direct Trade Desk &rarr;
-                </a>
-              </div>
-            </div>
-
-            <!-- CERTIFICATIONS BAR -->
-            <div class="certs-bar">
-              FSSAI CERTIFIED &bull; APEDA REGISTERED (AAICH2946R) &bull; 100% SORTEX CLEANED
-            </div>
-
-            <!-- OFFICIAL FOOTER -->
-            <div class="footer">
-              <strong style="color: #ffffff; font-size: 12px;">HarvestGate Overseas Pvt. Ltd.</strong><br>
-              Registered Trade Facility: Mig-14, Kanth Rd, near Muskan Nursing Home, Ashiyana Colony, Harthala, Moradabad, Uttar Pradesh, India - 244001<br>
-              Phone/WhatsApp: +91 8077078313 &bull; Email: <a href="mailto:{admin_email}">{admin_email}</a><br>
-              <span style="font-size: 10.5px; color: #6b7280;">Cultivated with Intent &bull; Shipped with Proof &bull; Global Agricultural Exports</span>
-            </div>
-
-          </div>
+              </td>
+            </tr>
+          </table>
         </body>
         </html>
         """
