@@ -13,8 +13,8 @@ const Hero = () => {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
   const imgScale = useTransform(scrollYProgress, [0, 1], [1.04, 1.16]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-14%"]);
-  const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
+  const fade = useTransform(scrollYProgress, [0, 0.65, 0.95], [1, 1, 0]);
 
   return (
     <section
@@ -28,8 +28,10 @@ const Hero = () => {
           alt="Indian millet farmland at dusk"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-hg-bg/45" />
-        <div className="absolute inset-0 bg-gradient-to-t from-hg-bg via-hg-bg/55 to-hg-bg/40" />
+        {/* Uniform subtle veil for maximum text contrast across the full hero */}
+        <div className="absolute inset-0 bg-hg-bg/25 dark:bg-black/50" />
+        {/* Soft bottom edge transition into Section 01 — ONLY at the very bottom (last 2 lines) */}
+        <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-gradient-to-t from-hg-bg via-hg-bg/60 to-transparent pointer-events-none" />
       </motion.div>
 
       {/* ACCREDITATIONS MARQUEE WITH FIXED CENTER TITLE */}
@@ -68,7 +70,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.05, ease: EASE }}
-            className="max-w-xl text-[15.5px] font-bold leading-relaxed text-gray-900 dark:text-hg-gold drop-shadow-sm lg:col-span-6 transition-colors duration-300"
+            className="max-w-xl text-[15.5px] font-bold leading-relaxed text-gray-950 dark:text-hg-gold drop-shadow-sm lg:col-span-6 transition-colors duration-300"
           >
             We Export Premium Indian Foxnuts, Millets, Pulses, Grains, Flours, Jaggery &amp; More. <br />
             Harvestgate Overseas brings the finest agricultural treasures of India to global markets — from naturally cultivated, traditionally processed staples under Harvestgate Naturals to carefully selected premium produce under Harvestgate Select. Our range includes wholesome unpolished millets, pulses, grains, traditional flours, naturally prepared jaggery, and premium Indian foxnuts, sourced with care from trusted farming communities. Rooted in India's agricultural heritage and prepared with attention to purity, authenticity, and quality, every product reflects our commitment to bringing the true goodness of Indian produce to the world.
