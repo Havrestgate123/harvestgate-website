@@ -223,6 +223,31 @@ async def create_enquiry(input: EnquiryCreate):
     logging.info(f"New export enquiry dispatched for admin@harvestgateoverseas.com: {enquiry_obj.ref} from {enquiry_obj.name} ({enquiry_obj.email}) for {enquiry_obj.product}")
     return enquiry_obj
 
+@api_router.post("/test-smtp")
+async def test_smtp():
+    test_enquiry = Enquiry(
+        name="Test Trade Buyer",
+        orgName="HarvestGate Test Desk",
+        orgAddress="Business Bay, Dubai, UAE",
+        email="test@harvestgateoverseas.com",
+        contactNumber="+91 8077078313",
+        product="Popped Lotus Seeds / Phool Makhana 6+ Suta",
+        quantity="1 x 20ft FCL (24 MT)",
+        message="This is a test email confirming that your SMTP protocol is active and delivering emails directly to admin@harvestgateoverseas.com.",
+    )
+    success = send_enquiry_email(test_enquiry)
+    if success:
+        return {
+            "status": "success",
+            "message": "Test email sent successfully via SMTP to admin@harvestgateoverseas.com!",
+            "ref": test_enquiry.ref
+        }
+    else:
+        raise HTTPException(
+            status_code=500,
+            detail="Failed to send email via SMTP. Please verify SMTP_HOST, SMTP_PORT, SMTP_USER, and SMTP_PASSWORD in backend/.env."
+        )
+
 @api_router.get("/enquiries")
 async def get_enquiries():
     if db is None:
