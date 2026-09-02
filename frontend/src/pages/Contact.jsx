@@ -200,7 +200,7 @@ const Contact = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                  className="rounded-3xl border-2 border-hg-gold/60 bg-gradient-to-b from-[#132c1e] to-[#0d1e15] p-8 sm:p-14 text-white shadow-2xl relative overflow-hidden"
+                  className="rounded-3xl border-2 border-hg-gold/60 bg-white dark:bg-gradient-to-b dark:from-[#132c1e] dark:to-[#0d1e15] p-8 sm:p-14 text-hg-fg dark:text-white shadow-2xl relative overflow-hidden"
                 >
                   <div className="absolute top-0 right-0 w-96 h-96 bg-hg-gold/10 rounded-full blur-3xl pointer-events-none" />
                   
@@ -213,56 +213,56 @@ const Contact = () => {
                     <Check size={32} strokeWidth={3} />
                   </motion.div>
 
-                  <h2 className="mt-8 text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
+                  <h2 className="mt-8 text-4xl sm:text-5xl font-extrabold tracking-tight text-hg-fg dark:text-white">
                     Enquiry Logged Successfully
                   </h2>
                   <div className="mt-3 flex flex-wrap items-center gap-3">
-                    <div className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-3.5 py-1.5 backdrop-blur-sm border border-white/10">
+                    <div className="inline-flex items-center gap-2 rounded-lg bg-hg-bg2 dark:bg-white/10 px-3.5 py-1.5 backdrop-blur-sm border border-hg-line dark:border-white/10">
                       <span className="font-mono text-xs uppercase tracking-widest text-hg-gold font-bold">
                         Reference ID:
                       </span>
-                      <span className="font-mono text-sm font-black text-white">
+                      <span className="font-mono text-sm font-black text-hg-fg dark:text-white">
                         {done.ref}
                       </span>
                     </div>
 
-                    <div className="inline-flex items-center gap-2 rounded-lg bg-emerald-500/20 px-3.5 py-1.5 backdrop-blur-sm border border-emerald-400/30 text-emerald-300 font-mono text-xs font-bold tracking-wide">
-                      <Mail size={13} className="text-emerald-400" />
+                    <div className="inline-flex items-center gap-2 rounded-lg bg-emerald-500/15 dark:bg-emerald-500/20 px-3.5 py-1.5 backdrop-blur-sm border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 font-mono text-xs font-bold tracking-wide">
+                      <Mail size={13} className="text-emerald-600 dark:text-emerald-400" />
                       Dispatched to: admin@harvestgateoverseas.com
                     </div>
                   </div>
 
-                  <p className="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-gray-200">
-                    Thank you, <span className="font-bold text-white">{done.name}</span>. We have transmitted your export inquiry for{" "}
-                    <span className="font-bold text-white underline underline-offset-4">{done.product}</span> ({done.quantity}) directly to our commercial trade desk at{" "}
+                  <p className="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-hg-fg2 dark:text-gray-200">
+                    Thank you, <span className="font-bold text-hg-fg dark:text-white">{done.name}</span>. We have transmitted your export inquiry for{" "}
+                    <span className="font-bold text-hg-fg dark:text-white underline underline-offset-4">{done.product}</span> ({done.quantity}) directly to our commercial trade desk at{" "}
                     <span className="font-bold text-hg-gold">admin@harvestgateoverseas.com</span>. Our trade manager will review your required specs and reply to{" "}
                     <span className="font-bold text-hg-gold">{done.email}</span> within 24 hours.
                   </p>
 
-                  <div className="mt-10 rounded-2xl border border-white/15 bg-black/25 p-6 backdrop-blur-sm">
+                  <div className="mt-10 rounded-2xl border border-hg-line dark:border-white/15 bg-hg-bg dark:bg-black/25 p-6 backdrop-blur-sm">
                     <h4 className="font-mono text-xs uppercase tracking-[0.25em] text-hg-gold font-bold mb-4 flex items-center gap-2">
                       <ShieldCheck size={16} /> Dispatched Export Specifications
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                       <div>
-                        <span className="text-gray-400 block text-xs font-mono uppercase">Contact Person</span>
-                        <span className="font-bold text-white">{done.name}</span>
+                        <span className="text-hg-fg3 dark:text-gray-400 block text-xs font-mono uppercase">Contact Person</span>
+                        <span className="font-bold text-hg-fg dark:text-white">{done.name}</span>
                       </div>
                       <div>
-                        <span className="text-gray-400 block text-xs font-mono uppercase">Organisation</span>
-                        <span className="font-bold text-white">{done.orgName}</span>
+                        <span className="text-hg-fg3 dark:text-gray-400 block text-xs font-mono uppercase">Organisation</span>
+                        <span className="font-bold text-hg-fg dark:text-white">{done.orgName}</span>
                       </div>
                       <div>
-                        <span className="text-gray-400 block text-xs font-mono uppercase">Phone / WhatsApp</span>
-                        <span className="font-bold text-white">{done.contactNumber}</span>
+                        <span className="text-hg-fg3 dark:text-gray-400 block text-xs font-mono uppercase">Phone / WhatsApp</span>
+                        <span className="font-bold text-hg-fg dark:text-white">{done.contactNumber}</span>
                       </div>
                       <div>
-                        <span className="text-gray-400 block text-xs font-mono uppercase">Required Product</span>
+                        <span className="text-hg-fg3 dark:text-gray-400 block text-xs font-mono uppercase">Required Product</span>
                         <span className="font-bold text-hg-gold">{done.product}</span>
                       </div>
                       <div className="sm:col-span-2">
-                        <span className="text-gray-400 block text-xs font-mono uppercase">Delivery / Address</span>
-                        <span className="font-bold text-white">{done.orgAddress}</span>
+                        <span className="text-hg-fg3 dark:text-gray-400 block text-xs font-mono uppercase">Delivery / Address</span>
+                        <span className="font-bold text-hg-fg dark:text-white">{done.orgAddress}</span>
                       </div>
                     </div>
                   </div>
@@ -283,7 +283,7 @@ const Contact = () => {
                         setErrors({});
                         setDone(null);
                       }}
-                      className="rounded-xl border border-white/30 bg-white/10 px-6 py-3.5 font-mono text-xs uppercase tracking-widest font-bold text-white hover:bg-white/20 transition-all"
+                      className="rounded-xl border border-hg-line dark:border-white/30 bg-hg-bg2 dark:bg-white/10 px-6 py-3.5 font-mono text-xs uppercase tracking-widest font-bold text-hg-fg dark:text-white hover:bg-hg-line/50 transition-all"
                     >
                       Submit Another Requirement
                     </button>
@@ -302,22 +302,22 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4 }}
-                  className="rounded-3xl border border-emerald-900/40 bg-gradient-to-b from-[#143221] via-[#10291b] to-[#0d2015] p-6 sm:p-10 lg:p-12 text-white shadow-2xl relative overflow-hidden"
+                  className="rounded-3xl border border-hg-line dark:border-emerald-900/40 bg-white dark:bg-gradient-to-b dark:from-[#143221] dark:via-[#10291b] dark:to-[#0d2015] p-6 sm:p-10 lg:p-12 text-hg-fg dark:text-white shadow-xl dark:shadow-2xl relative overflow-hidden"
                 >
                   {/* Subtle decorative glowing corner */}
                   <div className="absolute top-0 right-0 w-80 h-80 bg-hg-gold/10 rounded-full blur-3xl pointer-events-none" />
                   <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
                   {/* FORM HEADER */}
-                  <div className="relative z-10 border-b border-white/15 pb-8 mb-8">
+                  <div className="relative z-10 border-b border-hg-line dark:border-white/15 pb-8 mb-8">
                     <div className="flex items-center gap-2.5 text-hg-gold font-mono text-xs uppercase tracking-[0.25em] font-bold">
                       <Sparkles size={16} />
                       Direct Export Desk Request
                     </div>
-                    <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-hg-gold tracking-tight">
+                    <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-hg-fg dark:text-hg-gold tracking-tight">
                       Contact us
                     </h2>
-                    <p className="mt-2 text-base sm:text-lg font-medium text-emerald-100/90 leading-relaxed">
+                    <p className="mt-2 text-base sm:text-lg font-medium text-hg-fg2 dark:text-emerald-100/90 leading-relaxed">
                       We’d be glad to hear from you — reach out to our trade team anytime for certified specifications, container loads, and private labelling.
                     </p>
                   </div>
@@ -328,13 +328,13 @@ const Contact = () => {
                     {/* ROW 1: Full Name & Org Name */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
-                        <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-emerald-100 mb-2">
+                        <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-hg-fg dark:text-emerald-100 mb-2">
                           <span className="flex items-center gap-1.5">
                             <User size={14} className="text-hg-gold" />
                             Full Name <span className="text-hg-gold">*</span>
                           </span>
                           {errors.name && (
-                            <span className="text-rose-400 font-sans text-xs normal-case">{errors.name}</span>
+                            <span className="text-rose-500 dark:text-rose-400 font-sans text-xs normal-case">{errors.name}</span>
                           )}
                         </label>
                         <input
@@ -343,20 +343,20 @@ const Contact = () => {
                           value={values.name}
                           onChange={set("name")}
                           placeholder="e.g. Marcus Vance"
-                          className={`w-full rounded-xl bg-white/95 px-4 py-3.5 text-sm font-semibold text-gray-900 placeholder:text-gray-400 placeholder:font-normal outline-none transition-all shadow-inner focus:bg-white focus:ring-2 focus:ring-hg-gold ${
-                            errors.name ? "ring-2 ring-rose-400" : "border border-transparent"
+                          className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${
+                            errors.name ? "ring-2 ring-rose-400 border-rose-400" : ""
                           }`}
                         />
                       </div>
 
                       <div>
-                        <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-emerald-100 mb-2">
+                        <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-hg-fg dark:text-emerald-100 mb-2">
                           <span className="flex items-center gap-1.5">
                             <Building2 size={14} className="text-hg-gold" />
                             Organisation Name <span className="text-hg-gold">*</span>
                           </span>
                           {errors.orgName && (
-                            <span className="text-rose-400 font-sans text-xs normal-case">{errors.orgName}</span>
+                            <span className="text-rose-500 dark:text-rose-400 font-sans text-xs normal-case">{errors.orgName}</span>
                           )}
                         </label>
                         <input
@@ -365,8 +365,8 @@ const Contact = () => {
                           value={values.orgName}
                           onChange={set("orgName")}
                           placeholder="e.g. Apex Global Trading FZE"
-                          className={`w-full rounded-xl bg-white/95 px-4 py-3.5 text-sm font-semibold text-gray-900 placeholder:text-gray-400 placeholder:font-normal outline-none transition-all shadow-inner focus:bg-white focus:ring-2 focus:ring-hg-gold ${
-                            errors.orgName ? "ring-2 ring-rose-400" : "border border-transparent"
+                          className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${
+                            errors.orgName ? "ring-2 ring-rose-400 border-rose-400" : ""
                           }`}
                         />
                       </div>
@@ -374,13 +374,13 @@ const Contact = () => {
 
                     {/* ROW 2: Address with Pincode */}
                     <div>
-                      <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-emerald-100 mb-2">
+                      <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-hg-fg dark:text-emerald-100 mb-2">
                         <span className="flex items-center gap-1.5">
                           <MapPin size={14} className="text-hg-gold" />
                           Full Organization Address with Pincode <span className="text-hg-gold">*</span>
                         </span>
                         {errors.orgAddress && (
-                          <span className="text-rose-400 font-sans text-xs normal-case">{errors.orgAddress}</span>
+                          <span className="text-rose-500 dark:text-rose-400 font-sans text-xs normal-case">{errors.orgAddress}</span>
                         )}
                       </label>
                       <input
@@ -389,8 +389,8 @@ const Contact = () => {
                         value={values.orgAddress}
                         onChange={set("orgAddress")}
                         placeholder="e.g. Suite 402, Trade Tower, Business Bay, Dubai, UAE - PO Box 41209"
-                        className={`w-full rounded-xl bg-white/95 px-4 py-3.5 text-sm font-semibold text-gray-900 placeholder:text-gray-400 placeholder:font-normal outline-none transition-all shadow-inner focus:bg-white focus:ring-2 focus:ring-hg-gold ${
-                          errors.orgAddress ? "ring-2 ring-rose-400" : "border border-transparent"
+                        className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${
+                          errors.orgAddress ? "ring-2 ring-rose-400 border-rose-400" : ""
                         }`}
                       />
                     </div>
@@ -398,13 +398,13 @@ const Contact = () => {
                     {/* ROW 3: Email & Contact Number */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
-                        <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-emerald-100 mb-2">
+                        <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-hg-fg dark:text-emerald-100 mb-2">
                           <span className="flex items-center gap-1.5">
                             <Mail size={14} className="text-hg-gold" />
                             Email <span className="text-hg-gold">*</span>
                           </span>
                           {errors.email && (
-                            <span className="text-rose-400 font-sans text-xs normal-case">{errors.email}</span>
+                            <span className="text-rose-500 dark:text-rose-400 font-sans text-xs normal-case">{errors.email}</span>
                           )}
                         </label>
                         <input
@@ -413,20 +413,20 @@ const Contact = () => {
                           value={values.email}
                           onChange={set("email")}
                           placeholder="buyer@globalimport.com"
-                          className={`w-full rounded-xl bg-white/95 px-4 py-3.5 text-sm font-semibold text-gray-900 placeholder:text-gray-400 placeholder:font-normal outline-none transition-all shadow-inner focus:bg-white focus:ring-2 focus:ring-hg-gold ${
-                            errors.email ? "ring-2 ring-rose-400" : "border border-transparent"
+                          className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${
+                            errors.email ? "ring-2 ring-rose-400 border-rose-400" : ""
                           }`}
                         />
                       </div>
 
                       <div>
-                        <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-emerald-100 mb-2">
+                        <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-hg-fg dark:text-emerald-100 mb-2">
                           <span className="flex items-center gap-1.5">
                             <Phone size={14} className="text-hg-gold" />
                             Contact Number (with Country Code)<span className="text-hg-gold">*</span>
                           </span>
                           {errors.contactNumber && (
-                            <span className="text-rose-400 font-sans text-xs normal-case">{errors.contactNumber}</span>
+                            <span className="text-rose-500 dark:text-rose-400 font-sans text-xs normal-case">{errors.contactNumber}</span>
                           )}
                         </label>
                         <input
@@ -435,8 +435,8 @@ const Contact = () => {
                           value={values.contactNumber}
                           onChange={set("contactNumber")}
                           placeholder="+971 50 123 4567 / +1 415 800 9000"
-                          className={`w-full rounded-xl bg-white/95 px-4 py-3.5 text-sm font-semibold text-gray-900 placeholder:text-gray-400 placeholder:font-normal outline-none transition-all shadow-inner focus:bg-white focus:ring-2 focus:ring-hg-gold ${
-                            errors.contactNumber ? "ring-2 ring-rose-400" : "border border-transparent"
+                          className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${
+                            errors.contactNumber ? "ring-2 ring-rose-400 border-rose-400" : ""
                           }`}
                         />
                       </div>
@@ -444,13 +444,13 @@ const Contact = () => {
 
                     {/* ROW 4: Product Required & Quick Selector */}
                     <div>
-                      <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-emerald-100 mb-2">
+                      <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-hg-fg dark:text-emerald-100 mb-2">
                         <span className="flex items-center gap-1.5">
                           <Package size={14} className="text-hg-gold" />
                           Product Required <span className="text-hg-gold">*</span>
                         </span>
                         {errors.product && (
-                          <span className="text-rose-400 font-sans text-xs normal-case">{errors.product}</span>
+                          <span className="text-rose-500 dark:text-rose-400 font-sans text-xs normal-case">{errors.product}</span>
                         )}
                       </label>
                       <input
@@ -459,22 +459,22 @@ const Contact = () => {
                         value={values.product}
                         onChange={set("product")}
                         placeholder="e.g. 100% Sortex Sorghum Jowar, Jumbo Phool Makhana 6+ Suta"
-                        className={`w-full rounded-xl bg-white/95 px-4 py-3.5 text-sm font-semibold text-gray-900 placeholder:text-gray-400 placeholder:font-normal outline-none transition-all shadow-inner focus:bg-white focus:ring-2 focus:ring-hg-gold ${
-                          errors.product ? "ring-2 ring-rose-400" : "border border-transparent"
+                        className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${
+                          errors.product ? "ring-2 ring-rose-400 border-rose-400" : ""
                         }`}
                       />
                       {/* Quick product chips */}
                       <div className="mt-2.5 flex flex-wrap items-center gap-2">
-                        <span className="text-[11px] font-mono uppercase tracking-wider text-hg-gold/90 font-bold">Quick Select:</span>
+                        <span className="text-[11px] font-mono uppercase tracking-wider text-hg-gold font-bold">Quick Select:</span>
                         {QUICK_PRODUCTS.map((p) => (
                           <button
                             key={p}
                             type="button"
                             onClick={() => setDirect("product", p)}
-                            className={`rounded-lg px-2.5 py-1 text-[11.5px] font-medium transition-all ${
+                            className={`rounded-lg px-2.5 py-1 text-[11.5px] font-medium transition-all border ${
                               values.product === p
-                                ? "bg-hg-gold text-black font-bold shadow"
-                                : "bg-white/10 text-emerald-100 hover:bg-white/20"
+                                ? "bg-hg-gold text-black font-bold border-hg-gold shadow"
+                                : "bg-hg-bg2 dark:bg-white/10 text-hg-fg dark:text-emerald-100 hover:bg-hg-line/60 border-hg-line dark:border-transparent"
                             }`}
                           >
                             + {p}
@@ -485,13 +485,13 @@ const Contact = () => {
 
                     {/* ROW 5: Quantity Required & Quick Volume Chips */}
                     <div>
-                      <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-emerald-100 mb-2">
+                      <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-hg-fg dark:text-emerald-100 mb-2">
                         <span className="flex items-center gap-1.5">
                           <Scale size={14} className="text-hg-gold" />
                           Quantity Required <span className="text-hg-gold">*</span>
                         </span>
                         {errors.quantity && (
-                          <span className="text-rose-400 font-sans text-xs normal-case">{errors.quantity}</span>
+                          <span className="text-rose-500 dark:text-rose-400 font-sans text-xs normal-case">{errors.quantity}</span>
                         )}
                       </label>
                       <input
@@ -500,22 +500,22 @@ const Contact = () => {
                         value={values.quantity}
                         onChange={set("quantity")}
                         placeholder="e.g. 1 x 20ft FCL (approx. 24 MT) or 100 MT monthly contract"
-                        className={`w-full rounded-xl bg-white/95 px-4 py-3.5 text-sm font-semibold text-gray-900 placeholder:text-gray-400 placeholder:font-normal outline-none transition-all shadow-inner focus:bg-white focus:ring-2 focus:ring-hg-gold ${
-                          errors.quantity ? "ring-2 ring-rose-400" : "border border-transparent"
+                        className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${
+                          errors.quantity ? "ring-2 ring-rose-400 border-rose-400" : ""
                         }`}
                       />
                       {/* Quick volume chips */}
                       <div className="mt-2.5 flex flex-wrap items-center gap-2">
-                        <span className="text-[11px] font-mono uppercase tracking-wider text-hg-gold/90 font-bold">Presets:</span>
+                        <span className="text-[11px] font-mono uppercase tracking-wider text-hg-gold font-bold">Presets:</span>
                         {QUICK_VOLUMES.map((v) => (
                           <button
                             key={v}
                             type="button"
                             onClick={() => setDirect("quantity", v)}
-                            className={`rounded-lg px-2.5 py-1 text-[11.5px] font-medium transition-all ${
+                            className={`rounded-lg px-2.5 py-1 text-[11.5px] font-medium transition-all border ${
                               values.quantity === v
-                                ? "bg-hg-gold text-black font-bold shadow"
-                                : "bg-white/10 text-emerald-100 hover:bg-white/20"
+                                ? "bg-hg-gold text-black font-bold border-hg-gold shadow"
+                                : "bg-hg-bg2 dark:bg-white/10 text-hg-fg dark:text-emerald-100 hover:bg-hg-line/60 border-hg-line dark:border-transparent"
                             }`}
                           >
                             {v}
@@ -526,12 +526,12 @@ const Contact = () => {
 
                     {/* ROW 6: Your Message */}
                     <div>
-                      <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-emerald-100 mb-2">
+                      <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-hg-fg dark:text-emerald-100 mb-2">
                         <span className="flex items-center gap-1.5">
                           <MessageSquare size={14} className="text-hg-gold" />
                           Your Message
                         </span>
-                        <span className="text-emerald-300/70 text-[11px] font-mono">Optional</span>
+                        <span className="text-hg-fg3 dark:text-emerald-300/70 text-[11px] font-mono">Optional</span>
                       </label>
                       <textarea
                         data-testid="enquiry-message-input"
@@ -539,7 +539,7 @@ const Contact = () => {
                         value={values.message}
                         onChange={set("message")}
                         placeholder="if you have any other specifications , you can mention here ....."
-                        className="w-full rounded-xl bg-white/95 px-4 py-3.5 text-sm font-semibold text-gray-900 placeholder:text-gray-400 placeholder:font-normal outline-none transition-all shadow-inner focus:bg-white focus:ring-2 focus:ring-hg-gold resize-y"
+                        className="w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 resize-y"
                       />
                     </div>
 
@@ -548,29 +548,28 @@ const Contact = () => {
                       <label className="flex items-start gap-3 cursor-pointer select-none group">
                         <input
                           type="checkbox"
-                          data-testid="enquiry-terms-checkbox"
                           checked={values.termsAccepted}
                           onChange={set("termsAccepted")}
-                          className="mt-1 h-5 w-5 rounded-md accent-hg-gold cursor-pointer transition-transform group-hover:scale-105"
+                          className="mt-1 h-4 w-4 rounded border-hg-line text-hg-gold focus:ring-hg-gold"
                         />
-                        <span className="text-sm font-bold text-white leading-snug">
-                          I accept the{" "}
-                          <Link to="/terms" target="_blank" className="text-hg-gold underline hover:text-amber-300">
-                            terms &amp; conditions
+                        <span className="text-xs text-hg-fg2 dark:text-emerald-100/90 leading-relaxed">
+                          I agree to the{" "}
+                          <Link to="/terms" className="text-hg-gold font-bold underline hover:text-amber-500">
+                            Terms &amp; Conditions
                           </Link>{" "}
                           and authorise HarvestGate Overseas to contact me regarding this export enquiry.{" "}
                           <span className="text-hg-gold">*</span>
                         </span>
                       </label>
                       {errors.termsAccepted && (
-                        <p className="mt-1.5 ml-8 text-xs font-bold text-rose-400">
+                        <p className="mt-1.5 ml-8 text-xs font-bold text-rose-500 dark:text-rose-400">
                           {errors.termsAccepted}
                         </p>
                       )}
                     </div>
 
                     {/* SUBMIT BUTTON */}
-                    <div className="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-white/15">
+                    <div className="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-hg-line dark:border-white/15">
                       <button
                         type="submit"
                         data-testid="contact-form-submit-button"
@@ -581,7 +580,7 @@ const Contact = () => {
                         <Send size={16} className={`transition-transform duration-300 ${submitting ? "animate-spin" : "group-hover:translate-x-1"}`} />
                       </button>
 
-                      <p className="text-[11.5px] font-mono text-emerald-200/80 tracking-wide flex items-center gap-2">
+                      <p className="text-[11.5px] font-mono text-hg-fg3 dark:text-emerald-200/80 tracking-wide flex items-center gap-2">
                         <ShieldCheck size={14} className="text-hg-gold shrink-0" />
                         Encrypted &amp; Protected under FSSAI / APEDA Export Standard
                       </p>
