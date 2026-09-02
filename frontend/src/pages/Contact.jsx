@@ -661,19 +661,39 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Statutory Identifiers */}
-            <div className="rounded-2xl border border-hg-line bg-hg-bg2 p-6 sm:p-7 shadow-md">
-              <p className="font-mono text-xs uppercase tracking-[0.24em] text-hg-gold font-bold flex items-center gap-2">
-                <Globe2 size={15} /> Statutory Registrations
+            {/* Facility Location Map Card */}
+            <div className="rounded-2xl border border-hg-line bg-hg-card p-5 sm:p-6 shadow-lg hover:border-hg-gold/50 transition-colors">
+              <div className="flex items-center justify-between gap-2 mb-4">
+                <p className="font-mono text-xs uppercase tracking-[0.24em] text-hg-gold font-bold flex items-center gap-2">
+                  <MapPin size={15} /> Facility Location Map
+                </p>
+                <a
+                  href="https://maps.google.com/maps?q=Mig-14%2C%20Kanth%20Rd%2C%20near%20Muskan%20Nursing%20Home%2C%20Ashiyana%20Colony%2C%20Harthala%2C%20Moradabad%2C%20Uttar%20Pradesh%20244001"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-[11px] uppercase tracking-wider text-hg-gold hover:underline font-bold flex items-center gap-1"
+                >
+                  <span>Open Full Map</span>
+                  <ArrowUpRight size={12} />
+                </a>
+              </div>
+
+              <div className="relative overflow-hidden rounded-xl border border-hg-line shadow-inner h-56 sm:h-64 w-full bg-hg-bg">
+                <iframe
+                  title="HarvestGate Overseas Registered Office Location Map"
+                  src="https://maps.google.com/maps?q=Mig-14%2C%20Kanth%20Rd%2C%20near%20Muskan%20Nursing%20Home%2C%20Ashiyana%20Colony%2C%20Harthala%2C%20Moradabad%2C%20Uttar%20Pradesh%20244001&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="h-full w-full dark:invert-[0.88] dark:hue-rotate-180"
+                />
+              </div>
+              <p className="mt-3 text-[11.5px] font-mono text-hg-fg3 text-center">
+                Mig-14, Kanth Rd, Ashiyana Colony, Moradabad, UP - 244001
               </p>
-              <ul className="mt-5 space-y-2.5 font-mono text-xs">
-                {CERTS.map((c) => (
-                  <li key={c} className="flex items-center gap-2.5 font-bold text-hg-fg p-1.5 rounded-md hover:bg-hg-card transition-colors">
-                    <CheckCircle2 size={15} className="text-hg-gold shrink-0" />
-                    <span>{c}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
 
             {/* Quality Commitment Quote */}

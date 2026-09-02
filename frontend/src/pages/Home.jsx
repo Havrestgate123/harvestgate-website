@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, ArrowDown } from "lucide-react";
+import { ArrowUpRight, ArrowDown, MapPin, Phone } from "lucide-react";
 import { MaskLines, MaskLinesInView, Reveal } from "../components/motion/Reveal";
 import { AccreditationsMarquee } from "../components/AccreditationsMarquee";
 import { PRODUCTS, MANIFESTO, IMG } from "../data/products";
@@ -366,6 +366,82 @@ const Home = () => {
               </Link>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ============ LOCATION & MAP SECTION ============ */}
+      <section data-testid="home-location-map" className="border-t-2 border-hg-line bg-hg-bg2 py-20 sm:py-28">
+        <div className="hg-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            <div className="lg:col-span-5 space-y-6">
+              <div>
+                <p className="hg-eyebrow">05 — Facility &amp; Global Trade Hub</p>
+                <h2 className="hg-display mt-4 text-4xl sm:text-5xl text-hg-fg font-extrabold">
+                  Visit Our Headquarters
+                </h2>
+                <p className="mt-4 text-base sm:text-lg font-medium text-hg-fg2 leading-relaxed">
+                  Strategically situated in the Western Uttar Pradesh agricultural corridor with direct connectivity to major national freight lines and inland container dry ports (ICD).
+                </p>
+              </div>
+
+              <div className="space-y-4 rounded-2xl border border-hg-line bg-hg-card p-6 shadow-md">
+                <div className="flex items-start gap-3.5">
+                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-hg-gold/10 text-hg-gold">
+                    <MapPin size={20} />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-mono text-hg-fg3 uppercase tracking-wider block font-bold">Registered Facility Address</span>
+                    <p className="text-sm font-bold text-hg-fg mt-0.5 leading-snug">
+                      Mig-14, Kanth Rd, near Muskan Nursing Home, Ashiyana Colony, Harthala, Moradabad, Uttar Pradesh, India - 244001
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3.5 pt-3 border-t border-hg-line">
+                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                    <Phone size={18} />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-mono text-hg-fg3 uppercase tracking-wider block font-bold">Direct Trade Desk Desk</span>
+                    <p className="text-sm font-bold text-hg-fg mt-0.5">
+                      +91 8077078313 • admin@harvestgateoverseas.com
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-4 pt-2">
+                <a
+                  href="https://maps.google.com/maps?q=Mig-14%2C%20Kanth%20Rd%2C%20near%20Muskan%20Nursing%20Home%2C%20Ashiyana%20Colony%2C%20Harthala%2C%20Moradabad%2C%20Uttar%20Pradesh%20244001"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-hg-gold px-6 py-3.5 font-mono text-xs uppercase tracking-widest font-extrabold text-black hover:bg-amber-400 transition-all shadow-lg"
+                >
+                  <MapPin size={15} />
+                  <span>Get Directions in Google Maps</span>
+                  <ArrowUpRight size={14} />
+                </a>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7">
+              <div className="relative overflow-hidden rounded-3xl border-2 border-hg-line shadow-2xl bg-hg-card h-[380px] sm:h-[460px] w-full">
+                <iframe
+                  title="HarvestGate Overseas Registered Office Location Map"
+                  src="https://maps.google.com/maps?q=Mig-14%2C%20Kanth%20Rd%2C%20near%20Muskan%20Nursing%20Home%2C%20Ashiyana%20Colony%2C%20Harthala%2C%20Moradabad%2C%20Uttar%20Pradesh%20244001&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="h-full w-full dark:invert-[0.88] dark:hue-rotate-180"
+                />
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
     </div>
