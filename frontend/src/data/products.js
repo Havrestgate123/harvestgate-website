@@ -4,7 +4,7 @@ const CDN =
 export const IMG = {
   heroField: `${CDN}/5fec7d18427722ea85f409abf021232cfaf0aa751169f9c3c6e3a7bb9df5c022.jpeg`,
   hands: `${CDN}/ad728388dcb701992fd2aa50358fcf1d6f241e13b61cda170cf2e53e95cb8022.jpeg`,
-  port: `${CDN}/f8e5cadb98fe8564f523054af49f315bc8a6c59d601ea40be0638faafc0d2f82.jpeg`,
+  port: "/images/enquiry-cta-bg.jpg",
   lab: "/images/manifesto.jpg",
   foxnuts: `${CDN}/057bbac088c24df0e3541c1299268e853fc0cdb881519bb8027705acd2f6b6d6.jpeg`,
   millets: "/images/millets/sorghum-jowar.jpg",

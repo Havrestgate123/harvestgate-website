@@ -335,10 +335,10 @@ const Home = () => {
       </section>
 
       {/* ============ CTA ============ */}
-      <section data-testid="home-cta" className="relative overflow-hidden">
+      <section data-testid="home-cta" className="relative overflow-hidden border-t-2 border-hg-line">
         <div className="absolute inset-0 z-0">
-          <img src={IMG.port} alt="Export port at night" loading="lazy" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-hg-bg/78" />
+          <img src={IMG.port} alt="HarvestGate Agro Export Supply Chain" loading="lazy" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-hg-bg/72 dark:bg-black/75 backdrop-blur-[0.5px]" />
         </div>
         <div className="hg-container relative z-10 py-28 text-center sm:py-36 lg:py-44">
           <Reveal>
