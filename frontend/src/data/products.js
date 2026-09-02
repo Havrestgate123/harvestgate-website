@@ -992,7 +992,7 @@ export const PRODUCTS = [
     categoryLabel: "Premium Foxnuts / Makhana",
     name: "Premium Foxnuts",
     subtitle: "Popped Lotus Seeds / Phool Makhana",
-    tagline: "Grade-A jumbo lotus seeds, hand-popped in the Mithila wetlands.",
+    tagline: "We offer premium Indian foxnuts carefully processed to preserve their natural taste, texture, and nutrition.",
     accent: "#F7F4EB",
     accentLight: "#8A7343",
     accentName: "Cream / Ivory",
