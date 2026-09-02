@@ -42,10 +42,10 @@ const Hero = () => {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
-          className="hg-eyebrow flex flex-wrap items-center gap-3"
+          className="flex flex-wrap items-center gap-3 font-mono text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.2em] text-hg-fg dark:text-hg-gold drop-shadow-sm"
         >
-          <span className="inline-block h-px w-10 bg-hg-gold align-middle" />
-          "Delivering India’s finest harvests—ethically sourced, expertly handled, and shipped worldwide with speed."
+          <span className="inline-block h-[2px] w-8 sm:w-10 bg-hg-gold align-middle" />
+          <span>“Delivering India’s finest harvests—ethically sourced, expertly handled, and shipped worldwide with speed.”</span>
         </motion.p>
 
         <MaskLines

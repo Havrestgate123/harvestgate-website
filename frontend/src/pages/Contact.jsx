@@ -100,33 +100,9 @@ const Contact = () => {
     const ref = `HG-${Date.now().toString().slice(-6)}`;
 
     try {
-      // 1. Dispatch form directly to admin@harvestgateoverseas.com via FormSubmit AJAX service
-      await fetch("https://formsubmit.co/ajax/admin@harvestgateoverseas.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          _subject: `[HarvestGate Export Enquiry] ${ref} · ${values.orgName} — ${values.product}`,
-          _replyto: values.email,
-          _template: "table",
-          _captcha: "false",
-          reference_id: ref,
-          contact_person: values.name,
-          organisation: values.orgName,
-          business_email: values.email,
-          phone_whatsapp: values.contactNumber,
-          product_required: values.product,
-          required_volume: values.quantity,
-          delivery_address: values.orgAddress,
-          additional_notes: values.message || "None",
-          routed_to: "admin@harvestgateoverseas.com",
-        }),
-      }).catch((err) => console.log("FormSubmit Notice:", err));
-
-      // 2. Also record in backend API if online
       const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      
+      // 1. Dispatch through FastAPI SMTP engine (Sends Admin Alert + Branded Buyer Auto-Responder)
       await fetch(`${apiUrl}/api/enquiry`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -141,14 +117,40 @@ const Contact = () => {
           message: values.message || "",
           targetEmail: "admin@harvestgateoverseas.com",
         }),
-      }).catch((err) => console.log("Backend record notice:", err));
+      }).catch((err) => console.log("Backend SMTP notice:", err));
+
+      // 2. Dispatch backup via FormSubmit AJAX service with autoresponse
+      await fetch("https://formsubmit.co/ajax/admin@harvestgateoverseas.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `[HarvestGate Export Enquiry] ${ref} · ${values.orgName} — ${values.product}`,
+          _replyto: values.email,
+          _template: "table",
+          _captcha: "false",
+          _autoresponse: `Dear ${values.name},\n\nThank you for reaching out to HarvestGate Overseas. We have formally registered your commercial export enquiry for ${values.product} (${values.quantity}) on behalf of ${values.orgName}.\n\nReference ID: ${ref}\n\nOur international trade desk is preparing your formal CIF/FOB quotation and quality test parameters. A dedicated trade manager will connect with you within 24 business hours.\n\nWarm regards,\nHarvestGate Overseas Pvt. Ltd.\nPhone/WhatsApp: +91 8077078313\nEmail: contact@harvestgateoverseas.com`,
+          reference_id: ref,
+          contact_person: values.name,
+          organisation: values.orgName,
+          business_email: values.email,
+          phone_whatsapp: values.contactNumber,
+          product_required: values.product,
+          required_volume: values.quantity,
+          delivery_address: values.orgAddress,
+          additional_notes: values.message || "None",
+          routed_to: "admin@harvestgateoverseas.com",
+        }),
+      }).catch((err) => console.log("FormSubmit Notice:", err));
     } catch (err) {
       console.log("Transmission notice:", err);
     } finally {
       setSubmitting(false);
       setDone({ ...values, ref });
-      toast.success("Enquiry Dispatched to admin@harvestgateoverseas.com", {
-        description: `Reference ${ref} — our export desk will reach out within 1 business day.`,
+      toast.success("Enquiry Transmitted Successfully", {
+        description: `Reference ${ref} logged. Acknowledgment sent to ${values.email}.`,
         duration: 7000,
       });
     }
