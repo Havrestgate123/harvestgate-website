@@ -1,10 +1,16 @@
 import { useEffect, useState, useRef } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, ArrowUpRight, ChevronDown, CheckCircle2, Leaf, Star } from "lucide-react";
+import { Sun, Moon, ArrowUpRight, ChevronDown, CheckCircle2, Leaf, Star, Mail } from "lucide-react";
 import { useTheme } from "../theme/ThemeProvider";
 import { BrandLock } from "./Logo";
 import { PRODUCTS, NATURALS_CATEGORIES, SELECT_CATEGORIES, surfaceAccent } from "../data/products";
+
+const WhatsAppIcon = ({ className = "w-3.5 h-3.5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.978-.276-.1-.476-.15-.677.15-.201.3-.777.978-.952 1.179-.175.201-.35.226-.652.075-1.804-.903-2.983-1.613-4.17-3.652-.153-.263.153-.244.437-.813.076-.15.038-.282-.019-.395-.057-.113-.514-1.238-.704-1.696-.185-.446-.373-.386-.513-.393-.133-.007-.285-.008-.437-.008-.152 0-.399.057-.608.285-.209.228-.798.78-.798 1.902 0 1.122.817 2.206.931 2.357.114.15 1.609 2.457 3.899 3.446 1.434.619 1.996.678 2.71.572.434-.065 1.332-.544 1.522-1.07.19-.526.19-.978.133-1.07-.057-.093-.209-.15-.51-.3zM12.04 2C6.516 2 2.022 6.47 2.022 11.968c0 1.954.568 3.774 1.554 5.319L2 22l4.87-1.53c1.479.885 3.203 1.398 5.17 1.398 5.524 0 10.018-4.47 10.018-9.968C22.058 6.47 17.564 2 12.04 2z" />
+  </svg>
+);
 
 const EASE = [0.16, 1, 0.3, 1];
 
@@ -100,14 +106,27 @@ export const Navbar = () => {
               </span>
             </div>
 
-            <div className="hidden lg:flex items-center gap-4 text-hg-fg font-medium text-[11px]">
+            <div className="hidden lg:flex items-center gap-3.5 text-hg-fg font-medium text-[11.5px]">
               <span className="text-hg-fg2 font-mono">Moradabad, Uttar Pradesh - 244001</span>
               <span className="text-hg-line2">|</span>
               <a
-                href="tel:+918077078313"
-                className="text-hg-gold hover:underline transition-colors font-mono font-bold"
+                href="mailto:contact@harvestgateoverseas.com"
+                className="flex items-center gap-1.5 text-hg-fg hover:text-hg-gold transition-colors font-mono font-bold"
+                title="Send official email"
               >
-                +91 8077078313
+                <Mail size={13} className="text-hg-gold shrink-0" />
+                <span>contact@harvestgateoverseas.com</span>
+              </a>
+              <span className="text-hg-line2">|</span>
+              <a
+                href="https://wa.me/918077078313?text=Hello%20HarvestGate%20Overseas,%20I%20am%20interested%20in%20an%20export%20enquiry."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 transition-colors font-mono font-bold"
+                title="Chat on WhatsApp"
+              >
+                <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-500 fill-current shrink-0" />
+                <span>+91 8077078313</span>
               </a>
             </div>
           </div>
@@ -542,7 +561,7 @@ export const Navbar = () => {
                 </Link>
               </nav>
 
-              <div className="mt-8 space-y-4">
+              <div className="mt-8 space-y-3">
                 <Link
                   to="/contact"
                   onClick={() => setOpen(false)}
@@ -550,6 +569,25 @@ export const Navbar = () => {
                 >
                   <span>Request Export Quotation</span>
                 </Link>
+
+                <div className="grid grid-cols-2 gap-2.5 pt-2">
+                  <a
+                    href="https://wa.me/918077078313?text=Hello%20HarvestGate%20Overseas,%20I%20am%20interested%20in%20an%20export%20enquiry."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 py-2.5 px-3 font-mono text-[11px] font-bold text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+                  >
+                    <WhatsAppIcon className="w-4 h-4 text-emerald-500 fill-current shrink-0" />
+                    <span>WhatsApp</span>
+                  </a>
+                  <a
+                    href="mailto:contact@harvestgateoverseas.com"
+                    className="flex items-center justify-center gap-2 rounded-lg border border-hg-gold/30 bg-hg-gold/10 py-2.5 px-3 font-mono text-[11px] font-bold text-hg-fg hover:bg-hg-gold/20 transition-colors"
+                  >
+                    <Mail size={14} className="text-hg-gold shrink-0" />
+                    <span>Email</span>
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>
