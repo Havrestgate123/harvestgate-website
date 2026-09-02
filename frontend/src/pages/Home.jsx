@@ -214,26 +214,67 @@ const Home = () => {
 
       {/* ============ STATEMENT ============ */}
       <section className="hg-container py-24 sm:py-32 lg:py-40">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-4">
-            <p className="hg-eyebrow">01 — The house</p>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-start">
+          <div className="lg:col-span-5">
+            <Reveal>
+              <p className="hg-eyebrow">01 — The house</p>
+            </Reveal>
             <div className="mt-6 hg-rule" />
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: EASE }}
+              className="mt-8 overflow-hidden rounded-2xl border-2 border-hg-line shadow-2xl bg-white/70 dark:bg-[#141b15]/70 backdrop-blur-md p-2.5 group"
+            >
+              <div className="overflow-hidden rounded-xl">
+                <img
+                  src="/images/the-house-brands.jpg"
+                  alt="HarvestGate Naturals & HarvestGate Select — Certified Indian Agro House Ranges"
+                  loading="lazy"
+                  className="w-full aspect-square rounded-xl object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </div>
+              <div className="pt-3 pb-1 text-center">
+                <span className="font-mono text-[11.5px] font-extrabold uppercase tracking-[0.2em] text-hg-gold">
+                  Harvestgate Naturals &bull; Harvestgate Select
+                </span>
+              </div>
+            </motion.div>
           </div>
-          <div className="lg:col-span-8">
+
+          <div className="lg:col-span-7">
             <MaskLinesInView
               className="hg-display text-[9vw] leading-[0.92] text-hg-fg sm:text-5xl lg:text-6xl"
               lines={["We Bring India’s", "Natural Goodness", "To The World."]}
             />
 
             <Reveal delay={0.15}>
-              <p className="mt-9 max-w-2xl text-base leading-[1.85] text-hg-fg2">
-                At Harvestgate Overseas, we bring the richness of India’s agricultural heritage to international markets through two distinct product ranges. <br></br>
-                <b> Harvestgate Naturals </b> brings together a diverse selection of millets, pulses, grains, flours, daliya (porridge), jaggery and sugars — cultivated without chemical fertilizers or pesticides and prepared through careful, natural processes that preserve the inherent character and goodness of the produce. <br></br>
-                <b> Harvestgate Select </b> represents our premium selection of export-grade Indian foxnuts, available in assorted grades and carefully selected to meet the quality and presentation requirements of international markets.
-                <p> From naturally cultivated staples to premium foxnuts, every Harvestgate product is sourced with care and selected for quality, authenticity, consistency and global suitability — connecting the richness of Indian agriculture with buyers around the world.
+              <div className="mt-9 text-base sm:text-lg leading-[1.85] text-hg-fg2 font-medium space-y-4">
+                <p>
+                  At Harvestgate Overseas, we bring the richness of India’s agricultural heritage to international markets through two distinct product ranges:
                 </p>
-
-              </p>
+                <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4 space-y-1">
+                  <p className="text-hg-fg font-bold">
+                    🌿 Harvestgate Naturals
+                  </p>
+                  <p className="text-sm text-hg-fg2 leading-relaxed">
+                    Brings together a diverse selection of millets, pulses, grains, flours, daliya (porridge), jaggery and sugars — cultivated without chemical fertilizers or pesticides and prepared through careful, natural processes that preserve the inherent character and goodness of the produce.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-4 space-y-1">
+                  <p className="text-hg-fg font-bold">
+                    ⭐ Harvestgate Select
+                  </p>
+                  <p className="text-sm text-hg-fg2 leading-relaxed">
+                    Represents our premium selection of export-grade Indian foxnuts, available in assorted grades and carefully selected to meet the quality and presentation requirements of international markets.
+                  </p>
+                </div>
+                <p className="pt-2 text-hg-fg font-semibold">
+                  From naturally cultivated staples to premium foxnuts, every Harvestgate product is sourced with care and selected for quality, authenticity, consistency and global suitability — connecting the richness of Indian agriculture with buyers around the world.
+                </p>
+              </div>
             </Reveal>
 
           </div>
