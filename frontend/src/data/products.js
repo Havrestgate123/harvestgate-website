@@ -1342,10 +1342,8 @@ export const STATS = [
 
 export const CERTS = [
   "GSTIN: 09AAICH2946R1ZR",
-  "IEC: AAICH2946R",
-  "APEDA Registered Exporter",
+  "Import Export Code : AAICH2946R",
+  "APEDA Registered",
   "FSSAI Licensed",
-  "ISO 22000 : 2018",
-  "HACCP Compliant",
-  "Spices Board / DGFT",
+  "MSME, Govt. of India Registered",
 ];

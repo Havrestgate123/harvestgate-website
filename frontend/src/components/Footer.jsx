@@ -17,7 +17,7 @@ export const Footer = () => (
     <div className="hg-container py-16 sm:py-24">
       <div className="grid grid-cols-1 gap-14 md:grid-cols-12 md:gap-12">
         {/* BRAND & CONTACT */}
-        <div className="md:col-span-5">
+        <div className="md:col-span-4">
           <div className="flex items-center gap-4">
             <LogoMark className="h-16 sm:h-18" />
             <div className="leading-tight">
@@ -94,7 +94,7 @@ export const Footer = () => (
         </div>
 
         {/* COMPLIANCE */}
-        <div className="md:col-span-2">
+        <div className="md:col-span-3">
           <p className="hg-eyebrow text-[11px] font-bold">Registration & Accreditations</p>
           <ul className="mt-6 space-y-3">
             {CERTS.map((c) => (
