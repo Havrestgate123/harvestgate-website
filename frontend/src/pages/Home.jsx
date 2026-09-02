@@ -403,9 +403,9 @@ const Home = () => {
                     <Phone size={18} />
                   </div>
                   <div>
-                    <span className="text-[11px] font-mono text-hg-fg3 uppercase tracking-wider block font-bold">Direct Trade Desk Desk</span>
+                    <span className="text-[11px] font-mono text-hg-fg3 uppercase tracking-wider block font-bold">Direct Trade Desk</span>
                     <p className="text-sm font-bold text-hg-fg mt-0.5">
-                      +91 8077078313 • admin@harvestgateoverseas.com
+                      +91 8077078313 • contact@harvestgateoverseas.com
                     </p>
                   </div>
                 </div>

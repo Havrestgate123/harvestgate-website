@@ -228,14 +228,14 @@ const Contact = () => {
 
                     <div className="inline-flex items-center gap-2 rounded-lg bg-emerald-500/15 dark:bg-emerald-500/20 px-3.5 py-1.5 backdrop-blur-sm border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 font-mono text-xs font-bold tracking-wide">
                       <Mail size={13} className="text-emerald-600 dark:text-emerald-400" />
-                      Dispatched to: admin@harvestgateoverseas.com
+                      Dispatched to: contact@harvestgateoverseas.com
                     </div>
                   </div>
 
                   <p className="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-hg-fg2 dark:text-gray-200">
                     Thank you, <span className="font-bold text-hg-fg dark:text-white">{done.name}</span>. We have transmitted your export inquiry for{" "}
                     <span className="font-bold text-hg-fg dark:text-white underline underline-offset-4">{done.product}</span> ({done.quantity}) directly to our commercial trade desk at{" "}
-                    <span className="font-bold text-hg-gold">admin@harvestgateoverseas.com</span>. Our trade manager will review your required specs and reply to{" "}
+                    <span className="font-bold text-hg-gold">contact@harvestgateoverseas.com</span>. Our trade manager will review your required specs and reply to{" "}
                     <span className="font-bold text-hg-gold">{done.email}</span> within 24 hours.
                   </p>
 
@@ -269,7 +269,7 @@ const Contact = () => {
 
                   <div className="mt-10 flex flex-wrap gap-4">
                     <a
-                      href={`mailto:admin@harvestgateoverseas.com?subject=${encodeURIComponent(`[HarvestGate Export Enquiry] ${done.ref} · ${done.orgName} — ${done.product}`)}&body=${encodeURIComponent(`Dear HarvestGate Export Desk,\n\nPlease find our trade enquiry details below:\n\n• Reference ID: ${done.ref}\n• Contact Name: ${done.name}\n• Organisation: ${done.orgName}\n• Business Email: ${done.email}\n• Phone/WhatsApp: ${done.contactNumber}\n• Required Commodity: ${done.product}\n• Required Quantity: ${done.quantity}\n• Delivery Address / Port: ${done.orgAddress}\n• Notes: ${done.message || "N/A"}\n\nLooking forward to your formal CIF/FOB quote.\n\nWarm regards,\n${done.name}`)}`}
+                      href={`mailto:contact@harvestgateoverseas.com?subject=${encodeURIComponent(`[HarvestGate Export Enquiry] ${done.ref} · ${done.orgName} — ${done.product}`)}&body=${encodeURIComponent(`Dear HarvestGate Export Desk,\n\nPlease find our trade enquiry details below:\n\n• Reference ID: ${done.ref}\n• Contact Name: ${done.name}\n• Organisation: ${done.orgName}\n• Business Email: ${done.email}\n• Phone/WhatsApp: ${done.contactNumber}\n• Required Commodity: ${done.product}\n• Required Quantity: ${done.quantity}\n• Delivery Address / Port: ${done.orgAddress}\n• Notes: ${done.message || "N/A"}\n\nLooking forward to your formal CIF/FOB quote.\n\nWarm regards,\n${done.name}`)}`}
                       className="rounded-xl border border-hg-gold/60 bg-hg-gold/15 px-6 py-3.5 font-mono text-xs uppercase tracking-widest font-bold text-hg-gold hover:bg-hg-gold hover:text-black transition-all flex items-center gap-2"
                     >
                       <Mail size={15} />
@@ -606,7 +606,7 @@ const Contact = () => {
 
               <div className="mt-6 space-y-5">
                 <a
-                  href="mailto:admin@harvestgateoverseas.com"
+                  href="mailto:contact@harvestgateoverseas.com"
                   className="group flex items-start gap-4 p-3 rounded-xl border border-transparent hover:border-hg-line hover:bg-hg-bg2 transition-all"
                 >
                   <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-hg-gold/10 text-hg-gold group-hover:bg-hg-gold group-hover:text-black transition-colors">
@@ -615,7 +615,7 @@ const Contact = () => {
                   <div>
                     <span className="text-[11px] font-mono text-hg-fg3 uppercase tracking-wider block font-medium">Export Email Desk</span>
                     <span className="text-sm font-bold text-hg-fg group-hover:text-hg-gold transition-colors break-all">
-                      admin@harvestgateoverseas.com
+                      contact@harvestgateoverseas.com
                     </span>
                   </div>
                 </a>

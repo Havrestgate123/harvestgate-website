@@ -35,12 +35,12 @@ export const Footer = () => (
           </p>
           <div className="mt-8 space-y-3.5 font-mono text-[13px] text-hg-fg">
             <a
-              href="mailto:admin@harvestgateoverseas.com"
+              href="mailto:contact@harvestgateoverseas.com"
               data-testid="footer-email"
               className="flex items-center gap-3 transition-colors hover:text-hg-gold font-medium"
             >
               <Mail size={16} className="text-hg-gold shrink-0" />
-              admin@harvestgateoverseas.com
+              contact@harvestgateoverseas.com
             </a>
             <a
               href="tel:+918077078313"
