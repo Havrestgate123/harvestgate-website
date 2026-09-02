@@ -95,7 +95,7 @@ export const Footer = () => (
 
         {/* COMPLIANCE */}
         <div className="md:col-span-2">
-          <p className="hg-eyebrow text-[11px] font-bold">Registration & Tax</p>
+          <p className="hg-eyebrow text-[11px] font-bold">Registration & Accreditations</p>
           <ul className="mt-6 space-y-3">
             {CERTS.map((c) => (
               <li key={c} className="font-mono text-[11.5px] font-semibold text-hg-fg flex items-start gap-2">
