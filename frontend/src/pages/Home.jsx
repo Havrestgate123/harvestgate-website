@@ -134,7 +134,8 @@ const ProductCard = ({ p, className = "" }) => {
             src={p.image}
             alt={p.name}
             loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.07]"
+            className="h-full w-full object-cover transition-transform ease-out group-hover:scale-[1.07]"
+            style={{ transitionDuration: '1100ms' }}
           />
           <span
             className="absolute left-0 top-0 h-[3px] w-0 transition-all duration-700 ease-out group-hover:w-full z-10"
