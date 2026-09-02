@@ -97,35 +97,35 @@ export const Navbar = () => {
           }`}
       >
         {/* ============ TOP COMPLIANCE & CREDENTIALS BAR ============ */}
-        <div className="border-b border-hg-line/80 bg-hg-bg2 py-2 text-[11.5px] font-mono tracking-wider transition-colors duration-300">
-          <div className="hg-container flex items-center justify-between gap-x-6 gap-y-2">
+        <div className="border-b border-hg-line/80 bg-hg-bg2 py-1.5 text-[10.5px] xl:text-[11px] font-mono tracking-wider transition-colors duration-300 overflow-x-auto no-scrollbar">
+          <div className="hg-container flex items-center justify-between gap-3 xl:gap-4 flex-nowrap whitespace-nowrap">
             {/* LEFT: Official Registrations & Badges */}
-            <div className="flex items-center gap-3.5 sm:gap-5 text-hg-fg2 flex-wrap">
+            <div className="flex items-center gap-2 sm:gap-3 xl:gap-3.5 text-hg-fg2 flex-nowrap shrink-0">
               <span className="inline-flex items-center gap-1.5 text-hg-fg font-semibold">
-                <CheckCircle2 size={13} className="text-hg-gold shrink-0" />
+                <CheckCircle2 size={12} className="text-hg-gold shrink-0" />
                 <span className="text-hg-fg3 font-medium">GSTIN:</span>
                 <span className="text-hg-gold font-bold tracking-wider">09AAICH2946R1ZR</span>
               </span>
-              <span className="hidden sm:inline text-hg-line2">|</span>
+              <span className="text-hg-line2">|</span>
               <span className="inline-flex items-center gap-1.5 text-hg-fg font-semibold">
-                <CheckCircle2 size={13} className="text-hg-gold shrink-0" />
+                <CheckCircle2 size={12} className="text-hg-gold shrink-0" />
                 <span className="text-hg-fg3 font-medium">IEC:</span>
                 <span className="text-hg-gold font-bold tracking-wider">AAICH2946R</span>
               </span>
-              <span className="hidden xl:inline text-hg-line2">|</span>
-              <span className="hidden xl:inline-flex items-center gap-1.5 text-hg-fg font-semibold text-[11px] uppercase tracking-[0.2em]">
-                <ShieldCheck size={13} className="text-emerald-500 shrink-0" />
+              <span className="hidden 2xl:inline text-hg-line2">|</span>
+              <span className="hidden 2xl:inline-flex items-center gap-1.5 text-hg-fg font-semibold text-[10.5px] uppercase tracking-[0.16em]">
+                <ShieldCheck size={12} className="text-emerald-500 shrink-0" />
                 Govt. of India Registered
               </span>
             </div>
 
             {/* RIGHT: Symmetrical Location, Gmail & WhatsApp Links */}
-            <div className="hidden lg:flex items-center gap-4 text-hg-fg font-medium text-[11.5px]">
-              <span className="inline-flex items-center gap-1.5 text-hg-fg2 font-mono">
-                <MapPin size={13} className="text-hg-gold shrink-0" />
+            <div className="flex items-center gap-2.5 sm:gap-3 xl:gap-3.5 text-hg-fg font-medium flex-nowrap shrink-0">
+              <span className="hidden md:inline-flex items-center gap-1.5 text-hg-fg2 font-mono">
+                <MapPin size={12} className="text-hg-gold shrink-0" />
                 <span>Moradabad, Uttar Pradesh - 244001</span>
               </span>
-              <span className="text-hg-line2">|</span>
+              <span className="hidden md:inline text-hg-line2">|</span>
               <a
                 href="mailto:contact@harvestgateoverseas.com"
                 className="inline-flex items-center gap-1.5 text-hg-fg hover:text-hg-gold transition-colors font-mono font-bold"
