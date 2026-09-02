@@ -25,11 +25,11 @@ const Hero = () => {
       <motion.div style={{ y: imgY, scale: imgScale }} className="absolute inset-0 z-0">
         <img
           src={IMG.heroField}
-          alt="Indian millet farmland at dusk"
+          alt="Lush green Indian farmlands at sunrise — HarvestGate Overseas"
           className="h-full w-full object-cover"
         />
-        {/* Uniform subtle veil for maximum text contrast across the full hero */}
-        <div className="absolute inset-0 bg-hg-bg/25 dark:bg-black/50" />
+        {/* Vibrant color grading & subtle depth veil */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/15 dark:from-black/50 dark:via-black/35 dark:to-[#0b100c]/75" />
         {/* Soft bottom edge transition into Section 01 — ONLY at the very bottom (last 2 lines) */}
         <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-gradient-to-t from-hg-bg via-hg-bg/60 to-transparent pointer-events-none" />
       </motion.div>
@@ -44,7 +44,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
-          className="flex flex-wrap items-center gap-3 font-mono text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.2em] text-hg-fg dark:text-hg-gold drop-shadow-sm"
+          className="flex flex-wrap items-center gap-3 font-mono text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.2em] text-hg-fg dark:text-hg-gold drop-shadow"
         >
           <span className="inline-block h-[2px] w-8 sm:w-10 bg-hg-gold align-middle" />
           <span>“Delivering India’s finest harvests—ethically sourced, expertly handled, and shipped worldwide with speed.”</span>
@@ -54,38 +54,40 @@ const Hero = () => {
           data-testid="hero-heading"
           as="h1"
           delay={0.3}
-          className="hg-display mt-7 text-[15vw] leading-[0.85] text-hg-fg sm:text-[11vw] lg:text-[8.6vw]"
+          className="hg-display mt-7 text-[15vw] leading-[0.85] text-hg-fg sm:text-[11vw] lg:text-[8.6vw] drop-shadow-sm"
           lines={["Cultivated", "in India."]}
         />
         <MaskLines
           as="h2"
           delay={0.62}
-          className="hg-display text-[15vw] leading-[0.85] sm:text-[11vw] lg:text-[8.6vw]"
+          className="hg-display text-[15vw] leading-[0.85] sm:text-[11vw] lg:text-[8.6vw] drop-shadow-md"
           lineClassName="text-hg-gold"
           lines={["Delivered", "to the world."]}
         />
 
-        <div className="mt-12 grid grid-cols-1 gap-10 border-t border-hg-line pt-9 lg:grid-cols-12 lg:items-end">
-          <motion.p
+        <div className="mt-12 grid grid-cols-1 gap-8 border-t border-hg-line/70 pt-9 lg:grid-cols-12 lg:items-end">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.05, ease: EASE }}
-            className="max-w-xl text-[15.5px] font-bold leading-relaxed text-gray-950 dark:text-hg-gold drop-shadow-sm lg:col-span-6 transition-colors duration-300"
+            className="rounded-2xl border border-white/60 dark:border-white/10 bg-white/85 dark:bg-[#0c120c]/85 backdrop-blur-md p-6 sm:p-7 shadow-xl lg:col-span-7 transition-all duration-300"
           >
-            We Export Premium Indian Foxnuts, Millets, Pulses, Grains, Flours, Jaggery &amp; More. <br />
-            Harvestgate Overseas brings the finest agricultural treasures of India to global markets — from naturally cultivated, traditionally processed staples under Harvestgate Naturals to carefully selected premium produce under Harvestgate Select. Our range includes wholesome unpolished millets, pulses, grains, traditional flours, naturally prepared jaggery, and premium Indian foxnuts, sourced with care from trusted farming communities. Rooted in India's agricultural heritage and prepared with attention to purity, authenticity, and quality, every product reflects our commitment to bringing the true goodness of Indian produce to the world.
-          </motion.p>
+            <p className="text-[15px] sm:text-[15.5px] font-bold leading-relaxed text-gray-950 dark:text-hg-gold">
+              We Export Premium Indian Foxnuts, Millets, Pulses, Grains, Flours, Jaggery &amp; More. <br />
+              Harvestgate Overseas brings the finest agricultural treasures of India to global markets — from naturally cultivated, traditionally processed staples under Harvestgate Naturals to carefully selected premium produce under Harvestgate Select. Our range includes wholesome unpolished millets, pulses, grains, traditional flours, naturally prepared jaggery, and premium Indian foxnuts, sourced with care from trusted farming communities. Rooted in India's agricultural heritage and prepared with attention to purity, authenticity, and quality, every product reflects our commitment to bringing the true goodness of Indian produce to the world.
+            </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.2, ease: EASE }}
-            className="flex flex-wrap items-center gap-4 lg:col-span-4 lg:col-start-9 lg:justify-end"
+            className="flex flex-wrap items-center gap-4 lg:col-span-5 lg:justify-end"
           >
             <Link
               to="/products"
               data-testid="hero-explore-products"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-gray-900 bg-white/95 px-6 py-3.5 font-mono text-[12.5px] font-extrabold uppercase tracking-[0.2em] text-gray-950 shadow-md transition-all hover:bg-gray-950 hover:text-white dark:border-hg-gold dark:bg-[#121612]/90 dark:text-hg-gold dark:hover:bg-hg-gold dark:hover:text-black"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-gray-950 bg-white/95 px-6 py-3.5 font-mono text-[12.5px] font-extrabold uppercase tracking-[0.2em] text-gray-950 shadow-md transition-all hover:bg-gray-950 hover:text-white dark:border-hg-gold dark:bg-[#121612]/90 dark:text-hg-gold dark:hover:bg-hg-gold dark:hover:text-black"
             >
               <span>Explore catalogue</span>
             </Link>

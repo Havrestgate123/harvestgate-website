@@ -2,7 +2,7 @@ const CDN =
   "https://static.prod-images.emergentagent.com/jobs/ee36022f-d0ea-4536-908f-9c1b130f8012/images";
 
 export const IMG = {
-  heroField: `${CDN}/5fec7d18427722ea85f409abf021232cfaf0aa751169f9c3c6e3a7bb9df5c022.jpeg`,
+  heroField: "/images/hero-green-farmland.jpg",
   hands: `${CDN}/ad728388dcb701992fd2aa50358fcf1d6f241e13b61cda170cf2e53e95cb8022.jpeg`,
   port: "/images/enquiry-cta-bg.jpg",
   lab: "/images/manifesto.jpg",
