@@ -244,18 +244,20 @@ const Home = () => {
       <section className="hg-container pb-24 sm:pb-32 lg:pb-40" data-testid="home-products">
         <div className="flex flex-col gap-6 border-t border-hg-line pt-10 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="hg-eyebrow">02 — Catalogue</p>
+            <Reveal>
+              <p className="hg-eyebrow">02 — Export Portfolio</p>
+            </Reveal>
             <MaskLinesInView
-              className="hg-display mt-5 text-5xl leading-[0.9] text-hg-fg sm:text-6xl lg:text-7xl"
-              lines={["Two ranges.", "Seven commodities."]}
+              className="hg-display mt-5 text-5xl leading-[0.9] text-hg-fg sm:text-6xl lg:text-7xl font-extrabold"
+              lines={["Export-Grade Harvests.", "Certified for the World."]}
             />
           </div>
           <Link
             to="/products"
             data-testid="home-view-all-products"
-            className="hg-link shrink-0 font-mono text-[12px] uppercase tracking-[0.24em] text-hg-gold"
+            className="hg-link shrink-0 font-mono text-[12px] uppercase tracking-[0.24em] text-hg-gold font-bold"
           >
-            View full 2026 catalogue ({PRODUCTS.length} commodities) →
+            Explore Complete Export Catalogue →
           </Link>
         </div>
 
