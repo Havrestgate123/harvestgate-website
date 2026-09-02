@@ -72,8 +72,9 @@ const About = () => (
     </section>
 
     {/* MISSION */}
-    <section className="border-y-2 border-hg-line bg-hg-bg2">
-      <div className="hg-container py-20 sm:py-28 lg:py-36">
+    <section className="border-y border-hg-line bg-hg-bg2/80 dark:bg-[#131b14]/70 backdrop-blur-md relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 dark:bg-emerald-400/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="hg-container py-20 sm:py-28 lg:py-36 relative z-10">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <p className="hg-eyebrow text-[12px] font-bold">Our Pillars</p>
@@ -83,9 +84,9 @@ const About = () => (
             />
           </div>
           <div className="lg:col-span-7">
-            <div className="grid grid-cols-1 gap-y-0 sm:grid-cols-2 sm:gap-x-10">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               {VALUES.map(([t, d], i) => (
-                <Reveal key={t} delay={i * 0.06} className="border-t-2 border-hg-line py-8">
+                <Reveal key={t} delay={i * 0.06} className="rounded-2xl border border-hg-line dark:border-white/10 bg-white/70 dark:bg-white/[0.03] backdrop-blur-md p-6 hover:border-emerald-500/40 dark:hover:border-emerald-400/40 hover:shadow-[0_8px_30px_rgb(16,185,129,0.08)] transition-all">
                   <p className="font-mono text-[12px] uppercase tracking-[0.24em] text-hg-gold font-bold">
                     0{i + 1}
                   </p>
@@ -106,12 +107,12 @@ const About = () => (
         className="hg-display mt-6 text-4xl leading-[0.95] text-hg-fg sm:text-5xl lg:text-6xl font-extrabold"
         lines={["Proven track record,", "seven programmes."]}
       />
-      <div className="mt-14">
+      <div className="mt-14 space-y-4">
         {TIMELINE.map(([year, title, body], i) => (
           <Reveal
             key={year}
             delay={i * 0.05}
-            className="group grid grid-cols-1 gap-4 border-t-2 border-hg-line py-8 last:border-b-2 sm:grid-cols-12 sm:gap-8 sm:py-10 transition-colors hover:bg-hg-bg2/40 px-2"
+            className="group grid grid-cols-1 gap-4 rounded-2xl border border-hg-line dark:border-white/10 bg-white/60 dark:bg-white/[0.02] backdrop-blur-sm p-6 sm:p-8 sm:grid-cols-12 sm:gap-8 hover:border-hg-gold/50 hover:bg-white/90 dark:hover:bg-white/[0.05] hover:shadow-lg transition-all"
           >
             <p className="hg-display text-3xl text-hg-gold transition-colors duration-300 sm:col-span-2 sm:text-4xl font-extrabold">
               {year}
@@ -124,7 +125,8 @@ const About = () => (
     </section>
 
     {/* CREDENTIALS + CTA */}
-    <section className="relative overflow-hidden border-t-2 border-hg-line bg-hg-bg2">
+    <section className="relative overflow-hidden border-t border-hg-line bg-hg-bg2/80 dark:bg-[#131b14]/70 backdrop-blur-md">
+      <div className="absolute top-0 left-0 w-96 h-96 bg-amber-400/10 dark:bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
       <div className="hg-container relative z-10 py-24 sm:py-32">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-12">
           <div className="lg:col-span-6">

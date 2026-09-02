@@ -7,6 +7,7 @@ import { ThemeProvider, useTheme } from "@/theme/ThemeProvider";
 import { SmoothScroll, ScrollToTop } from "@/components/SmoothScroll";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { AmbientBackground } from "@/components/AmbientBackground";
 
 import Home from "@/pages/Home";
 import About from "@/pages/About";
@@ -47,10 +48,13 @@ const AnimatedRoutes = () => {
 const Shell = () => {
   const { theme } = useTheme();
   return (
-    <div className="grain-overlay min-h-screen bg-hg-bg">
+    <div className="grain-overlay min-h-screen bg-hg-bg relative">
+      <AmbientBackground />
       <ScrollToTop />
       <Navbar />
-      <AnimatedRoutes />
+      <div className="relative z-10">
+        <AnimatedRoutes />
+      </div>
       <Footer />
       <Toaster
         theme={theme}

@@ -61,7 +61,7 @@ const ProductCard = ({ p, i, wide = false }) => {
       <Link
         to={`/products/${p.slug}`}
         data-testid={`product-card-${p.slug}`}
-        className="group relative flex h-full flex-col overflow-hidden border border-hg-line bg-hg-card transition-all duration-300 hover:border-hg-gold hover:shadow-lg"
+        className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-hg-line dark:border-white/10 bg-white/80 dark:bg-[#141b15]/80 backdrop-blur-md transition-all duration-300 hover:border-emerald-500/50 dark:hover:border-emerald-400/50 hover:shadow-[0_12px_35px_rgba(16,185,129,0.12)] hover:-translate-y-1"
       >
         {/* CLEAN IMAGE WITH GLOWING BRAND RANGE PILL */}
         <div className={`relative overflow-hidden bg-black/5 ${wide ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
