@@ -169,6 +169,12 @@ const RangeSectionHeader = ({ range }) => {
             ? "Premium single-origin specialty exports"
             : "Ancient grains, pure sweeteners & wholesome nutrition"}
         </p>
+        {!isSelect && (
+          <p className="mt-2 font-mono text-[11px] sm:text-xs font-semibold tracking-wide text-emerald-400 dark:text-emerald-300 flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0" />
+            “A proud part of Harvestgate Naturals — naturally cultivated and carefully prepared without the use of chemical fertilizers or pesticides.”
+          </p>
+        )}
       </div>
     </div>
   );

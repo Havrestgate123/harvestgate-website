@@ -76,6 +76,23 @@ const ProductDetail = () => {
               </span>
             </div>
           </div>
+
+          {product.range !== "SELECT" && (
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.12, duration: 0.5 }}
+              className="mt-4 max-w-4xl"
+            >
+              <div className="inline-flex items-center gap-2.5 rounded-full border border-emerald-400/50 bg-black/70 px-4 py-1.5 backdrop-blur-md shadow-[0_0_18px_rgba(52,211,153,0.25)]">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0 animate-pulse shadow-[0_0_8px_#34d399]" />
+                <p className="font-mono text-[11px] sm:text-[12.5px] font-semibold tracking-wide text-emerald-300 leading-snug">
+                  “A proud part of Harvestgate Naturals — naturally cultivated and carefully prepared without the use of chemical fertilizers or pesticides.”
+                </p>
+              </div>
+            </motion.div>
+          )}
+
           <MaskLines
             data-testid="product-heading"
             delay={0.1}
