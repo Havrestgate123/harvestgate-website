@@ -992,7 +992,8 @@ export const PRODUCTS = [
     categoryLabel: "Premium Foxnuts / Makhana",
     name: "Premium Foxnuts",
     subtitle: "Popped Lotus Seeds / Phool Makhana",
-    tagline: "We offer premium Indian foxnuts carefully processed to preserve their natural taste, texture, and nutrition.",
+    tagline:
+      "At Harvestgate Overseas, we bring you the finest grade of premium Indian foxnuts (makhana), cultivated in the most fertile regions of Bihar and processed with utmost care to preserve their natural taste, texture, and nutrition.",
     accent: "#F7F4EB",
     accentLight: "#8A7343",
     accentName: "Cream / Ivory",
@@ -1001,25 +1002,81 @@ export const PRODUCTS = [
     season: "August — November",
     image: IMG.foxnuts,
     intro:
-      "Harvested from managed freshwater ponds and popped by hand within hours of roasting, our Phool Makhana retains the crisp, hollow bite and clean ivory colour that premium retail and snack manufacturers demand.",
+      "At Harvestgate Overseas, we bring you the finest grade of premium Indian foxnuts (makhana), cultivated in the most fertile regions of Bihar and processed with utmost care to preserve their natural taste, texture, and nutrition. Our foxnuts are crisp, clean, and ready for a wide range of uses — from healthy snacking to gourmet cooking.",
     description:
-      "HarvestGate contracts directly with 340+ makhana-farming households across Darbhanga, Madhubani and Purnia. Each lot is size-graded by suta calibration, sortex-cleaned, metal-detected and nitrogen flushed before it leaves our processing facility.",
+      "Don’t just watch the demand grow — own it. Import our premium organic foxnuts into your country, put them under your own brand, and become the go-to supplier in your market. The demand is rising, the margins are attractive, and the time to act is now. Secure your first shipment today and start building your profitable foxnut empire.",
+    suttaExplanation: {
+      title: "What is “Sutta” in Foxnuts (Makhana)?",
+      text: "In foxnut grading in India, 1 sutta ≈ 3.2 mm in diameter. The “sutta” count reflects the approximate size of each popped kernel — higher counts mean larger, more premium foxnuts prized for their look, texture, and crunch.",
+      ratio: "1 Sutta ≈ 3.2 mm Diameter",
+    },
+    whyChoose: [
+      {
+        title: "Top Quality Premium",
+        desc: "Handpicked, crisp, and naturally nutritious with high puff volume.",
+      },
+      {
+        title: "Ethically Sourced",
+        desc: "Direct from trusted Indian farmers in Bihar's fertile wetland belt.",
+      },
+      {
+        title: "Testing on Request",
+        desc: "Paid testing can be arranged at FSSAI-approved & NABL-accredited labs.",
+      },
+      {
+        title: "Customizable Packaging",
+        desc: "Generally packed in HDPE bags of 10 kg or 5 kg for bulk export, but it can be customised as per buyer standards.",
+      },
+      {
+        title: "Bulk Supply Experts",
+        desc: "Reliable, consistent global container shipments.",
+      },
+      {
+        title: "Profit Potential",
+        desc: "Import, rebrand, and grow your foxnut business.",
+      },
+    ],
     grades: [
-      { name: "5+ Suta", spec: "18 – 20 mm", note: "Retail pouch & flavoured snack base" },
-      { name: "6+ Suta", spec: "20 – 22 mm", note: "Premium gifting & horeca" },
-      { name: "Handpicked Premium", spec: "22 mm +", note: "Ultra-white, zero black spot" },
+      {
+        name: "Grade A : 6+ Sutta",
+        spec: "6+ Sutta (≈ 19.2 mm+)",
+        shortDesc: "Extra-large, superior-grade foxnuts with rich glossy appearance and unmatched crunch.",
+        note: "Exclusive selection of 6+ sutta and larger sizes; extra-large, superior-grade foxnuts with a rich, glossy appearance and exceptional texture that stands out on any shelf. Delivers unmatched crunch, premium presentation, and consistency — making it a preferred choice for high-end retail, gourmet packaging, and export markets seeking top-tier quality.",
+      },
+      {
+        name: "Grade B : 5+ Sutta",
+        spec: "5+ Sutta (≈ 16.0 – 19.2 mm)",
+        shortDesc: "Uniform, attractive, and versatile — perfect for snacks, gourmet blends, and rebranding.",
+        note: "Premium blend of 5+ sutta; uniform, attractive, and versatile — perfect for snacks, gourmet blends, and rebranding. Offers consistent quality, excellent puff, and a rich texture that enhances product appeal across diverse markets.",
+      },
+      {
+        name: "Grade C : 4+ Sutta",
+        spec: "4+ Sutta (≈ 12.8 – 16.0 mm)",
+        shortDesc: "Consistent quality, excellent puff, and rich texture for commercial snack blends.",
+        note: "A premium assortment of 4+ sutta foxnut with a uniform and appealing appearance. Suitable for snacks, gourmet mixes, and rebranding, it delivers consistent quality, excellent puff, and a rich texture that enhances overall product attractiveness across varied markets.",
+      },
     ],
+    variationDisclaimer:
+      "Images shown are for reference purposes; actual product may exhibit natural variations in size, color, and texture depending on the harvest — a hallmark of its authenticity and freshness.",
+    howToOrder:
+      "To start your order, simply fill out our official enquiry form mentioned below or email us at contact@harvestgateoverseas.com with your requirements. Our sales team will connect with you to discuss details and share Ex-Works pricing (valid for 3 days). Once specifications, shipping, and final pricing are agreed upon, we’ll issue a Proforma Invoice (PI). The order is confirmed upon receipt of the advance payment as per our payment terms.",
+    orderTerms: {
+      moq: "As per buyer's demand",
+      prepTime: "Minimum 5 weeks (may vary based on quantity, shipping terms, and harvest availability)",
+      samples: "Minimum 1 kg, chargeable with prepaid shipping costs",
+      validity: "Ex-Works rate valid for upcoming 3 days only",
+    },
     specs: [
-      ["Moisture", "< 8.0 %"],
-      ["Purity", "99.8 %"],
-      ["Broken / Black spot", "< 1.0 %"],
-      ["Shelf life", "18 months"],
-      ["Aflatoxin", "< 4 ppb"],
-      ["Packaging", "10 kg / 20 kg nitrogen-flushed vacuum bags"],
+      ["Moisture Content", "< 8.0 % Max"],
+      ["Purity Level", "99.8 % Cleaned"],
+      ["Calibration Unit", "1 Sutta ≈ 3.2 mm Diameter"],
+      ["Broken / Black Spot", "< 1.0 % Max"],
+      ["Export Packaging", "5 kg / 10 kg Export HDPE Bags (Customizable)"],
+      ["Shelf Life", "18 — 24 Months Sealed"],
     ],
-    moq: "1 x 20ft FCL — approx. 4 MT",
-    incoterms: ["FOB Kolkata", "CIF", "CFR", "EXW Facility"],
-    markets: ["United States", "United Arab Emirates", "United Kingdom", "Australia", "Canada"],
+    moq: "As per buyer's demand",
+    incoterms: ["FOB Kolkata", "FOB Nhava Sheva", "CIF", "CFR", "EXW Facility", "Air Freight"],
+    markets: ["United States", "United Arab Emirates", "United Kingdom", "Australia", "Canada", "European Union"],
   },
 
   // ─── HARVESTGATE NATURALS ─────────────────────────────────

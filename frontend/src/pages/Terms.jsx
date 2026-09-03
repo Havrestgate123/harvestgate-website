@@ -21,7 +21,7 @@ const SECTIONS = [
     body: [
       "Order preparation timelines are generally flexible and typically commence from a minimum of approximately five weeks. The actual duration may vary based on order volume, buyer requirements, logistics planning, and the availability of fresh, harvest-grade produce, ensuring consistent quality standards.",
       "There is no fixed Minimum Order Quantity (MOQ) for regular orders. Order quantities are determined based on buyer demand, and we are open to initiating trade across a wide range of quantities as per buyer requirements.",
-      "However, a minimum sample quantity of 10 kg applies for sampling requests. Samples are available upon request and are chargeable, with both sample cost and shipping charges payable in advance by the buyer.",
+      "However, a minimum sample quantity of 1 kg applies for sampling requests. Samples are available upon request and are chargeable, with both sample cost and shipping charges payable in advance by the buyer.",
     ],
   },
   {

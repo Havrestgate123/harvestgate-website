@@ -1,7 +1,20 @@
 import { useRef } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, ArrowLeft, CheckCircle2, ShieldCheck, Package, Sparkles } from "lucide-react";
+import {
+  ArrowUpRight,
+  ArrowLeft,
+  CheckCircle2,
+  ShieldCheck,
+  Package,
+  Sparkles,
+  Scale,
+  Clock,
+  Info,
+  Mail,
+  TrendingUp,
+  Award,
+} from "lucide-react";
 import { MaskLines, Reveal } from "../components/motion/Reveal";
 import { getProduct, PRODUCTS, surfaceAccent } from "../data/products";
 import { useTheme } from "../theme/ThemeProvider";
@@ -21,7 +34,7 @@ const ProductDetail = () => {
 
   const others = PRODUCTS.filter((p) => p.slug !== product.slug);
   const accent = surfaceAccent(product, theme);
-  const isMillets = product.slug === "millets";
+  const isFoxnuts = product.slug === "foxnuts";
 
   return (
     <div data-testid={`page-product-${product.slug}`} className="pt-[110px] sm:pt-[130px]">
@@ -76,22 +89,162 @@ const ProductDetail = () => {
               {product.tagline}
             </p>
           </Reveal>
-
-          <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-8 border-t-2 border-hg-line pt-8 sm:grid-cols-4">
-            {[
-              ["Origin Cluster", product.origin],
-              ["HS Tariff Code", product.hsCode],
-              ["Harvest & Availability", product.season],
-              ["Program Type", product.accentName],
-            ].map(([k, v]) => (
-              <div key={k}>
-                <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">{k}</p>
-                <p className="mt-2 text-[15.5px] font-bold leading-snug text-hg-fg">{v}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
+
+      {/* ================= DEDICATED FOXNUTS (MAKHANA) SHOWCASE ================= */}
+      {isFoxnuts && (
+        <section className="border-b-2 border-hg-line bg-hg-bg2/80 py-20 sm:py-28">
+          <div className="hg-container space-y-20 sm:space-y-28">
+
+            {/* 1. SUTTA CALIBRATION & GRADING STANDARDS */}
+            <div>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between border-b-2 border-hg-line pb-8">
+                <div>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-hg-gold/40 bg-hg-gold/15 px-3.5 py-1 text-xs font-mono font-bold text-hg-gold uppercase tracking-widest">
+                    <Scale size={13} /> Size Calibration Metric
+                  </span>
+                  <h2 className="hg-display mt-4 text-3xl sm:text-5xl lg:text-6xl text-hg-fg font-extrabold">
+                    What is “Sutta” in Foxnuts (Makhana)?
+                  </h2>
+                </div>
+                <div className="rounded-xl border border-hg-gold/60 bg-hg-gold/15 px-5 py-3 shrink-0">
+                  <p className="font-mono text-[11px] uppercase tracking-wider text-hg-fg3 font-semibold">Standard Ratio</p>
+                  <p className="font-mono text-lg font-black text-hg-gold">1 Sutta ≈ 3.2 mm</p>
+                </div>
+              </div>
+
+              <div className="mt-8 rounded-2xl border border-hg-line bg-hg-card/70 p-6 sm:p-8 backdrop-blur-sm">
+                <p className="text-base sm:text-lg leading-relaxed text-hg-fg font-medium max-w-4xl">
+                  In foxnut grading in India, <strong className="text-hg-gold font-bold">1 sutta ≈ 3.2 mm</strong> in diameter. The “sutta” count reflects the approximate size of each popped kernel — higher counts mean larger, more premium foxnuts prized for their look, texture, and crunch.
+                </p>
+              </div>
+
+              {/* 3 EXPORT GRADES CARDS */}
+              <div className="mt-10 grid grid-cols-1 gap-7 lg:grid-cols-3">
+                {product.grades.map((g, i) => (
+                  <Reveal key={g.name} delay={i * 0.08}>
+                    <div className="group flex h-full flex-col justify-between rounded-2xl border-2 border-hg-line bg-hg-card p-7 transition-all duration-300 hover:border-hg-gold hover:shadow-xl relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-hg-gold/5 rounded-full blur-2xl pointer-events-none group-hover:bg-hg-gold/15 transition-colors" />
+                      <div>
+                        <div className="flex items-center justify-between gap-2 mb-4">
+                          <span className="font-mono text-xs font-bold uppercase tracking-wider text-hg-gold bg-hg-gold/10 border border-hg-gold/30 px-3 py-1 rounded-full">
+                            Export Grade 0{i + 1}
+                          </span>
+                          <span className="font-mono text-xs font-bold text-hg-fg3">
+                            {g.spec}
+                          </span>
+                        </div>
+
+                        <h3 className="text-2xl font-black text-hg-fg group-hover:text-hg-gold transition-colors">
+                          {g.name}
+                        </h3>
+
+                        {g.shortDesc && (
+                          <p className="mt-2 text-sm font-semibold text-hg-gold">
+                            {g.shortDesc}
+                          </p>
+                        )}
+
+                        <p className="mt-4 text-[14.5px] leading-relaxed text-hg-fg2 font-medium">
+                          {g.note}
+                        </p>
+                      </div>
+
+                      <div className="mt-6 pt-5 border-t border-hg-line flex items-center justify-between">
+                        <span className="text-xs font-mono uppercase tracking-wider text-hg-fg3 font-semibold">Inspection Standard</span>
+                        <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1.5">
+                          <CheckCircle2 size={13} /> 100% Sortex Cleaned
+                        </span>
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+
+              {/* NATURAL VARIATION DISCLAIMER BANNER */}
+              {product.variationDisclaimer && (
+                <div className="mt-8 rounded-xl border border-hg-gold/30 bg-hg-gold/5 p-4 sm:p-5 flex items-start gap-3">
+                  <Info size={18} className="text-hg-gold shrink-0 mt-0.5" />
+                  <p className="text-xs sm:text-sm font-medium text-hg-fg2 leading-relaxed italic">
+                    “{product.variationDisclaimer}”
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* 2. WHY CHOOSE OUR FOXNUTS (6 PILLARS) */}
+            {product.whyChoose && (
+              <div>
+                <div className="border-b-2 border-hg-line pb-6">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-hg-gold/40 bg-hg-gold/15 px-3.5 py-1 text-xs font-mono font-bold text-hg-gold uppercase tracking-widest">
+                    <Award size={13} /> Competitive Advantage
+                  </span>
+                  <h2 className="hg-display mt-4 text-3xl sm:text-5xl text-hg-fg font-extrabold">
+                    Why Choose Our Foxnuts?
+                  </h2>
+                  <p className="mt-3 text-base text-hg-fg2 font-medium max-w-2xl">
+                    Engineered for international buyers seeking uniform calibration, verified moisture levels, and consistent export container loads.
+                  </p>
+                </div>
+
+                <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {product.whyChoose.map((item, idx) => (
+                    <Reveal key={item.title} delay={idx * 0.05}>
+                      <div className="rounded-xl border border-hg-line bg-hg-card p-6 h-full flex flex-col justify-between hover:border-hg-gold/50 transition-all shadow-sm">
+                        <div>
+                          <div className="flex items-center gap-3">
+                            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-hg-gold/15 text-hg-gold font-bold font-mono text-sm border border-hg-gold/30">
+                              0{idx + 1}
+                            </span>
+                            <h4 className="text-lg font-bold text-hg-fg">{item.title}</h4>
+                          </div>
+                          <p className="mt-3.5 text-sm text-hg-fg2 leading-relaxed font-medium">
+                            {item.desc}
+                          </p>
+                        </div>
+                        <div className="mt-5 flex items-center gap-1.5 text-xs font-mono text-hg-gold font-bold">
+                          <CheckCircle2 size={13} /> Export Standard
+                        </div>
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* 3. START YOUR FOXNUT SUCCESS STORY TODAY (HIGH CONVERSION HERO BANNER) */}
+            <Reveal>
+              <div className="rounded-3xl border-2 border-hg-gold/70 bg-gradient-to-br from-hg-card via-hg-bg2 to-[#122318] p-8 sm:p-14 shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-hg-gold/10 rounded-full blur-3xl pointer-events-none" />
+                <div className="relative z-10 max-w-3xl">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-hg-gold/50 bg-hg-gold/15 px-4 py-1.5 text-xs font-mono font-bold text-hg-gold uppercase tracking-[0.2em]">
+                    <Sparkles size={14} className="text-hg-gold animate-pulse" /> Lucrative Global Opportunity
+                  </span>
+                  <h3 className="hg-display mt-6 text-3xl sm:text-5xl lg:text-6xl text-hg-fg font-black leading-tight">
+                    Start Your Foxnut Success Story Today!
+                  </h3>
+                  <p className="mt-5 text-base sm:text-lg text-hg-fg2 leading-relaxed font-medium">
+                    Don’t just watch the demand grow — own it. Import our premium organic foxnuts into your country, put them under your own brand, and become the go-to supplier in your market. The demand is rising, the margins are attractive, and the time to act is now. Secure your first shipment today and start building your profitable foxnut empire.
+                  </p>
+                  <div className="mt-8 flex flex-wrap items-center gap-4">
+                    <Link to="/contact" className="hg-btn hg-btn--solid font-bold text-sm">
+                      <span>Secure Your First Shipment</span>
+                    </Link>
+                    <a
+                      href="mailto:contact@harvestgateoverseas.com?subject=Foxnut%20Import%20%26%20Rebranding%20Enquiry"
+                      className="flex items-center gap-2 font-mono text-xs font-bold text-hg-gold hover:underline transition-colors"
+                    >
+                      <Mail size={15} /> contact@harvestgateoverseas.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+
+          </div>
+        </section>
+      )}
 
       {/* DEDICATED VARIETIES SHOWCASE SECTION (Millets, Pulses, etc.) */}
       {product.varieties && product.varieties.length > 0 && (
@@ -203,31 +356,45 @@ const ProductDetail = () => {
               <p className="mt-6 text-[16.5px] leading-relaxed text-hg-fg2 font-medium">{product.description}</p>
             </Reveal>
 
-            <Reveal delay={0.1} className="mt-14">
-              <p className="hg-eyebrow text-[12px] font-bold">Standard Grades & Calibrations</p>
-              <div className="mt-6 border-t-2 border-hg-line">
-                {product.grades.map((g) => (
-                  <div
-                    key={g.name}
-                    className="group flex flex-col gap-2 border-b border-hg-line py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 transition-colors hover:bg-hg-bg2/40 px-2"
-                  >
-                    <div className="flex items-baseline gap-4">
-                      <span
-                        className="h-3 w-3 shrink-0 rounded-full transition-transform duration-300 group-hover:scale-150"
-                        style={{ backgroundColor: accent }}
-                      />
-                      <div>
-                        <p className="text-[17px] font-bold text-hg-fg">{g.name}</p>
-                        <p className="mt-1 text-[13.5px] font-medium text-hg-fg3">{g.note}</p>
+            {/* HOW TO ORDER CARD */}
+            {product.howToOrder && (
+              <Reveal delay={0.1} className="mt-10 rounded-2xl border border-hg-gold/50 bg-hg-gold/10 p-6 sm:p-8">
+                <p className="font-mono text-xs uppercase tracking-[0.24em] text-hg-gold font-bold flex items-center gap-2">
+                  <Clock size={15} /> How to Order
+                </p>
+                <p className="mt-4 text-[15px] leading-relaxed text-hg-fg font-medium">
+                  {product.howToOrder}
+                </p>
+              </Reveal>
+            )}
+
+            {!isFoxnuts && (
+              <Reveal delay={0.1} className="mt-14">
+                <p className="hg-eyebrow text-[12px] font-bold">Standard Grades & Calibrations</p>
+                <div className="mt-6 border-t-2 border-hg-line">
+                  {product.grades.map((g) => (
+                    <div
+                      key={g.name}
+                      className="group flex flex-col gap-2 border-b border-hg-line py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 transition-colors hover:bg-hg-bg2/40 px-2"
+                    >
+                      <div className="flex items-baseline gap-4">
+                        <span
+                          className="h-3 w-3 shrink-0 rounded-full transition-transform duration-300 group-hover:scale-150"
+                          style={{ backgroundColor: accent }}
+                        />
+                        <div>
+                          <p className="text-[17px] font-bold text-hg-fg">{g.name}</p>
+                          <p className="mt-1 text-[13.5px] font-medium text-hg-fg3">{g.note}</p>
+                        </div>
                       </div>
+                      <p className="shrink-0 pl-7 font-mono text-[13px] uppercase tracking-[0.16em] font-bold text-hg-gold sm:pl-0">
+                        {g.spec}
+                      </p>
                     </div>
-                    <p className="shrink-0 pl-7 font-mono text-[13px] uppercase tracking-[0.16em] font-bold text-hg-gold sm:pl-0">
-                      {g.spec}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
+                  ))}
+                </div>
+              </Reveal>
+            )}
           </div>
 
           <div className="lg:col-span-5">
@@ -259,6 +426,30 @@ const ProductDetail = () => {
                 </p>
                 <p className="mt-2 text-[16px] font-bold text-hg-fg">{product.moq}</p>
               </div>
+
+              {product.orderTerms && (
+                <>
+                  <div>
+                    <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
+                      Order Preparation Time
+                    </p>
+                    <p className="mt-2 text-[15px] font-bold text-hg-fg">{product.orderTerms.prepTime}</p>
+                  </div>
+                  <div>
+                    <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
+                      Sampling Policy
+                    </p>
+                    <p className="mt-2 text-[15px] font-bold text-hg-fg">{product.orderTerms.samples}</p>
+                  </div>
+                  <div>
+                    <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
+                      Pricing Validity Window
+                    </p>
+                    <p className="mt-2 text-[15px] font-bold text-hg-gold">{product.orderTerms.validity}</p>
+                  </div>
+                </>
+              )}
+
               <div>
                 <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">Incoterms Offered</p>
                 <div className="mt-3 flex flex-wrap gap-2">
