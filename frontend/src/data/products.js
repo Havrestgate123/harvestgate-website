@@ -1071,7 +1071,7 @@ export const PRODUCTS = [
       ["Purity Level", "99.8 % Cleaned"],
       ["Calibration Unit", "1 Sutta ≈ 3.2 mm Diameter"],
       ["Broken / Black Spot", "< 1.0 % Max"],
-      ["Export Packaging", "5 kg / 10 kg Export HDPE Bags (Customizable)"],
+      ["Export Packaging", "from 250 gms to 10 kg Export HDPE Bags (Customizable)"],
       ["Shelf Life", "18 — 24 Months Sealed"],
     ],
     moq: "As per buyer's demand",

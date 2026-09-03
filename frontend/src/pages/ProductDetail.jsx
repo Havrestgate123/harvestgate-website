@@ -411,79 +411,151 @@ const ProductDetail = () => {
               />
             </Reveal>
 
-            <Reveal delay={0.18} className="mt-8 border-2 border-hg-line bg-hg-card p-6 sm:p-8 shadow-sm">
-              <p className="hg-eyebrow text-[11.5px] font-bold">Physical & Chemical Spec Sheet</p>
-              <dl data-testid="quick-spec-table" className="mt-6">
-                {product.specs.map(([k, v]) => (
-                  <div key={k} className="flex justify-between gap-6 border-b border-hg-line py-3.5 last:border-0">
-                    <dt className="font-mono text-[11.5px] uppercase tracking-[0.16em] text-hg-fg3 font-semibold">{k}</dt>
-                    <dd className="text-right text-[15px] font-bold text-hg-fg">{v}</dd>
+            {isFoxnuts ? (
+              <Reveal delay={0.18} className="mt-8 border-2 border-hg-line bg-hg-card p-6 sm:p-8 shadow-sm">
+                <dl className="space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
+                      Export Packaging
+                    </dt>
+                    <dd className="sm:text-right text-[14.5px] font-bold text-hg-fg">
+                      from 250 gms to 10 kg Export HDPE Bags (Customizable)
+                    </dd>
                   </div>
-                ))}
-              </dl>
-            </Reveal>
 
-            <Reveal delay={0.22} className="mt-8 space-y-7 border-2 border-hg-line bg-hg-bg2 p-6 sm:p-8 shadow-sm">
-              <div>
-                <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
-                  Minimum Order (MOQ)
-                </p>
-                <p className="mt-2 text-[16px] font-bold text-hg-fg">{product.moq}</p>
-              </div>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
+                      Shelf Life
+                    </dt>
+                    <dd className="sm:text-right text-[14.5px] font-bold text-hg-fg">
+                      18 — 24 Months Sealed
+                    </dd>
+                  </div>
 
-              {product.orderTerms && (
-                <>
-                  <div>
-                    <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
-                      Order Preparation Time
-                    </p>
-                    <p className="mt-2 text-[15px] font-bold text-hg-fg">{product.orderTerms.prepTime}</p>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
+                      Calibration Unit
+                    </dt>
+                    <dd className="sm:text-right text-[14.5px] font-bold text-hg-fg">
+                      1 Sutta ≈ 3.2 mm Diameter
+                    </dd>
                   </div>
-                  <div>
-                    <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
-                      Sampling Policy
-                    </p>
-                    <p className="mt-2 text-[15px] font-bold text-hg-fg">{product.orderTerms.samples}</p>
-                  </div>
-                  <div>
-                    <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
-                      Pricing Validity Window
-                    </p>
-                    <p className="mt-2 text-[15px] font-bold text-hg-gold">{product.orderTerms.validity}</p>
-                  </div>
-                </>
-              )}
 
-              <div>
-                <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">Incoterms Offered</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {product.incoterms.map((t) => (
-                    <span
-                      key={t}
-                      className="border-2 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] font-bold bg-white dark:bg-black/40"
-                      style={{ borderColor: accent, color: accent }}
-                    >
-                      {t}
-                    </span>
-                  ))}
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
+                      MOQ
+                    </dt>
+                    <dd className="sm:text-right text-[14.5px] font-bold text-hg-fg">
+                      As per buyer&apos;s demand .
+                    </dd>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
+                      Preparation Time
+                    </dt>
+                    <dd className="sm:text-right text-[14px] font-bold text-hg-fg max-w-xs leading-snug">
+                      Minimum 5 weeks (may vary based on quantity, shipping terms, and harvest availability)
+                    </dd>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
+                      Samples
+                    </dt>
+                    <dd className="sm:text-right text-[14px] font-bold text-hg-fg max-w-xs leading-snug">
+                      Minimum 1 kg, chargeable with prepaid shipping costs
+                    </dd>
+                  </div>
+                </dl>
+
+                <div className="mt-7 pt-2">
+                  <Link
+                    to="/contact"
+                    data-testid="product-enquire-cta"
+                    className="hg-btn hg-btn--solid w-full justify-center text-[13px] font-bold py-4"
+                  >
+                    <span>Request Quotation for {product.name}</span>
+                  </Link>
                 </div>
-              </div>
-              <div>
-                <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
-                  Export Destinations
-                </p>
-                <p className="mt-2 text-[15px] font-medium leading-relaxed text-hg-fg">
-                  {product.markets.join(" · ")}
-                </p>
-              </div>
-              <Link
-                to="/contact"
-                data-testid="product-enquire-cta"
-                className="hg-btn hg-btn--solid w-full justify-center text-[13px] font-bold py-4"
-              >
-                <span>Request Quotation for {product.name}</span>
-              </Link>
-            </Reveal>
+              </Reveal>
+            ) : (
+              <>
+                <Reveal delay={0.18} className="mt-8 border-2 border-hg-line bg-hg-card p-6 sm:p-8 shadow-sm">
+                  <p className="hg-eyebrow text-[11.5px] font-bold">Physical & Chemical Spec Sheet</p>
+                  <dl data-testid="quick-spec-table" className="mt-6">
+                    {product.specs.map(([k, v]) => (
+                      <div key={k} className="flex justify-between gap-6 border-b border-hg-line py-3.5 last:border-0">
+                        <dt className="font-mono text-[11.5px] uppercase tracking-[0.16em] text-hg-fg3 font-semibold">{k}</dt>
+                        <dd className="text-right text-[15px] font-bold text-hg-fg">{v}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </Reveal>
+
+                <Reveal delay={0.22} className="mt-8 space-y-7 border-2 border-hg-line bg-hg-bg2 p-6 sm:p-8 shadow-sm">
+                  <div>
+                    <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
+                      Minimum Order (MOQ)
+                    </p>
+                    <p className="mt-2 text-[16px] font-bold text-hg-fg">{product.moq}</p>
+                  </div>
+
+                  {product.orderTerms && (
+                    <>
+                      <div>
+                        <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
+                          Order Preparation Time
+                        </p>
+                        <p className="mt-2 text-[15px] font-bold text-hg-fg">{product.orderTerms.prepTime}</p>
+                      </div>
+                      <div>
+                        <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
+                          Sampling Policy
+                        </p>
+                        <p className="mt-2 text-[15px] font-bold text-hg-fg">{product.orderTerms.samples}</p>
+                      </div>
+                      <div>
+                        <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
+                          Pricing Validity Window
+                        </p>
+                        <p className="mt-2 text-[15px] font-bold text-hg-gold">{product.orderTerms.validity}</p>
+                      </div>
+                    </>
+                  )}
+
+                  <div>
+                    <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">Incoterms Offered</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {product.incoterms.map((t) => (
+                        <span
+                          key={t}
+                          className="border-2 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] font-bold bg-white dark:bg-black/40"
+                          style={{ borderColor: accent, color: accent }}
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
+                      Export Destinations
+                    </p>
+                    <p className="mt-2 text-[15px] font-medium leading-relaxed text-hg-fg">
+                      {product.markets.join(" · ")}
+                    </p>
+                  </div>
+                  <Link
+                    to="/contact"
+                    data-testid="product-enquire-cta"
+                    className="hg-btn hg-btn--solid w-full justify-center text-[13px] font-bold py-4"
+                  >
+                    <span>Request Quotation for {product.name}</span>
+                  </Link>
+                </Reveal>
+              </>
+            )}
           </div>
         </div>
       </section>
