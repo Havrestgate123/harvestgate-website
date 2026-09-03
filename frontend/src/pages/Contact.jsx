@@ -23,24 +23,6 @@ import {
 import { MaskLines, Reveal } from "../components/motion/Reveal";
 import { PRODUCTS, CERTS } from "../data/products";
 
-const QUICK_PRODUCTS = [
-  "Phool Makhana",
-  "Millets (Jowar / Bajra / Ragi)",
-  "Basmati & Non-Basmati Rice",
-  "Sugar & Jaggery",
-  "Pulses & Lentils",
-  "Flours & Atta",
-  "Roasted Daliya",
-  "Multi-Commodity Consolidated FCL",
-];
-
-const QUICK_VOLUMES = [
-  "1 x 20ft FCL (Trial)",
-  "1 x 40ft FCL",
-  "50+ MT Monthly",
-  "Commercial Sample Request",
-];
-
 const EMPTY = {
   name: "",
   orgName: "",
@@ -77,11 +59,6 @@ const Contact = () => {
 
   const set = (k) => (e) => {
     const val = e.target.type === "checkbox" ? e.target.checked : e.target.value;
-    setValues((v) => ({ ...v, [k]: val }));
-    if (errors[k]) setErrors((prev) => ({ ...prev, [k]: undefined }));
-  };
-
-  const setDirect = (k, val) => {
     setValues((v) => ({ ...v, [k]: val }));
     if (errors[k]) setErrors((prev) => ({ ...prev, [k]: undefined }));
   };
@@ -465,24 +442,6 @@ const Contact = () => {
                           errors.product ? "ring-2 ring-rose-400 border-rose-400" : ""
                         }`}
                       />
-                      {/* Quick product chips */}
-                      <div className="mt-2.5 flex flex-wrap items-center gap-2">
-                        <span className="text-[11px] font-mono uppercase tracking-wider text-hg-gold font-bold">Quick Select:</span>
-                        {QUICK_PRODUCTS.map((p) => (
-                          <button
-                            key={p}
-                            type="button"
-                            onClick={() => setDirect("product", p)}
-                            className={`rounded-lg px-2.5 py-1 text-[11.5px] font-medium transition-all border ${
-                              values.product === p
-                                ? "bg-hg-gold text-black font-bold border-hg-gold shadow"
-                                : "bg-hg-bg2 dark:bg-white/10 text-hg-fg dark:text-emerald-100 hover:bg-hg-line/60 border-hg-line dark:border-transparent"
-                            }`}
-                          >
-                            + {p}
-                          </button>
-                        ))}
-                      </div>
                     </div>
 
                     {/* ROW 5: Quantity Required & Quick Volume Chips */}
@@ -506,24 +465,6 @@ const Contact = () => {
                           errors.quantity ? "ring-2 ring-rose-400 border-rose-400" : ""
                         }`}
                       />
-                      {/* Quick volume chips */}
-                      <div className="mt-2.5 flex flex-wrap items-center gap-2">
-                        <span className="text-[11px] font-mono uppercase tracking-wider text-hg-gold font-bold">Presets:</span>
-                        {QUICK_VOLUMES.map((v) => (
-                          <button
-                            key={v}
-                            type="button"
-                            onClick={() => setDirect("quantity", v)}
-                            className={`rounded-lg px-2.5 py-1 text-[11.5px] font-medium transition-all border ${
-                              values.quantity === v
-                                ? "bg-hg-gold text-black font-bold border-hg-gold shadow"
-                                : "bg-hg-bg2 dark:bg-white/10 text-hg-fg dark:text-emerald-100 hover:bg-hg-line/60 border-hg-line dark:border-transparent"
-                            }`}
-                          >
-                            {v}
-                          </button>
-                        ))}
-                      </div>
                     </div>
 
                     {/* ROW 6: Your Message */}
