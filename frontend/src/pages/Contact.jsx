@@ -78,7 +78,7 @@ const Contact = () => {
 
     try {
       const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
-      
+
       // 1. Dispatch through FastAPI SMTP engine (Sends Admin Alert + Branded Buyer Auto-Responder)
       await fetch(`${apiUrl}/api/enquiry`, {
         method: "POST",
@@ -167,7 +167,7 @@ const Contact = () => {
       {/* ============ MAIN SECTION ============ */}
       <section className="hg-container py-12 sm:py-20">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14 items-start">
-          
+
           {/* ============ FORM CONTAINER ============ */}
           <div className="lg:col-span-8">
             <AnimatePresence mode="wait">
@@ -182,7 +182,7 @@ const Contact = () => {
                   className="rounded-3xl border-2 border-hg-gold/60 bg-white dark:bg-gradient-to-b dark:from-[#132c1e] dark:to-[#0d1e15] p-8 sm:p-14 text-hg-fg dark:text-white shadow-2xl relative overflow-hidden"
                 >
                   <div className="absolute top-0 right-0 w-96 h-96 bg-hg-gold/10 rounded-full blur-3xl pointer-events-none" />
-                  
+
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
@@ -303,7 +303,7 @@ const Contact = () => {
 
                   {/* ACTUAL FORM */}
                   <form noValidate onSubmit={onSubmit} className="relative z-10 space-y-7">
-                    
+
                     {/* ROW 1: Full Name & Org Name */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
@@ -322,9 +322,8 @@ const Contact = () => {
                           value={values.name}
                           onChange={set("name")}
                           placeholder="e.g. Marcus Vance"
-                          className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${
-                            errors.name ? "ring-2 ring-rose-400 border-rose-400" : ""
-                          }`}
+                          className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${errors.name ? "ring-2 ring-rose-400 border-rose-400" : ""
+                            }`}
                         />
                       </div>
 
@@ -344,9 +343,8 @@ const Contact = () => {
                           value={values.orgName}
                           onChange={set("orgName")}
                           placeholder="e.g. Apex Global Trading FZE"
-                          className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${
-                            errors.orgName ? "ring-2 ring-rose-400 border-rose-400" : ""
-                          }`}
+                          className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${errors.orgName ? "ring-2 ring-rose-400 border-rose-400" : ""
+                            }`}
                         />
                       </div>
                     </div>
@@ -368,9 +366,8 @@ const Contact = () => {
                         value={values.orgAddress}
                         onChange={set("orgAddress")}
                         placeholder="e.g. Suite 402, Trade Tower, Business Bay, Dubai, UAE - PO Box 41209"
-                        className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${
-                          errors.orgAddress ? "ring-2 ring-rose-400 border-rose-400" : ""
-                        }`}
+                        className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${errors.orgAddress ? "ring-2 ring-rose-400 border-rose-400" : ""
+                          }`}
                       />
                     </div>
 
@@ -392,9 +389,8 @@ const Contact = () => {
                           value={values.email}
                           onChange={set("email")}
                           placeholder="buyer@globalimport.com"
-                          className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${
-                            errors.email ? "ring-2 ring-rose-400 border-rose-400" : ""
-                          }`}
+                          className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${errors.email ? "ring-2 ring-rose-400 border-rose-400" : ""
+                            }`}
                         />
                       </div>
 
@@ -414,9 +410,8 @@ const Contact = () => {
                           value={values.contactNumber}
                           onChange={set("contactNumber")}
                           placeholder="+971 50 123 4567 / +1 415 800 9000"
-                          className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${
-                            errors.contactNumber ? "ring-2 ring-rose-400 border-rose-400" : ""
-                          }`}
+                          className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${errors.contactNumber ? "ring-2 ring-rose-400 border-rose-400" : ""
+                            }`}
                         />
                       </div>
                     </div>
@@ -438,9 +433,8 @@ const Contact = () => {
                         value={values.product}
                         onChange={set("product")}
                         placeholder="e.g. Authentic Indian Millets, Natural Indian Sweeteners, Premium Indian Pulses, Wholesome Indian Grains, Traditional Indian Flours, Traditional Porridge & Daliya"
-                        className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${
-                          errors.product ? "ring-2 ring-rose-400 border-rose-400" : ""
-                        }`}
+                        className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${errors.product ? "ring-2 ring-rose-400 border-rose-400" : ""
+                          }`}
                       />
                     </div>
 
@@ -461,9 +455,8 @@ const Contact = () => {
                         value={values.quantity}
                         onChange={set("quantity")}
                         placeholder="e.g. 20 MT, 50 MT, 100 kg"
-                        className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${
-                          errors.quantity ? "ring-2 ring-rose-400 border-rose-400" : ""
-                        }`}
+                        className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${errors.quantity ? "ring-2 ring-rose-400 border-rose-400" : ""
+                          }`}
                       />
                     </div>
 
@@ -537,7 +530,7 @@ const Contact = () => {
 
           {/* ============ SIDEBAR / CONTACT DETAILS ============ */}
           <aside className="lg:col-span-4 space-y-6">
-            
+
             {/* Direct Channels Card */}
             <div className="rounded-2xl border border-hg-line bg-hg-card p-6 sm:p-8 shadow-lg hover:border-hg-gold/50 transition-colors">
               <div className="flex items-center gap-2">
@@ -642,7 +635,7 @@ const Contact = () => {
             {/* Quality Commitment Quote */}
             <div className="rounded-2xl border-2 border-hg-gold/30 bg-gradient-to-br from-hg-gold/10 via-hg-card to-hg-card p-6 shadow-md">
               <p className="hg-italic text-lg text-hg-fg font-semibold leading-relaxed">
-                “Every consignment is backed by FSSAI &amp; NABL laboratory certificates with verified moisture, purity, and grade specs.”
+                “Every consignment is backed by FSSAI & NABL laboratory certificates with verified moisture, purity, and grade specs.”
               </p>
               <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.22em] text-hg-gold font-bold">
                 — Export Management, HarvestGate Overseas
