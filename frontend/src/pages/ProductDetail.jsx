@@ -58,18 +58,16 @@ const ProductDetail = () => {
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <div className="inline-flex flex-wrap items-center gap-2.5 rounded-full border border-white/20 bg-black/65 px-4 py-1.5 backdrop-blur-md shadow-xl">
               <span
-                className={`inline-flex items-center gap-1.5 font-mono text-[10.5px] font-bold tracking-[0.24em] uppercase px-3 py-1 rounded-full border ${
-                  product.range === "SELECT"
+                className={`inline-flex items-center gap-1.5 font-mono text-[10.5px] font-bold tracking-[0.24em] uppercase px-3 py-1 rounded-full border ${product.range === "SELECT"
                     ? "border-hg-gold/80 bg-black/50 text-hg-gold shadow-[0_0_10px_rgba(212,175,55,0.4)]"
                     : "border-emerald-400/80 bg-black/50 text-emerald-300 shadow-[0_0_10px_rgba(52,211,153,0.4)]"
-                }`}
+                  }`}
               >
                 <span
-                  className={`h-2 w-2 rounded-full animate-pulse shrink-0 ${
-                    product.range === "SELECT"
+                  className={`h-2 w-2 rounded-full animate-pulse shrink-0 ${product.range === "SELECT"
                       ? "bg-hg-gold shadow-[0_0_8px_#d4af37]"
                       : "bg-emerald-400 shadow-[0_0_8px_#34d399]"
-                  }`}
+                    }`}
                 />
                 {product.range === "SELECT" ? "Harvestgate Select" : "Harvestgate Naturals"}
               </span>
@@ -124,24 +122,39 @@ const ProductDetail = () => {
               <div className="mt-10 grid grid-cols-1 gap-7 lg:grid-cols-3">
                 {product.grades.map((g, i) => (
                   <Reveal key={g.name} delay={i * 0.08}>
-                    <div className="group flex h-full flex-col justify-between rounded-2xl border-2 border-hg-line bg-hg-card p-7 transition-all duration-300 hover:border-hg-gold hover:shadow-xl relative overflow-hidden">
+                    <div className="group flex h-full flex-col justify-between rounded-2xl border-2 border-hg-line bg-hg-card p-6 sm:p-7 transition-all duration-300 hover:border-hg-gold hover:shadow-xl relative overflow-hidden">
                       <div className="absolute top-0 right-0 w-32 h-32 bg-hg-gold/5 rounded-full blur-2xl pointer-events-none group-hover:bg-hg-gold/15 transition-colors" />
                       <div>
-                        <div className="flex items-center justify-between gap-2 mb-4">
-                          <span className="font-mono text-xs font-bold uppercase tracking-wider text-hg-gold bg-hg-gold/10 border border-hg-gold/30 px-3 py-1 rounded-full">
-                            Export Grade 0{i + 1}
-                          </span>
-                          <span className="font-mono text-xs font-bold text-hg-fg3">
-                            {g.spec}
-                          </span>
+                        {/* ACTUAL FOXNUT GRADE IMAGE */}
+                        {g.image && (
+                          <div className="relative aspect-[16/11] overflow-hidden rounded-xl border border-hg-line mb-5 bg-black/5 shadow-sm">
+                            <img
+                              src={g.image}
+                              alt={g.name}
+                              loading="lazy"
+                              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-108"
+                            />
+                            <div className="absolute top-3 left-3">
+                              <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-hg-gold bg-black/75 backdrop-blur-md border border-hg-gold/40 px-2.5 py-1 rounded-full">
+                                Export Grade 0{i + 1}
+                              </span>
+                            </div>
+                            <div className="absolute bottom-3 right-3">
+                              <span className="font-mono text-[11px] font-bold text-white bg-black/75 backdrop-blur-md border border-white/20 px-2.5 py-1 rounded-md">
+                                {g.spec}
+                              </span>
+                            </div>
+                          </div>
+                        )}
+
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <h3 className="text-2xl font-black text-hg-fg group-hover:text-hg-gold transition-colors">
+                            {g.name}
+                          </h3>
                         </div>
 
-                        <h3 className="text-2xl font-black text-hg-fg group-hover:text-hg-gold transition-colors">
-                          {g.name}
-                        </h3>
-
                         {g.shortDesc && (
-                          <p className="mt-2 text-sm font-semibold text-hg-gold">
+                          <p className="mt-1.5 text-sm font-semibold text-hg-gold">
                             {g.shortDesc}
                           </p>
                         )}
@@ -151,10 +164,10 @@ const ProductDetail = () => {
                         </p>
                       </div>
 
-                      <div className="mt-6 pt-5 border-t border-hg-line flex items-center justify-between">
-                        <span className="text-xs font-mono uppercase tracking-wider text-hg-fg3 font-semibold">Inspection Standard</span>
+                      <div className="mt-6 pt-4 border-t border-hg-line flex items-center justify-between">
+                        <span className="text-xs font-mono uppercase tracking-wider text-hg-fg3 font-semibold">Standard</span>
                         <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1.5">
-                          <CheckCircle2 size={13} /> 100% Sortex Cleaned
+                          <CheckCircle2 size={13} /> Handpicked Premium
                         </span>
                       </div>
                     </div>
@@ -428,7 +441,7 @@ const ProductDetail = () => {
                       Shelf Life
                     </dt>
                     <dd className="sm:text-right text-[14.5px] font-bold text-hg-fg">
-                      18 — 24 Months Sealed
+                      12 - 18 Months Sealed
                     </dd>
                   </div>
 

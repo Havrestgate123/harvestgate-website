@@ -993,7 +993,7 @@ export const PRODUCTS = [
     name: "Premium Foxnuts",
     subtitle: "Popped Lotus Seeds / Phool Makhana",
     tagline:
-      "At Harvestgate Overseas, we bring you the finest grade of premium Indian foxnuts (makhana), cultivated in the most fertile regions of Bihar and processed with utmost care to preserve their natural taste, texture, and nutrition.",
+      "At Harvestgate Overseas, we bring you the finest grade of handpicked premium Indian foxnuts (makhana), cultivated in the most fertile regions of Bihar and processed with utmost care to preserve their natural taste, texture, and nutrition.",
     accent: "#F7F4EB",
     accentLight: "#8A7343",
     accentName: "Cream / Ivory",
@@ -1002,9 +1002,9 @@ export const PRODUCTS = [
     season: "August — November",
     image: IMG.foxnuts,
     intro:
-      "At Harvestgate Overseas, we bring you the finest grade of premium Indian foxnuts (makhana), cultivated in the most fertile regions of Bihar and processed with utmost care to preserve their natural taste, texture, and nutrition. Our foxnuts are crisp, clean, and ready for a wide range of uses — from healthy snacking to gourmet cooking.",
+      "At Harvestgate Overseas, we bring you the finest grade of handpicked premium Indian foxnuts (makhana), cultivated in the most fertile regions of Bihar and processed with utmost care to preserve their natural taste, texture, and nutrition. Our handpicked foxnuts are crisp, clean, and ready for a wide range of uses — from healthy snacking to gourmet cooking.",
     description:
-      "Don’t just watch the demand grow — own it. Import our premium organic foxnuts into your country, put them under your own brand, and become the go-to supplier in your market. The demand is rising, the margins are attractive, and the time to act is now. Secure your first shipment today and start building your profitable foxnut empire.",
+      "Don’t just watch the demand grow — own it. Import our handpicked premium organic foxnuts into your country, put them under your own brand, and become the go-to supplier in your market. The demand is rising, the margins are attractive, and the time to act is now. Secure your first shipment today and start building your profitable foxnut empire.",
     suttaExplanation: {
       title: "What is “Sutta” in Foxnuts (Makhana)?",
       text: "In foxnut grading in India, 1 sutta ≈ 3.2 mm in diameter. The “sutta” count reflects the approximate size of each popped kernel — higher counts mean larger, more premium foxnuts prized for their look, texture, and crunch.",
@@ -1039,21 +1039,24 @@ export const PRODUCTS = [
     grades: [
       {
         name: "Grade A : 6+ Sutta",
+        image: "/images/foxnuts/6-sutta.jpg",
         spec: "6+ Sutta (≈ 19.2 mm+)",
-        shortDesc: "Extra-large, superior-grade foxnuts with rich glossy appearance and unmatched crunch.",
-        note: "Exclusive selection of 6+ sutta and larger sizes; extra-large, superior-grade foxnuts with a rich, glossy appearance and exceptional texture that stands out on any shelf. Delivers unmatched crunch, premium presentation, and consistency — making it a preferred choice for high-end retail, gourmet packaging, and export markets seeking top-tier quality.",
+        shortDesc: "Extra-large, handpicked superior-grade foxnuts with a rich, glossy appearance and unmatched crunch.",
+        note: "Exclusive selection of handpicked 6+ sutta and larger sizes; extra-large, superior-grade handpicked foxnuts with a rich, glossy appearance and exceptional texture that stands out on any shelf. Delivers unmatched crunch, premium presentation, and handpicked consistency — making it a preferred choice for high-end retail, gourmet packaging, and export markets seeking top-tier quality.",
       },
       {
-        name: "Grade B : 5+ Sutta",
-        spec: "5+ Sutta (≈ 16.0 – 19.2 mm)",
-        shortDesc: "Uniform, attractive, and versatile — perfect for snacks, gourmet blends, and rebranding.",
-        note: "Premium blend of 5+ sutta; uniform, attractive, and versatile — perfect for snacks, gourmet blends, and rebranding. Offers consistent quality, excellent puff, and a rich texture that enhances product appeal across diverse markets.",
+        name: "5+ Sutta HP",
+        image: "/images/foxnuts/5-sutta.png",
+        spec: "5+ Sutta HP (≈ 16.0 – 19.2 mm)",
+        shortDesc: "Handpicked blend of 5+ sutta HP; uniform, attractive, and versatile — perfect for snacks and rebranding.",
+        note: "Premium blend of handpicked 5+ sutta HP; uniform, attractive, and versatile — perfect for snacks, gourmet blends, and rebranding. Handpicked to offer consistent quality, excellent puff, and a rich texture that enhances product appeal across diverse markets.",
       },
       {
-        name: "Grade C : 4+ Sutta",
-        spec: "4+ Sutta (≈ 12.8 – 16.0 mm)",
-        shortDesc: "Consistent quality, excellent puff, and rich texture for commercial snack blends.",
-        note: "A premium assortment of 4+ sutta foxnut with a uniform and appealing appearance. Suitable for snacks, gourmet mixes, and rebranding, it delivers consistent quality, excellent puff, and a rich texture that enhances overall product attractiveness across varied markets.",
+        name: "4+ Sutta HP",
+        image: "/images/foxnuts/4-sutta.png",
+        spec: "4+ Sutta HP (≈ 12.8 – 16.0 mm)",
+        shortDesc: "Handpicked assortment of 4+ sutta HP delivering consistent quality and excellent puff.",
+        note: "A premium assortment of handpicked 4+ sutta HP foxnuts with a uniform and appealing appearance. Carefully handpicked for snacks, gourmet mixes, and rebranding, delivering consistent quality, excellent puff, and a rich texture that enhances overall product attractiveness across varied markets.",
       },
     ],
     variationDisclaimer:
