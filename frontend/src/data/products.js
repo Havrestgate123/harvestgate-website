@@ -1393,13 +1393,6 @@ export const MANIFESTO = [
   },
 ];
 
-export const STATS = [
-  ["18+", "Export destinations"],
-  ["10", "Certified Millet Varieties"],
-  ["99.8%", "Sortex purity standard"],
-  ["ISO 22000", "Food safety certified"],
-];
-
 export const CERTS = [
   "GSTIN: 09AAICH2946R1ZR",
   "Import Export Code : AAICH2946R",

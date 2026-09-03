@@ -14,7 +14,7 @@ import {
   Quote,
 } from "lucide-react";
 import { MaskLines, MaskLinesInView, Reveal, Marquee } from "../components/motion/Reveal";
-import { IMG, STATS, CERTS } from "../data/products";
+import { IMG, CERTS } from "../data/products";
 
 const LinkedInIcon = ({ className = "w-4 h-4" }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -493,22 +493,11 @@ const About = () => (
     </section>
 
     {/* ========================================================================= */}
-    {/* 7. MARQUEE & STATS SECTION */}
+    {/* 7. ACCREDITATIONS MARQUEE */}
     {/* ========================================================================= */}
-    <Marquee items={CERTS} testId="about-marquee" />
-
-    <section className="hg-container py-16 sm:py-24">
-      <div className="grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-4">
-        {STATS.map(([v, l], i) => (
-          <Reveal key={l} delay={i * 0.07}>
-            <p className="hg-display text-4xl text-hg-gold sm:text-5xl lg:text-6xl font-extrabold">{v}</p>
-            <p className="mt-3 font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-hg-fg font-bold">
-              {l}
-            </p>
-          </Reveal>
-        ))}
-      </div>
-    </section>
+    <div className="py-8">
+      <Marquee items={CERTS} testId="about-marquee" />
+    </div>
 
     {/* ========================================================================= */}
     {/* 8. GOVERNMENT CREDENTIALS + EXPORT DESK CTA */}
