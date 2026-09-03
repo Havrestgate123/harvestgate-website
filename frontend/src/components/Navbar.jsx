@@ -202,12 +202,12 @@ export const Navbar = () => {
               end
               data-testid="nav-link-home"
               className={({ isActive }) =>
-                `inline-flex items-center font-mono text-[14px] uppercase tracking-[0.22em] font-semibold transition-colors duration-300 ${isActive ? "text-hg-gold font-bold" : "text-hg-fg hover:text-hg-gold"
+                `!inline-flex !flex-row items-center whitespace-nowrap font-mono text-[14px] uppercase tracking-[0.22em] font-semibold transition-colors duration-300 ${isActive ? "text-hg-gold font-bold" : "text-hg-fg hover:text-hg-gold"
                 }`
               }
             >
               {({ isActive }) => (
-                <span data-active={isActive ? "true" : "false"} className="hg-link py-1">
+                <span data-active={isActive ? "true" : "false"} className="hg-link py-1 whitespace-nowrap leading-none">
                   Home
                 </span>
               )}
@@ -215,14 +215,14 @@ export const Navbar = () => {
 
             {/* PRODUCTS WITH TWO-RANGE MEGA DROPDOWN */}
             <div
-              className="relative inline-flex items-center"
+              className="relative !inline-flex !flex-row items-center"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
               <button
                 type="button"
                 onClick={() => setProductsOpen((prev) => !prev)}
-                className={`inline-flex items-center gap-1.5 font-mono text-[14px] uppercase tracking-[0.22em] font-semibold transition-colors duration-300 ${pathname.startsWith("/products")
+                className={`!inline-flex !flex-row items-center gap-1.5 whitespace-nowrap font-mono text-[14px] uppercase tracking-[0.22em] font-semibold transition-colors duration-300 ${pathname.startsWith("/products")
                     ? "text-hg-gold font-bold"
                     : "text-hg-fg hover:text-hg-gold"
                   }`}
@@ -231,15 +231,15 @@ export const Navbar = () => {
               >
                 <span
                   data-active={pathname.startsWith("/products") ? "true" : "false"}
-                  className="hg-link py-1 inline-flex items-center gap-1.5"
+                  className="hg-link py-1 whitespace-nowrap leading-none"
                 >
-                  <span>Products</span>
-                  <ChevronDown
-                    size={14}
-                    className={`transition-transform duration-300 ${productsOpen ? "rotate-180 text-hg-gold" : "text-hg-fg3"
-                      }`}
-                  />
+                  Products
                 </span>
+                <ChevronDown
+                  size={14}
+                  className={`shrink-0 transition-transform duration-300 ${productsOpen ? "rotate-180 text-hg-gold" : "text-hg-fg3"
+                    }`}
+                />
               </button>
 
               {/* TWO-RANGE MEGA DROPDOWN (OPENS ON THE RIGHT SIDE) */}
@@ -384,12 +384,12 @@ export const Navbar = () => {
               to="/about"
               data-testid="nav-link-about"
               className={({ isActive }) =>
-                `inline-flex items-center font-mono text-[14px] uppercase tracking-[0.22em] font-semibold transition-colors duration-300 ${isActive ? "text-hg-gold font-bold" : "text-hg-fg hover:text-hg-gold"
+                `!inline-flex !flex-row items-center whitespace-nowrap font-mono text-[14px] uppercase tracking-[0.22em] font-semibold transition-colors duration-300 ${isActive ? "text-hg-gold font-bold" : "text-hg-fg hover:text-hg-gold"
                 }`
               }
             >
               {({ isActive }) => (
-                <span data-active={isActive ? "true" : "false"} className="hg-link py-1">
+                <span data-active={isActive ? "true" : "false"} className="hg-link py-1 whitespace-nowrap leading-none">
                   About
                 </span>
               )}
@@ -399,12 +399,12 @@ export const Navbar = () => {
               to="/terms"
               data-testid="nav-link-terms"
               className={({ isActive }) =>
-                `inline-flex items-center font-mono text-[14px] uppercase tracking-[0.22em] font-semibold transition-colors duration-300 ${isActive ? "text-hg-gold font-bold" : "text-hg-fg hover:text-hg-gold"
+                `!inline-flex !flex-row items-center whitespace-nowrap font-mono text-[14px] uppercase tracking-[0.22em] font-semibold transition-colors duration-300 ${isActive ? "text-hg-gold font-bold" : "text-hg-fg hover:text-hg-gold"
                 }`
               }
             >
               {({ isActive }) => (
-                <span data-active={isActive ? "true" : "false"} className="hg-link py-1">
+                <span data-active={isActive ? "true" : "false"} className="hg-link py-1 whitespace-nowrap leading-none">
                   Terms
                 </span>
               )}
