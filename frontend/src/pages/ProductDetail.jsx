@@ -350,15 +350,19 @@ const ProductDetail = () => {
       <section className="hg-container py-20 sm:py-28">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
-            <p className="hg-eyebrow text-[12px] font-bold">Commodity Overview</p>
-            <Reveal>
-              <p className="mt-6 text-xl leading-relaxed text-hg-fg font-semibold sm:text-2xl">{product.intro}</p>
-              <p className="mt-6 text-[16.5px] leading-relaxed text-hg-fg2 font-medium">{product.description}</p>
-            </Reveal>
+            {!isFoxnuts && (
+              <>
+                <p className="hg-eyebrow text-[12px] font-bold">Commodity Overview</p>
+                <Reveal>
+                  <p className="mt-6 text-xl leading-relaxed text-hg-fg font-semibold sm:text-2xl">{product.intro}</p>
+                  <p className="mt-6 text-[16.5px] leading-relaxed text-hg-fg2 font-medium">{product.description}</p>
+                </Reveal>
+              </>
+            )}
 
             {/* HOW TO ORDER CARD */}
             {product.howToOrder && (
-              <Reveal delay={0.1} className="mt-10 rounded-2xl border border-hg-gold/50 bg-hg-gold/10 p-6 sm:p-8">
+              <Reveal delay={0.1} className={`${isFoxnuts ? "" : "mt-10"} rounded-2xl border border-hg-gold/50 bg-hg-gold/10 p-6 sm:p-8`}>
                 <p className="font-mono text-xs uppercase tracking-[0.24em] text-hg-gold font-bold flex items-center gap-2">
                   <Clock size={15} /> How to Order
                 </p>
