@@ -437,14 +437,14 @@ const Contact = () => {
                         type="text"
                         value={values.product}
                         onChange={set("product")}
-                        placeholder="e.g. 100% Sortex Sorghum Jowar, Jumbo Phool Makhana 6+ Suta"
+                        placeholder="e.g. Authentic Indian Millets, Natural Indian Sweeteners, Premium Indian Pulses, Wholesome Indian Grains, Traditional Indian Flours, Traditional Porridge & Daliya"
                         className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${
                           errors.product ? "ring-2 ring-rose-400 border-rose-400" : ""
                         }`}
                       />
                     </div>
 
-                    {/* ROW 5: Quantity Required & Quick Volume Chips */}
+                    {/* ROW 5: Quantity Required */}
                     <div>
                       <label className="flex items-center justify-between text-xs font-mono uppercase tracking-wider font-bold text-hg-fg dark:text-emerald-100 mb-2">
                         <span className="flex items-center gap-1.5">
@@ -460,7 +460,7 @@ const Contact = () => {
                         type="text"
                         value={values.quantity}
                         onChange={set("quantity")}
-                        placeholder="e.g. 1 x 20ft FCL (approx. 24 MT) or 100 MT monthly contract"
+                        placeholder="e.g. 20 MT, 50 MT, 100 kg"
                         className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${
                           errors.quantity ? "ring-2 ring-rose-400 border-rose-400" : ""
                         }`}
