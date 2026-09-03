@@ -432,7 +432,7 @@ const Contact = () => {
                         type="text"
                         value={values.product}
                         onChange={set("product")}
-                        placeholder="e.g. Authentic Indian Millets, Natural Indian Sweeteners, Premium Indian Pulses, Wholesome Indian Grains, Traditional Indian Flours, Traditional Porridge & Daliya"
+                        placeholder="e.g. Pearl Millet / Bajra, Finger Millet / Ragi, Foxtail Millet, Little Millet, Brown Sugar, Jaggery Cube, Jaggery Powder, Chickpea / Kabuli Chana, Pigeon Pea Split / Arhar Dal / Toor Dal, Green Gram Split Dehusked / Moong Dal Without Chhilka, Green Gram Whole / Moong Whole, Wheat Whole, Barley / Jau, Maize / Corn / Makka"
                         className={`w-full rounded-xl bg-hg-bg dark:bg-[#19261d] border border-hg-line dark:border-white/15 px-4 py-3.5 text-sm font-semibold text-hg-fg dark:text-white placeholder:text-hg-fg3 placeholder:font-normal outline-none transition-all shadow-sm focus:border-hg-gold focus:ring-2 focus:ring-hg-gold/20 ${errors.product ? "ring-2 ring-rose-400 border-rose-400" : ""
                           }`}
                       />
