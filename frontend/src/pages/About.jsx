@@ -349,13 +349,13 @@ const About = () => (
     {/* 6. NOTE FROM OUR CEO (DR. SUMAN PRABHA) */}
     {/* ========================================================================= */}
     <section className="hg-container py-20 sm:py-28 lg:py-32">
-      <div className="rounded-3xl border-2 border-hg-gold/50 bg-gradient-to-br from-[#faf8f2] via-white to-[#fbf9f4] dark:from-[#1b1915] dark:via-[#151513] dark:to-[#121210] p-8 sm:p-14 lg:p-16 shadow-2xl relative overflow-hidden">
+      <div className="rounded-3xl border-2 border-hg-gold/50 bg-gradient-to-br from-[#faf8f2] via-white to-[#fbf9f4] dark:from-[#1b1915] dark:via-[#151513] dark:to-[#121210] p-6 sm:p-10 lg:p-14 shadow-2xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-hg-gold/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-4xl">
-          {/* HEADER BADGE */}
-          <div className="flex items-center justify-between gap-4 flex-wrap pb-6 border-b border-hg-line">
+        <div className="relative z-10">
+          {/* HEADER ROW */}
+          <div className="flex items-center justify-between gap-4 flex-wrap pb-6 border-b border-hg-line mb-8">
             <div className="flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-hg-gold/15 border border-hg-gold/40 text-hg-gold">
                 <Quote size={20} />
@@ -384,53 +384,108 @@ const About = () => (
             </a>
           </div>
 
-          {/* LETTER BODY */}
-          <div className="mt-8 space-y-6 text-[16.5px] sm:text-[18px] leading-[1.85] text-hg-fg2 font-medium">
-            <p className="text-xl font-bold text-hg-fg">
-              Greetings,
-            </p>
-
-            <p>
-              I’m <strong className="text-hg-fg font-bold">Dr. Suman Prabha</strong>, proud founder of Harvestgate Overseas. From the very beginning, my vision has been clear: to harness India’s rich agricultural heritage and share its nourishment, purity, and tradition with the world. Every harvest, every product, and every partnership is more than a transaction — it is a promise.
-            </p>
-
-            <p>
-              My journey — rooted in a deep respect for our farmers, a passion for quality, and a commitment to sustainable growth — inspires everything we do. As a woman in agribusiness, I believe strongly in empowerment: for my team, for communities, and for stakeholders. I see each order not just as business, but as an opportunity to build bridges — between cultures, values, and people.
-            </p>
-
-            <p>
-              At Harvestgate Overseas, our dedication is to you — our customers. We pledge to deliver excellence, transparency, and service that goes beyond expectation. Give us the chance to show you what Indian agricultural produce can truly be: authentic in origin, superior in quality, and rich in respect for all involved.
-            </p>
-          </div>
-
-          {/* SIGNATURE & VALEDICTION */}
-          <div className="mt-10 pt-8 border-t border-hg-line flex flex-col sm:flex-row sm:items-end justify-between gap-6">
-            <div>
-              <p className="font-mono text-sm font-semibold text-hg-fg3 tracking-wider">
-                Warm regards,
-              </p>
-
-              {/* STYLIZED SIGNATURE */}
-              <div className="my-3 py-1">
-                <span
-                  className="font-serif italic font-medium text-3xl sm:text-4xl text-hg-gold tracking-wide select-none drop-shadow-sm"
-                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                >
-                  Dr. Suman Prabha
-                </span>
+          {/* TWO-COLUMN EXECUTIVE LAYOUT: IMAGE + LETTER */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+            {/* CEO PHOTO CARD */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded-2xl overflow-hidden border-2 border-hg-gold/40 shadow-2xl group bg-black/5 dark:bg-white/5">
+                <img
+                  src="/images/ceo-dr-suman-prabha.jpg"
+                  alt="Dr. Suman Prabha — CEO & Founder, Harvestgate Overseas"
+                  loading="lazy"
+                  className="w-full h-auto object-cover aspect-[3/4] transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6">
+                  <div className="inline-flex items-center gap-1.5 self-start rounded-full bg-hg-gold/20 backdrop-blur-md border border-hg-gold/50 px-3 py-1 mb-2">
+                    <Sparkles size={11} className="text-hg-gold" />
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white">
+                      Executive Founder
+                    </span>
+                  </div>
+                  <p className="text-xl sm:text-2xl font-bold text-white leading-tight">
+                    Dr. Suman Prabha
+                  </p>
+                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-hg-gold font-bold mt-1">
+                    CEO &amp; Founder, Harvestgate Overseas
+                  </p>
+                </div>
               </div>
 
-              <p className="text-lg font-bold text-hg-fg">
-                Dr. Suman Prabha
-              </p>
-              <p className="font-mono text-xs uppercase tracking-[0.22em] text-hg-gold font-bold mt-0.5">
-                CEO &amp; Founder, Harvestgate Overseas
-              </p>
+              {/* CEO DETAILS / CREDENTIAL BADGE */}
+              <div className="mt-4 rounded-xl border border-hg-line bg-hg-bg2/80 p-4 space-y-2">
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span className="text-hg-fg3">Head Office:</span>
+                  <span className="text-hg-fg font-bold">Moradabad, UP, India</span>
+                </div>
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span className="text-hg-fg3">Enterprise:</span>
+                  <span className="text-hg-gold font-bold">Harvestgate Overseas Pvt. Ltd.</span>
+                </div>
+                <div className="pt-2 border-t border-hg-line">
+                  <a
+                    href="https://www.linkedin.com/in/dr-suman-prabha-b60440383/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[#0A66C2]/10 hover:bg-[#0A66C2]/20 border border-[#0A66C2]/30 py-2.5 text-xs font-mono font-bold text-[#0A66C2] transition-colors"
+                  >
+                    <LinkedInIcon className="w-3.5 h-3.5" />
+                    <span>View LinkedIn Profile</span>
+                    <ExternalLink size={11} />
+                  </a>
+                </div>
+              </div>
             </div>
 
-            <div className="rounded-xl border border-hg-line bg-hg-bg2/70 p-4 max-w-xs text-xs font-mono text-hg-fg3 leading-relaxed">
-              <span className="font-bold text-hg-fg block mb-1">Direct Mandate:</span>
-              “Every harvest, every product, and every partnership is more than a transaction — it is a promise.”
+            {/* CEO LETTER CONTENT */}
+            <div className="lg:col-span-7 flex flex-col justify-between h-full">
+              <div className="space-y-6 text-[16px] sm:text-[17.5px] leading-[1.85] text-hg-fg2 font-medium">
+                <p className="text-2xl font-bold text-hg-fg font-serif italic">
+                  Greetings,
+                </p>
+
+                <p>
+                  I’m <strong className="text-hg-fg font-bold">Dr. Suman Prabha</strong>, proud founder of Harvestgate Overseas. From the very beginning, my vision has been clear: to harness India’s rich agricultural heritage and share its nourishment, purity, and tradition with the world. Every harvest, every product, and every partnership is more than a transaction — it is a promise.
+                </p>
+
+                <p>
+                  My journey — rooted in a deep respect for our farmers, a passion for quality, and a commitment to sustainable growth — inspires everything we do. As a woman in agribusiness, I believe strongly in empowerment: for my team, for communities, and for stakeholders. I see each order not just as business, but as an opportunity to build bridges — between cultures, values, and people.
+                </p>
+
+                <p>
+                  At Harvestgate Overseas, our dedication is to you — our customers. We pledge to deliver excellence, transparency, and service that goes beyond expectation. Give us the chance to show you what Indian agricultural produce can truly be: authentic in origin, superior in quality, and rich in respect for all involved.
+                </p>
+              </div>
+
+              {/* SIGNATURE & VALEDICTION */}
+              <div className="mt-8 pt-6 border-t border-hg-line flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+                <div>
+                  <p className="font-mono text-sm font-semibold text-hg-fg3 tracking-wider">
+                    Warm regards,
+                  </p>
+
+                  {/* STYLIZED SIGNATURE */}
+                  <div className="my-2 py-1">
+                    <span
+                      className="font-serif italic font-medium text-3xl sm:text-4xl text-hg-gold tracking-wide select-none drop-shadow-sm"
+                      style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    >
+                      Dr. Suman Prabha
+                    </span>
+                  </div>
+
+                  <p className="text-lg font-bold text-hg-fg">
+                    Dr. Suman Prabha
+                  </p>
+                  <p className="font-mono text-xs uppercase tracking-[0.22em] text-hg-gold font-bold mt-0.5">
+                    CEO &amp; Founder, Harvestgate Overseas
+                  </p>
+                </div>
+
+                <div className="rounded-xl border border-hg-line bg-hg-bg2/70 p-4 max-w-xs text-xs font-mono text-hg-fg3 leading-relaxed">
+                  <span className="font-bold text-hg-fg block mb-1">Direct Mandate:</span>
+                  “Every harvest, every product, and every partnership is more than a transaction — it is a promise.”
+                </div>
+              </div>
             </div>
           </div>
         </div>
