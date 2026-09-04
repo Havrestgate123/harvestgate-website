@@ -19,6 +19,90 @@ import { MaskLines, Reveal } from "../components/motion/Reveal";
 import { getProduct, PRODUCTS, surfaceAccent } from "../data/products";
 import { useTheme } from "../theme/ThemeProvider";
 
+const getProductMarketing = (product) => {
+  const shortName = {
+    foxnuts: "Foxnuts",
+    millets: "Millets",
+    sweeteners: "Sweeteners",
+    pulses: "Pulses",
+    grains: "Grains",
+    flours: "Flours",
+    daliya: "Porridge & Daliya",
+  }[product.slug] || product.categoryLabel || product.name;
+
+  const singularName = {
+    foxnuts: "foxnut",
+    millets: "millet",
+    sweeteners: "sweetener",
+    pulses: "pulse",
+    grains: "grain",
+    flours: "flour",
+    daliya: "daliya",
+  }[product.slug] || "product";
+
+  const whyChooseTitle = `Why Choose Our ${shortName}?`;
+  const whyChooseSubtitle =
+    product.slug === "foxnuts"
+      ? "Engineered for international buyers seeking uniform calibration, verified moisture levels, and consistent export container loads."
+      : "Engineered for international buyers seeking uniform calibration, verified moisture levels, and consistent export container loads.";
+
+  const defaultWhyChoose = [
+    {
+      title: "Top Quality Premium",
+      desc: {
+        foxnuts: "Handpicked, crisp, and naturally nutritious with high puff volume.",
+        millets: "Handpicked, sortex-cleaned, and naturally nutritious with high purity.",
+        sweeteners: "100% natural, chemical-free, and rich in authentic taste and minerals.",
+        pulses: "Handpicked, optical sortex-graded, and naturally nutritious with uniform grains.",
+        grains: "Handpicked, sortex-cleaned, and naturally nutritious harvests with verified moisture levels.",
+        flours: "Stone-ground, 100% pure, and naturally nutritious with zero additives.",
+        daliya: "Sortex de-stoned, slow-roasted, and naturally nutritious with uniform granules.",
+      }[product.slug] || "Handpicked, crisp, and naturally nutritious with high puff volume.",
+    },
+    {
+      title: "Ethically Sourced",
+      desc: {
+        foxnuts: "Direct from trusted Indian farmers in Bihar's fertile wetland belt.",
+        millets: "Direct from trusted Indian farmers across fertile, chemical-free dryland belts.",
+        sweeteners: "Direct from trusted artisanal cane farmers in Maharashtra & Uttar Pradesh.",
+        pulses: "Direct from primary agricultural mandis across India's pulse heartland.",
+        grains: "Direct from trusted agrarian clusters and modernized grain silos across India.",
+        flours: "Direct from certified milling facilities and trusted farm aggregator networks.",
+        daliya: "Direct from trusted grain farmers across Madhya Pradesh, Rajasthan & UP.",
+      }[product.slug] || "Direct from trusted Indian farmers in fertile agricultural belts.",
+    },
+    {
+      title: "Testing on Request",
+      desc: "Paid testing can be arranged at FSSAI-approved & NABL-accredited labs.",
+    },
+    {
+      title: "Customizable Packaging",
+      desc: "Generally packed in HDPE bags of 10 kg or 5 kg for bulk export, but it can be customised as per buyer standards.",
+    },
+    {
+      title: "Bulk Supply Experts",
+      desc: "Reliable, consistent global container shipments.",
+    },
+    {
+      title: "Profit Potential",
+      desc: `Import, rebrand, and grow your ${singularName} business.`,
+    },
+  ];
+
+  const successStoryTitle = `Start Your ${shortName === "Porridge & Daliya" ? "Daliya & Porridge" : shortName} Success Story Today!`;
+  const successStoryText = `Don’t just watch the demand grow — own it. Import our premium organic ${singularName === "daliya" ? "daliya and porridge" : singularName + "s"} into your country, put them under your own brand, and become the go-to supplier in your market. The demand is rising, the margins are attractive, and the time to act is now. Secure your first shipment today and start building your profitable ${singularName} empire.`;
+
+  return {
+    shortName,
+    singularName,
+    whyChooseTitle,
+    whyChooseSubtitle,
+    whyChooseList: product.whyChoose || defaultWhyChoose,
+    successStoryTitle,
+    successStoryText,
+  };
+};
+
 const ProductDetail = () => {
   const { slug } = useParams();
   const { theme } = useTheme();
@@ -35,6 +119,7 @@ const ProductDetail = () => {
   const others = PRODUCTS.filter((p) => p.slug !== product.slug);
   const accent = surfaceAccent(product, theme);
   const isFoxnuts = product.slug === "foxnuts";
+  const marketing = getProductMarketing(product);
 
   return (
     <div data-testid={`page-product-${product.slug}`} className="pt-[110px] sm:pt-[130px]">
@@ -202,76 +287,6 @@ const ProductDetail = () => {
                 </div>
               )}
             </div>
-
-            {/* 2. WHY CHOOSE OUR FOXNUTS (6 PILLARS) */}
-            {product.whyChoose && (
-              <div>
-                <div className="border-b-2 border-hg-line pb-6">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-hg-gold/40 bg-hg-gold/15 px-3.5 py-1 text-xs font-mono font-bold text-hg-gold uppercase tracking-widest">
-                    <Award size={13} /> Competitive Advantage
-                  </span>
-                  <h2 className="hg-display mt-4 text-3xl sm:text-5xl text-hg-fg font-extrabold">
-                    Why Choose Our Foxnuts?
-                  </h2>
-                  <p className="mt-3 text-base text-hg-fg2 font-medium max-w-2xl">
-                    Engineered for international buyers seeking uniform calibration, verified moisture levels, and consistent export container loads.
-                  </p>
-                </div>
-
-                <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {product.whyChoose.map((item, idx) => (
-                    <Reveal key={item.title} delay={idx * 0.05}>
-                      <div className="rounded-xl border border-hg-line bg-hg-card p-6 h-full flex flex-col justify-between hover:border-hg-gold/50 transition-all shadow-sm">
-                        <div>
-                          <div className="flex items-center gap-3">
-                            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-hg-gold/15 text-hg-gold font-bold font-mono text-sm border border-hg-gold/30">
-                              0{idx + 1}
-                            </span>
-                            <h4 className="text-lg font-bold text-hg-fg">{item.title}</h4>
-                          </div>
-                          <p className="mt-3.5 text-sm text-hg-fg2 leading-relaxed font-medium">
-                            {item.desc}
-                          </p>
-                        </div>
-                        <div className="mt-5 flex items-center gap-1.5 text-xs font-mono text-hg-gold font-bold">
-                          <CheckCircle2 size={13} /> Export Standard
-                        </div>
-                      </div>
-                    </Reveal>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* 3. START YOUR FOXNUT SUCCESS STORY TODAY (HIGH CONVERSION HERO BANNER) */}
-            <Reveal>
-              <div className="rounded-3xl border-2 border-hg-gold/70 bg-gradient-to-br from-hg-card via-hg-bg2 to-[#122318] p-8 sm:p-14 shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-hg-gold/10 rounded-full blur-3xl pointer-events-none" />
-                <div className="relative z-10 max-w-3xl">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-hg-gold/50 bg-hg-gold/15 px-4 py-1.5 text-xs font-mono font-bold text-hg-gold uppercase tracking-[0.2em]">
-                    <Sparkles size={14} className="text-hg-gold animate-pulse" /> Lucrative Global Opportunity
-                  </span>
-                  <h3 className="hg-display mt-6 text-3xl sm:text-5xl lg:text-6xl text-hg-fg font-black leading-tight">
-                    Start Your Foxnut Success Story Today!
-                  </h3>
-                  <p className="mt-5 text-base sm:text-lg text-hg-fg2 leading-relaxed font-medium">
-                    Don’t just watch the demand grow — own it. Import our premium organic foxnuts into your country, put them under your own brand, and become the go-to supplier in your market. The demand is rising, the margins are attractive, and the time to act is now. Secure your first shipment today and start building your profitable foxnut empire.
-                  </p>
-                  <div className="mt-8 flex flex-wrap items-center gap-4">
-                    <Link to="/contact" className="hg-btn hg-btn--solid font-bold text-sm">
-                      <span>Secure Your First Shipment</span>
-                    </Link>
-                    <a
-                      href="mailto:contact@harvestgateoverseas.com?subject=Foxnut%20Import%20%26%20Rebranding%20Enquiry"
-                      className="flex items-center gap-2 font-mono text-xs font-bold text-hg-gold hover:underline transition-colors"
-                    >
-                      <Mail size={15} /> contact@harvestgateoverseas.com
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-
           </div>
         </section>
       )}
@@ -341,68 +356,118 @@ const ProductDetail = () => {
                 </Reveal>
               ))}
             </div>
-
-            {/* HARVESTGATE ADVANTAGES BANNER */}
-            <div className="mt-16 rounded-sm border-2 border-hg-gold/60 bg-hg-card p-8 sm:p-12 shadow-lg">
-              <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
-                <div className="lg:col-span-5">
-                  <p className="hg-eyebrow text-[12px] font-bold">Why Source From HarvestGate?</p>
-                  <h3 className="hg-display mt-4 text-3xl sm:text-4xl text-hg-fg font-extrabold">
-                    Unmatched Purity, Traceable Provenance.
-                  </h3>
-                  <p className="mt-4 text-base leading-relaxed text-hg-fg2 font-medium">
-                    At HarvestGate Overseas, our export crops undergo twin-pass optical sortex cleaning, gravity separation, and rigorous NABL-accredited laboratory testing before vessel dispatch.
-                  </p>
-                </div>
-                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-7">
-                  {[
-                    ["100% Sortex Cleaned", "Machine-cleaned and double-pass sortex sorted for uniform size, color and zero foreign matter."],
-                    ["Direct Mandi Aggregation", "Procured directly from primary farming mandis across Madhya Pradesh, Rajasthan, Maharashtra & UP."],
-                    ["Accredited Lab Testing", "Consignments backed by FSSAI-approved and NABL laboratory analysis for moisture, purity & pesticide residue."],
-                    ["Export-Grade Packaging", "Vacuum retail packs (500g - 1kg) or bulk export shipments in 25kg / 50kg PP, HDPE and Jute bags."],
-                  ].map(([t, d]) => (
-                    <div key={t} className="border border-hg-line bg-hg-bg2/60 p-5 rounded">
-                      <div className="flex items-center gap-2.5 text-hg-gold font-bold text-[15px]">
-                        <CheckCircle2 size={16} className="shrink-0 text-hg-gold" />
-                        <span>{t}</span>
-                      </div>
-                      <p className="mt-2 text-[13px] leading-relaxed text-hg-fg font-medium">{d}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
         </section>
       )}
 
-      {/* OVERVIEW + SPECS */}
-      <section className="hg-container py-20 sm:py-28">
+      {/* ================= 1 & 2. WHY CHOOSE & GLOBAL OPPORTUNITY SECTION (ALL PRODUCTS) ================= */}
+      <section className="border-b-2 border-hg-line bg-hg-bg2/80 py-20 sm:py-28">
+        <div className="hg-container space-y-20 sm:space-y-28">
+
+          {/* 1. WHY CHOOSE OUR [PRODUCT]? (6 PILLARS) */}
+          <div>
+            <div className="border-b-2 border-hg-line pb-6">
+              <span className="inline-flex items-center gap-2 rounded-full border border-hg-gold/40 bg-hg-gold/15 px-3.5 py-1 text-xs font-mono font-bold text-hg-gold uppercase tracking-widest">
+                <Award size={13} /> Competitive Advantage
+              </span>
+              <h2 className="hg-display mt-4 text-3xl sm:text-5xl text-hg-fg font-extrabold uppercase">
+                {marketing.whyChooseTitle}
+              </h2>
+              <p className="mt-3 text-base text-hg-fg2 font-medium max-w-2xl">
+                {marketing.whyChooseSubtitle}
+              </p>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {marketing.whyChooseList.map((item, idx) => (
+                <Reveal key={item.title} delay={idx * 0.05}>
+                  <div className="rounded-xl border border-hg-line bg-hg-card p-6 h-full flex flex-col justify-between hover:border-hg-gold/50 transition-all shadow-sm">
+                    <div>
+                      <div className="flex items-center gap-3">
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-hg-gold/15 text-hg-gold font-bold font-mono text-sm border border-hg-gold/30">
+                          0{idx + 1}
+                        </span>
+                        <h4 className="text-lg font-bold text-hg-fg">{item.title}</h4>
+                      </div>
+                      <p className="mt-3.5 text-sm text-hg-fg2 leading-relaxed font-medium">
+                        {item.desc}
+                      </p>
+                    </div>
+                    <div className="mt-5 flex items-center gap-1.5 text-xs font-mono text-hg-gold font-bold">
+                      <CheckCircle2 size={13} /> Export Standard
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          {/* 2. START YOUR [PRODUCT] SUCCESS STORY TODAY (HIGH CONVERSION HERO BANNER) */}
+          <Reveal>
+            <div className="rounded-3xl border-2 border-hg-gold/70 bg-gradient-to-br from-hg-card via-hg-bg2 to-[#122318] p-8 sm:p-14 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-hg-gold/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="relative z-10 max-w-3xl">
+                <span className="inline-flex items-center gap-2 rounded-full border border-hg-gold/50 bg-hg-gold/15 px-4 py-1.5 text-xs font-mono font-bold text-hg-gold uppercase tracking-[0.2em]">
+                  <Sparkles size={14} className="text-hg-gold animate-pulse" /> Lucrative Global Opportunity
+                </span>
+                <h3 className="hg-display mt-6 text-3xl sm:text-5xl lg:text-6xl text-hg-fg font-black leading-tight uppercase">
+                  {marketing.successStoryTitle}
+                </h3>
+                <p className="mt-5 text-base sm:text-lg text-hg-fg2 leading-relaxed font-medium">
+                  {marketing.successStoryText}
+                </p>
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <Link to="/contact" className="hg-btn hg-btn--solid font-bold text-sm uppercase tracking-wider">
+                    <span>Secure Your First Shipment</span>
+                  </Link>
+                  <a
+                    href={`mailto:contact@harvestgateoverseas.com?subject=${encodeURIComponent(
+                      `${marketing.shortName} Import & Rebranding Enquiry`
+                    )}`}
+                    className="flex items-center gap-2 font-mono text-xs font-bold text-hg-gold hover:underline transition-colors"
+                  >
+                    <Mail size={15} /> contact@harvestgateoverseas.com
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+        </div>
+      </section>
+
+      {/* ================= 3. HOW TO ORDER + QUICK EXPORT SPECS (IMAGE 3) ================= */}
+      <section data-testid="product-specs-section" className="hg-container py-20 sm:py-28">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
-            {!isFoxnuts && (
-              <>
-                <p className="hg-eyebrow text-[12px] font-bold">Commodity Overview</p>
-                <Reveal>
-                  <p className="mt-6 text-xl leading-relaxed text-hg-fg font-semibold sm:text-2xl">{product.intro}</p>
-                  <p className="mt-6 text-[16.5px] leading-relaxed text-hg-fg2 font-medium">{product.description}</p>
-                </Reveal>
-              </>
-            )}
+            <Reveal>
+              <p className="hg-eyebrow text-[12px] font-bold">Comprehensive Export Specifications</p>
+              <h2 className="hg-display mt-4 text-4xl sm:text-5xl text-hg-fg font-extrabold">
+                Export Profile & Sourcing Details
+              </h2>
+            </Reveal>
 
-            {/* HOW TO ORDER CARD */}
-            {product.howToOrder && (
-              <Reveal delay={0.1} className={`${isFoxnuts ? "" : "mt-10"} rounded-2xl border border-hg-gold/50 bg-hg-gold/10 p-6 sm:p-8`}>
-                <p className="font-mono text-xs uppercase tracking-[0.24em] text-hg-gold font-bold flex items-center gap-2">
-                  <Clock size={15} /> How to Order
-                </p>
-                <p className="mt-4 text-[15px] leading-relaxed text-hg-fg font-medium">
-                  {product.howToOrder}
-                </p>
-              </Reveal>
-            )}
+            <Reveal delay={0.05}>
+              <p className="mt-8 text-[17px] leading-relaxed text-hg-fg font-medium">
+                {product.intro}
+              </p>
+              <p className="mt-4 text-[16px] leading-relaxed text-hg-fg2 font-medium">
+                {product.description}
+              </p>
+            </Reveal>
 
-            {!isFoxnuts && (
+            {/* HOW TO ORDER CARD (IMAGE 3) */}
+            <Reveal delay={0.1} className="mt-10 rounded-2xl border border-hg-gold/50 bg-hg-gold/10 p-6 sm:p-8">
+              <p className="font-mono text-xs uppercase tracking-[0.24em] text-hg-gold font-bold flex items-center gap-2">
+                <Clock size={15} /> How to Order
+              </p>
+              <p className="mt-4 text-[15px] leading-relaxed text-hg-fg font-medium">
+                {product.howToOrder ||
+                  "To start your order, simply fill out our official enquiry form mentioned below or email us at contact@harvestgateoverseas.com with your requirements. Our sales team will connect with you to discuss details and share Ex-Works pricing (valid for 3 days). Once specifications, shipping, and final pricing are agreed upon, we’ll issue a Proforma Invoice (PI). The order is confirmed upon receipt of the advance payment as per our payment terms."}
+              </p>
+            </Reveal>
+
+            {!isFoxnuts && product.grades && product.grades.length > 0 && (
               <Reveal delay={0.1} className="mt-14">
                 <p className="hg-eyebrow text-[12px] font-bold">Standard Grades & Calibrations</p>
                 <div className="mt-6 border-t-2 border-hg-line">
@@ -432,6 +497,7 @@ const ProductDetail = () => {
           </div>
 
           <div className="lg:col-span-5">
+            {/* PRODUCT IMAGE ACCORDINGLY */}
             <Reveal delay={0.12} className="overflow-hidden border-2 border-hg-line shadow-lg">
               <img
                 src={product.image}
@@ -441,27 +507,29 @@ const ProductDetail = () => {
               />
             </Reveal>
 
-            {isFoxnuts ? (
-              <Reveal delay={0.18} className="mt-8 border-2 border-hg-line bg-hg-card p-6 sm:p-8 shadow-sm">
-                <dl className="space-y-4">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
-                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
-                      Export Packaging
-                    </dt>
-                    <dd className="sm:text-right text-[14.5px] font-bold text-hg-fg">
-                      from 250 gms to 10 kg Export HDPE Bags (Customizable)
-                    </dd>
-                  </div>
+            {/* QUICK EXPORT SPECS & QUOTATION CARD (WITHOUT CALIBRATION UNIT FOR NATURALS) */}
+            <Reveal delay={0.18} className="mt-8 border-2 border-hg-line bg-hg-card p-6 sm:p-8 shadow-sm">
+              <dl className="space-y-4">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
+                    Export Packaging
+                  </dt>
+                  <dd className="sm:text-right text-[14.5px] font-bold text-hg-fg">
+                    from 250 gms to 10 kg Export HDPE Bags (Customizable)
+                  </dd>
+                </div>
 
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
-                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
-                      Shelf Life
-                    </dt>
-                    <dd className="sm:text-right text-[14.5px] font-bold text-hg-fg">
-                      12 - 18 Months Sealed
-                    </dd>
-                  </div>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
+                    Shelf Life
+                  </dt>
+                  <dd className="sm:text-right text-[14.5px] font-bold text-hg-fg">
+                    12 – 18 Months Sealed
+                  </dd>
+                </div>
 
+                {/* CALIBRATION UNIT: ONLY FOR FOXNUTS, REMOVED FOR NATURALS */}
+                {isFoxnuts && (
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
                     <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
                       Calibration Unit
@@ -470,122 +538,46 @@ const ProductDetail = () => {
                       1 Sutta ≈ 3.2 mm Diameter
                     </dd>
                   </div>
+                )}
 
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
-                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
-                      MOQ
-                    </dt>
-                    <dd className="sm:text-right text-[14.5px] font-bold text-hg-fg">
-                      As per buyer&apos;s demand .
-                    </dd>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
-                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
-                      Preparation Time
-                    </dt>
-                    <dd className="sm:text-right text-[14px] font-bold text-hg-fg max-w-xs leading-snug">
-                      Minimum 5 weeks (may vary based on quantity, shipping terms, and harvest availability)
-                    </dd>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
-                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
-                      Samples
-                    </dt>
-                    <dd className="sm:text-right text-[14px] font-bold text-hg-fg max-w-xs leading-snug">
-                      Minimum 1 kg, chargeable with prepaid shipping costs
-                    </dd>
-                  </div>
-                </dl>
-
-                <div className="mt-7 pt-2">
-                  <Link
-                    to="/contact"
-                    data-testid="product-enquire-cta"
-                    className="hg-btn hg-btn--solid w-full justify-center text-[13px] font-bold py-4"
-                  >
-                    <span>Request Quotation for {product.name}</span>
-                  </Link>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
+                    MOQ
+                  </dt>
+                  <dd className="sm:text-right text-[14.5px] font-bold text-hg-fg">
+                    As per buyer&apos;s demand .
+                  </dd>
                 </div>
-              </Reveal>
-            ) : (
-              <>
-                <Reveal delay={0.18} className="mt-8 border-2 border-hg-line bg-hg-card p-6 sm:p-8 shadow-sm">
-                  <p className="hg-eyebrow text-[11.5px] font-bold">Physical & Chemical Spec Sheet</p>
-                  <dl data-testid="quick-spec-table" className="mt-6">
-                    {product.specs.map(([k, v]) => (
-                      <div key={k} className="flex justify-between gap-6 border-b border-hg-line py-3.5 last:border-0">
-                        <dt className="font-mono text-[11.5px] uppercase tracking-[0.16em] text-hg-fg3 font-semibold">{k}</dt>
-                        <dd className="text-right text-[15px] font-bold text-hg-fg">{v}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </Reveal>
 
-                <Reveal delay={0.22} className="mt-8 space-y-7 border-2 border-hg-line bg-hg-bg2 p-6 sm:p-8 shadow-sm">
-                  <div>
-                    <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
-                      Minimum Order (MOQ)
-                    </p>
-                    <p className="mt-2 text-[16px] font-bold text-hg-fg">{product.moq}</p>
-                  </div>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
+                    Preparation Time
+                  </dt>
+                  <dd className="sm:text-right text-[14px] font-bold text-hg-fg max-w-xs leading-snug">
+                    Minimum 5 weeks (may vary based on quantity, shipping terms, and harvest availability)
+                  </dd>
+                </div>
 
-                  {product.orderTerms && (
-                    <>
-                      <div>
-                        <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
-                          Order Preparation Time
-                        </p>
-                        <p className="mt-2 text-[15px] font-bold text-hg-fg">{product.orderTerms.prepTime}</p>
-                      </div>
-                      <div>
-                        <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
-                          Sampling Policy
-                        </p>
-                        <p className="mt-2 text-[15px] font-bold text-hg-fg">{product.orderTerms.samples}</p>
-                      </div>
-                      <div>
-                        <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
-                          Pricing Validity Window
-                        </p>
-                        <p className="mt-2 text-[15px] font-bold text-hg-gold">{product.orderTerms.validity}</p>
-                      </div>
-                    </>
-                  )}
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 border-b border-hg-line pb-3.5">
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-hg-fg3 font-semibold">
+                    Samples
+                  </dt>
+                  <dd className="sm:text-right text-[14px] font-bold text-hg-fg max-w-xs leading-snug">
+                    Minimum 1 kg, chargeable with prepaid shipping costs
+                  </dd>
+                </div>
+              </dl>
 
-                  <div>
-                    <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">Incoterms Offered</p>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {product.incoterms.map((t) => (
-                        <span
-                          key={t}
-                          className="border-2 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] font-bold bg-white dark:bg-black/40"
-                          style={{ borderColor: accent, color: accent }}
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-hg-fg3 font-semibold">
-                      Export Destinations
-                    </p>
-                    <p className="mt-2 text-[15px] font-medium leading-relaxed text-hg-fg">
-                      {product.markets.join(" · ")}
-                    </p>
-                  </div>
-                  <Link
-                    to="/contact"
-                    data-testid="product-enquire-cta"
-                    className="hg-btn hg-btn--solid w-full justify-center text-[13px] font-bold py-4"
-                  >
-                    <span>Request Quotation for {product.name}</span>
-                  </Link>
-                </Reveal>
-              </>
-            )}
+              <div className="mt-7 pt-2">
+                <Link
+                  to="/contact"
+                  data-testid="product-enquire-cta"
+                  className="hg-btn hg-btn--solid w-full justify-center text-[13px] font-bold py-4 uppercase tracking-wider"
+                >
+                  <span>Request Quotation for {product.name}</span>
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
