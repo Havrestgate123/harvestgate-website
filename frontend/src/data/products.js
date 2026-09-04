@@ -864,6 +864,25 @@ export const SWEETENERS_VARIETIES = [
     highlights: ["100% Chemical-Free & Hydros-Free", "Rich in Natural Plant Iron", "Instant Dissolving Granules"],
   },
   {
+    id: "jaggery-cubes",
+    name: "Jaggery Cubes",
+    localName: "Desi Gur Cubes / Jaggery Blocks",
+    botanical: "Saccharum officinarum",
+    image: "/images/sweeteners/jaggery-cubes.jpg",
+    hsCode: "1701.14.10",
+    origin: "Kolhapur (Maharashtra) & Muzaffarnagar (UP)",
+    specs: [
+      ["Purity Standard", "100% Chemical-Free Artisanal"],
+      ["Moisture", "< 5.0% Max"],
+      ["Sucrose Content", "> 76.0%"],
+      ["Mineral Content", "Rich in Iron, Calcium & Magnesium"],
+      ["Format", "Uniform Solid Cut Cubes"],
+      ["Shelf Life", "18 Months"],
+    ],
+    description: "Traditionally prepared from fresh, clarified sugarcane juice simmered in open pans and set into uniform solid cubes. Free of chemical clarifying agents, sulfur, or artificial food colorings, offering a rich caramel-molasses taste and wholesome minerals.",
+    highlights: ["100% Natural & Chemical-Free", "Rich in Bioavailable Iron & Minerals", "Convenient Portion-Controlled Cubes", "Authentic Deep Caramel Taste"],
+  },
+  {
     id: "brown-sugar",
     name: "Brown Sugar",
     localName: "Raw Demerara / Brown Cane Sugar",
@@ -1020,6 +1039,7 @@ export const getVarietyAdvantage = (v) => {
 
     // Sweeteners
     "jaggery-powder": "100% Chemical-Free & Mineral Rich",
+    "jaggery-cubes": "Traditional Solid Gur & Iron Rich",
     "brown-sugar": "Natural Molasses & Unrefined Crystals",
 
     // Flours
@@ -1215,7 +1235,7 @@ export const PRODUCTS = [
     season: "Year-round export availability",
     image: "/images/sweeteners/jaggery-powder.jpg",
     intro:
-      "At HarvestGate Overseas, our export sweeteners programme delivers pure, chemical-free and unbleached cane sweeteners: Artisanal Granulated Jaggery Powder (Gur Shakkar) and Sparkling Golden Raw Brown Cane Sugar.",
+      "At HarvestGate Overseas, our export sweeteners programme delivers pure, chemical-free and unbleached cane sweeteners: Artisanal Granulated Jaggery Powder (Gur Shakkar), Traditional Solid Jaggery Cubes (Desi Gur Cubes), and Sparkling Golden Raw Brown Cane Sugar.",
     description:
       "HarvestGate contracts directly with artisanal open-pan gur producers in Kolhapur and Western UP. Zero sodium hydrosulphite, zero chemical bleaches, and 100% trace mineral retention with NABL and FSSAI export certificates.",
     grades: SWEETENERS_VARIETIES.map((v) => ({
