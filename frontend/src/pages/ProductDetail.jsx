@@ -51,13 +51,13 @@ const getProductMarketing = (product) => {
       title: "Top Quality Premium",
       desc: {
         foxnuts: "Handpicked, crisp, and naturally nutritious with high puff volume.",
-        millets: "Handpicked, sortex-cleaned, and naturally nutritious with high purity.",
-        sweeteners: "100% natural, chemical-free, and rich in authentic taste and minerals.",
-        pulses: "Handpicked, optical sortex-graded, and naturally nutritious with uniform grains.",
-        grains: "Handpicked, sortex-cleaned, and naturally nutritious harvests with verified moisture levels.",
-        flours: "Stone-ground, 100% pure, and naturally nutritious with zero additives.",
-        daliya: "Sortex de-stoned, slow-roasted, and naturally nutritious with uniform granules.",
-      }[product.slug] || "Handpicked, crisp, and naturally nutritious with high puff volume.",
+        millets: "Handpicked, precision-cleaned, and naturally nutritious with superior grain purity.",
+        sweeteners: "100% natural, chemical-free, unbleached, and rich in authentic taste and minerals.",
+        pulses: "Handpicked, premium-graded, and naturally nutritious with uniform whole and split grains.",
+        grains: "Handpicked, thoroughly cleaned harvests with verified moisture levels and high test weights.",
+        flours: "Stone-ground, 100% pure whole-grain, and naturally nutritious with zero additives or maida.",
+        daliya: "Slow-roasted, de-stoned, and naturally nutritious with uniform granules that cook evenly.",
+      }[product.slug] || "Handpicked, crisp, and naturally nutritious with high purity.",
     },
     {
       title: "Ethically Sourced",
@@ -73,7 +73,7 @@ const getProductMarketing = (product) => {
     },
     {
       title: "Testing on Request",
-      desc: "Paid testing can be arranged at FSSAI-approved & NABL-accredited labs.",
+      desc: "Paid testing can be arranged at FSSAI-approved & NABL-accredited labs for heavy metals, residues, and nutrition.",
     },
     {
       title: "Customizable Packaging",
@@ -81,11 +81,27 @@ const getProductMarketing = (product) => {
     },
     {
       title: "Bulk Supply Experts",
-      desc: "Reliable, consistent global container shipments.",
+      desc: "Reliable, consistent global container shipments with moisture-barrier liners and container protection.",
     },
     {
       title: "Profit Potential",
-      desc: `Import, rebrand, and grow your ${singularName} business.`,
+      desc: `Import, rebrand, and grow your ${singularName} business in high-margin international markets.`,
+    },
+    {
+      title: "Nutritional Integrity",
+      desc: {
+        foxnuts: "Low in sodium, zero cholesterol, rich in plant-based magnesium, potassium, and natural antioxidants.",
+        millets: "Naturally rich in bioavailable calcium, iron, dietary fiber, and steady low glycemic energy.",
+        sweeteners: "100% natural cane boiled in traditional open pans with zero chemical bleaching or hydros.",
+        pulses: "High in plant protein, soluble dietary fiber, and essential amino acids with zero cholesterol.",
+        grains: "Rich in complex carbohydrates, heart-healthy soluble beta-glucan, and natural minerals.",
+        flours: "Traditional slow stone-milling preserves natural wheat germ, dietary fiber, and authentic aroma.",
+        daliya: "High satiety dietary fiber that promotes steady glycemic release and gentle digestive wellness.",
+      }[product.slug] || "Packed with essential micronutrients, vitamins, and natural dietary fiber.",
+    },
+    {
+      title: "Export Compliance",
+      desc: "Fully aligned with APEDA, FSSAI, US-FDA, and CODEX export standards with full phytosanitary clearance.",
     },
   ];
 
@@ -303,7 +319,7 @@ const ProductDetail = () => {
                 </h2>
               </div>
               <p className="max-w-md text-sm font-medium text-hg-fg2 leading-relaxed">
-                Single-origin, sortex-cleaned export-grade {product.name.toLowerCase()} processed for global food manufacturers, ethnic distributors, and institutional importers.
+                Single-origin, precision-cleaned export-grade {product.name.toLowerCase()} processed for global food manufacturers, ethnic distributors, and institutional importers.
               </p>
             </div>
 
@@ -378,7 +394,7 @@ const ProductDetail = () => {
               </p>
             </div>
 
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {marketing.whyChooseList.map((item, idx) => (
                 <Reveal key={item.title} delay={idx * 0.05}>
                   <div className="rounded-xl border border-hg-line bg-hg-card p-6 h-full flex flex-col justify-between hover:border-hg-gold/50 transition-all shadow-sm">
@@ -469,7 +485,7 @@ const ProductDetail = () => {
 
             {!isFoxnuts && product.grades && product.grades.length > 0 && (
               <Reveal delay={0.1} className="mt-14">
-                <p className="hg-eyebrow text-[12px] font-bold">Standard Grades & Calibrations</p>
+                <p className="hg-eyebrow text-[12px] font-bold">Export Varieties & Key Advantages</p>
                 <div className="mt-6 border-t-2 border-hg-line">
                   {product.grades.map((g) => (
                     <div

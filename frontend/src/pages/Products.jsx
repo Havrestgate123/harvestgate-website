@@ -127,7 +127,7 @@ const ProductCard = ({ p, i, wide = false }) => {
               </div>
               <div>
                 <dt className="text-hg-fg3">Processing</dt>
-                <dd className="mt-1 font-medium text-hg-fg">Sortex Cleaned</dd>
+                <dd className="mt-1 font-medium text-hg-fg">Export Standard</dd>
               </div>
             </dl>
             <div className="mt-4 flex items-center justify-between pt-3 border-t border-hg-line/40">

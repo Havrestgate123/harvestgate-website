@@ -55,7 +55,7 @@ export const MILLET_VARIETIES = [
     hsCode: "1008.21.00",
     origin: "Rajasthan, Gujarat & Haryana",
     specs: [
-      ["Purity", "99.5% Sortex Clean"],
+      ["Purity Standard", "100% Natural Machine Cleaned"],
       ["Moisture", "< 10.0% Max"],
       ["Foreign Matter", "< 0.5% Max"],
       ["Damaged / Discolored", "< 1.0% Max"],
@@ -63,7 +63,7 @@ export const MILLET_VARIETIES = [
       ["Iron", "> 8.0 mg / 100g"],
     ],
     description: "One of India's most ancient staples, Pearl Millet (Bajra) is rich in iron, zinc, and dietary fiber. Ideal for high-energy flour milling, flatbreads, healthy extruded snacks, and animal feed formulation.",
-    highlights: ["High Iron & Zinc", "Energy-Dense Carbohydrates", "Gluten-Free Flour Base"],
+    highlights: ["High Iron & Zinc", "Energy-Dense Carbohydrates", "Gluten-Free Flour Base", "Rich in Natural Magnesium"],
   },
   {
     id: "finger-millet",
@@ -74,7 +74,7 @@ export const MILLET_VARIETIES = [
     hsCode: "1008.29.00",
     origin: "Karnataka, Tamil Nadu & Uttarakhand",
     specs: [
-      ["Purity", "99.5% Machine Clean / Sortex"],
+      ["Purity Standard", "100% Natural Machine Cleaned"],
       ["Moisture", "< 10.5% Max"],
       ["Foreign Matter", "< 0.3% Max"],
       ["Calcium", "> 344 mg / 100g (Highest)"],
@@ -82,7 +82,7 @@ export const MILLET_VARIETIES = [
       ["Shelf Life", "24 Months"],
     ],
     description: "Finger Millet (Ragi) possesses the highest calcium concentration among all grains (344 mg/100g). Heavily demanded by baby food manufacturers, malt formulations, nutraceuticals, and functional bakery brands.",
-    highlights: ["Super-Rich in Calcium", "Natural Antioxidants", "Essential for Infant Nutrition"],
+    highlights: ["Super-Rich in Calcium", "Natural Antioxidants", "Essential for Infant Nutrition", "Bone-Strengthening Polyphenols"],
   },
   {
     id: "foxtail-millet",
@@ -93,7 +93,7 @@ export const MILLET_VARIETIES = [
     hsCode: "1008.29.00",
     origin: "Andhra Pradesh & Karnataka",
     specs: [
-      ["Purity", "99.8% Sortex De-hulled"],
+      ["Purity Standard", "100% Natural De-hulled"],
       ["Moisture", "< 9.5% Max"],
       ["Foreign Matter", "< 0.2% Max"],
       ["Protein", "> 12.3 g / 100g"],
@@ -101,7 +101,7 @@ export const MILLET_VARIETIES = [
       ["Packaging", "Vacuum / HDPE Woven"],
     ],
     description: "Golden-yellow grains packed with complex carbohydrates and Vitamin B1 (thiamine). Known for its low glycemic index, it is the premier choice for diabetic-friendly food products and ready-to-cook rice alternatives.",
-    highlights: ["Low Glycemic Index", "Rich in Vitamin B1", "Direct Rice Substitute"],
+    highlights: ["Low Glycemic Index", "Rich in Vitamin B1", "Direct Rice Substitute", "Supports Steady Blood Sugar"],
   },
   {
     id: "little-millet",
@@ -112,7 +112,7 @@ export const MILLET_VARIETIES = [
     hsCode: "1008.29.00",
     origin: "Madhya Pradesh & Odisha",
     specs: [
-      ["Purity", "99.8% Sortex Clean"],
+      ["Purity Standard", "100% Natural Cleaned"],
       ["Moisture", "< 10.0% Max"],
       ["Foreign Matter", "< 0.2% Max"],
       ["Fat Content", "Healthy PUFA Fats"],
@@ -120,7 +120,7 @@ export const MILLET_VARIETIES = [
       ["Cook Time", "10-12 Minutes"],
     ],
     description: "Tiny, delicate ivory grains that cook faster than traditional rice while packing 3x the dietary fiber. Highly versatile for porridge, traditional Indian khichdi, healthy upma, and gluten-free baking blends.",
-    highlights: ["Fast Cooking (10 mins)", "High Magnesium & Phosphorus", "Delicate Neutral Flavor"],
+    highlights: ["Fast Cooking (10 mins)", "High Magnesium & Phosphorus", "Delicate Neutral Flavor", "Rich in Healthy Dietary Fats"],
   },
   {
     id: "kodo-millet",
@@ -131,7 +131,7 @@ export const MILLET_VARIETIES = [
     hsCode: "1008.29.00",
     origin: "Madhya Pradesh, Chhattisgarh & Deccan",
     specs: [
-      ["Purity", "99.5% Sortex Cleaned"],
+      ["Purity Standard", "100% Natural Cleaned"],
       ["Moisture", "< 10.0% Max"],
       ["Polyphenols", "Very High Activity"],
       ["Dietary Fiber", "> 9.0%"],
@@ -139,7 +139,7 @@ export const MILLET_VARIETIES = [
       ["Packaging", "250g Pouch to 50kg Bags"],
     ],
     description: "Kodo millet contains an extraordinary concentration of polyphenols and lecithin, making it outstanding for nervous system nourishment, cholesterol management, and cellular regeneration.",
-    highlights: ["Rich in Polyphenols & Lecithin", "Supports Cardiovascular Health", "Easy Digestibility"],
+    highlights: ["Rich in Polyphenols & Lecithin", "Supports Cardiovascular Health", "Easy Digestibility", "Natural Prebiotic Fiber"],
   },
   {
     id: "sorghum-millet",
@@ -150,7 +150,7 @@ export const MILLET_VARIETIES = [
     hsCode: "1007.90.00",
     origin: "Maharashtra, Karnataka & Telangana",
     specs: [
-      ["Purity", "99.8% Double-Pass Sortex"],
+      ["Purity Standard", "100% Natural Machine Cleaned"],
       ["Moisture", "< 11.0% Max"],
       ["Foreign Matter", "< 0.3% Max"],
       ["Color", "Milky White / Light Cream"],
@@ -158,7 +158,7 @@ export const MILLET_VARIETIES = [
       ["Tannin Free", "Non-GMO Certified"],
     ],
     description: "Large, pearly white grains with a mild sweet flavor. Used globally for gluten-free baking flours, popping, starch manufacturing, craft brewing, and functional extruded snack foods.",
-    highlights: ["High Antioxidant Tannins", "Excellent Popping & Flaking Quality", "Clean White Appearance"],
+    highlights: ["High Antioxidant Tannins", "Excellent Popping & Flaking Quality", "Clean White Appearance", "Zero-Gluten Baking Champion"],
   },
   {
     id: "proso-millet",
@@ -169,7 +169,7 @@ export const MILLET_VARIETIES = [
     hsCode: "1008.29.00",
     origin: "Bihar, UP & Andhra Pradesh",
     specs: [
-      ["Purity", "99.5% Sortex Clean"],
+      ["Purity Standard", "100% Natural Cleaned"],
       ["Moisture", "< 10.0% Max"],
       ["Protein", "> 12.5% (High Leucine)"],
       ["Minerals", "Rich in Phosphorus & Zinc"],
@@ -177,7 +177,7 @@ export const MILLET_VARIETIES = [
       ["Shelf Life", "24 Months"],
     ],
     description: "Also known as Broomcorn or Hog millet, Proso boasts the highest protein percentage among millets with a rich profile of essential amino acids like leucine, isoleucine, and methionine.",
-    highlights: ["High Complete Protein (12.5%)", "Supports Muscle Synthesis", "Lowest Water Footprint"],
+    highlights: ["High Complete Protein (12.5%)", "Supports Muscle Synthesis", "Lowest Water Footprint", "Rich in Bioavailable Niacin"],
   },
   {
     id: "browntop-millet",
@@ -188,7 +188,7 @@ export const MILLET_VARIETIES = [
     hsCode: "1008.29.00",
     origin: "Karnataka & Andhra Drylands",
     specs: [
-      ["Purity", "99.5% Sortex Unpolished"],
+      ["Purity Standard", "100% Natural Unpolished"],
       ["Moisture", "< 9.5% Max"],
       ["Dietary Fiber", "> 12.5% (Highest)"],
       ["Foreign Matter", "< 0.3% Max"],
@@ -196,7 +196,7 @@ export const MILLET_VARIETIES = [
       ["Packaging", "Multi-Wall Paper / HDPE Bags"],
     ],
     description: "Rare and prized, Brown Top millet contains the highest dietary fiber content (12.5%) among all cereal grains. Actively sought after by lifestyle medical centers and detoxification nutrition brands worldwide.",
-    highlights: ["Unsurpassed Dietary Fiber (12.5%)", "Natural Gut Detoxifier", "Zero Agricultural Chemicals"],
+    highlights: ["Unsurpassed Dietary Fiber (12.5%)", "Natural Gut Detoxifier", "Zero Agricultural Chemicals", "Essential Mineral Fortified"],
   },
   {
     id: "barnyard-millet",
@@ -207,7 +207,7 @@ export const MILLET_VARIETIES = [
     hsCode: "1008.29.00",
     origin: "Uttarakhand Himalayan Foothills & MP",
     specs: [
-      ["Purity", "99.8% Sortex De-husked"],
+      ["Purity Standard", "100% Natural De-husked"],
       ["Moisture", "< 10.0% Max"],
       ["Calorie Content", "Lowest Carb Density"],
       ["Iron Content", "> 18.6 mg / 100g"],
@@ -215,7 +215,7 @@ export const MILLET_VARIETIES = [
       ["Certifications", "APEDA, FSSAI, NPOP Available"],
     ],
     description: "The fastest-growing crop in the millet family. Barnyard millet has the lowest carbohydrate density and lowest caloric value, while delivering an astonishing 18.6 mg of bioavailable iron per 100g.",
-    highlights: ["Lowest Carbohydrate Density", "Highest Bioavailable Iron", "Himalayan Foothill Provenance"],
+    highlights: ["Lowest Carbohydrate Density", "Highest Bioavailable Iron", "Himalayan Foothill Provenance", "Fastest Digesting Grain"],
   },
   {
     id: "buckwheat-millet",
@@ -226,7 +226,7 @@ export const MILLET_VARIETIES = [
     hsCode: "1008.10.00",
     origin: "Kashmir Valley, Himachal & Uttarakhand",
     specs: [
-      ["Purity", "99.5% Sortex Raw Groats"],
+      ["Purity Standard", "100% Natural Raw Groats"],
       ["Moisture", "< 11.0% Max"],
       ["Rutin Bioflavonoid", "> 350 mg / 100g"],
       ["Protein", "Complete Protein (9 Amino Acids)"],
@@ -234,7 +234,7 @@ export const MILLET_VARIETIES = [
       ["Formats", "Raw Groats, Roasted Kasha, Fine Flour"],
     ],
     description: "Distinctive triangular dark brown groats containing high concentrations of Rutin, a potent bioflavonoid for cardiovascular health. Provides complete plant protein with all 9 essential amino acids.",
-    highlights: ["High Rutin Antioxidant Content", "Complete Plant Protein", "Distinctive Triangular Groat"],
+    highlights: ["High Rutin Antioxidant Content", "Complete Plant Protein", "Distinctive Triangular Groat", "Supports Vascular Elasticity"],
   },
 ];
 
@@ -251,15 +251,15 @@ export const PULSES_VARIETIES = [
     hsCode: "0713.60.00",
     origin: "Maharashtra, Madhya Pradesh & Karnataka",
     specs: [
-      ["Purity", "99.8% Sortex Cleaned"],
+      ["Purity Standard", "100% Natural Machine Cleaned"],
       ["Moisture", "< 10.0% Max"],
       ["Foreign Matter", "< 0.2% Max"],
       ["Protein", "> 22.0 g / 100g"],
       ["Finish", "Unpolished / Light Oiled"],
       ["Shelf Life", "24 Months"],
     ],
-    description: "Premium yellow split pigeon peas, sortex-cleaned and available in natural unpolished and lightly oiled grades. The quintessential Indian staple for aromatic daily dal preparations.",
-    highlights: ["Rich in Plant Protein & Potassium", "Quick Cooking & Great Aroma", "Sortex Cleaned Yellow Split"],
+    description: "Premium yellow split pigeon peas, precision-cleaned and available in natural unpolished and lightly oiled grades. The quintessential Indian staple for aromatic daily dal preparations.",
+    highlights: ["Rich in Plant Protein & Potassium", "Quick Cooking & Great Aroma", "Uniform Split & High Nutrient Retention", "High Dietary Fiber"],
   },
   {
     id: "cowpea-white-whole-lobiya",
@@ -270,14 +270,14 @@ export const PULSES_VARIETIES = [
     hsCode: "0713.35.00",
     origin: "Rajasthan, Gujarat & Maharashtra",
     specs: [
-      ["Purity", "99.5% Machine Clean / Sortex"],
+      ["Purity Standard", "100% Natural Cleaned"],
       ["Moisture", "< 10.0% Max"],
       ["Foreign Matter", "< 0.2% Max"],
       ["Protein", "> 23.5 g / 100g"],
       ["Shelf Life", "24 Months"],
     ],
     description: "Distinctive creamy-white oval beans characterized by their iconic dark black eye. Renowned globally for quick cooking, savory salads, canned beans, and rich curries.",
-    highlights: ["High Soluble Fiber & Folate", "Iconic Black-Eyed Marking", "Global Culinary Versatility"],
+    highlights: ["High Soluble Fiber & Folate", "Iconic Black-Eyed Marking", "Global Culinary Versatility", "Low Glycemic Index"],
   },
   {
     id: "green-gram-split-dehusked-moong-dal",
@@ -288,14 +288,14 @@ export const PULSES_VARIETIES = [
     hsCode: "0713.31.00",
     origin: "Rajasthan, Maharashtra & Madhya Pradesh",
     specs: [
-      ["Purity", "99.8% Double-Pass Sortex"],
+      ["Purity Standard", "100% Natural Machine Cleaned"],
       ["Moisture", "< 10.0% Max"],
       ["Unhusked Seeds", "< 0.2% Max"],
       ["Protein", "> 24.0 g / 100g"],
       ["Shelf Life", "24 Months"],
     ],
-    description: "Bright golden-yellow split mung beans, completely dehusked and double-pass sortex cleaned. Exceptionally light, quick to cook, and the most easily digestible pulse in the world.",
-    highlights: ["Easiest to Digest Lentil", "Rich in Antioxidants & Vit B", "Ideal for Khichdi & Soups"],
+    description: "Bright golden-yellow split mung beans, completely dehusked and precision cleaned. Exceptionally light, quick to cook, and the most easily digestible pulse in the world.",
+    highlights: ["Easiest to Digest Lentil", "Rich in Antioxidants & Vit B", "Ideal for Khichdi & Soups", "High Bioavailable Iron"],
   },
   {
     id: "green-gram-whole-moong-whole",
@@ -306,14 +306,14 @@ export const PULSES_VARIETIES = [
     hsCode: "0713.31.00",
     origin: "Rajasthan, Karnataka & Andhra Pradesh",
     specs: [
-      ["Purity", "99.8% Sortex Cleaned"],
+      ["Purity Standard", "100% Natural Cleaned"],
       ["Moisture", "< 10.0% Max"],
       ["Germination Rate", "> 95% High Sprouting"],
       ["Protein", "> 24.0 g / 100g"],
       ["Shelf Life", "24 Months"],
     ],
     description: "Small, emerald-green whole cylindrical beans with high germination rate. Globally favored for fresh sprouting, nutrient-dense salads, and gluten-free snack formulations.",
-    highlights: ["Highest Sprouting Rate (>95%)", "Superfood Micronutrient Density", "Uniform Bold Green Grains"],
+    highlights: ["Highest Sprouting Rate (>95%)", "Superfood Micronutrient Density", "Uniform Bold Green Grains", "Plant-Based Protein Core"],
   },
   {
     id: "red-lentil-split-masoor-dal-split",
@@ -324,14 +324,14 @@ export const PULSES_VARIETIES = [
     hsCode: "0713.40.00",
     origin: "Madhya Pradesh, Uttar Pradesh & West Bengal",
     specs: [
-      ["Purity", "99.8% Sortex Dehusked Split"],
+      ["Purity Standard", "100% Natural Dehusked Split"],
       ["Moisture", "< 10.0% Max"],
       ["Foreign Matter", "< 0.1% Max"],
       ["Protein", "> 26.0 g / 100g"],
       ["Cooking Time", "12-15 Minutes"],
     ],
     description: "Vibrant orange-pink split lentils that cook into a rich, creamy golden soup in under 15 minutes. A staple across Mediterranean, Middle Eastern, and South Asian cuisines.",
-    highlights: ["Fast Cooking (12-15 Mins)", "Vibrant Natural Coral Hue", "High Bioavailable Iron"],
+    highlights: ["Fast Cooking (12-15 Mins)", "Vibrant Natural Coral Hue", "High Bioavailable Iron", "Creamy Soup Texture"],
   },
   {
     id: "brown-lentil-masoor-whole",
@@ -342,7 +342,7 @@ export const PULSES_VARIETIES = [
     hsCode: "0713.40.00",
     origin: "Madhya Pradesh, Uttar Pradesh & Bihar",
     specs: [
-      ["Purity", "99.5% Sortex Cleaned"],
+      ["Purity Standard", "100% Natural Cleaned"],
       ["Moisture", "< 10.5% Max"],
       ["Foreign Matter", "< 0.3% Max"],
       ["Protein", "> 24.5 g / 100g"],
@@ -350,7 +350,7 @@ export const PULSES_VARIETIES = [
       ["Shelf Life", "24 Months"],
     ],
     description: "Whole brown lentils with a rich earthy flavor and high concentration of dietary protein and soluble fiber. Widely demanded for soups, whole dal preparations, and international retail brands.",
-    highlights: ["High Dietary Protein (25%)", "Rich in Folate & Iron", "Natural Earthy Taste"],
+    highlights: ["High Dietary Protein (25%)", "Rich in Folate & Iron", "Natural Earthy Taste", "Nutrient-Dense Daily Dal"],
   },
   {
     id: "bengal-gram-whole-kala-chana",
@@ -361,7 +361,7 @@ export const PULSES_VARIETIES = [
     hsCode: "0713.20.00",
     origin: "Madhya Pradesh, Rajasthan & Maharashtra",
     specs: [
-      ["Purity", "99.5% Machine Clean / Sortex"],
+      ["Purity Standard", "100% Natural Machine Cleaned"],
       ["Moisture", "< 10.0% Max"],
       ["Foreign Matter", "< 0.2% Max"],
       ["Size Calibration", "7mm / 8mm / 60-70 Count"],
@@ -369,7 +369,7 @@ export const PULSES_VARIETIES = [
       ["Packaging", "25kg / 50kg PP Bags"],
     ],
     description: "Dark brown, wrinkled chickpeas renowned for high iron, plant protein, and low glycemic index. Extensively used in traditional curries, sprouting, high-protein snack roasting, and health foods.",
-    highlights: ["Very Low Glycemic Index", "Rich in Dietary Fiber & Iron", "High Sprouting Efficiency"],
+    highlights: ["Very Low Glycemic Index", "Rich in Dietary Fiber & Iron", "High Sprouting Efficiency", "Hearty Robust Taste"],
   },
   {
     id: "black-gram-split-urad-dal-split",
@@ -380,7 +380,7 @@ export const PULSES_VARIETIES = [
     hsCode: "0713.31.00",
     origin: "Andhra Pradesh, Madhya Pradesh & Maharashtra",
     specs: [
-      ["Purity", "99.5% Sortex Cleaned"],
+      ["Purity Standard", "100% Natural Cleaned"],
       ["Moisture", "< 10.5% Max"],
       ["Broken / Powder", "< 1.0% Max"],
       ["Foreign Matter", "< 0.2% Max"],
@@ -388,7 +388,7 @@ export const PULSES_VARIETIES = [
       ["Shelf Life", "24 Months"],
     ],
     description: "Split black matpe beans retaining the fibrous black husk on one side while exposing the creamy white interior. Delivers robust texture, high iron, and distinct flavor for wholesome lentil soups and dal tadka.",
-    highlights: ["High Fiber with Natural Husk", "Rich in Iron & Calcium", "Sortex Cleaned Uniform Split"],
+    highlights: ["High Fiber with Natural Husk", "Rich in Iron & Calcium", "Uniform Split & Natural Protein"],
   },
   {
     id: "black-gram-split-dehusked-urad-white-dal",
@@ -399,7 +399,7 @@ export const PULSES_VARIETIES = [
     hsCode: "0713.31.00",
     origin: "Andhra Pradesh, Maharashtra & Uttar Pradesh",
     specs: [
-      ["Purity", "99.8% Sortex Dehusked"],
+      ["Purity Standard", "100% Natural Dehusked"],
       ["Moisture", "< 10.0% Max"],
       ["Unhusked Seeds", "< 0.2% Max"],
       ["Protein", "> 25.0 g / 100g"],
@@ -418,7 +418,7 @@ export const PULSES_VARIETIES = [
     hsCode: "0713.31.00",
     origin: "Andhra Pradesh, Maharashtra & Madhya Pradesh",
     specs: [
-      ["Purity", "99.8% Double-Pass Sortex"],
+      ["Purity Standard", "100% Natural Machine Cleaned"],
       ["Moisture", "< 10.0% Max"],
       ["Foreign Matter", "< 0.2% Max"],
       ["Size Grading", "Uniform Bold Grain"],
@@ -437,7 +437,7 @@ export const PULSES_VARIETIES = [
     hsCode: "1201.90.00",
     origin: "Madhya Pradesh, Maharashtra & Rajasthan",
     specs: [
-      ["Purity", "99.5% Sortex Cleaned"],
+      ["Purity Standard", "100% Natural Cleaned"],
       ["Moisture", "< 10.0% Max"],
       ["Foreign Matter", "< 0.3% Max"],
       ["Protein", "> 38.0 g / 100g"],
@@ -445,7 +445,7 @@ export const PULSES_VARIETIES = [
       ["Shelf Life", "24 Months"],
     ],
     description: "High-protein, non-GMO whole yellow soybeans cleaned and size-graded. Ideal for soy milk extraction, tofu, textured vegetable protein (TVP), flour blending, and food processing.",
-    highlights: ["Ultra-High Protein (>38%)", "Non-GMO & Sortex Graded", "Complete Amino Acid Profile"],
+    highlights: ["Ultra-High Protein (>38%)", "Non-GMO & Export Graded", "Complete Amino Acid Profile"],
   },
   {
     id: "red-lentil-whole-masoor-dal",
@@ -456,7 +456,7 @@ export const PULSES_VARIETIES = [
     hsCode: "0713.40.00",
     origin: "Madhya Pradesh, Uttar Pradesh & West Bengal",
     specs: [
-      ["Purity", "99.8% Sortex Dehusked Whole"],
+      ["Purity Standard", "100% Natural Dehusked Whole"],
       ["Moisture", "< 10.0% Max"],
       ["Foreign Matter", "< 0.2% Max"],
       ["Protein", "> 25.5 g / 100g"],
@@ -464,7 +464,7 @@ export const PULSES_VARIETIES = [
       ["Shelf Life", "24 Months"],
     ],
     description: "Whole round red lentils (football type) featuring deep coral-red color and quick cooking time. A major global export commodity highly demanded across the Middle East, North Africa, and Europe.",
-    highlights: ["Rich Coral-Red Hue", "High Dietary Fiber & Iron", "Uniform Bold Calibration"],
+    highlights: ["Rich Coral-Red Hue", "High Dietary Fiber & Iron", "Uniform Bold Calibration", "Nutrient-Dense Mineral Core"],
   },
 ];
 
@@ -481,14 +481,14 @@ export const GRAINS_VARIETIES = [
     hsCode: "1005.90.00",
     origin: "Madhya Pradesh, Karnataka & Bihar",
     specs: [
-      ["Purity", "99.0% Double-Pass Sortex"],
+      ["Purity Standard", "100% Natural Machine Cleaned"],
       ["Moisture", "< 12.0% Max"],
       ["Aflatoxin", "< 20 ppb Certified"],
       ["Foreign Matter", "< 1.0% Max"],
       ["Shelf Life", "24 Months"],
     ],
-    description: "Bright yellow, plump, double-pass sortexed yellow dent maize with low moisture. Premium export grade for food processing, starch extraction, cornflour, and poultry/animal nutrition.",
-    highlights: ["High Starch & Energy Profile", "Aflatoxin < 20 ppb Certified", "Uniform Bold Golden Kernels"],
+    description: "Bright yellow, plump, precision-cleaned yellow dent maize with low moisture. Premium export grade for food processing, starch extraction, cornflour, and poultry/animal nutrition.",
+    highlights: ["High Starch & Energy Profile", "Aflatoxin < 20 ppb Certified", "Uniform Bold Golden Kernels", "High Natural Carotenoids"],
   },
   {
     id: "amaranth-rajgira",
@@ -499,7 +499,7 @@ export const GRAINS_VARIETIES = [
     hsCode: "1008.90.00",
     origin: "Gujarat, Maharashtra & Uttarakhand",
     specs: [
-      ["Purity", "99.8% Sortex Cleaned"],
+      ["Purity Standard", "100% Natural Cleaned"],
       ["Moisture", "< 10.0% Max"],
       ["Foreign Matter", "< 0.2% Max"],
       ["Protein", "> 14.5 g / 100g"],
@@ -507,7 +507,7 @@ export const GRAINS_VARIETIES = [
       ["Shelf Life", "24 Months"],
     ],
     description: "Tiny, ivory-golden ancient supergrain loaded with complete plant protein, squalene, and calcium. Highly sought-after for gluten-free cereal, energy bars, popping, and healthy baking blends.",
-    highlights: ["Complete Protein with Lysine", "Rich in Squalene & Calcium", "Naturally Gluten-Free"],
+    highlights: ["Complete Protein with Lysine", "Rich in Squalene & Calcium", "Naturally Gluten-Free", "Ancient Sacred Supercrop"],
   },
   {
     id: "barley-jau",
@@ -518,14 +518,14 @@ export const GRAINS_VARIETIES = [
     hsCode: "1003.90.00",
     origin: "Rajasthan, Uttar Pradesh & Haryana",
     specs: [
-      ["Purity", "99.5% Sortex Cleaned"],
+      ["Purity Standard", "100% Natural Cleaned"],
       ["Moisture", "< 11.0% Max"],
       ["Foreign Matter", "< 0.5% Max"],
       ["Beta-Glucan", "> 4.5%"],
       ["Shelf Life", "24 Months"],
     ],
-    description: "Fiber-rich, sortex-cleaned golden barley grains with exceptional soluble beta-glucan content. Extensively used in craft malting, brewing, breakfast porridge, and functional nutrition.",
-    highlights: ["High Beta-Glucan Soluble Fiber", "Malting & Brewing Grade", "Supports Blood Sugar Balance"],
+    description: "Fiber-rich, clean, premium golden barley grains with exceptional soluble beta-glucan content. Extensively used in craft malting, brewing, breakfast porridge, and functional nutrition.",
+    highlights: ["High Beta-Glucan Soluble Fiber", "Malting & Brewing Grade", "Supports Blood Sugar Balance", "Heart Health Supergrain"],
   },
   {
     id: "1121-xxl-basmati-rice",
@@ -537,7 +537,7 @@ export const GRAINS_VARIETIES = [
     origin: "Punjab, Haryana & Western UP",
     specs: [
       ["Average Grain Length", "8.35 mm+ (Aged 2 Yrs)"],
-      ["Purity", "99.0% Sortex Silky Finish"],
+      ["Purity Standard", "100% Natural Silky Finish"],
       ["Moisture", "< 12.0% Max"],
       ["Broken Grains", "< 1.0% Max"],
       ["Shelf Life", "24 Months"],
@@ -728,7 +728,7 @@ export const FLOURS_VARIETIES = [
       ["Texture", "Stone-Ground Medium Fine"],
       ["Shelf Life", "12 Months"],
     ],
-    description: "Bright yellow, stone-ground flour milled from double-pass sortexed yellow corn. Imparts golden color, earthy aroma, and authentic crispness to tortillas, makki ki roti, corn breads, and snack batters.",
+    description: "Bright yellow, stone-ground flour milled from clean, selected yellow corn. Imparts golden color, earthy aroma, and authentic crispness to tortillas, makki ki roti, corn breads, and snack batters.",
     highlights: ["Vibrant Golden Corn Hue", "Rich in Carotenoids & Fiber", "Authentic Makki Roti & Tortilla Base"],
   },
   {
@@ -932,13 +932,13 @@ export const DALIYA_VARIETIES = [
     hsCode: "1103.19.00",
     origin: "Rajasthan, Uttar Pradesh & Haryana",
     specs: [
-      ["Purity", "100% De-Hulled Sortex Barley"],
+      ["Purity Standard", "100% De-Hulled Whole Barley"],
       ["Moisture", "< 10.5% Max"],
       ["Beta-Glucan", "> 4.5%"],
       ["Dietary Fiber", "> 14.0%"],
       ["Shelf Life", "12 Months"],
     ],
-    description: "De-hulled, sortex-cleaned barley cracked into uniform cooking granules. Packed with heart-healthy soluble beta-glucan fiber, widely recommended for glycemic management and cooling summer diets.",
+    description: "De-hulled, clean whole barley cracked into uniform cooking granules. Packed with heart-healthy soluble beta-glucan fiber, widely recommended for glycemic management and cooling summer diets.",
     highlights: ["High Soluble Beta-Glucan", "Supports Blood Sugar Balance", "Light & Cooling on Digestion"],
   },
   {
@@ -978,6 +978,83 @@ export const DALIYA_VARIETIES = [
     highlights: ["100% Certified Gluten-Free", "Rich Golden Grits Texture", "Hypoallergenic Superfood Blend"],
   },
 ];
+
+// ============================================================
+// VARIETY ADVANTAGE & HIGHLIGHT MAPPERS (Sortex-Free, HS-Free)
+// ============================================================
+export const getVarietyAdvantage = (v) => {
+  if (v.advantage) return v.advantage;
+  const map = {
+    // Millets
+    "pearl-millet": "High Iron & Zinc Supercrop",
+    "finger-millet": "Highest Natural Calcium",
+    "foxtail-millet": "Diabetic-Friendly Low GI",
+    "little-millet": "Essential Healthy PUFA Fats",
+    "kodo-millet": "Cardiovascular Polyphenols",
+    "sorghum-millet": "Antioxidant-Rich Gluten-Free",
+    "proso-millet": "Complete Plant Protein (12.5%)",
+    "browntop-millet": "Maximum Dietary Fiber (12.5%)",
+    "barnyard-millet": "Lowest Calorie & Highest Iron",
+    "buckwheat-millet": "Complete Protein & Bioactive Rutin",
+
+    // Pulses
+    "pigeon-pea-split-toor-dal": "High Plant Protein (>22%)",
+    "cowpea-white-whole-lobiya": "Soluble Fiber & Folate Rich",
+    "green-gram-split-dehusked-moong-dal": "Lightest & Easiest to Digest",
+    "green-gram-whole-moong-whole": "High Sprouting Supercrop (>95%)",
+    "red-lentil-split-masoor-dal-split": "Fast Cooking & High Iron",
+    "brown-lentil-masoor-whole": "Earthy Texture & High Satiety",
+    "chickpea-bengal-gram-kala-chana": "Low Glycemic Sustained Energy",
+    "black-gram-whole-urad-whole": "High Frothing & Fermentation Star",
+    "black-gram-split-urad-split-chilka": "High Fiber Split & Iron",
+    "black-gram-split-dehusked-urad-dhuli": "Ultra-Pure Culinary Protein",
+    "soybean-whole-yellow": "Ultra-High Protein (>38%)",
+    "red-lentil-whole-football-masoor": "Mineral Dense & Slow Burning",
+
+    // Grains
+    "maize-corn-makka": "Natural Carotenoids & Energy",
+    "amaranth-rajgira": "Ancient Grain & Complete Lysine",
+    "barley-jau": "Heart-Healthy Soluble Beta-Glucan",
+    "1121-xxl-basmati-rice": "1121 XXL Aged Aromatic Slender Grain",
+    "sharbati-wheat": "Golden Sheen & High Natural Protein",
+
+    // Sweeteners
+    "jaggery-powder": "100% Chemical-Free & Mineral Rich",
+    "brown-sugar": "Natural Molasses & Unrefined Crystals",
+
+    // Flours
+    "amaranth-rajgira-flour": "Ancient Protein Powerhouse",
+    "besan-bengal-gram-flour": "100% Pure Chana Dal (Zero Additives)",
+    "barnyard-millet-flour": "Lowest Calorie & High Iron Density",
+    "buckwheat-kuttu-flour": "Bioactive Rutin & Naturally Gluten-Free",
+    "foxtail-millet-flour": "Low Glycemic Index Everyday Flour",
+    "oats-flour": "Heart-Healthy Soluble Beta-Glucan",
+    "kodo-millet-flour": "Polyphenol & Prebiotic Rich",
+    "maida-refined-wheat-flour": "Superfine Bakery & Confectionery Grade",
+    "maize-corn-makka-flour": "Golden Sun-Ripened Sweet Corn",
+    "multigrain-flour-atta": "Powerhouse 6-Grain Balanced Protein",
+    "whole-wheat-chakki-atta": "Stone-Ground with Intact Natural Bran",
+    "pearl-millet-bajra-flour": "Iron-Rich Gluten-Free Superflour",
+    "quinoa-flour": "Complete Plant Amino Acid Profile",
+    "semolina-suji-flour": "Durum Wheat High Granular Stability",
+    "sorghum-millet-jowar-flour": "Gentle Digesting Diabetic-Friendly",
+
+    // Daliya
+    "wheat-daliya": "Slow-Roasted High Satiety Durum",
+    "bajra-daliya": "Iron & Calcium Rich Winter Fuel",
+    "barley-daliya": "Cardiovascular Soluble Beta-Glucan",
+    "multigrain-daliya": "Synergy of 5 Heritage Grains",
+    "gluten-free-daliya": "100% Certified Multi-Millet Allergen-Free",
+  };
+  return map[v.id] || "Export Grade Premium";
+};
+
+export const getVarietyNote = (v) => {
+  const cleanHighlights = (v.highlights || []).filter(
+    (h) => !h.toLowerCase().includes("sortex")
+  );
+  return cleanHighlights.join(" · ");
+};
 
 // ============================================================
 // PRODUCTS — restructured with brand range + category
@@ -1100,17 +1177,17 @@ export const PRODUCTS = [
     season: "Year-Round Export Availability",
     image: IMG.millets,
     intro:
-      "At HarvestGate Overseas, we bring you the finest grade of premium Indian millets — Sorghum (Jowar), Pearl Millet (Bajra), Finger Millet (Ragi), Foxtail Millet, Barnyard Millet, Kodo Millet, Proso Millet, Little Millet, Brown Top Millet, and Buckwheat (Kuttu). Cultivated in fertile, chemical-free drylands and sortex cleaned to preserve natural nutrition, color, and texture.",
+      "At HarvestGate Overseas, we bring you the finest grade of premium Indian millets — Sorghum (Jowar), Pearl Millet (Bajra), Finger Millet (Ragi), Foxtail Millet, Barnyard Millet, Kodo Millet, Proso Millet, Little Millet, Brown Top Millet, and Buckwheat (Kuttu). Cultivated in fertile, chemical-free drylands and naturally cleaned to preserve natural nutrition, color, and texture.",
     description:
-      "We aggregate directly from contracted farmer producer groups across 5 states. Every lot undergoes twin-pass sortex cleaning, gravity separation, de-stoning, and magnetic inspection. Consignments are backed by full NABL-accredited and FSSAI-approved laboratory reports covering pesticide residues, heavy metals, and nutritional profiles.",
+      "We aggregate directly from contracted farmer producer groups across 5 states. Every lot undergoes multi-stage cleaning, gravity separation, de-stoning, and magnetic inspection. Consignments are backed by full NABL-accredited and FSSAI-approved laboratory reports covering pesticide residues, heavy metals, and nutritional profiles.",
     grades: MILLET_VARIETIES.map((v) => ({
       name: `${v.name} (${v.localName})`,
-      spec: v.specs[0][1],
-      note: `${v.highlights.join(" · ")} | HS ${v.hsCode}`,
+      spec: getVarietyAdvantage(v),
+      note: getVarietyNote(v),
     })),
     varieties: MILLET_VARIETIES,
     specs: [
-      ["Purity Standard", "99.5% - 99.8% Sortex Cleaned"],
+      ["Purity Standard", "100% Natural Machine Cleaned"],
       ["Moisture Limit", "< 10.0% Max"],
       ["Foreign Matter", "< 0.2% - 0.3% Max"],
       ["Pesticide Residues", "Zero / Below Detection Limit (NABL Certified)"],
@@ -1143,8 +1220,8 @@ export const PRODUCTS = [
       "HarvestGate contracts directly with artisanal open-pan gur producers in Kolhapur and Western UP. Zero sodium hydrosulphite, zero chemical bleaches, and 100% trace mineral retention with NABL and FSSAI export certificates.",
     grades: SWEETENERS_VARIETIES.map((v) => ({
       name: `${v.name} (${v.localName.split("/")[0].trim()})`,
-      spec: v.specs[0][1],
-      note: `${v.highlights.join(" · ")} | HS ${v.hsCode}`,
+      spec: getVarietyAdvantage(v),
+      note: getVarietyNote(v),
     })),
     varieties: SWEETENERS_VARIETIES,
     specs: [
@@ -1176,17 +1253,17 @@ export const PRODUCTS = [
     season: "Year-round availability",
     image: "/images/pulses/pigeon-pea-split-toor-dal.jpg",
     intro:
-      "At HarvestGate Overseas, we export 12 premium grades of sortex-cleaned Indian pulses — Pigeon Peas (Toor/Arhar Dal), Cowpea (White Lobiya), Green Gram (Moong Whole & Moong Dhuli), Red & Brown Lentils (Masoor Dal Split, Whole & Brown), Soybean Whole, Bengal Gram (Kala Chana), and Black Gram (Urad Whole, Split Chilka & Split Dehusked).",
+      "At HarvestGate Overseas, we export 12 premium grades of machine-cleaned Indian pulses — Pigeon Peas (Toor/Arhar Dal), Cowpea (White Lobiya), Green Gram (Moong Whole & Moong Dhuli), Red & Brown Lentils (Masoor Dal Split, Whole & Brown), Soybean Whole, Bengal Gram (Kala Chana), and Black Gram (Urad Whole, Split Chilka & Split Dehusked).",
     description:
-      "Sourced directly from primary agricultural mandis across Madhya Pradesh, Maharashtra, Rajasthan, Karnataka, and Andhra Pradesh. Each batch undergoes optical sortex grading, de-stoning, and stringent moisture testing, backed by full FSSAI and APEDA export certifications.",
+      "Sourced directly from primary agricultural mandis across Madhya Pradesh, Maharashtra, Rajasthan, Karnataka, and Andhra Pradesh. Each batch undergoes optical grading, de-stoning, and stringent moisture testing, backed by full FSSAI and APEDA export certifications.",
     grades: PULSES_VARIETIES.map((v) => ({
       name: `${v.name} (${v.localName.split("/")[0].trim()})`,
-      spec: v.specs[0][1],
-      note: `${v.highlights.join(" · ")} | HS ${v.hsCode}`,
+      spec: getVarietyAdvantage(v),
+      note: getVarietyNote(v),
     })),
     varieties: PULSES_VARIETIES,
     specs: [
-      ["Purity Standard", "99.5% - 99.8% Sortex Cleaned"],
+      ["Purity Standard", "100% Natural Machine Cleaned"],
       ["Moisture Limit", "< 10.0% - 10.5% Max"],
       ["Foreign Matter", "< 0.2% - 0.3% Max"],
       ["Broken Grains", "< 1.0% Max"],
@@ -1214,17 +1291,17 @@ export const PRODUCTS = [
     season: "Year-round availability",
     image: "/images/grains/maize-corn-makka.jpg",
     intro:
-      "At HarvestGate Overseas, our export grains and cereals programme delivers prime harvests of Indian Yellow Maize (Corn), Ancient Amaranth (Rajgira), Sortex Barley (Jau), 1121 XXL Aged Basmati Rice, and Sharbati Milling Wheat.",
+      "At HarvestGate Overseas, our export grains and cereals programme delivers prime harvests of Indian Yellow Maize (Corn), Ancient Amaranth (Rajgira), Golden Barley (Jau), 1121 XXL Aged Basmati Rice, and Sharbati Milling Wheat.",
     description:
       "Directly sourced from trusted agrarian clusters and modernized grain silos across Punjab, Haryana, Madhya Pradesh, Gujarat, and Rajasthan. Consignments undergo stringent optical sorting, moisture monitoring, and full APEDA/FSSAI export certifications.",
     grades: GRAINS_VARIETIES.map((v) => ({
       name: `${v.name} (${v.localName.split("/")[0].trim()})`,
-      spec: v.specs[0][1],
-      note: `${v.highlights.join(" · ")} | HS ${v.hsCode}`,
+      spec: getVarietyAdvantage(v),
+      note: getVarietyNote(v),
     })),
     varieties: GRAINS_VARIETIES,
     specs: [
-      ["Purity Standard", "99.0% - 99.8% Sortex Cleaned"],
+      ["Purity Standard", "100% Natural Machine Cleaned"],
       ["Moisture Limit", "< 10.0% - 12.0% Max"],
       ["Damaged / Discolored", "< 0.5% Max"],
       ["Pesticide Residues", "Zero / NABL Certified"],
@@ -1257,8 +1334,8 @@ export const PRODUCTS = [
       "Milled in modern HACCP-certified facilities with strict temperature control to preserve essential nutrients, natural aroma, and enzyme activity. Every batch undergoes rigorous quality checks for fineness, moisture, and zero additives.",
     grades: FLOURS_VARIETIES.map((v) => ({
       name: `${v.name} (${v.localName.split("/")[0].trim()})`,
-      spec: v.specs[0][1],
-      note: `${v.highlights.join(" · ")} | HS ${v.hsCode}`,
+      spec: getVarietyAdvantage(v),
+      note: getVarietyNote(v),
     })),
     varieties: FLOURS_VARIETIES,
     specs: [
@@ -1295,12 +1372,12 @@ export const PRODUCTS = [
       "Manufactured in dust-free roller mill systems with de-stoners and optical sorters. Available in raw golden granules or slow-roasted formats that cook evenly without clumping, ideal for porridge, savory upma, and healthy meal formulations.",
     grades: DALIYA_VARIETIES.map((v) => ({
       name: `${v.name} (${v.localName.split("/")[0].trim()})`,
-      spec: v.specs[0][1],
-      note: `${v.highlights.join(" · ")} | HS ${v.hsCode}`,
+      spec: getVarietyAdvantage(v),
+      note: getVarietyNote(v),
     })),
     varieties: DALIYA_VARIETIES,
     specs: [
-      ["Purity Standard", "99.8% Sortex De-stoned"],
+      ["Purity Standard", "100% Natural De-stoned"],
       ["Moisture Limit", "< 10.0% - 10.5% Max"],
       ["Foreign Matter", "< 0.1% Max"],
       ["Dietary Fiber", "> 11.5% - 14.0%"],
