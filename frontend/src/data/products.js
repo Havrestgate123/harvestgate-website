@@ -1317,16 +1317,16 @@ export const PRODUCTS = [
 // CATEGORIES CONFIG (for nav + filter tabs)
 // ============================================================
 export const NATURALS_CATEGORIES = [
-  { id: "millets", label: "Millets", slug: "millets", description: "10 certified ancient grain varieties" },
-  { id: "sweeteners", label: "Sweeteners", slug: "sweeteners", description: "Jaggery, ICUMSA Sugar & Raw Cane" },
-  { id: "pulses", label: "Pulses", slug: "pulses", description: "Toor, Chana, Moong, Urad & Masoor" },
-  { id: "grains", label: "Grains", slug: "grains", description: "Basmati Rice, Wheat & Maize" },
-  { id: "flours", label: "Flours", slug: "flours", description: "Atta, Millet Flours & Besan" },
-  { id: "daliya", label: "Porridge / Daliya", slug: "daliya", description: "Cracked Wheat, Oats & Multigrain" },
+  { id: "millets", label: "Millets", slug: "millets", description: "Pearl • Finger • Foxtail and more" },
+  { id: "sweeteners", label: "Sweeteners", slug: "sweeteners", description: "Brown Sugar, Jaggery Cubes, Powder, etc." },
+  { id: "pulses", label: "Pulses", slug: "pulses", description: "Chickpeas, Green Gram, Red Lentil and more" },
+  { id: "grains", label: "Grains", slug: "grains", description: "Wheat, Barley, Quinoa and more" },
+  { id: "flours", label: "Flours", slug: "flours", description: "Multigrain, Gluten-Free and more" },
+  { id: "daliya", label: "Porridge / Daliya", slug: "daliya", description: "Wheat, Barley, Multigrain, Mix Millets and more" },
 ];
 
 export const SELECT_CATEGORIES = [
-  { id: "foxnuts", label: "Premium Foxnuts", slug: "foxnuts", description: "Popped Lotus Seeds / Phool Makhana — Mithila origin" },
+  { id: "foxnuts", label: "Premium Foxnuts", slug: "foxnuts", description: "Popped Lotus Seeds / Phool Makhana" },
 ];
 
 // ============================================================

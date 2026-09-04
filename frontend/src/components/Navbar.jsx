@@ -351,16 +351,6 @@ export const Navbar = () => {
                             );
                           })}
                         </div>
-
-                        {/* Spacer + full catalogue link */}
-                        <div className="mt-auto px-2 pb-2">
-                          <div className="rounded border border-hg-gold/30 bg-hg-gold/5 p-3">
-                            <p className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-hg-fg3 mb-1.5">Premium single-origin</p>
-                            <p className="text-[12px] font-bold text-hg-fg leading-snug">
-                              Grade-A Phool Makhana,<br />hand-popped in Bihar wetlands.
-                            </p>
-                          </div>
-                        </div>
                       </div>
                     </div>
 
@@ -550,7 +540,7 @@ export const Navbar = () => {
                                   <span className="h-2 w-2 rounded-full bg-hg-green/50 shrink-0" />
                                   <span>{cat.label}</span>
                                 </span>
-                                <span className="text-[10.5px] font-mono text-hg-fg3">{cat.description.split(",")[0]}</span>
+                                <span className="text-[10.5px] font-mono text-hg-fg3">{(cat.description.split(/[,•/]/)[0] || "").trim()}</span>
                               </Link>
                             ))}
                           </div>
@@ -588,7 +578,7 @@ export const Navbar = () => {
                                   <span className="h-2 w-2 rounded-full bg-hg-gold/50 shrink-0" />
                                   <span>{cat.label}</span>
                                 </span>
-                                <span className="text-[10.5px] font-mono text-hg-fg3">{cat.description.split(",")[0]}</span>
+                                <span className="text-[10.5px] font-mono text-hg-fg3">{(cat.description.split(/[,•/]/)[0] || "").trim()}</span>
                               </Link>
                             ))}
                           </div>
