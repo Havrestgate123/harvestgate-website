@@ -561,6 +561,44 @@ export const PULSES_VARIETIES = [
     description: "Celebrated speckled kidney beans with beige skin decorated with intricate reddish-brown streaks. Sourced from high-altitude Himalayan valleys, renowned for meltingly soft, buttery texture and sweet aromatic gravy.",
     highlights: ["Himalayan Valley Provenance", "Melt-in-Mouth Buttery Texture", "Iconic Speckled Chitra Markings", "Rich in Folate & Complex Carbs"],
   },
+  {
+    id: "kidney-bean-jammu-rajma-jammu",
+    name: "Kidney Bean Jammu / Rajma Jammu",
+    localName: "Bhaderwah Rajma / Kashmiri Small Red Rajma",
+    botanical: "Phaseolus vulgaris",
+    image: "/images/pulses/kidney-bean-jammu-rajma-jammu.jpg",
+    hsCode: "0713.33.00",
+    origin: "Chenab Valley & Bhaderwah (Jammu & Kashmir)",
+    specs: [
+      ["Purity Standard", "100% Natural Himalayan Sourced"],
+      ["Moisture", "< 10.0% Max"],
+      ["Foreign Matter", "< 0.15% Max"],
+      ["Size Calibration", "Small Compact Gourmet Grain"],
+      ["Protein", "> 23.5 g / 100g"],
+      ["Shelf Life", "24 Months"],
+    ],
+    description: "Small, lustrous ruby-red beans grown exclusively in the high-altitude microclimates of Jammu & Kashmir. Celebrated across India as the finest culinary rajma for its naturally sweet taste, melting texture, and distinctive rich aroma.",
+    highlights: ["GI-Origin Bhaderwah Microclimate", "Naturally Sweet & Intense Aroma", "Meltingly Soft Texture", "Celebrated North Indian Gourmet Standard"],
+  },
+  {
+    id: "red-kidney-bean-rajma-red",
+    name: "Red Kidney Bean / Rajma Red",
+    localName: "Lal Rajma / Dark Red Kidney Beans / Sharmili",
+    botanical: "Phaseolus vulgaris",
+    image: "/images/pulses/red-kidney-bean-rajma-red.jpg",
+    hsCode: "0713.33.00",
+    origin: "Maharashtra, Madhya Pradesh & Uttarakhand",
+    specs: [
+      ["Purity Standard", "100% Natural Cleaned"],
+      ["Moisture", "< 10.5% Max"],
+      ["Foreign Matter", "< 0.2% Max"],
+      ["Calibration / Count", "180-200 / 220-240 per 100g"],
+      ["Protein", "> 24.0 g / 100g"],
+      ["Shelf Life", "24 Months"],
+    ],
+    description: "Classic deep mahogany red kidney beans with firm curved shape and rich earthy flavor. Highly valued for hearty curries, chili con carne, canned bean manufacturing, and Latin American/European stews.",
+    highlights: ["Classic Large Kidney Calibration", "High Plant Protein & Dietary Fiber", "Firm Shape Retention After Cooking", "Rich Mahogany Red Color"],
+  },
 ];
 
 // ============================================================
@@ -1132,6 +1170,8 @@ export const getVarietyAdvantage = (v) => {
     "black-gram-split-dehusked-urad-dhuli": "Ultra-Pure Culinary Protein",
     "cowpea-red-whole-red-lobiya": "Anthocyanin Rich & Firm Texture",
     "kidney-bean-chitra-rajma-chitra": "Himalayan Buttery & High Folate",
+    "kidney-bean-jammu-rajma-jammu": "GI-Heritage Gourmet & Naturally Sweet",
+    "red-kidney-bean-rajma-red": "Classic Large Grain & Rich Protein",
     "soybean-whole": "Ultra-High Protein (>38%)",
     "soybean-whole-yellow": "Ultra-High Protein (>38%)",
 
@@ -1378,7 +1418,7 @@ export const PRODUCTS = [
     season: "Year-round availability",
     image: "/images/pulses/pigeon-pea-split-toor-dal.jpg",
     intro:
-      "At HarvestGate Overseas, we export 17 premium grades of machine-cleaned Indian pulses — Kabuli Chickpeas, Pigeon Peas (Toor/Arhar Dal), Chana Dal, Bengal Gram (Kala Chana), White & Red Cowpeas (Lobiya), Green Gram (Moong Whole, Split Chilka & Dhuli), Red & Brown Lentils (Masoor Split, Whole & Brown), Chitra Kidney Beans (Rajma), Black Gram (Urad Whole, Chilka & Dhuli), and Whole Soybeans.",
+      "At HarvestGate Overseas, we export 19 premium grades of machine-cleaned Indian pulses — Kabuli Chickpeas, Pigeon Peas (Toor/Arhar Dal), Chana Dal, Bengal Gram (Kala Chana), White & Red Cowpeas (Lobiya), Green Gram (Moong Whole, Split Chilka & Dhuli), Red & Brown Lentils (Masoor Split, Whole & Brown), Red, Jammu & Chitra Kidney Beans (Rajma), Black Gram (Urad Whole, Chilka & Dhuli), and Whole Soybeans.",
     description:
       "Sourced directly from primary agricultural mandis across Madhya Pradesh, Maharashtra, Rajasthan, Karnataka, and Andhra Pradesh. Each batch undergoes optical grading, de-stoning, and stringent moisture testing, backed by full FSSAI and APEDA export certifications.",
     grades: PULSES_VARIETIES.map((v) => ({
