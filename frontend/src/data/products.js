@@ -735,11 +735,30 @@ export const GRAINS_VARIETIES = [
     highlights: ["Complete Amino Acid Profile", "100% Saponin-Free & Washed", "Naturally Gluten-Free Superseed", "Light Fluffy Cooking Texture"],
   },
   {
-    id: "oats-flakes",
-    name: "Oats Flakes",
-    localName: "Rolled Oats / Jai Ke Phulke",
+    id: "oats-dehulled",
+    name: "Oats Dehulled",
+    localName: "Dehulled Whole Oat Groats / Sabut Jai",
     botanical: "Avena sativa",
-    image: "/images/grains/oats-flakes.jpg",
+    image: "/images/grains/oats-dehulled.jpg",
+    hsCode: "1104.22.00",
+    origin: "Rajasthan, Haryana & Punjab",
+    specs: [
+      ["Purity Standard", "100% Machine Cleaned & Dehulled Groats"],
+      ["Moisture", "< 10.5% Max"],
+      ["Foreign Matter", "< 0.2% Max"],
+      ["Beta-Glucan", "> 4.5 g / 100g"],
+      ["Protein", "> 13.0% Min"],
+      ["Shelf Life", "24 Months"],
+    ],
+    description: "Sound, plump whole oat groats with the fibrous outer hull cleanly removed, retaining the intact nutrient-dense germ, bran layer, and endosperm. Rich in soluble dietary fiber (beta-glucan), plant protein, and essential minerals for industrial flaking, milling, and health food formulations.",
+    highlights: ["Whole Grain Intact Germ & Bran", "High Soluble Beta-Glucan Fiber", "100% Dehulled Cleaned Groats", "Ideal for Flaking & Milling"],
+  },
+  {
+    id: "oats-rolled",
+    name: "Oats Rolled",
+    localName: "Rolled Oat Flakes / Jai Ke Phulke",
+    botanical: "Avena sativa",
+    image: "/images/grains/oats-rolled.jpg",
     hsCode: "1104.12.00",
     origin: "Rajasthan, Haryana & Punjab",
     specs: [
@@ -1312,6 +1331,8 @@ export const getVarietyAdvantage = (v) => {
     "sharbati-wheat": "Golden Sheen & High Natural Protein",
     "wheat-whole": "High Protein & Superior Gluten Strength",
     "quinoa": "Complete 9-Amino Acid Superseed",
+    "oats-dehulled": "Whole Groat Bran & High Beta-Glucan",
+    "oats-rolled": "Cardiovascular Beta-Glucan & Satiety",
     "oats-flakes": "Cardiovascular Beta-Glucan & Satiety",
     "white-poha-beaten-rice": "Ultra-Light & Easy Digesting Iron Carrier",
 
@@ -1592,7 +1613,7 @@ export const PRODUCTS = [
     season: "Year-round availability",
     image: "/images/grains/maize-corn-makka.jpg",
     intro:
-      "At HarvestGate Overseas, our export grains and cereals programme delivers 9 prime harvests: Indian Yellow Maize (Corn), Ancient Amaranth (Rajgira), Golden Barley (Jau), 1121 XXL Aged Basmati Rice, Sharbati Milling Wheat, Whole Milling Wheat, White Royal Quinoa, Rolled Oat Flakes, and Traditional White Poha (Flattened Rice).",
+      "At HarvestGate Overseas, our export grains and cereals programme delivers 10 prime harvests: Indian Yellow Maize (Corn), Ancient Amaranth (Rajgira), Golden Barley (Jau), 1121 XXL Aged Basmati Rice, Sharbati Milling Wheat, Whole Milling Wheat, White Royal Quinoa, Dehulled Whole Oat Groats, Rolled Oat Flakes, and Traditional White Poha (Flattened Rice).",
     description:
       "Directly sourced from trusted agrarian clusters and modernized grain silos across Punjab, Haryana, Madhya Pradesh, Gujarat, and Rajasthan. Consignments undergo stringent optical sorting, moisture monitoring, and full APEDA/FSSAI export certifications.",
     grades: GRAINS_VARIETIES.map((v) => ({
