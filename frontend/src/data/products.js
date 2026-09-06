@@ -1129,6 +1129,60 @@ export const DALIYA_VARIETIES = [
     description: "100% certified gluten-free porridge blend crafted from cracked sorghum, foxtail millet, and roasted quinoa grits. Cooks into a rich, creamy, allergen-free breakfast porridge.",
     highlights: ["100% Certified Gluten-Free", "Rich Golden Grits Texture", "Hypoallergenic Superfood Blend"],
   },
+  {
+    id: "jowar-daliya",
+    name: "Jowar Daliya / Sorghum Porridge",
+    localName: "Jowar Ka Daliya / Cracked Sorghum Grits",
+    botanical: "Sorghum bicolor",
+    image: "/images/daliya/jowar-daliya.jpg",
+    hsCode: "1103.19.00",
+    origin: "Maharashtra, Karnataka & Madhya Pradesh",
+    specs: [
+      ["Purity Standard", "100% De-hulled Whole Sorghum Grits"],
+      ["Moisture", "< 10.0% Max"],
+      ["Gluten Content", "0.0% Naturally Gluten-Free"],
+      ["Dietary Fiber", "> 10.0%"],
+      ["Shelf Life", "12 Months"],
+    ],
+    description: "Coarsely cracked from premium de-hulled white sorghum. Naturally gluten-free and packed with polyphenols, resistant starch, and essential minerals, creating a gentle, diabetic-friendly breakfast porridge.",
+    highlights: ["Antioxidant-Rich Polyphenols", "Naturally Gluten-Free Grain", "Low Glycemic Slow Energy", "Gentle on Digestion"],
+  },
+  {
+    id: "maize-daliya",
+    name: "Maize Daliya / Corn Porridge",
+    localName: "Makka Daliya / Golden Corn Grits",
+    botanical: "Zea mays",
+    image: "/images/daliya/maize-daliya.jpg",
+    hsCode: "1103.13.00",
+    origin: "Madhya Pradesh, Karnataka & Rajasthan",
+    specs: [
+      ["Purity Standard", "100% Sun-Ripened Yellow Corn Grits"],
+      ["Moisture", "< 11.0% Max"],
+      ["Carotenoids", "High Natural Beta-Carotene"],
+      ["Fat / Oil Content", "< 1.5% Degermed Grits"],
+      ["Shelf Life", "12 Months"],
+    ],
+    description: "Coarsely milled from degermed golden sun-ripened corn kernels. Provides vibrant natural golden color, wholesome carotenoid antioxidants, and a light, crumbly texture ideal for breakfast polenta, porridge, and upma.",
+    highlights: ["Natural Carotenoids & Energy", "Vibrant Golden Grain Texture", "Naturally Gluten-Free Base", "Versatile Breakfast Polenta / Upma"],
+  },
+  {
+    id: "mix-millets-daliya",
+    name: "Mix Millets Daliya / Multi Millet Porridge",
+    localName: "Mixed Millets Daliya / Navratna Millet Porridge",
+    botanical: "Sorghum + Pearl + Foxtail + Ragi + Kodo Blend",
+    image: "/images/daliya/mix-millets-daliya.jpg",
+    hsCode: "1103.19.00",
+    origin: "Rajasthan, Karnataka, MP & Uttarakhand",
+    specs: [
+      ["Composition", "Cracked Blend of 5 Heritage Indian Millets"],
+      ["Moisture", "< 10.0% Max"],
+      ["Gluten Content", "0.0% Certified Gluten-Free"],
+      ["Mineral Density", "High Bioavailable Iron & Calcium"],
+      ["Shelf Life", "12 Months"],
+    ],
+    description: "Artisanal superfood porridge blending coarsely cracked Sorghum, Pearl Millet (Bajra), Finger Millet (Ragi), Foxtail, and Kodo millets. Combines multi-millet micronutrients into one balanced, highly satisfying daily breakfast.",
+    highlights: ["Powerhouse 5-Millet Synergy", "High Natural Calcium & Iron", "100% Certified Gluten-Free", "Sustained Satiety & Wellness"],
+  },
 ];
 
 // ============================================================
@@ -1207,8 +1261,11 @@ export const getVarietyAdvantage = (v) => {
     // Daliya
     "wheat-daliya": "Slow-Roasted High Satiety Durum",
     "bajra-daliya": "Iron & Calcium Rich Winter Fuel",
+    "jowar-daliya": "Antioxidant Polyphenols & Low GI",
     "barley-daliya": "Cardiovascular Soluble Beta-Glucan",
+    "maize-daliya": "Natural Carotenoids & Energy",
     "multigrain-daliya": "Synergy of 5 Heritage Grains",
+    "mix-millets-daliya": "Powerhouse 5-Millet Synergy",
     "gluten-free-daliya": "100% Certified Multi-Millet Allergen-Free",
   };
   return map[v.id] || "Export Grade Premium";
@@ -1532,7 +1589,7 @@ export const PRODUCTS = [
     season: "Year-round availability",
     image: "/images/daliya/wheat-daliya.jpg",
     intro:
-      "At HarvestGate Overseas, our roasted daliya and wholesome porridge programme delivers 5 certified grades: Wheat Daliya (Durum Lapsi Rawa), Bajra Daliya (Pearl Millet), Barley Daliya (Jau), Multi Grain Daliya, and 100% Gluten Free Daliya.",
+      "At HarvestGate Overseas, our roasted daliya and wholesome porridge programme delivers 8 certified grades: Wheat Daliya (Durum Lapsi Rawa), Bajra Daliya (Pearl Millet), Jowar Daliya (Sorghum Porridge), Barley Daliya (Jau), Maize Daliya (Corn Grits), Multi Grain Daliya, Mix Millets Daliya, and 100% Gluten Free Daliya.",
     description:
       "Manufactured in dust-free roller mill systems with de-stoners and optical sorters. Available in raw golden granules or slow-roasted formats that cook evenly without clumping, ideal for porridge, savory upma, and healthy meal formulations.",
     grades: DALIYA_VARIETIES.map((v) => ({
