@@ -978,7 +978,7 @@ export const FLOURS_VARIETIES = [
   },
   {
     id: "whole-wheat-chakki-atta",
-    name: "Whole Wheat Flour / Wheat Chakki Atta",
+    name: "Whole Wheat Flour / Wheat Chakki Atta Flour",
     localName: "Sharbati Chakki Fresh Atta",
     botanical: "Triticum aestivum",
     image: "/images/flours/whole-wheat-chakki-atta.jpg",
@@ -1155,6 +1155,42 @@ export const FLOURS_VARIETIES = [
     ],
     description: "Delicate, pale-cream flour milled from de-hulled proso millet kernels. Boasts the highest protein concentration (12.5%) among minor millets, along with abundant niacin (Vitamin B3) and magnesium, making it an outstanding gluten-free flour for artisan breads and nutritious breakfast formulations.",
     highlights: ["Highest Millet Protein (12.5%)", "Rich in Niacin (Vitamin B3) & Zinc", "Smooth Silky Baking Consistency"],
+  },
+  {
+    id: "finger-millet-ragi-flour",
+    name: "Finger Millet / Ragi Flour",
+    localName: "Ragi Ka Atta / Mandua Flour / Nachni Atta",
+    botanical: "Eleusine coracana",
+    image: "/images/flours/finger-millet-ragi-flour.jpg",
+    hsCode: "1102.90.00",
+    origin: "Karnataka, Uttarakhand & Tamil Nadu",
+    specs: [
+      ["Purity", "100% Whole Finger Millet"],
+      ["Moisture", "< 10.0% Max"],
+      ["Calcium Content", "> 344 mg / 100g (Highest of All Cereals)"],
+      ["Gluten Content", "0.0% Naturally Gluten-Free"],
+      ["Shelf Life", "12 Months"],
+    ],
+    description: "Nutrient-packed ruby-brown flour milled from native unpolished finger millet (ragi). Naturally celebrated for containing the highest concentration of bioavailable plant calcium (over 344 mg/100g), natural iron, and polyphenols. Essential for diabetic wellness, weaning baby foods, and traditional ragi mudde, dosas, and rotis.",
+    highlights: ["Highest Natural Plant Calcium (344mg)", "Bone Density & Diabetic Superfood", "100% Gluten-Free Ruby Whole Meal"],
+  },
+  {
+    id: "gluten-free-flour-atta",
+    name: "Gluten Free Flour / Gluten Free Atta Flour",
+    localName: "Certified Gluten-Free Multi-Millet Atta",
+    botanical: "Multi-Millet & Ancient Grain Blend",
+    image: "/images/flours/gluten-free-flour-atta.jpg",
+    hsCode: "1102.90.00",
+    origin: "Madhya Pradesh, Rajasthan & Gujarat",
+    specs: [
+      ["Gluten Content", "0.0% (NABL Certified Allergen-Free)"],
+      ["Moisture", "< 10.5% Max"],
+      ["Composition", "Jowar + Ragi + Bajra + Amaranth + Quinoa + Chana"],
+      ["Dietary Fiber", "> 11.5%"],
+      ["Shelf Life", "12 Months Sealed"],
+    ],
+    description: "Premium 100% certified allergen-free composite flour meticulously crafted from stone-ground ancient grains: white sorghum (jowar), finger millet (ragi), bajra, ancient amaranth, and quinoa. Formulated to mimic traditional wheat elasticity naturally for soft, pliable rotis, parathas, and artisan gluten-free baking.",
+    highlights: ["100% Certified Gluten-Free (0.0% Gluten)", "6-Grain Superfood Synergy", "Soft & Pliable Roti Elasticity"],
   },
 ];
 
@@ -1452,6 +1488,8 @@ export const getVarietyAdvantage = (v) => {
     "barley-jau-flour": "Heart-Healthy Beta-Glucan & Cooling Metabolism",
     "browntop-millet-flour": "Maximum Dietary Fiber (12.5%) & Prebiotic Power",
     "proso-millet-flour": "Highest Plant Protein (12.5%) & Complete Nutrition",
+    "finger-millet-ragi-flour": "Highest Natural Calcium & Bone Density",
+    "gluten-free-flour-atta": "100% Certified Gluten-Free & Multi-Millet Synergy",
 
     // Daliya
     "wheat-daliya": "Slow-Roasted High Satiety Durum",
@@ -1746,7 +1784,7 @@ export const PRODUCTS = [
     season: "Year-round availability",
     image: "/images/flours/multigrain-flour-atta.jpg",
     intro:
-      "At HarvestGate Overseas, our wholesome flours programme features 20 stone-ground, 100% natural and unadulterated flours: Whole Wheat Chakki Atta, Multigrain Atta, Pearl Millet (Bajra), Sorghum (Jowar), Foxtail, Barnyard, Kodo, Little, Proso & Brown Top Millet Flours, Ancient Amaranth (Rajgira), Quinoa Flour, Pure Chana Besan, Buckwheat (Kuttu), Oats Flour, Barley (Jau) Flour, Rice Flour, Maize (Makka) Flour, Semolina (Suji), and Superfine Maida.",
+      "At HarvestGate Overseas, our wholesome flours programme features 22 stone-ground, 100% natural and unadulterated flours: Whole Wheat Chakki Atta, Multigrain Atta, Certified Gluten-Free Atta, Finger Millet (Ragi), Pearl Millet (Bajra), Sorghum (Jowar), Foxtail, Barnyard, Kodo, Little, Proso & Brown Top Millet Flours, Ancient Amaranth (Rajgira), Quinoa Flour, Pure Chana Besan, Buckwheat (Kuttu), Oats Flour, Barley (Jau) Flour, Rice Flour, Maize (Makka) Flour, Semolina (Suji), and Superfine Maida.",
     description:
       "Milled in modern HACCP-certified facilities with strict temperature control to preserve essential nutrients, natural aroma, and enzyme activity. Every batch undergoes rigorous quality checks for fineness, moisture, and zero additives.",
     grades: FLOURS_VARIETIES.map((v) => ({
