@@ -1570,21 +1570,21 @@ export const PRODUCTS = [
     ],
     grades: [
       {
-        name: "Grade A : 6+ Sutta",
+        name: "Grade A : 6+ Sutta HP",
         image: "/images/foxnuts/6-sutta.jpg",
-        spec: "6+ Sutta (≈ 19.2 mm+)",
+        spec: "6+ Sutta HP (≈ 19.2 mm+)",
         shortDesc: "Extra-large, handpicked superior-grade foxnuts with a rich, glossy appearance and unmatched crunch.",
         note: "Exclusive selection of handpicked 6+ sutta and larger sizes; extra-large, superior-grade handpicked foxnuts with a rich, glossy appearance and exceptional texture that stands out on any shelf. Delivers unmatched crunch, premium presentation, and handpicked consistency — making it a preferred choice for high-end retail, gourmet packaging, and export markets seeking top-tier quality.",
       },
       {
-        name: "5+ Sutta HP",
+        name: "Grade : 5+ Sutta HP",
         image: "/images/foxnuts/5-sutta.png",
         spec: "5+ Sutta HP (≈ 16.0 – 19.2 mm)",
         shortDesc: "Handpicked blend of 5+ sutta HP; uniform, attractive, and versatile — perfect for snacks and rebranding.",
         note: "Premium blend of handpicked 5+ sutta HP; uniform, attractive, and versatile — perfect for snacks, gourmet blends, and rebranding. Handpicked to offer consistent quality, excellent puff, and a rich texture that enhances product appeal across diverse markets.",
       },
       {
-        name: "4+ Sutta HP",
+        name: "Grade : 4+ Sutta HP",
         image: "/images/foxnuts/4-sutta.png",
         spec: "4+ Sutta HP (≈ 12.8 – 16.0 mm)",
         shortDesc: "Handpicked assortment of 4+ sutta HP delivering consistent quality and excellent puff.",
