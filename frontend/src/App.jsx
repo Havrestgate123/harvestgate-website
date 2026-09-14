@@ -8,6 +8,7 @@ import { SmoothScroll, ScrollToTop } from "@/components/SmoothScroll";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { AmbientBackground } from "@/components/AmbientBackground";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 import Home from "@/pages/Home";
 import About from "@/pages/About";
@@ -56,6 +57,7 @@ const Shell = () => {
         <AnimatedRoutes />
       </div>
       <Footer />
+      <WhatsAppButton />
       <Toaster
         theme={theme}
         position="bottom-right"
