@@ -237,7 +237,7 @@ const About = () => (
                     Different grades. Different requirements.
                   </p>
                   <p className="mt-1 text-[14.5px] leading-relaxed text-hg-fg2 font-medium">
-                    One uncompromising focus on quality and consistency across Grade A (6+ Sutta HP), Grade : 5+ Sutta HP, and Grade : 4+ Sutta HP.
+                    One uncompromising focus on quality and consistency across Grade A (6+ Sutta HP), Grade B : 5+ Sutta HP, and Grade C : 4+ Sutta HP.
                   </p>
                 </div>
               </div>
