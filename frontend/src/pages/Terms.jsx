@@ -73,12 +73,14 @@ const SECTIONS = [
   {
     n: "07",
     title: "Packaging & Labeling",
+    subTitle: "HarvestGate Standard",
     body: [
       "All products are packed using export-grade, food-safe, and moisture-resistant materials, suitable for long-distance shipping and international handling.",
-      "Packaging customization (e.g., material type, size, or packing style) can be accommodated based on buyer preferences and feasibility, subject to prior agreement and any additional cost implications.",
+      "Packaging customization (e.g., material type, size, or packing style) can be accommodated based on buyer preferences and feasibility, subject to prior agreement and any additional cost implications (if any).",
+      "We are also open to private labeling and branding services to support your market needs.",
     ],
-    highlight: "Please note: While packaging specifications can be customized, private labelling and branding services are not offered by us at this moment.",
   },
+
   {
     n: "08",
     title: "Export Documentation",
