@@ -96,7 +96,7 @@ const Contact = () => {
         }),
       }).catch((err) => console.log("Backend SMTP notice:", err));
 
-      // 2. Dispatch backup via FormSubmit AJAX service with autoresponse
+      // 2. Notify admin via FormSubmit
       await fetch("https://formsubmit.co/ajax/admin@harvestgateoverseas.com", {
         method: "POST",
         headers: {
@@ -108,7 +108,6 @@ const Contact = () => {
           _replyto: values.email,
           _template: "table",
           _captcha: "false",
-          _autoresponse: `Dear ${values.name},\n\nThank you for reaching out to HarvestGate Overseas. We have formally registered your commercial export enquiry for ${values.product} (${values.quantity}) on behalf of ${values.orgName}.\n\nReference ID: ${ref}\n\nOur international trade desk is preparing your formal CIF/FOB quotation and quality test parameters. A dedicated trade manager will connect with you within 24 business hours.\n\nWarm regards,\nHarvestGate Overseas Pvt. Ltd.\nPhone/WhatsApp: +91 8077078313\nEmail: contact@harvestgateoverseas.com`,
           reference_id: ref,
           contact_person: values.name,
           organisation: values.orgName,
@@ -118,9 +117,25 @@ const Contact = () => {
           required_volume: values.quantity,
           delivery_address: values.orgAddress,
           additional_notes: values.message || "None",
-          routed_to: "admin@harvestgateoverseas.com",
         }),
-      }).catch((err) => console.log("FormSubmit Notice:", err));
+      }).catch((err) => console.log("FormSubmit Admin Notice:", err));
+
+      // 3. Send acknowledgement directly to the buyer's email
+      await fetch(`https://formsubmit.co/ajax/${values.email}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `[HarvestGate] Your Export Enquiry Has Been Received — Ref: ${ref}`,
+          _replyto: "contact@harvestgateoverseas.com",
+          _template: "box",
+          _captcha: "false",
+          Message: `Dear ${values.name},\n\nThank you for reaching out to HarvestGate Overseas. We have formally registered your commercial export enquiry and our trade desk is now reviewing your requirements.\n\n── Enquiry Summary ──\nReference ID   : ${ref}\nProduct        : ${values.product}\nQuantity       : ${values.quantity}\nOrganisation   : ${values.orgName}\n\nA dedicated trade manager will connect with you within 24 business hours with a formal CIF/FOB quotation.\n\nFor any immediate queries, please contact us:\nPhone/WhatsApp : +91 8077078313\nEmail          : contact@harvestgateoverseas.com\n\nWarm regards,\nHarvestGate Overseas Pvt. Ltd.\nGlobal Agricultural Exports`,
+        }),
+      }).catch((err) => console.log("Buyer acknowledgement notice:", err));
+
     } catch (err) {
       console.log("Transmission notice:", err);
     } finally {
@@ -131,6 +146,7 @@ const Contact = () => {
         duration: 7000,
       });
     }
+
   };
 
   return (
