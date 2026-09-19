@@ -77,10 +77,8 @@ const Contact = () => {
     const ref = `HG-${Date.now().toString().slice(-6)}`;
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
-
-      // 1. Dispatch through FastAPI SMTP engine (Sends Admin Alert + Branded Buyer Auto-Responder)
-      await fetch(`${apiUrl}/api/enquiry`, {
+      // Primary: Vercel serverless function — sends admin alert + buyer acknowledgement via Gmail SMTP
+      await fetch("/api/enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -92,17 +90,13 @@ const Contact = () => {
           product: values.product,
           quantity: values.quantity,
           message: values.message || "",
-          targetEmail: "admin@harvestgateoverseas.com",
         }),
-      }).catch((err) => console.log("Backend SMTP notice:", err));
+      }).catch((err) => console.log("API notice:", err));
 
-      // 2. Notify admin via FormSubmit
+      // Fallback: FormSubmit admin backup
       await fetch("https://formsubmit.co/ajax/admin@harvestgateoverseas.com", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           _subject: `[HarvestGate Export Enquiry] ${ref} · ${values.orgName} — ${values.product}`,
           _replyto: values.email,
@@ -118,23 +112,7 @@ const Contact = () => {
           delivery_address: values.orgAddress,
           additional_notes: values.message || "None",
         }),
-      }).catch((err) => console.log("FormSubmit Admin Notice:", err));
-
-      // 3. Send acknowledgement directly to the buyer's email
-      await fetch(`https://formsubmit.co/ajax/${values.email}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          _subject: `[HarvestGate] Your Export Enquiry Has Been Received — Ref: ${ref}`,
-          _replyto: "contact@harvestgateoverseas.com",
-          _template: "box",
-          _captcha: "false",
-          Message: `Dear ${values.name},\n\nThank you for reaching out to HarvestGate Overseas. We have formally registered your commercial export enquiry and our trade desk is now reviewing your requirements.\n\n── Enquiry Summary ──\nReference ID   : ${ref}\nProduct        : ${values.product}\nQuantity       : ${values.quantity}\nOrganisation   : ${values.orgName}\n\nA dedicated trade manager will connect with you within 24 business hours with a formal CIF/FOB quotation.\n\nFor any immediate queries, please contact us:\nPhone/WhatsApp : +91 8077078313\nEmail          : contact@harvestgateoverseas.com\n\nWarm regards,\nHarvestGate Overseas Pvt. Ltd.\nGlobal Agricultural Exports`,
-        }),
-      }).catch((err) => console.log("Buyer acknowledgement notice:", err));
+      }).catch((err) => console.log("FormSubmit backup notice:", err));
 
     } catch (err) {
       console.log("Transmission notice:", err);
