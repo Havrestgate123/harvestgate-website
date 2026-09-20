@@ -165,9 +165,9 @@ async def create_enquiry(request: Request, input: EnquiryCreate):
         except Exception as e:
             logging.error("Failed to persist enquiry to MongoDB: %s", e)
 
-    # â”€â”€ Send emails via Brevo â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    admin_ok, admin_err  = send_admin_notification(enquiry_obj)
-    buyer_ok, buyer_err  = send_buyer_acknowledgement(enquiry_obj)
+    # ── Send emails via Brevo / Email Service ──────────────────────────────────
+    admin_ok, admin_msg_id, admin_err = send_admin_notification(enquiry_obj)
+    buyer_ok, buyer_msg_id, buyer_err = send_buyer_acknowledgement(enquiry_obj)
 
     if not admin_ok:
         logging.error("Admin email failed for ref %s: %s", enquiry_obj.ref, admin_err)
@@ -175,14 +175,16 @@ async def create_enquiry(request: Request, input: EnquiryCreate):
         logging.error("Buyer acknowledgement failed for ref %s: %s", enquiry_obj.ref, buyer_err)
 
     logging.info(
-        "Enquiry %s | admin_email=%s | buyer_email=%s | from=%s (%s)",
-        enquiry_obj.ref, admin_ok, buyer_ok, enquiry_obj.name, enquiry_obj.email
+        "Enquiry %s | admin_email=%s (id=%s) | buyer_email=%s (id=%s) | from=%s (%s)",
+        enquiry_obj.ref, admin_ok, admin_msg_id, buyer_ok, buyer_msg_id, enquiry_obj.name, enquiry_obj.email
     )
 
     return {
         "success": True,
         "ref": enquiry_obj.ref,
         "email_sent": buyer_ok,
+        "buyer_email": {"sent": buyer_ok, "message_id": buyer_msg_id, "error": buyer_err or None},
+        "admin_email": {"sent": admin_ok, "message_id": admin_msg_id, "error": admin_err or None},
         "id": enquiry_obj.id,
         "timestamp": enquiry_obj.timestamp.isoformat(),
     }
@@ -206,12 +208,12 @@ async def test_email():
         quantity="1 x 20ft FCL (24 MT)",
         message="This is a test confirming Brevo email delivery is working for both admin and buyer.",
     )
-    admin_ok, admin_err = send_admin_notification(test_enquiry)
-    buyer_ok, buyer_err = send_buyer_acknowledgement(test_enquiry)
+    admin_ok, admin_msg_id, admin_err = send_admin_notification(test_enquiry)
+    buyer_ok, buyer_msg_id, buyer_err = send_buyer_acknowledgement(test_enquiry)
     return {
         "status": "done",
-        "admin_email": {"sent": admin_ok, "error": admin_err or None},
-        "buyer_email": {"sent": buyer_ok, "error": buyer_err or None},
+        "admin_email": {"sent": admin_ok, "message_id": admin_msg_id, "error": admin_err or None},
+        "buyer_email": {"sent": buyer_ok, "message_id": buyer_msg_id, "error": buyer_err or None},
         "ref": test_enquiry.ref,
     }
 

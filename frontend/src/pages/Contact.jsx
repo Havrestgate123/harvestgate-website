@@ -65,6 +65,8 @@ const Contact = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (submitting) return;
+
     const found = validate(values);
     setErrors(found);
     if (Object.keys(found).length) {
@@ -76,67 +78,68 @@ const Contact = () => {
     setSubmitting(true);
     const ref = `HG-${Date.now().toString().slice(-6)}`;
 
+    const payload = {
+      ref,
+      name: values.name.trim(),
+      orgName: values.orgName.trim(),
+      orgAddress: values.orgAddress.trim(),
+      email: values.email.trim(),
+      contactNumber: values.contactNumber.trim(),
+      product: values.product.trim(),
+      quantity: values.quantity.trim(),
+      message: (values.message || "").trim(),
+    };
+
     try {
-      let emailSent = false;
-      let refId = ref;
+      const res = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-      try {
-        const res = await fetch("/api/enquiry", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ref,
-            name: values.name,
-            orgName: values.orgName,
-            orgAddress: values.orgAddress,
-            email: values.email,
-            contactNumber: values.contactNumber,
-            product: values.product,
-            quantity: values.quantity,
-            message: values.message || "",
-          }),
+      if (res.status === 429) {
+        setSubmitting(false);
+        toast.error("Submission Limit Reached", {
+          description: "Too many enquiries submitted from your network. Please wait a few minutes.",
+          duration: 7000,
         });
-
-        if (res.status === 429) {
-          setSubmitting(false);
-          toast.error("Submission Limit Reached", {
-            description: "Too many enquiries submitted from your network. Please wait a few minutes.",
-            duration: 7000,
-          });
-          return;
-        }
-
-        if (res.ok) {
-          const data = await res.json();
-          emailSent = data.email_sent === true;
-          if (data.ref) refId = data.ref;
-        }
-      } catch (err) {
-        console.log("API notice:", err);
+        return;
       }
 
-      setSubmitting(false);
-      setDone({ ...values, ref: refId });
+      if (res.ok) {
+        const data = await res.json();
+        const emailSent = data.email_sent === true;
+        const refId = data.ref || ref;
 
-      if (emailSent) {
-        toast.success("Enquiry Submitted Successfully", {
-          description: `Ref ${refId} registered. A confirmation email has been sent to ${values.email}.`,
-          duration: 8000,
-        });
+        setSubmitting(false);
+        setDone({ ...payload, ref: refId });
+
+        if (emailSent) {
+          toast.success("Enquiry Submitted Successfully", {
+            description: `Ref ${refId} registered. A confirmation email has been sent to ${payload.email}.`,
+            duration: 8000,
+          });
+        } else {
+          toast.success("Enquiry Received", {
+            description: `Ref ${refId} registered. Our team will contact you at ${payload.email} within 24 hours.`,
+            duration: 8000,
+          });
+        }
       } else {
-        toast.success("Enquiry Received", {
-          description: `Ref ${refId} registered. Our team will contact you at ${values.email} within 24 hours.`,
-          duration: 8000,
+        const data = await res.json().catch(() => ({}));
+        setSubmitting(false);
+        toast.error("Submission Error", {
+          description: data.detail || data.error || "Unable to process enquiry. Please check your details and try again.",
+          duration: 7000,
         });
       }
 
     } catch (err) {
       console.log("Submission error:", err);
       setSubmitting(false);
-      setDone({ ...values, ref });
-      toast.success("Enquiry Received", {
-        description: `Ref ${ref} registered. Our team will reach out within 24 hours.`,
-        duration: 8000,
+      toast.error("Connection Error", {
+        description: "Unable to reach the server. Please check your connection and try again.",
+        duration: 7000,
       });
     }
 

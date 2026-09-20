@@ -10,7 +10,7 @@ import os
 import re
 import logging
 import requests
-from typing import Tuple
+from typing import Tuple, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -49,6 +49,14 @@ _EMAIL_RE = re.compile(r"^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$")
 def is_valid_email(email: str) -> bool:
     return bool(_EMAIL_RE.match(email.strip())) if email else False
 
+def _mask_email(email: str) -> str:
+    """Privacy-safe email masking for production logs."""
+    if not email or "@" not in email:
+        return "invalid-email"
+    user, domain = email.strip().split("@", 1)
+    masked_user = user[0] + "***" + (user[-1] if len(user) > 2 else "")
+    return f"{masked_user}@{domain} (domain: {domain})"
+
 
 # ── Core SMTP delivery helper ─────────────────────────────────────────────────
 
@@ -58,18 +66,19 @@ def _send_smtp(
     to_email: str, to_name: str,
     subject: str, html_body: str, text_body: str,
     reply_to_email: str = None, reply_to_name: str = None,
-) -> Tuple[bool, str]:
+) -> Tuple[bool, Optional[str], str]:
     import smtplib
     import ssl
     from email.mime.multipart import MIMEMultipart
     from email.mime.text import MIMEText
 
+    clean_to = to_email.strip()
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = f"{from_name} <{from_email}>"
-    msg["To"] = f"{to_name} <{to_email}>"
+    msg["To"] = f"{to_name} <{clean_to}>"
     if reply_to_email:
-        msg["Reply-To"] = f"{reply_to_name or reply_to_email} <{reply_to_email}>"
+        msg["Reply-To"] = f"{reply_to_name or reply_to_email} <{reply_to_email.strip()}>"
 
     msg.attach(MIMEText(text_body, "plain", "utf-8"))
     msg.attach(MIMEText(html_body, "html", "utf-8"))
@@ -79,17 +88,17 @@ def _send_smtp(
             context = ssl.create_default_context()
             with smtplib.SMTP_SSL(smtp_host, smtp_port, context=context, timeout=12) as server:
                 server.login(smtp_user, smtp_pass)
-                server.sendmail(from_email, [to_email], msg.as_string())
+                server.sendmail(from_email, [clean_to], msg.as_string())
         else:
             with smtplib.SMTP(smtp_host, smtp_port, timeout=12) as server:
                 server.starttls()
                 server.login(smtp_user, smtp_pass)
-                server.sendmail(from_email, [to_email], msg.as_string())
-        logger.info("SMTP: successfully sent to %s via %s:%d", to_email, smtp_host, smtp_port)
-        return True, ""
+                server.sendmail(from_email, [clean_to], msg.as_string())
+        logger.info("SMTP: successfully sent to %s via %s:%d", _mask_email(clean_to), smtp_host, smtp_port)
+        return True, "smtp-relay", ""
     except Exception as exc:
-        logger.error("SMTP delivery failed to %s: %s", to_email, exc)
-        return False, f"SMTP delivery failed: {exc}"
+        logger.error("SMTP delivery failed to %s: %s", _mask_email(clean_to), exc)
+        return False, None, f"SMTP delivery failed: {exc}"
 
 
 # ── Core Send Dispatcher (Brevo API preferred -> SMTP fallback) ───────────────
@@ -99,20 +108,22 @@ def _send(
     to_email: str, to_name: str,
     subject: str, html_body: str, text_body: str,
     reply_to_email: str = None, reply_to_name: str = None,
-) -> Tuple[bool, str]:
+) -> Tuple[bool, Optional[str], str]:
     api_key = cfg.get("api_key", "").strip()
+    clean_to = to_email.strip()
+    domain = clean_to.split("@")[1] if "@" in clean_to else "unknown"
 
     # 1. Primary: Brevo Transactional Email HTTP API (no SMTP, port-blocking proof)
     if api_key and not api_key.startswith("your_"):
         payload = {
             "sender": {"name": cfg["from_name"], "email": cfg["from_email"]},
-            "to": [{"email": to_email, "name": to_name}],
+            "to": [{"email": clean_to, "name": to_name.strip()}],
             "subject": subject,
             "htmlContent": html_body,
             "textContent": text_body,
         }
         if reply_to_email:
-            payload["replyTo"] = {"email": reply_to_email, "name": reply_to_name or reply_to_email}
+            payload["replyTo"] = {"email": reply_to_email.strip(), "name": (reply_to_name or reply_to_email).strip()}
 
         try:
             resp = requests.post(
@@ -121,14 +132,19 @@ def _send(
                 headers={"accept": "application/json", "content-type": "application/json", "api-key": api_key},
                 timeout=10,
             )
+            data = resp.json() if resp.content else {}
             if resp.status_code in (200, 201):
-                logger.info("Brevo API: sent to %s (status %d)", to_email, resp.status_code)
-                return True, ""
-            logger.error("Brevo API error: status=%d body=%s", resp.status_code, resp.text[:200])
+                msg_id = data.get("messageId", "N/A")
+                logger.info("[Brevo API] SUCCESS | Domain: %s | Status: %d | messageId: %s", domain, resp.status_code, msg_id)
+                return True, msg_id, ""
+            code = data.get("code", "unknown")
+            msg = data.get("message", resp.text[:150])
+            logger.error("[Brevo API] ERROR | Domain: %s | Status: %d | Code: %s | Message: %s", domain, resp.status_code, code, msg)
+            # If Brevo API failed, proceed to SMTP fallback if configured
         except requests.exceptions.Timeout:
-            logger.error("Brevo API timeout for %s", to_email)
+            logger.error("[Brevo API] TIMEOUT | Domain: %s", domain)
         except requests.exceptions.RequestException as exc:
-            logger.error("Brevo API request failed: %s", str(exc))
+            logger.error("[Brevo API] NETWORK ERROR | Domain: %s | Error: %s", domain, str(exc))
 
     # 2. Secondary: Brevo SMTP / SMTP Relay
     smtp_host = cfg.get("smtp_host", "").strip()
@@ -141,7 +157,7 @@ def _send(
             smtp_pass=smtp_pass,
             from_email=cfg["from_email"],
             from_name=cfg["from_name"],
-            to_email=to_email,
+            to_email=clean_to,
             to_name=to_name,
             subject=subject,
             html_body=html_body,
@@ -151,16 +167,16 @@ def _send(
         )
 
     logger.warning("Email not sent: neither valid Brevo API key nor SMTP credentials are configured.")
-    return False, "Email service not configured"
+    return False, None, "Email service not configured"
 
 
 # ── Admin Notification ────────────────────────────────────────────────────────
 
-def send_admin_notification(enquiry) -> Tuple[bool, str]:
+def send_admin_notification(enquiry) -> Tuple[bool, Optional[str], str]:
     c = _cfg()
     if not is_configured():
         logger.warning("Email service not configured — admin notification skipped.")
-        return False, "Not configured"
+        return False, None, "Not configured"
 
     notes_row = f"""<tr><td style="padding:10px 14px;background:#fef3c7;border-top:1px solid #e5e7eb;font-size:12px;font-weight:bold;color:#92400e;font-family:Courier,monospace;text-transform:uppercase;width:38%">Buyer Notes</td><td style="padding:10px 14px;border-top:1px solid #e5e7eb;font-size:13px;color:#374151;">{enquiry.message}</td></tr>""" if enquiry.message else ""
 
@@ -208,14 +224,14 @@ def send_admin_notification(enquiry) -> Tuple[bool, str]:
 
 # ── Buyer Acknowledgement ─────────────────────────────────────────────────────
 
-def send_buyer_acknowledgement(enquiry) -> Tuple[bool, str]:
+def send_buyer_acknowledgement(enquiry) -> Tuple[bool, Optional[str], str]:
     c = _cfg()
     if not is_configured():
         logger.warning("Email service not configured — buyer acknowledgement skipped.")
-        return False, "Not configured"
+        return False, None, "Not configured"
     if not is_valid_email(enquiry.email):
-        logger.warning("Invalid buyer email '%s' — skipping.", enquiry.email)
-        return False, "Invalid recipient email"
+        logger.warning("Invalid buyer email '%s' — skipping.", _mask_email(enquiry.email))
+        return False, None, "Invalid recipient email"
 
     notes_row = f"""<tr><td style="padding:10px 14px;background:#f0fdf4;border-top:1px solid #e5e7eb;font-size:11px;font-weight:bold;color:#166534;font-family:Courier,monospace;text-transform:uppercase;width:42%">Additional Notes</td><td style="padding:10px 14px;border-top:1px solid #e5e7eb;font-size:13px;color:#374151;">{enquiry.message}</td></tr>""" if enquiry.message else ""
 
