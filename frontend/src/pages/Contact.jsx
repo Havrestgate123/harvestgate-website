@@ -128,8 +128,15 @@ const Contact = () => {
       } else {
         const data = await res.json().catch(() => ({}));
         setSubmitting(false);
+        const errDesc = data.detail || data.error || (
+          res.status === 405
+            ? "Submission temporarily unavailable (HTTP 405). Please contact us at contact@harvestgateoverseas.com."
+            : res.status >= 500
+            ? "Server error. Please try again or contact us directly at contact@harvestgateoverseas.com."
+            : "Unable to process enquiry. Please check your details and try again."
+        );
         toast.error("Submission Error", {
-          description: data.detail || data.error || "Unable to process enquiry. Please check your details and try again.",
+          description: errDesc,
           duration: 7000,
         });
       }

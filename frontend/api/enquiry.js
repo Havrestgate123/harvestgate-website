@@ -1,11 +1,10 @@
-// api/enquiry.js — Vercel Serverless Function (CommonJS)
+// frontend/api/enquiry.js — Vercel Serverless Function (ES Module)
 // Primary: Brevo Transactional Email HTTP API (https://api.brevo.com/v3/smtp/email)
 // Fallback: SMTP via Nodemailer if Brevo API key not set or fails
 // All credentials read from Environment Variables — never hardcoded
 
 const BREVO_URL = "https://api.brevo.com/v3/smtp/email";
 
-// Privacy-safe masked email for diagnostic logging
 function maskEmail(email) {
   if (!email || !email.includes("@")) return "invalid-email";
   const [user, domain] = email.split("@");
@@ -60,7 +59,8 @@ async function sendSmtpEmail({ host, port, user, pass, fromEmail, fromName, toEm
     return { ok: false, error: "SMTP credentials not provided" };
   }
   try {
-    const nodemailer = require("nodemailer");
+    const nodemailerModule = await import("nodemailer");
+    const nodemailer = nodemailerModule.default || nodemailerModule;
     const portNum = parseInt(port, 10) || 465;
     const transporter = nodemailer.createTransport({
       host: host || "smtp.gmail.com",
@@ -87,7 +87,7 @@ async function sendSmtpEmail({ host, port, user, pass, fromEmail, fromName, toEm
   }
 }
 
-async function handler(req, res) {
+export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -205,6 +205,3 @@ async function handler(req, res) {
     admin_email: { sent: adminResult.ok, message_id: adminResult.messageId || null, error: adminResult.error || null },
   });
 }
-
-module.exports = handler;
-module.exports.default = handler;
