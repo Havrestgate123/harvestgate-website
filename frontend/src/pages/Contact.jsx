@@ -77,51 +77,66 @@ const Contact = () => {
     const ref = `HG-${Date.now().toString().slice(-6)}`;
 
     try {
-      // Primary: Vercel serverless function — sends admin alert + buyer acknowledgement via Gmail SMTP
-      await fetch("/api/enquiry", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: values.name,
-          orgName: values.orgName,
-          orgAddress: values.orgAddress,
-          email: values.email,
-          contactNumber: values.contactNumber,
-          product: values.product,
-          quantity: values.quantity,
-          message: values.message || "",
-        }),
-      }).catch((err) => console.log("API notice:", err));
+      let emailSent = false;
+      let refId = ref;
 
-      // Fallback: FormSubmit admin backup
-      await fetch("https://formsubmit.co/ajax/admin@harvestgateoverseas.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          _subject: `[HarvestGate Export Enquiry] ${ref} · ${values.orgName} — ${values.product}`,
-          _replyto: values.email,
-          _template: "table",
-          _captcha: "false",
-          reference_id: ref,
-          contact_person: values.name,
-          organisation: values.orgName,
-          business_email: values.email,
-          phone_whatsapp: values.contactNumber,
-          product_required: values.product,
-          required_volume: values.quantity,
-          delivery_address: values.orgAddress,
-          additional_notes: values.message || "None",
-        }),
-      }).catch((err) => console.log("FormSubmit backup notice:", err));
+      try {
+        const res = await fetch("/api/enquiry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ref,
+            name: values.name,
+            orgName: values.orgName,
+            orgAddress: values.orgAddress,
+            email: values.email,
+            contactNumber: values.contactNumber,
+            product: values.product,
+            quantity: values.quantity,
+            message: values.message || "",
+          }),
+        });
+
+        if (res.status === 429) {
+          setSubmitting(false);
+          toast.error("Submission Limit Reached", {
+            description: "Too many enquiries submitted from your network. Please wait a few minutes.",
+            duration: 7000,
+          });
+          return;
+        }
+
+        if (res.ok) {
+          const data = await res.json();
+          emailSent = data.email_sent === true;
+          if (data.ref) refId = data.ref;
+        }
+      } catch (err) {
+        console.log("API notice:", err);
+      }
+
+      setSubmitting(false);
+      setDone({ ...values, ref: refId });
+
+      if (emailSent) {
+        toast.success("Enquiry Submitted Successfully", {
+          description: `Ref ${refId} registered. A confirmation email has been sent to ${values.email}.`,
+          duration: 8000,
+        });
+      } else {
+        toast.success("Enquiry Received", {
+          description: `Ref ${refId} registered. Our team will contact you at ${values.email} within 24 hours.`,
+          duration: 8000,
+        });
+      }
 
     } catch (err) {
-      console.log("Transmission notice:", err);
-    } finally {
+      console.log("Submission error:", err);
       setSubmitting(false);
       setDone({ ...values, ref });
-      toast.success("Enquiry Transmitted Successfully", {
-        description: `Reference ${ref} logged. Acknowledgment sent to ${values.email}.`,
-        duration: 7000,
+      toast.success("Enquiry Received", {
+        description: `Ref ${ref} registered. Our team will reach out within 24 hours.`,
+        duration: 8000,
       });
     }
 
